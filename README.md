@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Twitter Clone 🚀
 
-## Getting Started
+¡Bienvenido a mi proyecto! Este es un **clon de Twitter** creado con el objetivo de **aprender y fortalecer conocimientos** en tecnologías modernas de desarrollo web. Aunque no busca replicar todas las funcionalidades de **Twitter**.
 
-First, run the development server:
+## 🎯 Objetivo del Proyecto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Practicar y mejorar habilidades en desarrollo frontend y backend.
+- Explorar la integración de tecnologías modernas.
+- Comprender los principios de diseño de aplicaciones web escalables.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tecnologías Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Frontend**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js](https://nextjs.org/) para el desarrollo del lado del cliente y del servidor.
+- [Tailwind CSS](https://tailwindcss.com/) para la estilización de componentes.
+- [TypeScript](https://www.typescriptlang.org/) para tipado estático.
 
-## Learn More
+### **Backend**
 
-To learn more about Next.js, take a look at the following resources:
+- [Supabase](https://supabase.com/) como base de datos y proveedor de autenticación.
+- [PostgreSQL](https://www.postgresql.org/) como base de datos relacional.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **Otros**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Framer Motion](https://www.framer.com/motion/) para animaciones.
+- [Zustand](https://zustand-demo.pmnd.rs/) para la gestión del estado global.
+- [Prettier](https://prettier.io/) y [ESLint](https://eslint.org/) para mantener el código limpio.
 
-## Deploy on Vercel
+## ✨ Funcionalidades
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Autenticación de usuarios**: Inicio de sesión y registro con OAuth (por ejemplo, Google) o correo electrónico, gestionado por Supabase.
+- **Publicación de tweets**: Los usuarios pueden crear publicaciones con texto, imágenes.
+- **Perfil de usuario**: Información básica como nombre, biografía y foto de perfil.
+- **SSR e ISR**: Renderizado del lado del servidor y generación estática incremental para mejorar el rendimiento.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Cómo Ejecutar el Proyecto
+
+### **Requisitos Previos**
+
+- Node.js >= 18
+- Cuenta de Supabase y un proyecto configurado.
+- Un editor de texto como [Visual Studio Code](https://code.visualstudio.com/).
+
+### **Pasos**
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/Crisops/twitter-clone.git
+   cd twitter-clone
+   ```
