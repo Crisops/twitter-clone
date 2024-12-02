@@ -32,7 +32,7 @@
 - **Autenticación de usuarios**: Inicio de sesión y registro con OAuth (por ejemplo, Google) o correo electrónico, gestionado por Supabase.
 - **Publicación de tweets**: Los usuarios pueden crear publicaciones con texto, imágenes.
 - **Perfil de usuario**: Información básica como nombre, biografía y foto de perfil.
-- **SSR e ISR**: Renderizado del lado del servidor y generación estática incremental para mejorar el rendimiento.
+- **SSR**: Renderizado del lado del servidor.
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
