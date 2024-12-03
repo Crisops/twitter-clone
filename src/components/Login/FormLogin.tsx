@@ -42,6 +42,7 @@ export const FormLogin = () => {
                 <InputForm
                     id={idEmail}
                     name="email"
+                    label="Correo electrónico"
                     defaultValue={initialForm.email?.toLocaleLowerCase()}
                     type="email"
                     valueInput=""
@@ -51,6 +52,7 @@ export const FormLogin = () => {
                     id={idPassword}
                     type={view ? 'text' : 'password'}
                     valueInput={password}
+                    label="Contraseña"
                     handleInputRegister={{...registerField("password")}}
                     errorMessage={errors.password?.message}
                     IconSvg={view ? <IconEyeOff color="white" size={35}/>  : <IconEye color="white" size={35}/>}
