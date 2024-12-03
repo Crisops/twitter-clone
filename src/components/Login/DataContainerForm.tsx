@@ -5,7 +5,7 @@ import { ButtonGoogle } from "../shared/ButtonGoogle"
 import { InputCredentials } from "./InputCredentials"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
 import { useStoreInputCredentials } from "@/hooks/useLogin"
-import { useEffect } from "react"
+import { useEffect, useId } from "react"
 
 interface DataContainerFormProps {
     handleNextConfirmData: () => void
@@ -13,6 +13,7 @@ interface DataContainerFormProps {
 
 export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProps) => {
 
+    const idEmail = useId()
     const {registerField, watch, errors} = useFormAuthLogin()
     const {initialForm, setInitialForm} = useStoreInputCredentials(state => state)
 
@@ -45,9 +46,15 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
                 <div className="text-white">O</div>
                 <div className="w-full h-px bg-zinc-700"></div>
             </div>
-            <InputCredentials id="prueba" handleInput={{...registerField("email")}} errorMessage={errors.email?.message} value={email}/>
+            <InputCredentials
+            id={idEmail}
+            type="email"
+            handleInputRegister={{...registerField("email")}}
+            errorMessage={errors.email?.message}
+            valueInput={email}
+            />
             <div className="bg-white rounded-full mb-6">
-                <button onClick={handleNextConfirmData} className="text-black text-center w-full p-3 font-bold text-lg">Siguiente</button>
+                <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'pointer-events-none'} text-black text-center w-full p-3 font-bold text-lg`}>Siguiente</button>
             </div>
             <div>
                 <p className="text-lg text-zinc-500">¿No tienes una cuenta? <Link href={'/signup'} className="text-sky-500 hover:underline">Regístrate</Link></p>
