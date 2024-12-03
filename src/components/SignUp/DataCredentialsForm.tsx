@@ -1,13 +1,24 @@
 'use client'
 
+import { useFormAuthSignUp } from "@/hooks/useFormAuthSignUp"
 import { InputsForm } from "./InputsForm"
 import { SelectedBirthday } from "./SelectedBirthDay"
+import { useCreateNewAccount } from "@/hooks/useAuth"
 
 interface DataCredentialsFormProps {
     handleNextData: () => void
 }
 
 export const DataCredentialsForm = ({handleNextData}: DataCredentialsFormProps) => {
+
+
+    const {initialForm} = useCreateNewAccount(state => state)
+    const { errors } = useFormAuthSignUp()
+
+    const {birthday} = initialForm
+
+    const handleErrorInputs = errors.fullName?.message || errors.email?.message || (birthday.day === '' || birthday.month === '' || birthday.year === '')
+    
 
   return (
     <div className="flex items-center flex-col w-full h-[calc(100%-4rem)]">
@@ -25,7 +36,7 @@ export const DataCredentialsForm = ({handleNextData}: DataCredentialsFormProps) 
             </section>
             <div className="mb-10">
                 <div>
-                    <button onClick={handleNextData} type="button" className="text-black text-xl w-full rounded-full font-bold bg-white p-4 hover:bg-white/90">Siguiente</button>
+                    <button onClick={handleNextData} type="button" className={`${handleErrorInputs ? 'bg-white/40 pointer-events-none' : 'bg-white hover:bg-white/90'} text-black text-xl w-full rounded-full font-bold  p-4 `}>Siguiente</button>
                 </div>
             </div>
         </div>
