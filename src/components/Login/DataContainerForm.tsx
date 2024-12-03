@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { ButtonGoogle } from "../shared/ButtonGoogle"
-import { InputCredentials } from "./InputCredentials"
+import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
 import { useStoreInputCredentials } from "@/hooks/useLogin"
 import { useEffect, useId } from "react"
@@ -46,7 +46,7 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
                 <div className="text-white">O</div>
                 <div className="w-full h-px bg-zinc-700"></div>
             </div>
-            <InputCredentials
+            <InputForm
             id={idEmail}
             type="email"
             handleInputRegister={{...registerField("email")}}
