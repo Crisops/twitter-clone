@@ -2,6 +2,7 @@ import { UseFormRegisterReturn } from "react-hook-form"
 
 
 interface InputFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    label: string
     errorMessage?: string
     valueInput: string
     handleInputRegister?: UseFormRegisterReturn
@@ -9,7 +10,7 @@ interface InputFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
     handleViewPassword?: () => void
 }
 
-export function InputForm ({id, errorMessage, valueInput, handleInputRegister, IconSvg, handleViewPassword, ...rest}: InputFormProps) {
+export function InputForm ({id, label, errorMessage, valueInput, handleInputRegister, IconSvg, handleViewPassword, ...rest}: InputFormProps) {
 
 
     const value = valueInput ?? ''
@@ -43,7 +44,7 @@ export function InputForm ({id, errorMessage, valueInput, handleInputRegister, I
                     {...handleInputRegister}
                     {...rest}
                     />
-                    <span className={`absolute ${HandlErrorAndCaracteresSpan} bg-black -translate-y-1/2 transition-all ease-in-out duration-200 pointer-events-none ${disabledActiveSpan} z-10`}>Correo electrónico</span>
+                    <span className={`absolute ${HandlErrorAndCaracteresSpan} bg-black -translate-y-1/2 transition-all ease-in-out duration-200 pointer-events-none ${disabledActiveSpan} z-10`}>{label}</span>
                 </label>
                 {IconSvg && <button type="button" onClick={handleViewPassword} className="absolute right-2 bottom-4">{IconSvg}</button>}
             </div>
