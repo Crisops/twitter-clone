@@ -1,21 +1,28 @@
-import { ChangeEvent, useId } from "react"
-import { InputForm } from "../shared/InputForm"
+import {  useEffect, useId } from "react"
+import { InputForm } from "@/components/shared/InputForm"
 import { useCreateNewAccount } from "@/hooks/useAuth"
+import { useFormAuthSignUp } from "@/hooks/useFormAuthSignUp"
 
 
 export const InputsForm = () => {
 
 
+  const {registerField, watch, errors} = useFormAuthSignUp("onChange")
+  
     const idNameUser = useId()
     const idEmailUser = useId()
 
     const {initialForm, setInitialForm} = useCreateNewAccount(state => state)
 
-    
+    useEffect(() => {
 
-    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setInitialForm({...initialForm, [e.target.name]: e.target.value})
-    }
+      const {unsubscribe} = watch(({fullName, email}) => {
+        if(fullName && email ) setInitialForm({...initialForm, fullName, email})
+      })
+
+      return () => unsubscribe()
+
+    }, [watch, initialForm, setInitialForm])
 
   return (
     <>
@@ -23,19 +30,17 @@ export const InputsForm = () => {
         id={idNameUser}
         label="Nombre"
         type="text"
-        name="fullName"
-        activeAnimation
-        value={initialForm.fullName}
-        handleOnChange={handleOnChange}
+        handleInputRegister={{...registerField("fullName")}}
+        errorMessage={errors.fullName?.message}
+        valueInput={watch("fullName")}
         />
         <InputForm
         id={idEmailUser}
         label="Correo electrónico"
-        type="text"
-        name="email"
-        activeAnimation
-        value={initialForm.email}
-        handleOnChange={handleOnChange}
+        type="email"
+        handleInputRegister={{...registerField("email")}}
+        errorMessage={errors.email?.message}
+        valueInput={watch("email")}
         />
     </>
   )
