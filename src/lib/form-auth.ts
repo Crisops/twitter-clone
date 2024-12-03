@@ -1,7 +1,7 @@
 import { RegisterOptions } from "react-hook-form"
 
 
-export const validationRules: Record<keyof FormLogin, RegisterOptions<FormLogin>> = {
+export const validationRulesLogin: Record<keyof FormLogin, RegisterOptions<FormLogin>> = {
     email: {
         required: "El correo es requerido",
         pattern: {
