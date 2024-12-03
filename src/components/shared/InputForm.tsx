@@ -35,7 +35,7 @@ export function InputForm ({id, label, errorMessage, valueInput, handleInputRegi
     const disabledActiveSpan = 'peer-disabled:top-0 peer-disabled:bg-[#101214] peer-disabled:text-base peer-disabled:px-1'
 
     return (
-        <div className="relative first:mb-4 last:mt-4 mb-9">
+        <div className="relative first-of-type:mb-9 mb-9">
             <div className="relative w-full h-16 group">
                 <label htmlFor={id} className="absolute w-full h-full left-0">
                     <input 
