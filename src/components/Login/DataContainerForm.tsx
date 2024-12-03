@@ -49,6 +49,7 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
             <InputForm
             id={idEmail}
             type="email"
+            label="Correo electrónico"
             handleInputRegister={{...registerField("email")}}
             errorMessage={errors.email?.message}
             valueInput={email}
