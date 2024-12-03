@@ -1,28 +1,39 @@
 'use client'
 
 import { useCreateNewAccount } from "@/hooks/useAuth"
-import { InputForm } from "../shared/InputForm"
-import { ChangeEvent, useId, useState } from "react"
+import { InputForm } from "@/components/shared/InputForm"
+import { useEffect, useId, useState } from "react"
 import { IconEye, IconEyeOff } from "@tabler/icons-react"
+import { useFormAuthSignUp } from "@/hooks/useFormAuthSignUp"
 
 
 export const Form = () => {
     
-    const [view, setView] = useState<boolean>(false)
-    const {initialForm, setInitialForm} = useCreateNewAccount(state => state)
     const idUserName = useId()
-    const idPasswordUser = useId()
+    const idPassword = useId()
+    const {initialForm, setInitialForm} = useCreateNewAccount(state => state)
     
-    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setInitialForm({...initialForm, [e.target.name]: e.target.value})
-    }
+    const [view, setView] = useState<boolean>(false)
 
+    const {registerField, watch, handleSubmit, errors} = useFormAuthSignUp()
+
+    useEffect(() => {
+      
+        const {unsubscribe} = watch(({username, password}) => {
+            if(username && password) setInitialForm({...initialForm, username, password})
+        })
+    
+      return () => unsubscribe()
+    }, [watch, initialForm, setInitialForm])
     
     const handleViewPassword = () => {
         setView(!view)
     }
 
-
+    const handleOnSubmit = handleSubmit(() => {
+        console.log(initialForm);
+        
+    }) 
 
     return (
         <div className="flex items-center flex-col w-full h-[calc(100%-4rem)]">
@@ -30,34 +41,32 @@ export const Form = () => {
                 <div className="my-7">
                     <h1 className="text-4xl text-white font-semibold">Crea tu cuenta</h1>
                 </div>
-                <form className="flex flex-col w-full h-full">
-                <InputForm
-                id={idUserName}
-                label="Nombre de usuario"
-                type="text"
-                name="username"
-                activeAnimation
-                value={initialForm.username}
-                handleOnChange={handleOnChange}
-                />
-                <InputForm
-                id={idPasswordUser}
-                label="Contraseña"
-                type="password"
-                name="password"
-                activeAnimation
-                value={initialForm.password}
-                handleOnChange={handleOnChange}
-                handleViewPassword={handleViewPassword}
-                viewPassword={view}
-                IconSvg={view ? <IconEyeOff color="white" size={35}/> : <IconEye color="white" size={35}/>}
-                />
-                </form>
-                <div className="mb-10">
-                    <div>
-                        <button type="button" className="text-black text-xl w-full rounded-full font-bold bg-white p-4 hover:bg-white/90">Crear cuenta</button>
+                <form onSubmit={handleOnSubmit} className="flex flex-col w-full h-full">
+                    <InputForm
+                    id={idUserName}
+                    label="Nombre de usuario"
+                    type="text"
+                    errorMessage={errors.username?.message}
+                    handleInputRegister={{...registerField("username")}}
+                    valueInput={watch("username")}
+                    />
+                    <InputForm
+                        id={idPassword}
+                        type={view ? 'text' : 'password'}
+                        valueInput={watch("password")}
+                        label="Contraseña"
+                        handleInputRegister={{...registerField("password")}}
+                        errorMessage={errors.password?.message}
+                        IconSvg={view ? <IconEyeOff color="white" size={35}/>  : <IconEye color="white" size={35}/>}
+                        handleViewPassword={handleViewPassword}
+                        autoComplete="on"
+                    />
+                    <div className="flex mb-10 h-full">
+                        <div className="flex-grow self-end">
+                            <button type="submit" className="text-black text-xl w-full rounded-full font-bold bg-white p-4 hover:bg-white/90">Crear cuenta</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     )
