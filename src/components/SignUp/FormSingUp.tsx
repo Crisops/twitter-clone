@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { HeaderForm } from "@/components/shared/HeaderFormAuth";
+import { HeaderFormAuth } from "@/components/shared/HeaderFormAuth";
 import { Form } from "./Form";
 import { DataCredentialsForm } from "./DataCredentialsForm";
 
@@ -18,7 +18,7 @@ export default function FormSingUp (){
 
     return (
         <div className="relative w-full h-full">
-            <HeaderForm/>
+            <HeaderFormAuth/>
             {
                 !nextData ? <DataCredentialsForm handleNextData={handleNextData}/> : <Form/>
             }
