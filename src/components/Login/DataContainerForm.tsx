@@ -14,7 +14,7 @@ interface DataContainerFormProps {
 export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProps) => {
 
     const idEmail = useId()
-    const {registerField, watch, errors} = useFormAuthLogin()
+    const {registerField, watch, errors} = useFormAuthLogin("onChange")
     const {initialForm, setInitialForm} = useLogin(state => state)
 
     const email = watch("email")
@@ -54,8 +54,8 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
             errorMessage={errors.email?.message}
             valueInput={email}
             />
-            <div className="bg-white rounded-full mb-6">
-                <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'pointer-events-none'} text-black text-center w-full p-3 font-bold text-lg`}>Siguiente</button>
+            <div className="mb-6">
+                <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'bg-white/40 pointer-events-none'} text-black text-center w-full p-3 font-bold text-lg rounded-full bg-white`}>Siguiente</button>
             </div>
             <div>
                 <p className="text-lg text-zinc-500">¿No tienes una cuenta? <Link href={'/signup'} className="text-sky-500 hover:underline">Regístrate</Link></p>
