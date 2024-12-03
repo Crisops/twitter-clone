@@ -1,7 +1,7 @@
 import { useId, useState, useEffect } from "react"
 import { useStoreInputCredentials } from "@/hooks/useLogin"
 import Link from "next/link"
-import { InputCredentials } from "./InputCredentials"
+import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
 import { IconEye, IconEyeOff } from "@tabler/icons-react"
 
@@ -39,7 +39,7 @@ export const FormLogin = () => {
                   <h1 className="text-4xl text-white font-semibold">Introduce tu contraseña</h1>
               </div>
               <form className="flex flex-col w-full h-full">
-                <InputCredentials
+                <InputForm
                     id={idEmail}
                     name="email"
                     defaultValue={initialForm.email?.toLocaleLowerCase()}
@@ -47,7 +47,7 @@ export const FormLogin = () => {
                     valueInput=""
                     disabled
                 />
-                <InputCredentials
+                <InputForm
                     id={idPassword}
                     type={view ? 'text' : 'password'}
                     valueInput={password}
