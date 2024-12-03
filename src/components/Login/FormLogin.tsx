@@ -1,5 +1,5 @@
 import { useId, useState, useEffect } from "react"
-import { useStoreInputCredentials } from "@/hooks/useLogin"
+import { useLogin } from "@/hooks/useAuth"
 import Link from "next/link"
 import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
@@ -14,7 +14,7 @@ export const FormLogin = () => {
 
     const password = watch("password")
 
-    const {initialForm, setInitialForm} = useStoreInputCredentials(state => state)
+    const {initialForm, setInitialForm} = useLogin(state => state)
 
     useEffect(() => {
 
@@ -55,6 +55,7 @@ export const FormLogin = () => {
                     errorMessage={errors.password?.message}
                     IconSvg={view ? <IconEyeOff color="white" size={35}/>  : <IconEye color="white" size={35}/>}
                     handleViewPassword={handleViewPassword}
+                    autoComplete="on"
                 />
                 </form>
                 <div className="mb-10">

@@ -1,6 +1,6 @@
 import { ChangeEvent, useId } from "react"
 import { InputForm } from "../shared/InputForm"
-import { useCreateNewAccount } from "@/hooks/useLogin"
+import { useCreateNewAccount } from "@/hooks/useAuth"
 
 
 export const InputsForm = () => {

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ButtonGoogle } from "../shared/ButtonGoogle"
 import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
-import { useStoreInputCredentials } from "@/hooks/useLogin"
+import { useLogin } from "@/hooks/useAuth"
 import { useEffect, useId } from "react"
 
 interface DataContainerFormProps {
@@ -15,7 +15,7 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
 
     const idEmail = useId()
     const {registerField, watch, errors} = useFormAuthLogin()
-    const {initialForm, setInitialForm} = useStoreInputCredentials(state => state)
+    const {initialForm, setInitialForm} = useLogin(state => state)
 
     const email = watch("email")
     
