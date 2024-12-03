@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { HeaderForm } from "@/components/shared/HeaderForm";
+import { HeaderForm } from "@/components/shared/HeaderFormAuth";
 import { Form } from "./Form";
 import { DataCredentialsForm } from "./DataCredentialsForm";
 

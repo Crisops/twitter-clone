@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import {DataContainerForm} from "./DataContainerForm"
-import { HeaderForm } from "../shared/HeaderForm"
+import { HeaderFormAuth } from "../shared/HeaderFormAuth"
 import { FormLogin } from "./FormLogin"
 
 
@@ -18,7 +18,7 @@ export const Form = () => {
 
     return (
         <div className="relative w-full h-full">
-            <HeaderForm/>
+            <HeaderFormAuth/>
             {
                 !nextData ? <DataContainerForm handleNextConfirmData={handleNextConfirmData}/> : <FormLogin/>
             }
