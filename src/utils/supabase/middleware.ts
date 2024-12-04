@@ -40,6 +40,12 @@ export async function updateSession(request: NextRequest) {
     url.pathname = '/'
     return NextResponse.redirect(url)
   }
+
+  if(!user && request.nextUrl.pathname.startsWith('/home')){
+    const url = request.nextUrl.clone()
+    url.pathname = '/'
+    return NextResponse.redirect(url)
+  } 
   
   if(request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/' && user) {
     const url = request.nextUrl.clone()
