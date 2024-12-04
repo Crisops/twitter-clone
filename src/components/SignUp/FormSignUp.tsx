@@ -5,7 +5,7 @@ import { HeaderFormAuth } from "@/components/shared/HeaderFormAuth";
 import { Form } from "./Form";
 import { DataCredentialsForm } from "./DataCredentialsForm";
 
-export default function FormSingUp (){
+export default function FormSignUp (){
 
    
     const [nextData, setNextData] = useState<boolean>(false)
