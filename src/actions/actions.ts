@@ -31,7 +31,11 @@ export async function signup() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: 'http://localhost:3000/auth/callback'
+      redirectTo: 'http://localhost:3000/auth/callback',
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
     },
   })
 
@@ -40,7 +44,7 @@ export async function signup() {
   }
 
   if (data.url) {
-    revalidatePath('/home')
+    revalidatePath('/')
     redirect(data.url) // use the redirect API for your server framework
   }
 }
