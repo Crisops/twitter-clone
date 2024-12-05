@@ -19,7 +19,7 @@ export default function RootLayout ({
       <head>
         <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
       </head>
-      <body className='w-full min-h-screen'>
+      <body className='min-h-screen'>
         <Providers>
           {children}
         </Providers>
