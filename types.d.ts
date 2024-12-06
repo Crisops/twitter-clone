@@ -27,3 +27,9 @@ type StoreNewAccountForm = {
     initialForm: NewAccountForm
     setInitialForm: (form: NewAccountForm) => void
 }
+
+type LinksAsideNavHome = {
+    href: string,
+    icon: JSX.Element
+    text: string
+}
