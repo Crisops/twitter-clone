@@ -1,11 +1,11 @@
-export interface LinkFooterLogin {
+
+interface LinkFooterLogin {
     title: string,
     href: string
 }
 
 
-
-export const links: LinkFooterLogin[] = [
+export const linksFooter: LinkFooterLogin[] = [
     { 
         title: 'Información',
         href: 'https://about.x.com/es' 
@@ -75,4 +75,6 @@ export const links: LinkFooterLogin[] = [
         href: 'https://x.com/settings' 
     },
 ] 
+
+
 
