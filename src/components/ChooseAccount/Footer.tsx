@@ -1,4 +1,4 @@
-import { links } from '@/lib/links-footer-login'
+import { linksFooter } from '@/lib/links'
 import Link from 'next/link'
 
 const Footer = () => {
@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='mx-20'>
           <div className="flex flex-wrap items-center justify-center 2xl:justify-between gap-4">
             {
-              links.map((link, index) => <Link className='text-zinc-500 hover:underline' key={index} href={link.href}>{link.title}</Link>)
+              linksFooter.map((link, index) => <Link className='text-zinc-500 hover:underline' key={index} href={link.href}>{link.title}</Link>)
             }
           </div>
         </div>
