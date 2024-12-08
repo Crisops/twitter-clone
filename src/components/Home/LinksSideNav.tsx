@@ -7,15 +7,15 @@ export default function LinksSideNav() {
 
     const links: LinksAsideNavHome[] = [
         {href: '/home', icon: <IconHome/>, text: 'Inicio'},
-        {href: '/explore', icon: <IconSearch size='2rem'/>, text: 'Explorar'},
-        {href: '/notifications', icon: <IconBell size='2rem'/>, text: 'Notificaciones'},
-        {href: '/messages', icon: <IconMail size='2rem'/>, text: 'Mensajes'},
-        {href: '/grok', icon: <IconWashDryOff size='2rem'/>, text: 'Grok'},
-        {href: '/bookmarks', icon: <IconBookmark size='2rem'/>, text: 'Guardados'},
+        {href: '/explore', icon: <IconSearch size='1.75rem'/>, text: 'Explorar'},
+        {href: '/notifications', icon: <IconBell size='1.75rem'/>, text: 'Notificaciones'},
+        {href: '/messages', icon: <IconMail size='1.75rem'/>, text: 'Mensajes'},
+        {href: '/grok', icon: <IconWashDryOff size='1.75rem'/>, text: 'Grok'},
+        {href: '/bookmarks', icon: <IconBookmark size='1.75rem'/>, text: 'Guardados'},
         {href: '/communities', icon: <IconUsers/>, text: 'Comunidades'},
-        {href: '/premium_sign_up', icon: <IconTwitter size="size-[2rem]"/>, text: 'Premium'},
+        {href: '/premium_sign_up', icon: <IconTwitter size="size-[1.75rem]"/>, text: 'Premium'},
         {href: '/verified-orgs-signup', icon: <IconBolt/>, text: 'Organizaciones ver'},
-        {href: '/profile', icon: <IconUser size='2rem'/>, text: 'Perfil'},
+        {href: '/profile', icon: <IconUser size='1.75rem'/>, text: 'Perfil'},
     ]
 
   return (
@@ -30,7 +30,7 @@ export default function LinksSideNav() {
                                     {icon}
                                 </div>
                                 <div>
-                                    <span className="text-white font-semibold text-2xl">{text}</span>
+                                    <span className="text-white font-semibold text-xl">{text}</span>
                                 </div>
                             </div>
                         </div>
