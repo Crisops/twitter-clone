@@ -1,4 +1,5 @@
 import ChooseViewTwitts from "./ChooseViewTwitts";
+import Tweet from "./Tweet";
 import WriteTweet from "./WriteTweet";
 
 export default function SectionTwittsMain() {
@@ -8,6 +9,9 @@ export default function SectionTwittsMain() {
             <ChooseViewTwitts/>
         </div>
         <WriteTweet/>
+        <section>
+          <Tweet/>
+        </section>
     </section>
   )
 }
