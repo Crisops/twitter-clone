@@ -1,6 +1,6 @@
 'use client'
 
-import { useCreateNewAccount } from "@/hooks/useAuth"
+import { useCreateNewAccount } from "@/hooks/useStore"
 import { InputForm } from "@/components/shared/InputForm"
 import { useEffect, useId, useState } from "react"
 import { IconEye, IconEyeOff } from "@tabler/icons-react"

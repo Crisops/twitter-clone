@@ -3,7 +3,7 @@
 import { useFormAuthSignUp } from "@/hooks/useFormAuthSignUp"
 import { InputsForm } from "./InputsForm"
 import { SelectedBirthday } from "./SelectedBirthDay"
-import { useCreateNewAccount } from "@/hooks/useAuth"
+import { useCreateNewAccount } from "@/hooks/useStore"
 
 interface DataCredentialsFormProps {
     handleNextData: () => void

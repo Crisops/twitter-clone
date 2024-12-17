@@ -2,7 +2,7 @@
 import {Select, SelectItem} from "@nextui-org/react";
 import {  months, days, years } from "@/lib/data-date";
 import { ChangeEvent } from "react";
-import { useCreateNewAccount } from "@/hooks/useAuth";
+import { useCreateNewAccount } from "@/hooks/useStore";
 
 export const SelectedBirthday = () => {
 

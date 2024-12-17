@@ -3,7 +3,7 @@
 import { IconX } from '@tabler/icons-react'
 import { IconTwitter } from '../Icons'
 import { useRouter } from 'next/navigation'
-import { useCreateNewAccount, useLogin } from '@/hooks/useAuth'
+import { useCreateNewAccount, useLogin } from '@/hooks/useStore'
 
 
 export const HeaderFormAuth = () => {

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ButtonGoogle } from "../shared/ButtonGoogle"
 import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"
-import { useLogin } from "@/hooks/useAuth"
+import { useLogin } from "@/hooks/useStore"
 import { useEffect, useId } from "react"
 
 interface DataContainerFormProps {

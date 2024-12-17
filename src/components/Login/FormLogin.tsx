@@ -1,5 +1,5 @@
 import { useId, useState, useEffect } from "react"
-import { useLogin } from "@/hooks/useAuth"
+import { useLogin } from "@/hooks/useStore"
 import Link from "next/link"
 import { InputForm } from "@/components/shared/InputForm"
 import { useFormAuthLogin } from "@/hooks/useFormAuthLogin"

@@ -1,6 +1,6 @@
 import {  useEffect, useId } from "react"
 import { InputForm } from "@/components/shared/InputForm"
-import { useCreateNewAccount } from "@/hooks/useAuth"
+import { useCreateNewAccount } from "@/hooks/useStore"
 import { useFormAuthSignUp } from "@/hooks/useFormAuthSignUp"
 
 
