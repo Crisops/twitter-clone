@@ -9,7 +9,7 @@ export default function TweetTextArea() {
             <Image className="rounded-full" src="https://pbs.twimg.com/profile_images/1841249485810245632/0VcVbOE8_normal.jpg" width={40} height={40} alt="Nombre de usuario"/>
         </div>
         <div className="flex-grow">
-            <Textarea disableAnimation radius="none" minRows={2} variant="underlined" placeholder="¡¿Qué está pasandó?!" classNames={{input: "text-white text-xl placeholder:text-zinc-500 placeholder:font-normal",  inputWrapper: "border-b after:bg-transpatent" }}/>
+            <Textarea disableAnimation radius="none" minRows={2} variant="underlined" placeholder="¡¿Qué está pasandó?!" classNames={{input: "text-white text-xl placeholder:text-zinc-500 placeholder:font-normal",  inputWrapper: "border-none after:bg-transpatent" }}/>
         </div>
         <div className="row-start-2 col-start-2 px-2">
           este es el lugar de la imagen cuando el usuario eliga el archivo
