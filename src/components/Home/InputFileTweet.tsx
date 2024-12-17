@@ -1,10 +1,24 @@
+'use client'
 
 import { IconPhoto } from "@tabler/icons-react"
-import { useId } from "react"
+import { ChangeEvent, useId } from "react"
 
 export default function InputFileTweet() {
 
-    const idFile = useId()
+  const idFile = useId()
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+    const {files} = e.target
+
+    if(!files) return
+
+    const [ imageTweet ] = files
+
+    console.log(imageTweet);
+    
+  
+  }
 
   return (
     <>
@@ -13,12 +27,13 @@ export default function InputFileTweet() {
         title="Multimedia"
         className="cursor-pointer"
         >
-            <IconPhoto size={18} color="#1d9bf0" />
+          <IconPhoto size={18} color="#1d9bf0" />
         </label>
         <input
         id={idFile}
         type="file"
-        className="hidden" // Acción al seleccionar archivo
+        className="hidden"
+        onChange={handleFileChange}
         />
     </>
 
