@@ -1,8 +1,10 @@
 import { createBrowserClient } from '@supabase/ssr'
+import { EnvConfig } from '@/config/env.config'
+
 
 export function createClient() {
   return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    EnvConfig().SUPABASE_URL!,
+    EnvConfig().SUPABASE_ANON_KEY!
   )
 }
