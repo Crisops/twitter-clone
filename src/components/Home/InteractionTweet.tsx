@@ -8,8 +8,8 @@ interface InteractionsTweetProps {
 
 export default function InteractionTweet({icon, bgColor, textColor, quantity}: InteractionsTweetProps) {
   return (
-    <div className='flex flew-grow items-center gap-x-1 group'>
-        <div className={`relative flex items-center cursor-pointer before:transition-colors before:duration-300 before:ease-in-out before:absolute before:-inset-2 before:rounded-full ${bgColor}`}>
+    <div className='flex flew-grow items-center gap-x-1 group cursor-pointer'>
+        <div className={`relative flex items-center before:absolute before:-inset-2 before:rounded-full before:transition-colors before:duration-300 before:ease-in-out ${bgColor}`}>
             <button className='w-full h-full'>
                 {icon}
             </button>
