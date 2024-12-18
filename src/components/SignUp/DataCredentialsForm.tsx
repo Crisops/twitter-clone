@@ -21,22 +21,22 @@ export const DataCredentialsForm = ({handleNextData}: DataCredentialsFormProps) 
     
 
   return (
-    <div className="flex items-center flex-col w-full h-[calc(100%-4rem)]">
-        <div className="flex flex-col max-w-xl w-full h-full">
+    <div className="flex items-center flex-col w-full h-[calc(100%-3.5rem)]">
+        <div className="flex flex-col max-w-md w-full h-full">
             <div className="my-7">
-                <h1 className="text-4xl text-white font-semibold">Crea tu cuenta</h1>
+                <h1 className="text-3xl text-white font-semibold">Crea tu cuenta</h1>
             </div>
             <section className="flex flex-col w-full h-full">
                 <InputsForm/>
                 <div>
-                    <h3 className="text-white text-xl font-medium">Fecha de nacimiento</h3>
-                    <p className="text-zinc-500 text-lg">Esta información no será pública. Confirma tu propia edad, incluso si esta cuenta es para una empresa, una mascota u otra cosa.</p>
+                    <h3 className="text-white text-base font-medium">Fecha de nacimiento</h3>
+                    <p className="text-zinc-500 text-sm">Esta información no será pública. Confirma tu propia edad, incluso si esta cuenta es para una empresa, una mascota u otra cosa.</p>
                 </div>
                 <SelectedBirthday/>
             </section>
             <div className="mb-10">
                 <div>
-                    <button onClick={handleNextData} type="button" className={`${handleErrorInputs ? 'bg-white/40 pointer-events-none' : 'bg-white hover:bg-white/90'} text-black text-xl w-full rounded-full font-bold  p-4 `}>Siguiente</button>
+                    <button onClick={handleNextData} type="button" className={`${handleErrorInputs ? 'bg-white/40 pointer-events-none' : 'bg-white hover:bg-white/90'} text-black text-lg w-full rounded-full font-medium p-3`}>Siguiente</button>
                 </div>
             </div>
         </div>
