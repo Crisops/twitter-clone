@@ -22,14 +22,14 @@ export const HeaderFormAuth = () => {
     }
 
     return (
-        <div className="relative w-full p-4 h-16 flex justify-center items-center">
+        <div className="relative w-full p-2 h-14 flex justify-center items-center">
             <div className='flex-grow basis-0'>
                 <button onClick={handleNavigationHome}  className='hover:bg-white/10 transition-colors ease-in duration-150 rounded-full p-1'>
-                    <IconX size={30} color='#fff'/>
+                    <IconX size={20} color='#fff'/>
                 </button>
             </div>
             <div className='flex-grow'>
-                <IconTwitter size="size-10"/>
+                <IconTwitter size="size-8"/>
             </div>
         </div>
     )
