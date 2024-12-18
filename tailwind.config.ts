@@ -9,6 +9,11 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    extend: {
+      dropShadow : {
+        "3xl": "0px -3px 2px rgba(255, 255, 255, 0.25)",
+      }
+    }
     // extend: {
     //   colors: {
     //     background: 'var(--background)',
