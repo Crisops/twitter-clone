@@ -22,9 +22,9 @@ export default function LinksSideNav() {
     <>
         {
             links.map(({href,icon, text}, index) => (
-                <li key={index}>
+                <li key={index} className="group">
                     <Link href={href} className="w-full">
-                        <div className="w-max py-3 pl-1 pr-9 rounded-full transition-colors duration-150 hover:bg-white/10">
+                        <div className="w-max py-3 pl-1 pr-4 rounded-full transition-colors duration-150 group-hover:bg-white/10">
                             <div className="flex items-center justify-start gap-5 px-2">
                                 <div>
                                     {icon}
