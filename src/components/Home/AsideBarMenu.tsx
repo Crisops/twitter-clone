@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { IconTwitter } from "../Icons";
-import { IconDots } from "@tabler/icons-react";
+import AsideInformationUser from "./AsideInformationUser";
 import AsideNavigation from "./AsideNavigation";
 
 export default function AsideBarMenu() {
@@ -18,24 +17,7 @@ export default function AsideBarMenu() {
                         </div>
                     </div>
                 </div>
-                <div className="py-3 pl-1">
-                    <div className="flex items-center justify-between pl-2 py-2 pr-2 rounded-full cursor-pointer transition-colors duration-150 hover:bg-white/10">
-                        <div className="flex items-center">
-                            <div>
-                                <Image className="rounded-full" src="https://pbs.twimg.com/profile_images/1841249485810245632/0VcVbOE8_normal.jpg" width={40} height={40} alt="Nombre de usuario"/>
-                            </div>
-                            <div className="ml-3">
-                                <div className="flex flex-col justify-between">
-                                    <h4 className="text-white font-medium text-base">Alejandro Pérez</h4>
-                                    <span className="text-zinc-500 text-base font-normal">@CrisopsDev</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <IconDots size={20} color="white"/>
-                        </div>
-                    </div>
-                </div>
+                <AsideInformationUser/>
             </div>
         </div>
     </aside>
