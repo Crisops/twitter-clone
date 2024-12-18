@@ -37,9 +37,9 @@ export const Form = () => {
 
     return (
         <div className="flex items-center flex-col w-full h-[calc(100%-4rem)]">
-            <div className="flex flex-col max-w-xl w-full h-full">
+            <div className="flex flex-col max-w-md w-full h-full">
                 <div className="my-7">
-                    <h1 className="text-4xl text-white font-semibold">Crea tu cuenta</h1>
+                    <h1 className="text-3xl text-white font-semibold">Crea tu cuenta</h1>
                 </div>
                 <form onSubmit={handleOnSubmit} className="flex flex-col w-full h-full">
                     <InputForm
@@ -51,19 +51,19 @@ export const Form = () => {
                     valueInput={watch("username")}
                     />
                     <InputForm
-                        id={idPassword}
-                        type={view ? 'text' : 'password'}
-                        valueInput={watch("password")}
-                        label="Contraseña"
-                        handleInputRegister={{...registerField("password")}}
-                        errorMessage={errors.password?.message}
-                        IconSvg={view ? <IconEyeOff color="white" size={35}/>  : <IconEye color="white" size={35}/>}
-                        handleViewPassword={handleViewPassword}
-                        autoComplete="on"
+                    id={idPassword}
+                    type={view ? 'text' : 'password'}
+                    valueInput={watch("password")}
+                    label="Contraseña"
+                    handleInputRegister={{...registerField("password")}}
+                    errorMessage={errors.password?.message}
+                    IconSvg={view ? <IconEyeOff color="white" size={25}/>  : <IconEye color="white" size={25}/>}
+                    handleViewPassword={handleViewPassword}
+                    autoComplete="on"
                     />
                     <div className="flex mb-10 h-full">
                         <div className="flex-grow self-end">
-                            <button type="submit" className="text-black text-xl w-full rounded-full font-bold bg-white p-4 hover:bg-white/90">Crear cuenta</button>
+                            <button type="submit" className="text-black text-lg w-full rounded-full font-medium bg-white p-3 hover:bg-white/90">Crear cuenta</button>
                         </div>
                     </div>
                 </form>
