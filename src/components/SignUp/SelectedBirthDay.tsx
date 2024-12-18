@@ -18,8 +18,8 @@ export const SelectedBirthday = () => {
 
     
   return (
-    <div className="flex gap-4 mt-10">
-        <Select label="Mes" name="month" radius="sm" variant="bordered" size="lg" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.month]}>
+    <div className="flex gap-4 mt-5">
+        <Select label="Mes" name="month" radius="sm" variant="bordered" size="md" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.month]}>
             {
                 months.map((month) => (
                     <SelectItem key={month.key} >
@@ -28,7 +28,7 @@ export const SelectedBirthday = () => {
                 ))
             }
         </Select>
-        <Select label="Día" name="day" radius="sm" variant="bordered" size="lg" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.day]}>
+        <Select label="Día" name="day" radius="sm" variant="bordered" size="md" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.day]}>
             {
                 days.map((day) => (
                     <SelectItem key={day.key}>
@@ -37,7 +37,7 @@ export const SelectedBirthday = () => {
                 ))
             }
         </Select>
-        <Select label="Año" name="year" radius="sm" variant="bordered" size="lg" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.year]}>
+        <Select label="Año" name="year" radius="sm" variant="bordered" size="md" onChange={handleOnSelectedChange} selectedKeys={[initialForm.birthday.year]}>
             {
                 years.map((year) => (
                     <SelectItem key={year.key}>
