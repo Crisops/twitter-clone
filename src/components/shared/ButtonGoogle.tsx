@@ -12,7 +12,7 @@ export const ButtonGoogle = ({textContent}: {textContent: string}) => {
     return (
         <div className="relative bg-white flex items-center justify-center rounded-full gap-4">
             <IconGoogle/>
-            <button onClick={handleSignUpGoogleAuth} className="text-lg text-zinc-700 py-3 pr-3 font-medium">{textContent}</button>
+            <button onClick={handleSignUpGoogleAuth} className="text-sm text-zinc-700 py-2 pr-2 font-medium">{textContent}</button>
         </div>
     )
 }
