@@ -34,16 +34,16 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
 
   return (
     <div className="flex items-center flex-col w-full">
-        <div className="w-[400px]">
+        <div className="w-full max-w-72">
             <div className="my-6">
-                <h1 className="text-4xl text-white font-bold">Inicia sesión en X</h1>
+                <h1 className="text-3xl text-white font-bold">Inicia sesión en X</h1>
             </div>
             <form className="flex flex-col w-full">
                 <ButtonGoogle textContent="Iniciar sesión con Google"/>
             </form>
             <div className="flex items-center gap-3 my-3">
                 <div className="w-full h-px bg-zinc-700"></div>
-                <div className="text-white">O</div>
+                <div className="text-white text-xs">O</div>
                 <div className="w-full h-px bg-zinc-700"></div>
             </div>
             <InputForm
@@ -55,10 +55,10 @@ export const DataContainerForm = ({handleNextConfirmData}: DataContainerFormProp
             valueInput={email}
             />
             <div className="mb-6">
-                <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'bg-white/40 pointer-events-none'} text-black text-center w-full p-3 font-bold text-lg rounded-full bg-white`}>Siguiente</button>
+                <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'bg-white/40 pointer-events-none'} text-black text-center w-full p-2 font-medium text-base rounded-full bg-white`}>Siguiente</button>
             </div>
             <div>
-                <p className="text-lg text-zinc-500">¿No tienes una cuenta? <Link href={'/signup'} className="text-sky-500 hover:underline">Regístrate</Link></p>
+                <p className="text-base text-zinc-500">¿No tienes una cuenta? <Link href={'/signup'} className="text-sky-500 hover:underline">Regístrate</Link></p>
             </div>
         </div>
     </div>
