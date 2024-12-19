@@ -1,9 +1,12 @@
 'use client'
 
-import { IconPhoto } from "@tabler/icons-react"
 import { ChangeEvent, useId } from "react"
+import { IconPhoto } from "@tabler/icons-react"
+import { useCreateTweet } from "@/hooks/useStore"
 
 export default function InputFileTweet() {
+
+  const {setImageTweet} = useCreateTweet(state => state) 
 
   const idFile = useId()
 
@@ -11,13 +14,11 @@ export default function InputFileTweet() {
 
     const {files} = e.target
 
-    if(!files) return
-
-    const [ imageTweet ] = files
-
-    console.log(imageTweet);
-    
-  
+    if(files?.length){
+      const [ imageTweet ] = files
+      const urlImage = URL.createObjectURL(imageTweet)
+      setImageTweet(urlImage)    
+    }  
   }
 
   return (
