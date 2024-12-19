@@ -17,6 +17,12 @@ type NewAccountForm = {
     birthday: Birthday
 }
 
+type LinksAsideNavHome = {
+    href: string,
+    icon: JSX.Element
+    text: string
+}
+
 type Store = {
     initialForm: FormLogin
     setInitialForm: (form: FormLogin) => void
@@ -28,8 +34,9 @@ type StoreNewAccountForm = {
     setInitialForm: (form: NewAccountForm) => void
 }
 
-type LinksAsideNavHome = {
-    href: string,
-    icon: JSX.Element
-    text: string
+
+
+type StoreImageTweet = {
+    imageTweet: null | string // Url Image Tweet
+    setImageTweet: (image: string) => void
 }
