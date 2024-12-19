@@ -12,3 +12,8 @@ export const useCreateNewAccount = create<StoreNewAccountForm>((set) => ({
   setInitialForm: (initialForm) => set(() => ({ initialForm })),
 }))
 
+export const useCreateTweet = create<StoreImageTweet>((set) => ({
+  imageTweet: null,
+  setImageTweet: (imageTweet) => set(() => ({ imageTweet })),
+}))
+
