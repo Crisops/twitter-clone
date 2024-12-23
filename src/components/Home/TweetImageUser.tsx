@@ -1,9 +1,14 @@
+import { getSessionAuth, getUserProfile } from "@/utils/supabase/getUser";
 import Image from "next/image";
 
-export default function TweetImageUser() {
+export default async function TweetImageUser() {
+
+  const {id} = await getSessionAuth()
+  const { avatar_url, name, username } = await getUserProfile({ id })
+
   return (
     <div>
-        <Image className="rounded-full" src="https://pbs.twimg.com/profile_images/1841249485810245632/0VcVbOE8_normal.jpg" width={40} height={40} alt="Nombre de usuario"/>
+        <Image className="rounded-full" src={avatar_url ?? ''} width={40} height={40} alt={`${username} - ${name}`}/> 
     </div>
   )
 }
