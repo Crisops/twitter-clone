@@ -16,7 +16,7 @@ export const Form = () => {
     const [view, setView] = useState<boolean>(false)
 
     const {registerField, watch, handleSubmit, errors} = useFormAuthSignUp()
-
+    
     useEffect(() => {
       
         const {unsubscribe} = watch(({username, password}) => {
