@@ -1,7 +1,7 @@
 import {createClient} from '@/utils/supabase/client'
 import {useRouter} from "next/navigation"
 
-export default function SignOutUser() {
+export default function SignOutUser({username}: {username: string}) {
 
     const router = useRouter()
 
@@ -18,7 +18,7 @@ export default function SignOutUser() {
             <div className="hover:bg-slate-600/10 cursor-pointer flex-grow rounded-br-xl rounded-bl-xl">
                 <div className="py-3 px-4">
                     <div className="max-w-36">
-                        <span className="text-white text-base font-medium">Cerrar la sesión de @crisopsdev</span>
+                        <span className="text-white text-base font-medium">Cerrar la sesión de @{username}</span>
                     </div>
                 </div>
             </div>
