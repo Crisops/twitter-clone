@@ -27,14 +27,14 @@ export const validationRulesSignUp: Record<keyof NewAccountForm, RegisterOptions
         required: "¿Cómo te llamas?",
         minLength: {
             value: 4,
-            message: 'El nombre debe tener entre 4 y 60 caracteres.',
+            message: 'El nombre debe tener entre 4 y 255 caracteres.',
         },
         maxLength: {
-            value: 60,
-            message: 'El nombre debe tener entre 4 y 60 caracteres.',
+            value: 255,
+            message: 'El nombre debe tener entre 4 y 255 caracteres.',
         },
         pattern: {
-            value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{1,60}$/,
+            value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{1,255}$/,
             message: "El nombre debe tener solo letras y espacios"
         }
     },
@@ -46,11 +46,11 @@ export const validationRulesSignUp: Record<keyof NewAccountForm, RegisterOptions
         },
         minLength: {
             value: 4,
-            message: 'El nombre de usuario debe tener entre 4 y 10 caracteres.',
+            message: 'El nombre de usuario debe tener entre 4 y 15 caracteres.',
         },
         maxLength: {
-            value: 10,
-            message: "El nombre de usuario debe tener entre 4 y 10 caracteres."
+            value: 15,
+            message: "El nombre de usuario debe tener entre 4 y 15 caracteres."
         }
     },
     email: {
@@ -59,6 +59,14 @@ export const validationRulesSignUp: Record<keyof NewAccountForm, RegisterOptions
             value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
             message: "Ingresa un email valido"
         },
+        minLength: {
+            value: 4,
+            message: "El correo electrónico debe de tener entre 10 y 320 caracteres."
+        },
+        maxLength: {
+            value: 320,
+            message: "El correo electrónico debe de tener entre 10 y 320 caracteres."
+        }
     },
     password: {
         required: "La contraseña debe tener entre 4 y 60 caracteres.",
