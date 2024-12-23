@@ -1,3 +1,4 @@
+import { Database } from '@/types/database.types'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { EnvConfig } from '@/config/env.config'
@@ -5,7 +6,7 @@ import { EnvConfig } from '@/config/env.config'
 export async function createClient() {
   const cookieStore = await cookies()
 
-  return createServerClient(
+  return createServerClient<Database>(
     EnvConfig().SUPABASE_URL!,
     EnvConfig().SUPABASE_ANON_KEY!,
     {
