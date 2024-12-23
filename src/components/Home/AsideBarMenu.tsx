@@ -1,5 +1,5 @@
 import { IconTwitter } from "../Icons";
-import AsideInformationUser from "./AsideInformationUser";
+import AsideInformationUserServer from "./AsideInformationUserServer";
 import AsideNavigation from "./AsideNavigation";
 
 export default function AsideBarMenu() {
@@ -17,7 +17,7 @@ export default function AsideBarMenu() {
                         </div>
                     </div>
                 </div>
-                <AsideInformationUser/>
+                <AsideInformationUserServer/>
             </div>
         </div>
     </aside>

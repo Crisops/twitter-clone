@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import { IconDots } from "@tabler/icons-react";
-import TweetImageUser from "./TweetImageUser";
 import SignOutUser from "./SignOutUser";
 
-export default function AsideInformationUser() {
+type AsideInformationUserProps = {
+    name: string
+    username: string
+    children: React.ReactNode
+}
+
+export default function AsideInformationUserClient({name, username, children: imageUser}: AsideInformationUserProps) {
 
     const [view, setView] = useState<boolean>(false)
     const handleViewSignOut = () => {
@@ -13,16 +18,14 @@ export default function AsideInformationUser() {
     }
 
   return (
-    <div onClick={handleViewSignOut} className="relative top-0 left-0 py-3 pl-1">
+    <div onClick={handleViewSignOut} role="button" className="relative top-0 left-0 py-3 pl-1">
         <div className="flex items-center justify-between pl-2 py-2 pr-2 rounded-full cursor-pointer transition-colors duration-150 hover:bg-white/10">
             <div className="flex items-center">
-                <div>
-                <TweetImageUser/>
-                </div>
+                { imageUser }
                 <div className="ml-3">
                     <div className="flex flex-col justify-between">
-                        <h4 className="text-white font-medium text-base">Alejandro Pérez</h4>
-                        <span className="text-zinc-500 text-base font-normal">@CrisopsDev</span>
+                        <h4 className="text-white font-medium text-base">{name}</h4>
+                        <span className="text-zinc-500 text-base font-normal">@{username}</span>
                     </div>
                 </div>
             </div>
@@ -30,7 +33,7 @@ export default function AsideInformationUser() {
                 <IconDots size={20} color="white"/>
             </div>
         </div>
-        { view && <SignOutUser/>}          
+        { view && <SignOutUser username={username}/>}          
     </div>
   )
 }
