@@ -5,11 +5,11 @@ import TweetImageUser from './TweetImageUser'
 export default async function AsideInformationUserServer() {
 
     const {id} = await getSessionAuth()
-    const { name, username } = await getUserProfile({ id })
+    const { name, username , avatar_url } = await getUserProfile({ id })
 
   return (
     <AsideInformationUserClient name={name} username={username}>
-        <TweetImageUser/>
+        <TweetImageUser avatar_url={avatar_url ?? ''} name={name} username={username}/>
     </AsideInformationUserClient>
   )
 }
