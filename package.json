@@ -10,6 +10,7 @@
     "gen:types": "npx supabase gen types typescript --project-id stogyupktdyxbgmlhyaf > ./src/types/database.types.ts"
   },
   "dependencies": {
+    "@formkit/tempo": "^0.1.2",
     "@nextui-org/react": "2.4.8",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.2",
