@@ -3,7 +3,7 @@ interface InteractionsTweetProps {
     icon: React.ReactNode
     bgColor: string
     textColor: string
-    quantity?: number
+    quantity: number
 }
 
 export default function InteractionTweet({icon, bgColor, textColor, quantity}: InteractionsTweetProps) {
@@ -14,12 +14,9 @@ export default function InteractionTweet({icon, bgColor, textColor, quantity}: I
                 {icon}
             </button>
         </div>
-        {
-           quantity && 
-           <div>
-                <span className={`text-xs pointer-events-none text-zinc-600 ${textColor} marker:transition-colors duration-300 ease-in-out`}>{quantity}</span>
-            </div> 
-        }
+        <div>
+            <span className={`text-xs pointer-events-none text-zinc-600 ${textColor} marker:transition-colors duration-300 ease-in-out`}>{quantity}</span>
+        </div> 
     </div>
   )
 }
