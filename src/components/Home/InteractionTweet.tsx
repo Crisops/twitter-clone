@@ -3,7 +3,7 @@ interface InteractionsTweetProps {
     icon: React.ReactNode
     bgColor: string
     textColor: string
-    quantity: number
+    quantity?: number
 }
 
 export default function InteractionTweet({icon, bgColor, textColor, quantity}: InteractionsTweetProps) {
