@@ -8,7 +8,7 @@ export default async function SectionTwittsMain() {
   const tweets = await getTweets()
 
   return (
-    <section className="h-[200vh]">
+    <section className="h-full">
         <ChooseViewTwitts/>
         <WriteTweet/>
         <section>
