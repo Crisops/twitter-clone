@@ -37,7 +37,7 @@ export const Form = () => {
 
     return (
         <div className="flex items-center flex-col w-full h-[calc(100%-4rem)]">
-            <div className="flex flex-col max-w-md w-full h-full">
+            <div className="flex flex-col max-w-72 sm:max-w-md w-full h-full">
                 <div className="my-7">
                     <h1 className="text-3xl text-white font-semibold">Crea tu cuenta</h1>
                 </div>
