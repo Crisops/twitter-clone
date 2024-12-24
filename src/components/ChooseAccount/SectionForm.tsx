@@ -3,10 +3,10 @@ import Form from "./Form"
 
 const SectionForm = () => {
   return (
-    <section className="relative w-full h-full pl-20">
+    <section className="relative w-full h-full sm:h-fit xl:pl-20">
         <div className="w-full h-full flex flex-col justify-center">
-            <div className="max-w-2xl mb-14">
-                <span className="font-bold text-7xl text-slate-100">Lo que está pasando ahora</span>
+            <div className="max-w-md mb-14 lg:max-w-2xl">
+                <span className="font-bold text-4xl md:text-6xl lg:text-7xl text-slate-100">Lo que está pasando ahora</span>
             </div>
             <Form/>
             <div className="max-w-72 mt-1">
