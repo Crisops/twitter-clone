@@ -1,14 +1,20 @@
+import { getTweets } from "@/utils/supabase/getTweets";
 import ChooseViewTwitts from "./ChooseViewTwitts";
 import Tweet from "./Tweet";
 import WriteTweet from "./WriteTweet";
 
-export default function SectionTwittsMain() {
+export default async function SectionTwittsMain() {
+
+  const tweets = await getTweets()
+
   return (
     <section className="h-[200vh]">
         <ChooseViewTwitts/>
         <WriteTweet/>
         <section>
-          <Tweet/>
+          {
+            tweets.map((tweet) => <Tweet key={tweet.id} tweet={{...tweet}}/>)
+          }
         </section>
     </section>
   )
