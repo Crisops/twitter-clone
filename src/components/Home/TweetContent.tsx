@@ -1,16 +1,22 @@
 import Image from "next/image";
 
-export default function TweetContent() {
+interface TweetContentProps {
+  content: string,
+  image_url: string
+}
+
+
+export default function TweetContent({content, image_url}: TweetContentProps) {
   return (
     <>
         <div className='mb-2'>
-            <p>Día de velitas, donde la gente se reune y goza en familia.</p>
+            <p>{content}</p>
         </div>
-        <div className='w-full h-full'>
+          <div className='w-full h-full'>
             <div className='flex'>
-                <Image className='rounded-2xl border border-zinc-800' src={'https://stogyupktdyxbgmlhyaf.supabase.co/storage/v1/object/public/avatars/not%20user.jpeg'} width={350} height={350} alt='Descripción de la imagén'/>
+              {image_url !== '' && <Image className='rounded-2xl border border-zinc-800' src={image_url} width={350} height={350} alt='Descripción de la imagén'/>}
             </div>
-        </div>
+          </div>
     </>
   )
 }
