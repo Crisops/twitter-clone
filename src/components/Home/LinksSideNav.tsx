@@ -1,6 +1,7 @@
 import { IconBell, IconBookmark, IconMail, IconSearch, IconUser, IconWashDryOff } from "@tabler/icons-react"
 import { IconBolt, IconHome, IconTwitter, IconUsers } from "../Icons"
 import Link from "next/link"
+import { type LinksAsideNavHome } from "@/types/generics"
 
 
 export default function LinksSideNav() {
