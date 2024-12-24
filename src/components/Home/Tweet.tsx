@@ -2,7 +2,7 @@ import TweetImageUser from './TweetImageUser'
 import TweetHeaderContent from './TweetHeaderContent'
 import TweetContent from './TweetContent'
 import TweetInteractions from './TweetInteractions'
-import { type TweetInfo } from '../../../types'
+import { type TweetInfo } from '@/types/querys-db'
 
 interface TweetProps {
     tweet: TweetInfo
