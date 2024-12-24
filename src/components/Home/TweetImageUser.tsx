@@ -1,10 +1,13 @@
-import { getSessionAuth, getUserProfile } from "@/utils/supabase/getUser";
 import Image from "next/image";
 
-export default async function TweetImageUser() {
+interface TweetImageUser {
+  avatar_url: string
+  name: string
+  username: string
+}
 
-  const {id} = await getSessionAuth()
-  const { avatar_url, name, username } = await getUserProfile({ id })
+
+export default async function TweetImageUser({avatar_url, name, username}: TweetImageUser) {
 
   return (
     <div>
