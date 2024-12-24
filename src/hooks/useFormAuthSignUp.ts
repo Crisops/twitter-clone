@@ -1,4 +1,5 @@
 import { validationRulesSignUp } from "@/lib/form-auth"
+import { NewAccountForm } from "@/types/store"
 import { Mode, useForm } from "react-hook-form"
 
 

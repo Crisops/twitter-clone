@@ -1,4 +1,5 @@
 import { validationRulesLogin} from "@/lib/form-auth"
+import { FormLogin } from "@/types/store"
 import { Mode, useForm } from "react-hook-form"
 
 export const useFormAuthLogin = (mode?: Mode) => {

@@ -1,3 +1,4 @@
+import { Store, StoreImageTweet, StoreNewAccountForm } from '@/types/store'
 import { create } from 'zustand'
 
 
