@@ -5,13 +5,10 @@ import {DataContainerForm} from "./DataContainerForm"
 import { HeaderFormAuth } from "../shared/HeaderFormAuth"
 import { FormLogin } from "./FormLogin"
 
-
-
-
 export const Form = () => {
 
     const [nextData, setNextData] = useState<boolean>(false)
-
+    
     const handleNextConfirmData = () => {
         setNextData(true)
     }
