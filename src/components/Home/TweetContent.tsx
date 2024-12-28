@@ -1,22 +1,42 @@
-import Image from "next/image";
+import { getBase64 } from '@/utils/getBase64'
+import Image from 'next/image'
 
 interface TweetContentProps {
   content: string,
   image_url: string
 }
 
+export default async function TweetContent ({ content, image_url: url }: TweetContentProps) {
+  let dataUrl: string = ''
+  let w: number = 0
+  let h: number = 0
 
-export default function TweetContent({content, image_url}: TweetContentProps) {
+  if (url !== '') {
+    const { base64, width, height } = await getBase64({ url })
+    dataUrl = base64
+    w = width
+    h = height
+  }
+
   return (
     <>
-        <div className='mb-2'>
-            <p>{content}</p>
+      <div className='mb-2'>
+        <p>{content}</p>
+      </div>
+      <div className='w-full h-full'>
+        <div className='flex'>
+          {url !== '' &&
+            <Image
+              className='rounded-2xl border border-zinc-800'
+              src={url}
+              width={w}
+              height={h}
+              blurDataURL={dataUrl}
+              placeholder='blur'
+              alt='Descripción de la imagén'
+            />}
         </div>
-          <div className='w-full h-full'>
-            <div className='flex'>
-              {image_url !== '' && <Image className='rounded-2xl border border-zinc-800' src={image_url} width={350} height={350} alt='Descripción de la imagén'/>}
-            </div>
-          </div>
+      </div>
     </>
   )
 }
