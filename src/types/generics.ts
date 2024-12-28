@@ -1,5 +1,7 @@
+import { ReactNode } from 'react'
+
 export type LinksAsideNavHome = {
     href: string,
-    icon: JSX.Element
+    icon: ReactNode
     text: string
 }
