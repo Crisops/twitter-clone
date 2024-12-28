@@ -1,17 +1,15 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-interface TweetImageUser {
+interface TweetImageUserProps {
   avatar_url: string
   name: string
   username: string
 }
 
-
-export default async function TweetImageUser({avatar_url, name, username}: TweetImageUser) {
-
+export default async function TweetImageUser ({ avatar_url: avatar, name, username }: TweetImageUserProps) {
   return (
     <div>
-        <Image className="rounded-full" src={avatar_url ?? ''} width={40} height={40} alt={`${username} - ${name}`}/> 
+      <Image className='rounded-full' src={avatar ?? ''} width={40} height={40} alt={`${name} - @${username}`} />
     </div>
   )
 }
