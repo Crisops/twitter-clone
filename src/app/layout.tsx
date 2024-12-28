@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import {Providers} from "./providers";
-
-
+import { Providers } from './providers'
+import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
   title: 'X. Twitter Clone / ByCrisops',
@@ -12,12 +11,12 @@ export const metadata: Metadata = {
 export default function RootLayout ({
   children
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html lang='en' className='dark'>
       <head>
-        <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
+        <script src='https://unpkg.com/react-scan/dist/auto.global.js' async />
       </head>
       <body className='min-h-screen'>
         <Providers>

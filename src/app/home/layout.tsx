@@ -1,7 +1,9 @@
-export default function HomeLayout({children}: {children: React.ReactNode}) {
-    return (
-        <main>
-            {children}
-        </main>
-    )
+import { ReactNode } from 'react'
+
+export default function HomeLayout ({ children }: {children: ReactNode}) {
+  return (
+    <main>
+      {children}
+    </main>
+  )
 }
