@@ -1,20 +1,18 @@
-import { Store, StoreImageTweet, StoreNewAccountForm } from '@/types/store'
+import { initialCreateTweetForm, initialLoginForm, initialSignUpForm } from '@/config/fields-form'
+import type { StoreSignUp, StoreCreateTweet, StoreLogin } from '@/types/store'
 import { create } from 'zustand'
 
-
-
-export const useLogin = create<Store>()((set) => ({
-  initialForm: { email: "", password: ""},
-  setInitialForm: (initialForm) => set(() => ({ initialForm })),
+export const useLogin = create<StoreLogin>()((set) => ({
+  initialForm: initialLoginForm,
+  setFormLogin: (initialForm) => set(() => ({ initialForm }))
 }))
 
-export const useCreateNewAccount = create<StoreNewAccountForm>((set) => ({
-  initialForm: {fullName: "", username:"", email: "", password:"", birthday: { day: "", month: "", year: ""} },
-  setInitialForm: (initialForm) => set(() => ({ initialForm })),
+export const useSignUp = create<StoreSignUp>((set) => ({
+  initialForm: initialSignUpForm,
+  setFormSignUp: (initialForm) => set(() => ({ initialForm }))
 }))
 
-export const useCreateTweet = create<StoreImageTweet>((set) => ({
-  imageTweet: null,
-  setImageTweet: (imageTweet) => set(() => ({ imageTweet })),
+export const useCreateTweet = create<StoreCreateTweet>((set) => ({
+  initialForm: initialCreateTweetForm,
+  setFormCreateTweet: (initialForm) => set(() => ({ initialForm }))
 }))
-
