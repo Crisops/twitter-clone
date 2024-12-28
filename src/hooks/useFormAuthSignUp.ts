@@ -1,17 +1,11 @@
-import { validationRulesSignUp } from "@/lib/form-auth"
-import { NewAccountForm } from "@/types/store"
-import { Mode, useForm } from "react-hook-form"
-
-
+import { validationRulesSignUp } from '@/lib/form-auth'
+import { type FormSignUp } from '@/types/store'
+import { type Mode, useForm } from 'react-hook-form'
 
 export const useFormAuthSignUp = (mode?: Mode) => {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormSignUp>({ mode })
 
+  const registerField = (name: keyof FormSignUp) => register(name, validationRulesSignUp[name])
 
-    const {register, handleSubmit, watch, formState: {errors}} = useForm<NewAccountForm>({mode})
-
-
-    const registerField = (name: keyof NewAccountForm) => register(name, validationRulesSignUp[name])
-
-
-    return {registerField, handleSubmit, watch, errors};
+  return { registerField, handleSubmit, watch, errors }
 }
