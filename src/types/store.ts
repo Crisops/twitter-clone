@@ -1,4 +1,3 @@
-
 export type FormLogin = {
     email: string
     password: string
@@ -10,7 +9,7 @@ type Birthday = {
     year: string
 }
 
-export type NewAccountForm = {
+export type FormSignUp = {
     fullName: string
     username: string
     email: string
@@ -18,20 +17,24 @@ export type NewAccountForm = {
     birthday: Birthday
 }
 
-export type Store = {
+export type FormCreateTweet = {
+    content: string
+    imageUrlPreview: string | null // This is a URL Create Object
+    file: File | null
+    user_id: string
+}
+
+export type StoreLogin = {
     initialForm: FormLogin
-    setInitialForm: (form: FormLogin) => void
+    setFormLogin: (form: FormLogin) => void
 }
 
-  
-export type StoreNewAccountForm = {
-    initialForm: NewAccountForm
-    setInitialForm: (form: NewAccountForm) => void
+export type StoreSignUp = {
+    initialForm: FormSignUp
+    setFormSignUp: (form: FormSignUp) => void
 }
 
-
-
-export type StoreImageTweet = {
-    imageTweet: null | string // Url Image Tweet
-    setImageTweet: (image: string) => void
+export type StoreCreateTweet = {
+    initialForm: FormCreateTweet
+    setFormCreateTweet: (tweet: FormCreateTweet) => void
 }
