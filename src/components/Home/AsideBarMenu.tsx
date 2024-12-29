@@ -4,11 +4,11 @@ import AsideNavigation from './AsideNavigation'
 
 export default function AsideBarMenu () {
   return (
-    <aside className='sticky top-0 h-screen border-r-1 border-zinc-900'>
+    <aside className='hidden min-[500px]:block sticky top-0 h-screen border-r-1 border-zinc-900'>
       <div className='h-full px-1'>
         <div className='flex flex-col justify-between h-full'>
           <div className='flex flex-col w-full h-full'>
-            <header className='py-4 pl-4'>
+            <header className='flex justify-end py-4 pl-4 pr-5 xl:block'>
               <IconTwitter size='size-[2rem]' />
             </header>
             <div className='h-full'>
