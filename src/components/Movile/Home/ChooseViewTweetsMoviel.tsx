@@ -1,26 +1,38 @@
 import { IconTwitter } from '@/components/Icons'
 import DrawerHeaderServer from './DrawerHeaderServer'
 
+import { Navbar, NavbarContent, NavbarItem } from '@nextui-org/react'
+
 function ChooseViewTweetsMoviel () {
   return (
-    <div className='block min-[500px]:hidden sticky top-0 w-full h-24 border-b border-zinc-900 z-10'>
-      <div className='flex flex-col h-full backdrop-blur-md bg-black/60'>
-        <div className='relative flex w-full h-12 items-center'>
+    <Navbar
+      shouldHideOnScroll
+      classNames={
+      {
+        wrapper: 'px-0 gap-0 flex-col h-28',
+        base: 'min-[500px]:hidden backdrop-blur-md bg-black/60',
+        content: 'w-full gap-0',
+        item: 'flex-grow'
+      }
+         }
+    >
+      <NavbarContent justify='center'>
+        <NavbarItem className='basis-0 pl-2'>
           <DrawerHeaderServer />
-          <div className='flex flex-grow justify-center basis-0'>
-            <IconTwitter size='size-[1.5rem]' />
-          </div>
-        </div>
-        <div className='flex w-full h-12'>
-          <div className='flex-grow'>
-            <button className='w-full h-full text-white text-base font-bold transition-colors duration-200 hover:bg-white/10 '>Para ti</button>
-          </div>
-          <div className='flex-grow'>
-            <button className='w-full h-full text-zinc-500 text-base font-medium transition-colors duration-200 hover:bg-white/10'>Siguiendo</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        </NavbarItem>
+        <NavbarItem>
+          <IconTwitter size='size-[1.5rem]' />
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent>
+        <NavbarItem>
+          <button className='w-full py-3 text-white text-base font-bold transition-colors duration-200 hover:bg-white/10 '>Para ti</button>
+        </NavbarItem>
+        <NavbarItem>
+          <button className='w-full py-3 text-zinc-500 text-base font-medium transition-colors duration-200 hover:bg-white/10'>Siguiendo</button>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
   )
 }
 
