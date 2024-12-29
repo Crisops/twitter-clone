@@ -1,21 +1,15 @@
 'use client'
 
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-  Button,
-  useDisclosure
-} from '@nextui-org/react'
+import AsideNavigation from '@/components/Home/AsideNavigation'
+import { Drawer, DrawerContent, DrawerBody, DrawerFooter, Button, useDisclosure } from '@nextui-org/react'
 import { ReactNode } from 'react'
 
 interface DrawerHeaderClientProps {
+  DrawerHeaderContentClient: ReactNode
   children: ReactNode
 }
 
-function DrawerHeaderClient ({ children: avatar }: DrawerHeaderClientProps) {
+function DrawerHeaderClient ({ DrawerHeaderContentClient, children: avatar }: DrawerHeaderClientProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   return (
@@ -29,13 +23,13 @@ function DrawerHeaderClient ({ children: avatar }: DrawerHeaderClientProps) {
         isOpen={isOpen}
         placement='left'
         onOpenChange={onOpenChange}
-        classNames={{ wrapper: 'w-3/4 [box-shadow:0px_10px_5px_#fff]', base: 'bg-black rounded-none', backdrop: 'bg-[#5b708366]' }}
+        classNames={{ wrapper: 'w-3/4', base: 'bg-black rounded-none [box-shadow:0px_10px_10px_#fff]', backdrop: 'bg-[#5b708366]', body: 'px-0' }}
       >
         <DrawerContent>
           <>
-            <DrawerHeader className='flex flex-col gap-1'>Información del perfil</DrawerHeader>
+            {DrawerHeaderContentClient}
             <DrawerBody>
-              <p>Aqui van los links</p>
+              <AsideNavigation viewMovil />
             </DrawerBody>
             <DrawerFooter>
               <p>Description</p>
