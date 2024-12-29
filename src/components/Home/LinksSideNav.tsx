@@ -1,34 +1,24 @@
-import { IconBell, IconBookmark, IconMail, IconSearch, IconUser, IconWashDryOff } from '@tabler/icons-react'
-import { IconBolt, IconHome, IconTwitter, IconUsers } from '../Icons'
 import Link from 'next/link'
 import { type LinksAsideNavHome } from '@/types/generics'
 
-export default function LinksSideNav () {
-  const links: LinksAsideNavHome[] = [
-    { href: '/home', icon: <IconHome />, text: 'Inicio' },
-    { href: '/explore', icon: <IconSearch size='1.75rem' />, text: 'Explorar' },
-    { href: '/notifications', icon: <IconBell size='1.75rem' />, text: 'Notificaciones' },
-    { href: '/messages', icon: <IconMail size='1.75rem' />, text: 'Mensajes' },
-    { href: '/grok', icon: <IconWashDryOff size='1.75rem' />, text: 'Grok' },
-    { href: '/bookmarks', icon: <IconBookmark size='1.75rem' />, text: 'Guardados' },
-    { href: '/communities', icon: <IconUsers />, text: 'Comunidades' },
-    { href: '/premium_sign_up', icon: <IconTwitter size='size-[1.75rem]' />, text: 'Premium' },
-    { href: '/verified-orgs-signup', icon: <IconBolt />, text: 'Organizaciones ver' },
-    { href: '/profile', icon: <IconUser size='1.75rem' />, text: 'Perfil' }
-  ]
+interface LinksSideNavProps {
+  links: LinksAsideNavHome[]
+  viewMovil?: boolean
+}
 
+export default function LinksSideNav ({ links, viewMovil }: LinksSideNavProps) {
   return (
     <>
       {
         links.map(({ href, icon, text }, index) => (
           <li key={index} className='group'>
-            <Link href={href} className='w-full flex justify-end xl:justify-start'>
-              <div className='w-max py-3 pl-1 pr-4 rounded-full transition-colors duration-150 group-hover:bg-white/10'>
-                <div className='flex items-center justify-start gap-5 px-2'>
+            <Link href={href} className={`w-full flex  ${viewMovil ? 'justify-start' : 'justify-end xl:justify-start'}`}>
+              <div className={` ${viewMovil ? 'w-full group-hover:bg-[#5b70831A]' : 'w-max rounded-full group-hover:bg-white/10'} py-3 pr-4 transition-colors duration-150`}>
+                <div className='flex items-center justify-start gap-5 pl-3 pr-2'>
                   <div>
                     {icon}
                   </div>
-                  <div className='hidden xl:block'>
+                  <div className={`${viewMovil ? 'block' : 'hidden xl:block'}`}>
                     <span className='text-white font-semibold text-xl'>{text}</span>
                   </div>
                 </div>
