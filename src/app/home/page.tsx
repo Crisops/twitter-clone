@@ -5,11 +5,11 @@ export default function HomePage () {
   return (
     <section className='relative w-screen'>
       <div className='mx-auto max-w-[80rem]'>
-        <section className='grid grid-cols-[270px_1fr_400px]'>
+        <section className='min-[500px]:grid min-[500px]:grid-cols-[max-content_1fr] sm:grid-cols-[100px_512px] md:grid-cols-[180px_512px] lg:grid-cols-[max-content_1fr_450px] min-[1200px]:grid-cols-[150px_1fr_450px] xl:grid-cols-[270px_1fr_350px]'>
           <AsideBarMenu />
           <SectionTwittsMain />
-          <aside className='sticky top-0 h-screen border-l border-zinc-900'>
-            <div className=''>
+          <aside className='hidden lg:block sticky top-0 h-screen border-l border-zinc-900'>
+            <div className='h-full'>
               3
             </div>
           </aside>
