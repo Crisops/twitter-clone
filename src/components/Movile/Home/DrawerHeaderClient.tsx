@@ -20,7 +20,7 @@ function DrawerHeaderClient ({ children: avatar }: DrawerHeaderClientProps) {
 
   return (
     <>
-      <Button isIconOnly variant='bordered' className='border-none absolute top-1 left-2' onPress={onOpen}>
+      <Button isIconOnly variant='bordered' className='border-none' onPress={onOpen}>
         {avatar}
       </Button>
       <Drawer
