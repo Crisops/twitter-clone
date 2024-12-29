@@ -8,13 +8,13 @@ function ChooseViewTweetsMoviel () {
     <Navbar
       shouldHideOnScroll
       classNames={
-      {
-        wrapper: 'px-0 gap-0 flex-col h-28',
-        base: 'min-[500px]:hidden backdrop-blur-md bg-black/60',
-        content: 'w-full gap-0',
-        item: 'flex-grow'
+        {
+          wrapper: 'px-0 gap-0 flex-col h-28',
+          base: 'min-[500px]:hidden backdrop-blur-md bg-black/60',
+          content: 'w-full gap-0',
+          item: 'flex-grow'
+        }
       }
-         }
     >
       <NavbarContent justify='center'>
         <NavbarItem className='basis-0 pl-2'>
