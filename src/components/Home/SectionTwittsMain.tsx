@@ -6,7 +6,7 @@ import ChooseViewTweetsMoviel from '@/components/Movile/Home/ChooseViewTweetsMov
 
 export default async function SectionTwittsMain () {
   return (
-    <section className='h-full'>
+    <section className='h-full border-x-1 border-zinc-900'>
       <ChooseViewTwitts />
       <ChooseViewTweetsMoviel />
       <WriteTweet />
