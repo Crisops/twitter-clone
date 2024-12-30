@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { type LinksAsideNavHome } from '@/types/generics'
+import { ReactNode } from 'react'
 
 interface LinksSideNavProps {
   links: LinksAsideNavHome[]
   viewMovil?: boolean
+  LinkProfile: ReactNode
 }
 
-export default function LinksSideNav ({ links, viewMovil }: LinksSideNavProps) {
+export default function LinksSideNav ({ links, viewMovil, LinkProfile }: LinksSideNavProps) {
   return (
     <>
       {
@@ -27,6 +29,7 @@ export default function LinksSideNav ({ links, viewMovil }: LinksSideNavProps) {
           </li>
         ))
         }
+      {LinkProfile}
     </>
   )
 }
