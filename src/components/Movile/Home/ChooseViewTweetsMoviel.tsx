@@ -1,6 +1,5 @@
 import { IconTwitter } from '@/components/Icons'
-import DrawerHeaderServer from './DrawerHeaderServer'
-
+import DrawerServer from './DrawerServer'
 import { Navbar, NavbarContent, NavbarItem } from '@nextui-org/react'
 
 function ChooseViewTweetsMoviel () {
@@ -18,7 +17,7 @@ function ChooseViewTweetsMoviel () {
     >
       <NavbarContent justify='center'>
         <NavbarItem className='basis-0 pl-2'>
-          <DrawerHeaderServer />
+          <DrawerServer />
         </NavbarItem>
         <NavbarItem>
           <IconTwitter size='size-[1.5rem]' />
