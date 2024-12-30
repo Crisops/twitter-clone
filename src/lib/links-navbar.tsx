@@ -1,6 +1,6 @@
 import { LinksAsideNavHome } from '@/types/generics'
-import { IconBell, IconBookmark, IconDoorExit, IconMail, IconSearch, IconUser, IconWashDryOff } from '@tabler/icons-react'
-import { IconBolt, IconHome, IconTwitter, IconUsers } from '@/components/Icons'
+import { IconBell, IconBookmark, IconDoorExit, IconMail, IconSearch, IconWashDryOff } from '@tabler/icons-react'
+import { IconBolt, IconHome, IconUsers } from '@/components/Icons'
 
 export const linksDesktop: LinksAsideNavHome[] = [
   { href: '/home', icon: <IconHome />, text: 'Inicio' },
@@ -10,13 +10,10 @@ export const linksDesktop: LinksAsideNavHome[] = [
   { href: '/grok', icon: <IconWashDryOff size='1.75rem' />, text: 'Grok' },
   { href: '/bookmarks', icon: <IconBookmark size='1.75rem' />, text: 'Guardados' },
   { href: '/communities', icon: <IconUsers />, text: 'Comunidades' },
-  { href: '/premium_sign_up', icon: <IconTwitter size='size-[1.75rem]' />, text: 'Premium' },
-  { href: '/verified-orgs-signup', icon: <IconBolt />, text: 'Organizaciones ver' },
-  { href: '/profile', icon: <IconUser size='1.75rem' />, text: 'Perfil' }
+  { href: '/verified-orgs-signup', icon: <IconBolt />, text: 'Organizaciones ver' }
 ]
 
 export const linksMovileDrawer: LinksAsideNavHome[] = [
-  { href: '/profile', icon: <IconUser size='1.75rem' />, text: 'Perfil' },
   { href: '/bookmarks', icon: <IconBookmark size='1.75rem' />, text: 'Guardados' },
   { href: '/logout', icon: <IconDoorExit />, text: 'Cerrar sesión' }
 ]
