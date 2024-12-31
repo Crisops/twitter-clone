@@ -14,7 +14,7 @@ export default function Tweet ({ tweet }: TweetProps) {
   if (creator === null) return
 
   return (
-    <article className='w-full h-full border-b border-zinc-900'>
+    <article className='w-full h-full border-b border-zinc-700'>
       <div className='py-2 px-4'>
         <div className='flex gap-x-2'>
           <TweetImageUser avatar_url={creator.avatar_url ?? ''} name={creator.name} username={creator.username} />

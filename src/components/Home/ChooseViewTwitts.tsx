@@ -6,7 +6,7 @@ export default function ChooseViewTwitts () {
   const { scroll } = useScroll()
 
   return (
-    <div className='hidden min-[500px]:block sticky top-0 w-full h-14 border-b border-zinc-900 z-10'>
+    <div className='hidden min-[500px]:block sticky top-0 w-full h-14 border-b border-zinc-700 z-10'>
       <div className={`flex justify-between items-center h-full [&>div]:flex [&>div]:justify-center [&>div]:items-center transition-all duration-200 ${scroll > 0 ? 'backdrop-blur-md bg-black/60' : 'backdrop-blur-none'}`}>
         <div className='flex-grow h-full'>
           <button className='w-full h-full text-white text-base font-bold transition-colors duration-200 hover:bg-white/10 '>Para ti</button>
