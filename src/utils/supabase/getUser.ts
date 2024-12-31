@@ -40,3 +40,24 @@ export const getUserProfile = async ({ id }: GetUserProps): Promise<Tables<'user
     throw error
   }
 }
+
+export const getUserProfileByUsername = async ({ username }: {username: string}): Promise<Tables<'users'>> => {
+  const supabase = await createClient()
+
+  try {
+    const userQuery = supabase
+      .from('users')
+      .select()
+      .eq('username', username)
+      .single()
+
+    const { data, error } = await userQuery
+
+    if (error) throw new Error('El usuario no fue encontrando. Intentelo de nuevo')
+
+    return data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
