@@ -11,3 +11,7 @@ export const formatTimeTweet = (time: string): string => {
 
   return currentTime
 }
+
+export const formatTimeJoinedUser = (time: string): string => {
+  return format(time, 'MMMM D', 'es')
+}
