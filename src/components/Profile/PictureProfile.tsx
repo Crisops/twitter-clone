@@ -8,11 +8,12 @@ import ButtonFollowProfile from './ButtonFollowProfile'
 
 interface PictureProfileProps {
   idUserVisited: Tables<'users'>['id']
+  username: Tables<'users'>['username']
   bannerUrl: Tables<'users'>['banner_url']
   avatarUrl: Tables<'users'>['avatar_url']
 }
 
-async function PictureProfile ({ idUserVisited, avatarUrl, bannerUrl } :PictureProfileProps) {
+async function PictureProfile ({ idUserVisited, username, avatarUrl, bannerUrl } :PictureProfileProps) {
   const { id } = await getSessionAuth()
 
   const verifyIdUserProfile = id === idUserVisited
@@ -25,7 +26,7 @@ async function PictureProfile ({ idUserVisited, avatarUrl, bannerUrl } :PictureP
       <div className='absolute left-0 bottom-0 w-full h-32 z-[2]'>
         <div className='ml-4 w-32 h-full rounded-full bg-zinc-950 outline -outline-offset-2 outline-4 outline-black hover:brightness-90  overflow-hidden'>
           <button className='block w-full h-full'>
-            <Link href='/username/photo' className='block w-full h-full'>
+            <Link href={`/${username}/photo`} className='block w-full h-full'>
               <Image
                 className='object-cover transition-all duration-200 ease-out'
                 src={avatarUrl ?? ''}
