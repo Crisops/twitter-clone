@@ -2,7 +2,7 @@ import TweetImageUser from '@/components/Home/TweetImageUser'
 import DrawerClient from './DrawerClient'
 import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
 import DrawerHeader from './DrawerHeader'
-import LinkProfile from '@/components/Home/LinkProfile'
+import LinkProfileServer from '@/components/Home/LinkProfileServer'
 
 async function DrawerServer () {
   const { id } = await getSessionAuth()
@@ -17,7 +17,7 @@ async function DrawerServer () {
           username={username}
         />
       }
-      LinkProfile={<LinkProfile viewMovil />}
+      LinkProfile={<LinkProfileServer viewMovil />}
     >
       <TweetImageUser avatar_url={avatar ?? ''} name={name} username={username} width={30} height={30} />
     </DrawerClient>

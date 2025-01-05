@@ -1,8 +1,8 @@
 import AsideNavigation from './AsideNavigation'
-import LinkProfile from './LinkProfile'
+import LinkProfileServer from './LinkProfileServer'
 
 export default function AsideNavigationDesktop () {
   return (
-    <AsideNavigation LinkProfile={<LinkProfile />} />
+    <AsideNavigation LinkProfile={<LinkProfileServer />} />
   )
 }
