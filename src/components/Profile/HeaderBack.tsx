@@ -1,4 +1,4 @@
-import { getTweetsCountUser } from '@/utils/supabase/getTweets'
+import { getUserTweetCount } from '@/utils/supabase/getTweets'
 import { IconArrowNarrowLeft } from '@tabler/icons-react'
 
 interface HeaderBackProps {
@@ -7,7 +7,7 @@ interface HeaderBackProps {
 }
 
 async function HeaderBack ({ id, name }: HeaderBackProps) {
-  const { count } = await getTweetsCountUser({ id })
+  const { count } = await getUserTweetCount({ id })
 
   return (
     <div className='hidden min-[500px]:block sticky top-0 w-full h-14 px-2 border-b border-zinc-900 z-10 backdrop-blur-md bg-black/60'>

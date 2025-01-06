@@ -48,7 +48,7 @@ export const getTweetsById = async ({ id }:IdUser) => {
   }
 }
 
-export const getTweetsCountUser = async ({ id }:IdUser) => {
+export const getUserTweetCount = async ({ id }:IdUser) => {
   try {
     const supabase = await createClient()
 
