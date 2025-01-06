@@ -2,6 +2,10 @@ import { QueryData } from '@supabase/supabase-js'
 import { createClient } from './server'
 import { Tables } from '@/types/database.types'
 
+type IdUser = {
+  id: Tables<'users'>['id']
+}
+
 export const getTweets = async () => {
   try {
     const supabase = await createClient()
@@ -23,11 +27,7 @@ export const getTweets = async () => {
   }
 }
 
-type GetTweetsById = {
-  id: Tables<'users'>['id']
-}
-
-export const getTweetsById = async ({ id }:GetTweetsById) => {
+export const getTweetsById = async ({ id }:IdUser) => {
   try {
     const supabase = await createClient()
 
@@ -48,7 +48,7 @@ export const getTweetsById = async ({ id }:GetTweetsById) => {
   }
 }
 
-export const getTweetsCountUser = async ({ id }:GetTweetsById) => {
+export const getTweetsCountUser = async ({ id }:IdUser) => {
   try {
     const supabase = await createClient()
 
