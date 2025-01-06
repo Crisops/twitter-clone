@@ -1,5 +1,9 @@
+import { Spinner } from '@nextui-org/react'
+
 export default function Loading () {
   return (
-    <div>Cargando..</div>
+    <div className='w-full flex justify-center pt-6'>
+      <Spinner size='md' color='primary' />
+    </div>
   )
 }

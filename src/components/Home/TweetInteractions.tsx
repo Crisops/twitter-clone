@@ -30,7 +30,7 @@ export default function TweetInteractions ({ comments, retuits, likes }:TweetInt
           quantity={likes}
         />
       </div>
-      <div className='flex flex-grow justify-end'>
+      <div className='flex w-1/4 justify-end'>
         <InteractionTweet
           icon={<IconBookmark size={20} className='stroke-zinc-600 group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />}
           bgColor='group-hover:before:bg-sky-500/10'
