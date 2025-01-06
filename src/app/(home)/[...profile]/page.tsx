@@ -14,7 +14,7 @@ export default async function ProfilePage ({ params: { profile: [username] } }:P
 
   return (
     <>
-      <HeaderBack name={name} countPost={0} />
+      <HeaderBack name={name} id={id} />
       <InformationProfile
         idUserVisited={id}
         name={name}
