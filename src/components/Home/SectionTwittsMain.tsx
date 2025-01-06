@@ -1,8 +1,9 @@
 import ChooseViewTwitts from './ChooseViewTwitts'
 import WriteTweet from './WriteTweet'
-// import { Suspense } from 'react'
-// import ViewAllTweets from './ViewAllTweets'
+import { Suspense } from 'react'
+import ViewAllTweets from './ViewAllTweets'
 import ChooseViewTweetsMoviel from '@/components/Movile/Home/ChooseViewTweetsMoviel'
+import LoadingSpinner from '../shared/LoadingSpinner'
 
 export default async function SectionTwittsMain () {
   return (
@@ -10,9 +11,9 @@ export default async function SectionTwittsMain () {
       <ChooseViewTwitts />
       <ChooseViewTweetsMoviel />
       <WriteTweet />
-      {/* <Suspense fallback='cargando...'>
+      <Suspense fallback={<LoadingSpinner />}>
         <ViewAllTweets />
-      </Suspense> */}
+      </Suspense>
     </section>
   )
 }
