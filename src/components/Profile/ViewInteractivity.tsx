@@ -1,30 +1,34 @@
+'use client'
+
 import { Tables } from '@/types/database.types'
-import Link from 'next/link'
+import ButtonInteractivity from './ButtonInteractivity'
+import { ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 
 interface ViewInteractivityProps {
+  posts: ReactNode
+  media: ReactNode
   username: Tables<'users'>['username']
 }
 
-function ViewInteractivity ({ username }: ViewInteractivityProps) {
+function ViewInteractivity ({ username, posts, media }: ViewInteractivityProps) {
+  const pathname = usePathname()
+
   return (
-    <div className='w-full border-b border-zinc-700'>
-      <div className='flex [&>div]:flex-grow [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div>button]:w-full [&>div>button]:h-full'>
-        <div>
-          <button className='transition-colors duration-200 ease-in-out hover:bg-white/10'>
-            <Link className='block w-full h-full py-3' href={`/${username}`}>
-              <span className='text-zinc-500 font-medium'>Posts</span>
-            </Link>
-          </button>
-        </div>
-        <div>
-          <button className='transition-colors duration-200 ease-in-out hover:bg-white/10'>
-            <Link className='block w-full h-full py-3' href={`/${username}/media`}>
-              <span className='text-zinc-500 font-medium'>Multimedia</span>
-            </Link>
-          </button>
+    <>
+      <div className='w-full border-b border-zinc-700'>
+        <div className='flex [&>div]:flex-grow [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div>button]:w-full [&>div>button]:h-full'>
+          <div className='relative'>
+            <ButtonInteractivity href={`/${username}`} text='Posts' />
+          </div>
+          <div className='relative'>
+            <ButtonInteractivity href={`/${username}/media`} text='Multimedia' />
+          </div>
         </div>
       </div>
-    </div>
+      {pathname === `/${username}` ? posts : media}
+    </>
+
   )
 }
 
