@@ -37,7 +37,28 @@ export const getTweetsById = async ({ id }:GetTweetsById) => {
 
     const { data, error } = await tweetsQuery
 
-    if (error) throw new Error('Error. No se pudieron obtener los tweets')
+    if (error) throw new Error('Error. No se pudieron obtener los tweets del usuario')
+
+    const tweets: Tweets = data
+
+    return tweets
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const getTweetsCountUser = async ({ id }:GetTweetsById) => {
+  try {
+    const supabase = await createClient()
+
+    const tweetsQuery = supabase.from('tweets').select('count').eq('user_id', id).single()
+
+    type Tweets = QueryData<typeof tweetsQuery>
+
+    const { data, error } = await tweetsQuery
+
+    if (error) throw new Error('Error. No se pudo obtener la cantidad de Tweets del usuario')
 
     const tweets: Tweets = data
 
