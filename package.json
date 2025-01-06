@@ -10,19 +10,19 @@
     "gen:types": "npx supabase gen types typescript --project-id stogyupktdyxbgmlhyaf > ./src/types/database.types.ts"
   },
   "dependencies": {
-    "@formkit/tempo": "^0.1.2",
-    "@nextui-org/react": "^2.6.10",
-    "@plaiceholder/next": "^3.0.0",
+    "@formkit/tempo": "0.1.2",
+    "@nextui-org/react": "2.6.10",
+    "@plaiceholder/next": "3.0.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.2",
     "@tabler/icons-react": "3.22.0",
-    "browser-image-compression": "^2.0.2",
-    "framer-motion": "^11.15.0",
+    "browser-image-compression": "2.0.2",
+    "framer-motion": "11.15.0",
     "next": "14.2.18",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "7.53.2",
-    "uuid": "^11.0.3",
+    "uuid": "11.0.3",
     "zustand": "5.0.1"
   },
   "devDependencies": {
