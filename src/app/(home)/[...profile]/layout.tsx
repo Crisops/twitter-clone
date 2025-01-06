@@ -12,7 +12,7 @@ export default function ProfileLayout ({ children, posts, media, params: { profi
   const [username] = profile
 
   return (
-    <section className='h-[200vh] border-r border-zinc-700'>
+    <section className='h-full border-r border-zinc-700'>
       {children}
       <ViewInteractivity posts={posts} media={media} username={username} />
     </section>
