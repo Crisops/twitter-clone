@@ -4,6 +4,7 @@ import { useFormAuthSignUp } from '@/hooks/useFormAuthSignUp'
 import { InputsForm } from './InputsForm'
 import { SelectedBirthday } from './SelectedBirthDay'
 import { useSignUp } from '@/hooks/useStore'
+import { months, days, years } from '@/lib/data-date'
 
 interface DataCredentialsFormProps {
     handleNextData: () => void
@@ -29,7 +30,11 @@ export const DataCredentialsForm = ({ handleNextData }: DataCredentialsFormProps
             <h3 className='text-white text-base font-medium'>Fecha de nacimiento</h3>
             <p className='text-zinc-500 text-sm'>Esta información no será pública. Confirma tu propia edad, incluso si esta cuenta es para una empresa, una mascota u otra cosa.</p>
           </div>
-          <SelectedBirthday />
+          <div className='flex gap-4 mt-5'>
+            <SelectedBirthday label='Mes' name='month' date={months} />
+            <SelectedBirthday label='Día' name='day' date={days} />
+            <SelectedBirthday label='Año' name='year' date={years} />
+          </div>
         </section>
         <div className='mb-10'>
           <div>
