@@ -1,4 +1,9 @@
-export const days = [
+export interface Birthday {
+  key: string
+  label: string
+}
+
+export const days: Birthday[] = [
   { key: '1', label: '1' },
   { key: '2', label: '2' },
   { key: '3', label: '3' },
@@ -32,7 +37,7 @@ export const days = [
   { key: '31', label: '31' }
 ]
 
-export const months = [
+export const months: Birthday[] = [
   { key: 'january', label: 'Enero' },
   { key: 'february', label: 'Febrero' },
   { key: 'March', label: 'Marzo' },
@@ -48,7 +53,7 @@ export const months = [
 ]
 
 const currentYear = new Date().getFullYear()
-export const years = Array.from({ length: 120 }, (_, index) => ({
+export const years: Birthday[] = Array.from({ length: 120 }, (_, index) => ({
   key: `${currentYear - index}`,
   label: `${currentYear - index}`
 }))
