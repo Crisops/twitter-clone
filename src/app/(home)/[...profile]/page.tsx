@@ -1,6 +1,5 @@
 import HeaderBack from '@/components/Profile/HeaderBack'
 import InformationProfile from '@/components/Profile/InformationProfile'
-// import ViewInteractivity from '@/components/Profile/ViewInteractivity'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
 
 interface ProfilePageParams {
