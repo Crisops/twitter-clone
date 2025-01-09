@@ -1,7 +1,7 @@
 import { Select, SelectItem } from '@nextui-org/react'
 import { Birthday } from '@/lib/data-date'
 import { ChangeEvent } from 'react'
-import { useSignUp } from '@/hooks/useStore'
+import { useAuth } from '@/hooks/useStore'
 
 interface SelectedBirthdayProps {
 
@@ -12,13 +12,13 @@ interface SelectedBirthdayProps {
  }
 
 export const SelectedBirthday = ({ label, name, date }: SelectedBirthdayProps) => {
-  const { initialForm, setFormSignUp } = useSignUp(state => state)
+  const { initialForm, setFormAuth } = useAuth(state => state)
 
   const handleOnSelectedChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { value, name } = e.target
     const birthday = { ...initialForm.birthday, [name]: value }
 
-    setFormSignUp({ ...initialForm, birthday })
+    setFormAuth({ ...initialForm, birthday })
   }
 
   return (

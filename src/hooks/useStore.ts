@@ -4,7 +4,7 @@ import { create } from 'zustand'
 
 export const useAuth = create<StoreAuth>()((set) => ({
   initialForm: initialFormAuth,
-  setFormLogin: (initialForm) => set(() => ({ initialForm }))
+  setFormAuth: (initialForm) => set(() => ({ initialForm }))
 }))
 
 export const useCreateTweet = create<StoreCreateTweet>((set) => ({
