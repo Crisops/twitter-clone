@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { HeaderFormAuth } from '@/components/shared/HeaderFormAuth'
 import { Form } from './Form'
 import { DataCredentialsForm } from './DataCredentialsForm'
 
@@ -13,11 +12,10 @@ export default function FormSignUp () {
   }
 
   return (
-    <div className='relative w-full h-full'>
-      <HeaderFormAuth />
+    <>
       {
-                !nextData ? <DataCredentialsForm handleNextData={handleNextData} /> : <Form />
-            }
-    </div>
+        !nextData ? <DataCredentialsForm handleNextData={handleNextData} /> : <Form />
+      }
+    </>
   )
 }
