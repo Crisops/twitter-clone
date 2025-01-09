@@ -1,35 +1,23 @@
-'use client'
-
-import { useSignUp } from '@/hooks/useStore'
+import { useAuth } from '@/hooks/useStore'
 import { InputForm } from '@/components/shared/InputForm'
-import { useEffect, useId, useState } from 'react'
+import { FormEvent, useId, useState } from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
-import { useFormAuthSignUp } from '@/hooks/useFormAuthSignUp'
 
 export const Form = () => {
   const idUserName = useId()
   const idPassword = useId()
-  const { initialForm, setFormSignUp } = useSignUp(state => state)
+  const { initialForm } = useAuth(state => state)
 
   const [view, setView] = useState<boolean>(false)
-
-  const { registerField, watch, handleSubmit, errors } = useFormAuthSignUp()
-
-  useEffect(() => {
-    const { unsubscribe } = watch(({ username, password }) => {
-      if (username && password) setFormSignUp({ ...initialForm, username, password })
-    })
-
-    return () => unsubscribe()
-  }, [watch, initialForm, setFormSignUp])
 
   const handleViewPassword = () => {
     setView(!view)
   }
 
-  const handleOnSubmit = handleSubmit(() => {
+  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     console.log(initialForm)
-  })
+  }
 
   return (
     <div className='flex items-center flex-col w-full h-[calc(100%-4rem)]'>
@@ -42,20 +30,15 @@ export const Form = () => {
             id={idUserName}
             label='Nombre de usuario'
             type='text'
-            errorMessage={errors.username?.message}
-            handleInputRegister={{ ...registerField('username') }}
-            valueInput={watch('username')}
+            registerName='username'
           />
           <InputForm
             id={idPassword}
+            registerName='password'
             type={view ? 'text' : 'password'}
-            valueInput={watch('password')}
             label='Contraseña'
-            handleInputRegister={{ ...registerField('password') }}
-            errorMessage={errors.password?.message}
             IconSvg={view ? <IconEyeOff color='white' size={25} /> : <IconEye color='white' size={25} />}
             handleViewPassword={handleViewPassword}
-            autoComplete='on'
           />
           <div className='flex mb-10 h-full'>
             <div className='flex-grow self-end'>

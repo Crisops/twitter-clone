@@ -1,37 +1,26 @@
-import { useId, useState, useEffect } from 'react'
-import { useLogin } from '@/hooks/useStore'
+import { FormEvent, useId, useState } from 'react'
+import { useAuth } from '@/hooks/useStore'
 import Link from 'next/link'
 import { InputForm } from '@/components/shared/InputForm'
-import { useFormAuthLogin } from '@/hooks/useFormAuthLogin'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { initialFormAuth } from '@/config/fields-form'
 
 export const FormLogin = () => {
   const idEmail = useId()
   const idPassword = useId()
-
-  const { registerField, handleSubmit, watch, errors } = useFormAuthLogin()
-
-  const password = watch('password')
-
-  const { initialForm, setFormLogin } = useLogin(state => state)
-
-  useEffect(() => {
-    const { unsubscribe } = watch(({ password }) => {
-      if (password) setFormLogin({ ...initialForm, password })
-    })
-
-    return () => unsubscribe()
-  }, [watch, initialForm, setFormLogin])
-
   const [view, setView] = useState<boolean>(false)
+
+  const { initialForm, setFormAuth } = useAuth(state => state)
 
   const handleViewPassword = () => {
     setView(!view)
   }
 
-  const handleOnSubmit = handleSubmit(() => {
+  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     console.log(initialForm)
-  })
+    setFormAuth(initialFormAuth)
+  }
 
   return (
     <div className='flex items-center flex-col w-full'>
@@ -42,27 +31,23 @@ export const FormLogin = () => {
         <form onSubmit={handleOnSubmit} className='flex flex-col w-full h-full'>
           <InputForm
             id={idEmail}
-            name='email'
+            registerName='email'
             label='Correo electrónico'
             defaultValue={initialForm.email?.toLocaleLowerCase()}
             type='email'
-            valueInput=''
             disabled
           />
           <InputForm
             id={idPassword}
             type={view ? 'text' : 'password'}
-            valueInput={password}
+            registerName='password'
             label='Contraseña'
-            handleInputRegister={{ ...registerField('password') }}
-            errorMessage={errors.password?.message}
             IconSvg={view ? <IconEyeOff color='white' size={25} /> : <IconEye color='white' size={25} />}
             handleViewPassword={handleViewPassword}
-            autoComplete='on'
           />
           <div className='flex flex-col mb-10 h-full justify-end'>
             <div>
-              <button type='submit' className={`text-black text-base w-full rounded-full font-bold bg-white p-2 hover:bg-white/90 ${errors.password?.message || initialForm.password === '' ? 'bg-white/40 pointer-events-none' : 'cursor-pointer'}`}>Iniciar sesión</button>
+              <button type='submit' className='text-black text-base w-full rounded-full font-bold bg-white p-2 hover:bg-white'>Iniciar sesión</button>
             </div>
             <div className='mt-5'>
               <p className='text-base text-zinc-500'>¿No tienes una cuenta? <Link href='/signup' className='text-sky-500 hover:underline'>Regístrate</Link></p>
