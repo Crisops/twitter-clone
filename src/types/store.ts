@@ -24,14 +24,9 @@ export type FormCreateTweet = {
     user_id: string
 }
 
-export type StoreLogin = {
-    initialForm: FormLogin
-    setFormLogin: (form: FormLogin) => void
-}
-
-export type StoreSignUp = {
-    initialForm: FormSignUp
-    setFormSignUp: (form: FormSignUp) => void
+export type StoreAuth = {
+    initialForm: FormLogin & FormSignUp
+    setFormLogin: (form: FormLogin & FormSignUp) => void
 }
 
 export type StoreCreateTweet = {
