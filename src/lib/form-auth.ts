@@ -1,6 +1,8 @@
 import { type FormLogin, type FormSignUp } from '@/types/store'
 import { RegisterOptions } from 'react-hook-form'
 
+export type FormAuth = FormLogin & FormSignUp
+
 export const validationRulesLogin: Record<keyof FormLogin, RegisterOptions<FormLogin>> = {
   email: {
     required: 'El correo es requerido',
@@ -58,14 +60,6 @@ export const validationRulesSignUp: Record<keyof FormSignUp, RegisterOptions<For
     pattern: {
       value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
       message: 'Ingresa un email valido'
-    },
-    minLength: {
-      value: 4,
-      message: 'El correo electrónico debe de tener entre 10 y 320 caracteres.'
-    },
-    maxLength: {
-      value: 320,
-      message: 'El correo electrónico debe de tener entre 10 y 320 caracteres.'
     }
   },
   password: {
@@ -80,4 +74,9 @@ export const validationRulesSignUp: Record<keyof FormSignUp, RegisterOptions<For
     }
   },
   birthday: {}
+}
+
+export const validationRules: Record<keyof FormAuth, RegisterOptions<FormAuth>> = {
+  ...validationRulesLogin,
+  ...validationRulesSignUp
 }
