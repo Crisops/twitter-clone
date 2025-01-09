@@ -3,17 +3,16 @@
 import { IconX } from '@tabler/icons-react'
 import { IconTwitter } from '../Icons'
 import { useRouter } from 'next/navigation'
-import { useSignUp, useLogin } from '@/hooks/useStore'
-import { initialLoginForm, initialSignUpForm } from '@/config/fields-form'
+import { useAuth } from '@/hooks/useStore'
+import { initialFormAuth } from '@/config/fields-form'
 
 export const HeaderFormAuth = () => {
-  const { setFormLogin } = useLogin(state => state)
-  const { setFormSignUp } = useSignUp(state => state)
+  const { setFormAuth } = useAuth(state => state)
 
   const router = useRouter()
+
   const handleNavigationHome = () => {
-    setFormLogin(initialLoginForm)
-    setFormSignUp(initialSignUpForm)
+    setFormAuth(initialFormAuth)
     router.push('/')
   }
 
