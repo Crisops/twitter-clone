@@ -17,6 +17,11 @@ export const initialSignUpForm: FormSignUp = {
   }
 }
 
+export const initialFormAuth: FormLogin & FormSignUp = {
+  ...initialLoginForm,
+  ...initialSignUpForm
+}
+
 export const initialCreateTweetForm: FormCreateTweet = {
   content: '',
   file: null,
