@@ -1,11 +1,7 @@
-'use client'
-
+import { useId } from 'react'
 import Link from 'next/link'
 import { ButtonGoogle } from '../shared/ButtonGoogle'
 import { InputForm } from '@/components/shared/InputForm'
-import { useFormAuthLogin } from '@/hooks/useFormAuthLogin'
-import { useLogin } from '@/hooks/useStore'
-import { useEffect, useId } from 'react'
 
 interface DataContainerFormProps {
     handleNextConfirmData: () => void
@@ -13,18 +9,6 @@ interface DataContainerFormProps {
 
 export const DataContainerForm = ({ handleNextConfirmData }: DataContainerFormProps) => {
   const idEmail = useId()
-  const { registerField, watch, errors } = useFormAuthLogin('onChange')
-  const { initialForm, setFormLogin } = useLogin(state => state)
-
-  const email = watch('email')
-
-  useEffect(() => {
-    const { unsubscribe } = watch(({ email }) => {
-      if (email) setFormLogin({ ...initialForm, email })
-    })
-
-    return () => unsubscribe()
-  }, [watch, initialForm, setFormLogin])
 
   return (
     <div className='flex items-center flex-col w-full'>
@@ -43,13 +27,11 @@ export const DataContainerForm = ({ handleNextConfirmData }: DataContainerFormPr
         <InputForm
           id={idEmail}
           type='email'
+          registerName='email'
           label='Correo electrónico'
-          handleInputRegister={{ ...registerField('email') }}
-          errorMessage={errors.email?.message}
-          valueInput={email}
         />
         <div className='mb-6'>
-          <button onClick={handleNextConfirmData} className={`${(errors.email?.message || !email) && 'bg-white/40 pointer-events-none'} text-black text-center w-full p-2 font-medium text-base rounded-full bg-white`}>Siguiente</button>
+          <button onClick={handleNextConfirmData} className=' text-black text-center w-full p-2 font-medium text-base rounded-full bg-white'>Siguiente</button>
         </div>
         <div>
           <p className='text-base text-zinc-500'>¿No tienes una cuenta? <Link href='/signup' className='text-sky-500 hover:underline'>Regístrate</Link></p>
