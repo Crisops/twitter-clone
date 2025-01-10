@@ -1,5 +1,5 @@
 import Tweet from '@/components/Home/Tweet'
-import { getTweetsById } from '@/utils/supabase/getTweets'
+import { getTweetsAndRetweets } from '@/utils/supabase/getTweets'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
 
 interface PostsPageProps {
@@ -10,12 +10,12 @@ interface PostsPageProps {
 
 export default async function PostsPage ({ params: { profile } }:PostsPageProps) {
   const [username] = profile
-  const { id } = await getUserProfileByUsername({ username })
-  const tweets = await getTweetsById({ id })
+  const { id, name } = await getUserProfileByUsername({ username })
+  const tweets = await getTweetsAndRetweets({ id })
 
   return (
     <section>
-      {tweets.map((tweet) => <Tweet key={tweet.id} tweet={{ ...tweet }} />)}
+      {tweets.map((tweet) => <Tweet idUser={id} nameUserVisited={name} key={tweet.id} tweet={{ ...tweet }} />)}
     </section>
   )
 }
