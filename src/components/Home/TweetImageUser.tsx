@@ -4,8 +4,8 @@ interface TweetImageUserProps {
   avatar_url: string
   name: string
   username: string
-  width: number
-  height: number
+  width?: number
+  height?: number
 }
 
 export default async function TweetImageUser ({ avatar_url: avatar, name, username, width = 40, height = 40 }: TweetImageUserProps) {
