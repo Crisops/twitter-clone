@@ -38,3 +38,7 @@ export async function createTweet ({ content, image_url: imageUrl, user_id: idUs
 
   revalidatePath('/home')
 }
+
+export async function comeBackHome () {
+  redirect('/home')
+}
