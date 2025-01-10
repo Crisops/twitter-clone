@@ -1,4 +1,6 @@
 import ViewInteractivity from '@/components/Profile/ViewInteractivity'
+import ErrorAccount from '@/components/shared/ErrorAccount'
+import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import { ReactNode } from 'react'
 
 interface ProfileLayoutProps {
@@ -13,8 +15,10 @@ export default function ProfileLayout ({ children, posts, media, params: { profi
 
   return (
     <section className='h-full border-r border-zinc-700'>
-      {children}
-      <ViewInteractivity posts={posts} media={media} username={username} />
+      <ErrorBoundary fallback={<ErrorAccount username={username} />}>
+        {children}
+        <ViewInteractivity posts={posts} media={media} username={username} />
+      </ErrorBoundary>
     </section>
   )
 }
