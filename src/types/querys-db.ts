@@ -9,8 +9,25 @@ export type TweetInfo = {
     comments: Tables<'tweets'>['comments']
     created_at: Tables<'tweets'>['created_at']
     creator: {
+        id?: Tables<'users'>['id'];
         name: Tables<'users'>['name'];
         username: Tables<'users'>['username'];
         avatar_url: Tables<'users'>['avatar_url'];
-    } | null
+    } | null,
+    post_type?: string
+}
+
+export type TweetPostAndRetweet = {
+    action_user_id: Tables<'users'>['id'],
+    name: Tables<'users'>['name'],
+    username: Tables<'users'>['username'],
+    avatar_url: Tables<'users'>['avatar_url'],
+    tweet_id: Tables<'tweets'>['id'],
+    content: Tables<'tweets'>['content'],
+    image_url: Tables<'tweets'>['image_url'],
+    comments: Tables<'tweets'>['comments'],
+    retuits: Tables<'tweets'>['retuits'],
+    likes: Tables<'tweets'>['likes'],
+    created_at: Tables<'tweets'>['created_at'],
+    post_type: string
 }
