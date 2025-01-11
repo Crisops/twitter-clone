@@ -3,21 +3,17 @@
 import { ReactNode, useState } from 'react'
 import { IconDots } from '@tabler/icons-react'
 import SignOutUser from './SignOutUser'
-import { useRouter } from 'next/navigation'
 
 type AsideInformationUserProps = {
-    name: string
-    username: string
-    children: ReactNode
+  name: string
+  username: string
+  children: ReactNode
 }
 
 export default function AsideInformationUserClient ({ name, username, children: imageUser }: AsideInformationUserProps) {
-  const router = useRouter()
-
   const [view, setView] = useState<boolean>(false)
   const handleViewSignOut = () => {
     setView(!view)
-    router.push('/')
   }
 
   return (
