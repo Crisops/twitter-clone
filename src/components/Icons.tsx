@@ -39,3 +39,9 @@ export const IconBolt = () => {
     <svg className='size-7' viewBox='0 0 24 24' aria-hidden='true'><path d='M7.323 2h11.443l-3 5h6.648L6.586 22.83 7.847 14H2.523l4.8-12zm1.354 2-3.2 8h4.676l-.739 5.17L17.586 9h-5.352l3-5H8.677z' /></svg>
   )
 }
+
+export const IconHeart = ({ className }: {className: string}) => {
+  return (
+    <svg className={`${className}`} viewBox='0 0 24 24'><path clipRule='evenodd' d='M12 6c-1.8-2.1-4.8-2.74-7.06-.82a5.33 5.33 0 0 0-.8 7.4c1.47 1.89 5.92 5.87 7.38 7.16.17.14.25.21.35.24.08.03.17.03.25 0 .1-.03.18-.1.34-.24 1.46-1.3 5.92-5.27 7.39-7.16a5.3 5.3 0 0 0-.8-7.4C16.75 3.28 13.8 3.9 12 6Z' strokeLinecap='round' strokeLinejoin='round' /></svg>
+  )
+}
