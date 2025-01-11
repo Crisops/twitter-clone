@@ -32,7 +32,7 @@ export const getTweetsAndRetweets = async ({ id }:IdUser) => {
   try {
     const supabase = await createClient()
 
-    const { data, error }: {data: TweetPostAndRetweet[], error: PostgrestError} = await supabase.rpc('get_user_posts_and_retweets', { user_uuid: id })
+    const { data, error }: {data: TweetPostAndRetweet[], error: PostgrestError} = await supabase.rpc('get_user_posts_and_retweets', { user_uuid: id }).order('created_at', { ascending: false })
 
     const tweets: TweetInfo[] = data.map((tweet) => {
       return {
