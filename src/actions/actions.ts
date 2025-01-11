@@ -29,6 +29,10 @@ export async function signup () {
   }
 }
 
+export async function comeBackHome () {
+  redirect('/home')
+}
+
 export async function createTweet ({ content, image_url: imageUrl, user_id: idUser }: TablesInsert<'tweets'>) {
   const supabase = await createClient()
 
@@ -39,6 +43,52 @@ export async function createTweet ({ content, image_url: imageUrl, user_id: idUs
   revalidatePath('/home')
 }
 
-export async function comeBackHome () {
-  redirect('/home')
+export async function insertComment ({ user_id: userId, tweet_id: tweetId, content }: TablesInsert<'comments'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('comments').insert({ user_id: userId, tweet_id: tweetId, content })
+
+  if (error) throw new Error('Error. Failed create comment in the tweet')
+}
+
+export async function deleteComment ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'comments'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('comments').delete().eq('user_id', userId).eq('tweet_id', tweetId)
+
+  if (error) throw new Error('Error. Failed delete comment')
+}
+
+export async function insertRetweet ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'retuits'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('retuits').insert({ user_id: userId, tweet_id: tweetId })
+
+  if (error) throw new Error('Error. Failed to create retweet ')
+}
+
+export async function deleteRetweet ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'retuits'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('retuits').delete().eq('user_id', userId).eq('tweet_id', tweetId)
+
+  if (error) throw new Error('Error. Failed remove retweet')
+
+  revalidatePath('/(home)/[...profile]/@posts')
+}
+
+export async function insertLikes ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'likes'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('likes').insert({ user_id: userId, tweet_id: tweetId })
+
+  if (error) throw new Error('Error. Could not like the Tweet')
+}
+
+export async function deleteLikes ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'likes'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('likes').delete().eq('user_id', userId).eq('tweet_id', tweetId)
+
+  if (error) throw new Error('Error. Failed delete like tweeet')
 }
