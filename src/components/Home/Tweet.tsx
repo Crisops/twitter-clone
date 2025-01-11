@@ -6,13 +6,13 @@ import { type TweetInfo } from '@/types/querys-db'
 import TweetPostType from '../Profile/TweetPostType'
 
 interface TweetProps {
-  idUser?: string
-  nameUserVisited?: string
-  tweet: TweetInfo
+  idUser?: string // id User Visited in Profile Page
+  nameUserVisited?: string // Name User Visited in Profile Page
+  tweet: TweetInfo // Tweets Information
 }
 
 export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
-  const { content, image_url: avatar, likes, retuits, comments, created_at: date, creator, post_type: postType } = tweet
+  const { id, content, image_url: avatar, likes, retuits, comments, created_at: date, creator, post_type: postType } = tweet
 
   if (creator === null) return
 
@@ -27,7 +27,7 @@ export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
             <section className='w-full h-full'>
               <TweetContent content={content} image_url={avatar ?? ''} />
               <div className='pt-2'>
-                <TweetInteractions comments={comments} retuits={retuits} likes={likes} />
+                <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={id} />
               </div>
             </section>
           </div>
