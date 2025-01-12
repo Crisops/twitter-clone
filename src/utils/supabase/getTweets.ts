@@ -32,7 +32,9 @@ export const getTweetsAndRetweets = async ({ id }:IdUser) => {
   try {
     const supabase = await createClient()
 
-    const { data, error }: {data: TweetPostAndRetweet[], error: PostgrestError} = await supabase.rpc('get_user_posts_and_retweets', { user_uuid: id }).order('created_at', { ascending: false })
+    const { data, error } = await supabase.rpc('get_user_posts_and_retweets', { user_uuid: id }).order('created_at', { ascending: false })
+
+    if (error) throw new Error('Error. No se pudieron obtener los tweets y retweets del usuario')
 
     const tweets: TweetInfo[] = data.map((tweet) => {
       return {
@@ -52,8 +54,6 @@ export const getTweetsAndRetweets = async ({ id }:IdUser) => {
         post_type: tweet.post_type
       }
     })
-
-    if (error) throw new Error('Error. No se pudieron obtener los tweets y retweets del usuario')
 
     return tweets
   } catch (error) {
