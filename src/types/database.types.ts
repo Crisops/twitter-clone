@@ -303,7 +303,25 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_posts_and_retweets: {
+        Args: {
+          user_uuid: string
+        }
+        Returns: {
+          action_user_id: string
+          name: string
+          username: string
+          avatar_url: string
+          tweet_id: string
+          content: string
+          image_url: string
+          comments: number
+          retuits: number
+          likes: number
+          created_at: string
+          post_type: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
