@@ -1,7 +1,7 @@
-import { PostgrestError, QueryData } from '@supabase/supabase-js'
+import { QueryData } from '@supabase/supabase-js'
 import { createClient } from './server'
 import { Tables } from '@/types/database.types'
-import { TweetInfo, TweetPostAndRetweet } from '@/types/querys-db'
+import { TweetInfo } from '@/types/querys-db'
 
 type IdUser = {
   id: Tables<'users'>['id']
@@ -11,7 +11,7 @@ export const getTweets = async () => {
   try {
     const supabase = await createClient()
 
-    const tweetsQuery = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (name, username, avatar_url)').order('created_at', { ascending: false })
+    const tweetsQuery = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (name, username, avatar_url, biography, following, followers)').order('created_at', { ascending: false })
 
     type Tweets = QueryData<typeof tweetsQuery>
 
@@ -49,7 +49,10 @@ export const getTweetsAndRetweets = async ({ id }:IdUser) => {
           id: tweet.action_user_id,
           name: tweet.name,
           username: tweet.username,
-          avatar_url: tweet.avatar_url
+          avatar_url: tweet.avatar_url,
+          biography: tweet.biography,
+          followers: tweet.followers,
+          following: tweet.following
         },
         post_type: tweet.post_type
       }
