@@ -312,6 +312,9 @@ export type Database = {
           name: string
           username: string
           avatar_url: string
+          biography: string
+          following: number
+          followers: number
           tweet_id: string
           content: string
           image_url: string
