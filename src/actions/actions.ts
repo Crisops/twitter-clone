@@ -33,10 +33,10 @@ export async function comeBackHome () {
   redirect('/home')
 }
 
-export async function createTweet ({ content, image_url: imageUrl, user_id: idUser }: TablesInsert<'tweets'>) {
+export async function createTweet ({ user_id: idUser, image_url: imageUrl, content }: TablesInsert<'tweets'>) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from('tweets').insert({ content, image_url: imageUrl, user_id: idUser })
+  const { error } = await supabase.from('tweets').insert({ user_id: idUser, image_url: imageUrl, content })
 
   if (error) throw new Error('Error. Failed create tweet')
 
