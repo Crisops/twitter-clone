@@ -12,6 +12,9 @@ export type TweetInfo = {
         id?: Tables<'users'>['id'];
         name: Tables<'users'>['name'];
         username: Tables<'users'>['username'];
+        biography: Tables<'users'>['biography']
+        following: Tables<'users'>['following']
+        followers: Tables<'users'>['followers']
         avatar_url: Tables<'users'>['avatar_url'];
     } | null,
     post_type?: string
