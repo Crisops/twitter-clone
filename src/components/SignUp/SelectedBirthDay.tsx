@@ -4,11 +4,9 @@ import { ChangeEvent } from 'react'
 import { useAuth } from '@/hooks/useStore'
 
 interface SelectedBirthdayProps {
-
   label: string
   name: string
   date: Birthday[]
-
  }
 
 export const SelectedBirthday = ({ label, name, date }: SelectedBirthdayProps) => {

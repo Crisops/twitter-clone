@@ -1,9 +1,10 @@
 import { getUserTweetCount } from '@/utils/supabase/getTweets'
 import ButtonNavigationBack from '@/components/shared/ButtonNavigationBack'
+import { Tables } from '@/types/database.types'
 
 interface HeaderBackProps {
-  id: string
-  name: string
+  id: Tables<'users'>['id']
+  name: Tables<'users'>['name']
 }
 
 async function HeaderBack ({ id, name }: HeaderBackProps) {

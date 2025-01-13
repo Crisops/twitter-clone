@@ -16,7 +16,7 @@ interface InteractionsTweetProps {
   bgColor: string
   textColor: string
   textColorHover: string
-  quantity?: number
+  quantity?: Tables<'tweets'>['comments'] | Tables<'tweets'>['retuits'] | Tables<'tweets'>['likes']
   data?: Tables<'retuits'>[] | Tables<'likes'>[]
   insertData?: ({ user_id, tweet_id }: DataParametersProps) => Promise<void>
   deleteData?: ({ user_id, tweet_id }: DataParametersProps) => Promise<void>

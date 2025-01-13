@@ -2,10 +2,6 @@ import { Tables } from '@/types/database.types'
 import { createClient } from './server'
 import { User } from '@supabase/supabase-js'
 
-type GetUserProps = {
-    id: string
-}
-
 export const getSessionAuth = async (): Promise<User> => {
   try {
     const supabase = await createClient()
@@ -20,7 +16,7 @@ export const getSessionAuth = async (): Promise<User> => {
   }
 }
 
-export const getUserProfile = async ({ id }: GetUserProps): Promise<Tables<'users'>> => {
+export const getUserProfile = async ({ id }: { id: Tables<'users'>['id'] }): Promise<Tables<'users'>> => {
   try {
     const supabase = await createClient()
 
@@ -41,7 +37,7 @@ export const getUserProfile = async ({ id }: GetUserProps): Promise<Tables<'user
   }
 }
 
-export const getUserProfileByUsername = async ({ username }: {username: string}): Promise<Tables<'users'>> => {
+export const getUserProfileByUsername = async ({ username }: {username: Tables<'users'>['username']}): Promise<Tables<'users'>> => {
   const supabase = await createClient()
 
   try {

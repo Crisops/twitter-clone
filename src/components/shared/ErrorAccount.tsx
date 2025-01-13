@@ -1,10 +1,11 @@
 'use client'
 
 import { comeBackHome } from '@/actions/actions'
+import { Tables } from '@/types/database.types'
 import { IconArrowNarrowLeft } from '@tabler/icons-react'
 
 interface ErrorAccountProps {
-    username: string
+    username: Tables<'users'>['username']
 }
 
 function ErrorAccount ({ username }:ErrorAccountProps) {

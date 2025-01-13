@@ -1,9 +1,10 @@
+import { Tables } from '@/types/database.types'
 import { getBase64 } from '@/utils/getBase64'
 import Image from 'next/image'
 
 interface TweetContentProps {
-  content: string,
-  image_url: string
+  content: Tables<'tweets'>['content'],
+  image_url: Tables<'tweets'>['image_url']
 }
 
 export default async function TweetContent ({ content, image_url: url }: TweetContentProps) {
@@ -25,7 +26,7 @@ export default async function TweetContent ({ content, image_url: url }: TweetCo
       </div>
       <div className='w-full h-full'>
         <div className='flex'>
-          {url !== '' &&
+          {url &&
             <Image
               className='rounded-2xl border border-zinc-800'
               src={url}

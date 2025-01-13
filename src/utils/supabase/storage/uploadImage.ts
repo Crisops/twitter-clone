@@ -1,11 +1,12 @@
 import imageCompression from 'browser-image-compression'
 import { v4 as uuidv4 } from 'uuid'
 import { createClient } from '../client'
+import { Tables } from '@/types/database.types'
 
 interface UploadImageProps {
     bucket: 'post-tweets' | 'avatars'
     file: File
-    folder: string
+    folder: Tables<'users'>['id']
 }
 
 const getStorage = () => {

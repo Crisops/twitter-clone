@@ -1,9 +1,10 @@
+import { Tables } from '@/types/database.types'
 import { DrawerHeader as DrawerHeaderClient } from '@nextui-org/react'
 import { ReactNode } from 'react'
 
 interface DrawerHeaderContentClientProps {
-    name?: string
-    username?: string
+    name?: Tables<'users'>['name']
+    username?: Tables<'users'>['username']
     avatar?: ReactNode
 }
 

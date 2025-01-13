@@ -3,10 +3,6 @@ import { createClient } from './server'
 import { Tables } from '@/types/database.types'
 import { TweetInfo } from '@/types/querys-db'
 
-type IdUser = {
-  id: Tables<'users'>['id']
-}
-
 export const getTweets = async () => {
   try {
     const supabase = await createClient()
@@ -28,7 +24,7 @@ export const getTweets = async () => {
   }
 }
 
-export const getTweetsAndRetweets = async ({ id }:IdUser) => {
+export const getTweetsAndRetweets = async ({ id }: { id: Tables<'users'>['id'] }) => {
   try {
     const supabase = await createClient()
 
@@ -65,7 +61,7 @@ export const getTweetsAndRetweets = async ({ id }:IdUser) => {
   }
 }
 
-export const getUserTweetCount = async ({ id }:IdUser) => {
+export const getUserTweetCount = async ({ id }: { id: Tables<'users'>['id'] }) => {
   try {
     const supabase = await createClient()
 

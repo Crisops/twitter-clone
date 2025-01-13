@@ -9,9 +9,10 @@ import { uploadImage } from '@/utils/supabase/storage/uploadImage'
 import { createTweet } from '@/actions/actions'
 import { initialCreateTweetForm } from '@/config/fields-form'
 import { ChangeEvent, ReactNode } from 'react'
+import { Tables } from '@/types/database.types'
 
 interface FormTweetClientProps {
-  idSession: string
+  idSession: Tables<'users'>['id']
   children: ReactNode
 }
 

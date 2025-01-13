@@ -1,9 +1,10 @@
+import { Tables } from '@/types/database.types'
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import { IconRepeat } from '@tabler/icons-react'
 
 interface TweetPostTypeProps {
-  idUserVisited: string
-  nameUserVisited: string
+  idUserVisited: Tables<'users'>['id']
+  nameUserVisited: Tables<'users'>['name']
 }
 
 async function TweetPostType ({ idUserVisited, nameUserVisited }:TweetPostTypeProps) {

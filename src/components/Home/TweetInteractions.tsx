@@ -4,12 +4,13 @@ import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react
 import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
 import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/actions/actions'
 import { IconHeart } from '../Icons'
+import { Tables } from '@/types/database.types'
 
 interface TweetInteractionsProps {
-  idTweet: string
-  likes: number
-  retuits: number
-  comments: number
+  idTweet: Tables<'tweets'>['id']
+  likes: Tables<'tweets'>['likes']
+  retuits: Tables<'tweets'>['retuits']
+  comments: Tables<'tweets'>['comments']
 }
 
 export default async function TweetInteractions ({ idTweet, comments, retuits, likes }:TweetInteractionsProps) {

@@ -3,10 +3,11 @@
 import { ReactNode, useState } from 'react'
 import { IconDots } from '@tabler/icons-react'
 import SignOutUser from './SignOutUser'
+import { Tables } from '@/types/database.types'
 
 type AsideInformationUserProps = {
-  name: string
-  username: string
+  name: Tables<'users'>['id']
+  username: Tables<'users'>['username']
   children: ReactNode
 }
 

@@ -1,6 +1,7 @@
+import { Tables } from '@/types/database.types'
 import { diffHours, diffMinutes, diffSeconds, format } from '@formkit/tempo'
 
-export const formatTimeTweet = (time: string): string => {
+export const formatTimeTweet = (time: Tables<'tweets'>['created_at']): string => {
   let currentTime: string = ''
 
   const now = new Date().toISOString()
@@ -14,7 +15,7 @@ export const formatTimeTweet = (time: string): string => {
   return currentTime
 }
 
-export const formatTimeJoinedUser = (time: string): string => {
+export const formatTimeJoinedUser = (time: Tables<'users'>['created_at']): string => {
   const formatTime = format(time, 'MMMM YYYY', 'es')
   const [month, year] = formatTime.split(' ')
 

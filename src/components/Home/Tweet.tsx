@@ -5,11 +5,12 @@ import TweetInteractions from './TweetInteractions'
 import { type TweetInfo } from '@/types/querys-db'
 import TweetPostType from '@/components/Profile/TweetPostType'
 import ToolTipProfile from '@/components/shared/ToolTipProfile'
+import { Tables } from '@/types/database.types'
 
 interface TweetProps {
-  idUser?: string // id User Visited in Profile Page
-  nameUserVisited?: string // Name User Visited in Profile Page
-  tweet: TweetInfo // Tweets Information
+  idUser?: Tables<'users'>['id']
+  nameUserVisited?: Tables<'users'>['name']
+  tweet: TweetInfo
 }
 
 export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
