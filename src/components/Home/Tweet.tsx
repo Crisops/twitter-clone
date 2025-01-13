@@ -3,7 +3,8 @@ import TweetHeaderContent from './TweetHeaderContent'
 import TweetContent from './TweetContent'
 import TweetInteractions from './TweetInteractions'
 import { type TweetInfo } from '@/types/querys-db'
-import TweetPostType from '../Profile/TweetPostType'
+import TweetPostType from '@/components/Profile/TweetPostType'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
 
 interface TweetProps {
   idUser?: string // id User Visited in Profile Page
@@ -21,9 +22,26 @@ export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
       <div className='py-2 px-4'>
         {postType === 'retweet' && <TweetPostType idUserVisited={idUser ?? ''} nameUserVisited={nameUserVisited ?? ''} />}
         <div className='flex gap-x-2'>
-          <TweetImageUser avatar_url={creator.avatar_url ?? ''} name={creator.name} username={creator.username} />
+          <ToolTipProfile
+            name={creator.name}
+            username={creator.username}
+            src={creator.avatar_url}
+            biography={creator.biography}
+            following={creator.following}
+            followers={creator.followers}
+          >
+            <TweetImageUser avatar_url={creator.avatar_url ?? ''} name={creator.name} username={creator.username} />
+          </ToolTipProfile>
           <div className='w-full h-full'>
-            <TweetHeaderContent name={creator.name} username={creator.username} created_at={date} />
+            <TweetHeaderContent
+              name={creator.name}
+              username={creator.username}
+              src={creator.avatar_url}
+              biography={creator.biography}
+              following={creator.following}
+              followers={creator.followers}
+              created_at={date}
+            />
             <section className='w-full h-full'>
               <TweetContent content={content} image_url={avatar ?? ''} />
               <div className='pt-2'>
