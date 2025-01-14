@@ -7,7 +7,7 @@ export const getTweets = async () => {
   try {
     const supabase = await createClient()
 
-    const tweetsQuery = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (name, username, avatar_url, biography, following, followers)').order('created_at', { ascending: false })
+    const tweetsQuery = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (id, name, username, avatar_url, biography, following, followers)').order('created_at', { ascending: false })
 
     type Tweets = QueryData<typeof tweetsQuery>
 
