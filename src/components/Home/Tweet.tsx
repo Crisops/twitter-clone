@@ -13,7 +13,7 @@ interface TweetProps {
   tweet: TweetInfo
 }
 
-export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
+export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
   const { id, content, image_url: avatar, likes, retuits, comments, created_at: date, creator, post_type: postType } = tweet
 
   if (creator === null) return
@@ -24,6 +24,7 @@ export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
         {postType === 'retweet' && <TweetPostType idUserVisited={idUser ?? ''} nameUserVisited={nameUserVisited ?? ''} />}
         <div className='flex gap-x-2'>
           <ToolTipProfile
+            id={creator.id}
             name={creator.name}
             username={creator.username}
             src={creator.avatar_url}
@@ -35,6 +36,7 @@ export default function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
           </ToolTipProfile>
           <div className='w-full h-full'>
             <TweetHeaderContent
+              id={creator.id}
               name={creator.name}
               username={creator.username}
               src={creator.avatar_url}
