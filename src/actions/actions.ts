@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
-import { TablesInsert } from '@/types/database.types'
+import { Tables, TablesInsert } from '@/types/database.types'
 
 export async function signup () {
   const supabase = await createClient()
@@ -91,4 +91,21 @@ export async function deleteLikes ({ user_id: userId, tweet_id: tweetId }: Table
   const { error } = await supabase.from('likes').delete().eq('user_id', userId).eq('tweet_id', tweetId)
 
   if (error) throw new Error('Error. Failed delete like tweeet')
+}
+
+export async function insertFollowUser ({ user_id_follower: idUserFollower, user_id_following: idUserFollowing }: Omit<Tables<'followers'>, 'created_at'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('followers').insert({ user_id_follower: idUserFollower, user_id_following: idUserFollowing })
+  revalidatePath('/home')
+  return { error }
+}
+
+export async function deleteFollowUser ({ user_id_follower: idUserFollower, user_id_following: idUserFollowing }: Omit<Tables<'followers'>, 'created_at'>) {
+  console.log(idUserFollower, idUserFollowing)
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('followers').delete().eq('user_id_follower', idUserFollower).eq('user_id_following', idUserFollowing)
+  revalidatePath('/home')
+  return { error }
 }
