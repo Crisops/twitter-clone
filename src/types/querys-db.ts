@@ -9,7 +9,7 @@ export type TweetInfo = {
     comments: Tables<'tweets'>['comments']
     created_at: Tables<'tweets'>['created_at']
     creator: {
-        id?: Tables<'users'>['id'];
+        id: Tables<'users'>['id'];
         name: Tables<'users'>['name'];
         username: Tables<'users'>['username'];
         biography: Tables<'users'>['biography']
