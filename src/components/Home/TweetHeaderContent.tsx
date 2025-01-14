@@ -5,6 +5,7 @@ import ToolTipProfile from '../shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
 
 interface TweetHeaderContentProps {
+  id: Tables<'users'>['id']
   name: Tables<'users'>['name']
   username: Tables<'users'>['username']
   src: Tables<'users'>['avatar_url']
@@ -14,11 +15,12 @@ interface TweetHeaderContentProps {
   created_at: Tables<'tweets'>['created_at']
 }
 
-export default function TweetHeaderContent ({ name, username, src, biography, followers, following, created_at: date }: TweetHeaderContentProps) {
+export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, created_at: date }: TweetHeaderContentProps) {
   return (
     <header className='flex items-center justify-between'>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
         <ToolTipProfile
+          id={idUserCreatorTweet}
           name={name}
           username={username}
           src={src}
