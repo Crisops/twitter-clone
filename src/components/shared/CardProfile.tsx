@@ -1,9 +1,5 @@
-'use client'
-
-import { useState } from 'react'
 import {
   Avatar,
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -12,7 +8,11 @@ import {
 import Link from 'next/link'
 import { Tables } from '@/types/database.types'
 
+import ButtonFollow from './ButtonFollow'
+import { getFollowers } from '@/utils/supabase/getFollowers'
+
 interface CardProfileProps {
+    ids:Tables<'users'>['id'][]
     name: Tables<'users'>['name']
     username: Tables<'users'>['username']
     src: Tables<'users'>['avatar_url']
@@ -21,8 +21,15 @@ interface CardProfileProps {
     followers: Tables<'users'>['followers']
 }
 
-export default function CardProfile ({ name, username, src, biography, following, followers }:CardProfileProps) {
-  const [isFollowed, setIsFollowed] = useState(false)
+export default async function CardProfile ({ ids, name, username, src, biography, following, followers }:CardProfileProps) {
+  const [idSessionUser, idUserCreatorTweet] = ids
+
+  const followingAndFollowers = await getFollowers({ idSessionUser })
+
+  const [data] = followingAndFollowers
+
+  const validateFollowerUser = idSessionUser === idUserCreatorTweet
+  const validateStateInitialFollow = data?.following.includes(idUserCreatorTweet)
 
   return (
     <Card className='max-w-[350px] w-72 border-none bg-black ' shadow='none'>
@@ -44,14 +51,7 @@ export default function CardProfile ({ name, username, src, biography, following
             </Link>
           </div>
         </div>
-        <Button
-          className='bg-white text-black font-medium text-small'
-          radius='full'
-          size='sm'
-          onPress={() => setIsFollowed(!isFollowed)}
-        >
-          {isFollowed ? 'Siguiendo' : 'Seguir'}
-        </Button>
+        <ButtonFollow idSessionUser={idSessionUser} idUserCreatorTweet={idUserCreatorTweet} validateFollowerUser={validateFollowerUser} validateStateInitialFollow={validateStateInitialFollow} />
       </CardHeader>
       <CardBody className='px-3 py-0'>
         {
