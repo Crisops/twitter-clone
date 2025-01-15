@@ -19,7 +19,7 @@ function Followers ({ username, followers, following }: FollowersProps) {
         </Link>
       </div>
       <div>
-        <Link className='hover:underline' href={`/${username}/verified_followers`}>
+        <Link className='hover:underline' href={`/${username}/followers`}>
           <div className='flex justify-center items-center gap-1'>
             <span className='text-white font-bold text-base'>{followers}</span>
             <span className='text-zinc-500 text-base'>Seguidores</span>
