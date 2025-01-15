@@ -1,7 +1,7 @@
 'use client'
 
 import { Tables } from '@/types/database.types'
-import ButtonInteractivity from './ButtonInteractivity'
+import ButtonInteractivity from '@/components/shared/ButtonInteractivity'
 import { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
 
@@ -18,12 +18,8 @@ function ViewInteractivity ({ username, posts, media }: ViewInteractivityProps) 
     <>
       <div className='w-full border-b border-zinc-700'>
         <div className='flex [&>div]:flex-grow [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div>button]:w-full [&>div>button]:h-full'>
-          <div className='relative'>
-            <ButtonInteractivity href={`/${username}`} text='Posts' />
-          </div>
-          <div className='relative'>
-            <ButtonInteractivity href={`/${username}/media`} text='Multimedia' />
-          </div>
+          <ButtonInteractivity href={`/${username}`} text='Posts' />
+          <ButtonInteractivity href={`/${username}/media`} text='Multimedia' />
         </div>
       </div>
       {pathname === `/${username}` ? posts : media}
