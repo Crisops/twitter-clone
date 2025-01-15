@@ -62,14 +62,18 @@ export default async function CardProfile ({ ids, name, username, src, biography
         }
       </CardBody>
       <CardFooter className='gap-3'>
-        <div className='flex gap-1'>
-          <p className='font-semibold text-default-600 text-small'>{following}</p>
-          <p className=' text-default-400 text-small'>Seguidos</p>
-        </div>
-        <div className='flex gap-1'>
-          <p className='font-semibold text-default-600 text-small'>{followers}</p>
-          <p className='text-default-400 text-small'>Seguidores</p>
-        </div>
+        <Link href={`/${username}/following`} className='hover:underline'>
+          <div className='flex gap-1'>
+            <p className='font-semibold text-default-600 text-small'>{following}</p>
+            <p className=' text-default-400 text-small'>Siguiendo</p>
+          </div>
+        </Link>
+        <Link href={`/${username}/followers`} className='hover:underline'>
+          <div className='flex gap-1'>
+            <p className='font-semibold text-default-600 text-small'>{followers}</p>
+            <p className='text-default-400 text-small'>Seguidores</p>
+          </div>
+        </Link>
       </CardFooter>
     </Card>
   )
