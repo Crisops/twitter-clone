@@ -74,7 +74,7 @@ export async function deleteRetweet ({ user_id: userId, tweet_id: tweetId }: Tab
 
   if (error) throw new Error('Error. Failed remove retweet')
 
-  revalidatePath('/(home)/[...profile]/@posts', 'layout')
+  revalidatePath('/(home)/[...profile]/@posts', 'page')
 }
 
 export async function insertLikes ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'likes'>) {
