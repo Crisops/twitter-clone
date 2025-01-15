@@ -1,0 +1,34 @@
+import HeaderBack from '@/components/shared/HeaderBack'
+import InformationProfile from '@/components/Profile/InformationProfile'
+import { Tables } from '@/types/database.types'
+import { getUserProfileByUsername } from '@/utils/supabase/getUser'
+
+interface ProfileLayoutProps {
+  params: {
+    username: Tables<'users'>['username']
+  }
+}
+
+export default async function ProfilePage ({ params: { username } }:ProfileLayoutProps) {
+  const { id, username: usernameUser, biography, followers, following, location, web_site: webSite, avatar_url: avatarUrl, banner_url: bannerUrl, name, created_at: joined } = await getUserProfileByUsername({ username })
+
+  return (
+    <section className=''>
+      <HeaderBack name={name} id={id} />
+      <InformationProfile
+        idUserVisited={id}
+        name={name}
+        username={usernameUser}
+        biography={biography}
+        followers={followers}
+        following={following}
+        location={location}
+        webSite={webSite}
+        avatarUrl={avatarUrl}
+        bannerUrl={bannerUrl}
+        createdAt={joined}
+      />
+      {/* </ErrorBoundary> */}
+    </section>
+  )
+}
