@@ -14,7 +14,7 @@ interface ToolTipProfileProps {
     children: ReactNode
 }
 
-export default async function ToolTipProfile ({ id, name, username, src, biography, following, followers, children }:ToolTipProfileProps) {
+export default function ToolTipProfile ({ id, name, username, src, biography, following, followers, children }:ToolTipProfileProps) {
   return (
     <Tooltip
       delay={800}
