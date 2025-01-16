@@ -49,7 +49,7 @@ export const getUserProfileByUsername = async ({ username }: {username: Tables<'
 
     const { data, error } = await userQuery
 
-    if (error) throw new Error('El usuario no fue encontrando. Intentelo de nuevo')
+    if (error) throw new Error(`El usuario con el username: ${username} no existe.`)
 
     return data
   } catch (error) {
