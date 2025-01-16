@@ -9,27 +9,28 @@ import Link from 'next/link'
 import { Tables } from '@/types/database.types'
 
 import ButtonFollow from './ButtonFollow'
-import { getFollowers } from '@/utils/supabase/getFollowers'
+import { getAllFollowers } from '@/utils/supabase/getFollowers'
+import { getSessionAuth } from '@/utils/supabase/getUser'
 
 interface CardProfileProps {
-    ids:Tables<'users'>['id'][]
-    name: Tables<'users'>['name']
-    username: Tables<'users'>['username']
-    src: Tables<'users'>['avatar_url']
-    biography: Tables<'users'>['biography']
-    following: Tables<'users'>['following']
-    followers: Tables<'users'>['followers']
+  id:Tables<'users'>['id']
+  name: Tables<'users'>['name']
+  username: Tables<'users'>['username']
+  src: Tables<'users'>['avatar_url']
+  biography: Tables<'users'>['biography']
+  following: Tables<'users'>['following']
+  followers: Tables<'users'>['followers']
 }
 
-export default async function CardProfile ({ ids, name, username, src, biography, following, followers }:CardProfileProps) {
-  const [idSessionUser, idUserCreatorTweet] = ids
+export default async function CardProfile ({ id, name, username, src, biography, following, followers }:CardProfileProps) {
+  const { id: idUserSession } = await getSessionAuth()
 
-  const followingAndFollowers = await getFollowers({ idSessionUser })
+  const followingAndFollowers = await getAllFollowers({ idUserSession })
 
   const [data] = followingAndFollowers
 
-  const validateFollowerUser = idSessionUser === idUserCreatorTweet
-  const validateStateInitialFollow = data?.following.includes(idUserCreatorTweet)
+  const hiddenButtonFollow = idUserSession === id
+  const validateStateInitialFollow = data?.following.includes(id)
 
   return (
     <Card className='max-w-[350px] w-72 border-none bg-black ' shadow='none'>
@@ -37,21 +38,19 @@ export default async function CardProfile ({ ids, name, username, src, biography
         <div className='flex flex-col gap-2'>
           <Link href={`/${username}`}>
             <Avatar
-              className='w-16 h-16 transition-all duration-150 ease-out cursor-pointer hover:brightness-90'
+              className='w-16 h-16 transition-all duration-150 ease-out hover:cursor-pointer hover:brightness-90'
               radius='full'
               src={src ?? ''}
             />
           </Link>
           <div className='flex flex-col items-start justify-center gap-1'>
-            <Link href={`/${username}`} className='hover:underline'>
-              <h4 className='text-large font-semibold leading-none text-gray-100'>{name}</h4>
-            </Link>
             <Link href={`/${username}`}>
+              <h4 className='text-large font-semibold leading-none text-gray-100 hover:underline'>{name}</h4>
               <h5 className='text-small tracking-tight text-zinc-500'>@{username}</h5>
             </Link>
           </div>
         </div>
-        <ButtonFollow idSessionUser={idSessionUser} idUserCreatorTweet={idUserCreatorTweet} validateFollowerUser={validateFollowerUser} validateStateInitialFollow={validateStateInitialFollow} />
+        <ButtonFollow idUserSession={idUserSession} idUserProfile={id} hiddenButtonFollow={hiddenButtonFollow} validateStateInitialFollow={validateStateInitialFollow} />
       </CardHeader>
       <CardBody className='px-3 py-0'>
         {
