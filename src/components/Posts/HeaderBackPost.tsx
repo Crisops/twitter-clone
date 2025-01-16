@@ -1,0 +1,18 @@
+import ButtonNavigationBack from '../shared/ButtonNavigationBack'
+
+export default function HeaderBackPost () {
+  return (
+    <div className='hidden min-[500px]:block sticky top-0 w-full h-14 px-2 border-b border-zinc-900 z-50 backdrop-blur-md bg-black/60'>
+      <div className='flex items-center h-full'>
+        <div className='flex items-center w-16 h-full'>
+          <ButtonNavigationBack />
+        </div>
+        <div className='flex-grow flex items-center'>
+          <div className='pb-1'>
+            <span className='text-xl font-bold text-gray-100'>Post</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
