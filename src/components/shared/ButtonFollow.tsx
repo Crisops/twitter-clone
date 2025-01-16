@@ -3,37 +3,32 @@
 import { Button } from '@nextui-org/react'
 import { useReducer } from 'react'
 import { deleteFollowUser, insertFollowUser } from '@/actions/actions'
-import { Tables } from '@/types/database.types'
+import { Tables, TablesInsert } from '@/types/database.types'
+import { ReducerAction } from '@/types/generics'
 
 interface ButtonFollowProps {
-    idSessionUser: Tables<'users'>['id']
-    idUserCreatorTweet: Tables<'users'>['id']
-    validateFollowerUser: boolean
+    idUserSession: Tables<'users'>['id']
+    idUserProfile: Tables<'users'>['id']
+    hiddenButtonFollow: boolean
     validateStateInitialFollow: boolean
 }
 
-type ReducerState = {
-    isFollowed: boolean;
-  };
-
-type ReducerAction = { type: 'follow' | 'unfollow' };
-
-function reducer (state: ReducerState, action: ReducerAction) {
+function reducer (state: boolean, action: ReducerAction) {
   switch (action.type) {
     case 'follow':
-      return { isFollowed: true }
+      return true
     case 'unfollow':
-      return { isFollowed: false }
+      return false
     default:
       return state
   }
 }
 
-export default function ButtonFollow ({ idSessionUser, idUserCreatorTweet, validateFollowerUser, validateStateInitialFollow }: ButtonFollowProps) {
-  const [state, dispatch] = useReducer(reducer, { isFollowed: validateStateInitialFollow })
+export default function ButtonFollow ({ idUserSession, idUserProfile, hiddenButtonFollow, validateStateInitialFollow }: ButtonFollowProps) {
+  const [isFollowed, dispatch] = useReducer(reducer, validateStateInitialFollow)
 
-  const handleFollowUser = async ({ user_id_follower: idUserFollower, user_id_following: idUserFollowing }: Omit<Tables<'followers'>, 'created_at'>) => {
-    if (state.isFollowed) {
+  const handleFollowUser = async ({ user_id_follower: idUserFollower, user_id_following: idUserFollowing }: TablesInsert<'followers'>) => {
+    if (isFollowed) {
       const { error } = await deleteFollowUser({ user_id_follower: idUserFollower, user_id_following: idUserFollowing })
       if (error) {
         dispatch({ type: 'follow' })
@@ -53,13 +48,13 @@ export default function ButtonFollow ({ idSessionUser, idUserCreatorTweet, valid
 
   return (
     <Button
-      className={`${validateFollowerUser ? 'hidden' : ''} ${state.isFollowed ? 'bg-transparent text-foreground border-slate-500 before:content-["Siguiendo"] before:text-white before:opacity-100 hover:before:hidden hover:before:opacity-0 hover:after:content-["Dejar_de_seguir"] after:hidden hover:after:block after:opacity-0 hover:after:opacity-100 hover:after:text-red-600 after:font-semibold hover:border-red-600' : 'bg-white text-black'} border-1 font-semibold text-base py-2 px-3`}
+      className={`${hiddenButtonFollow ? 'hidden' : ''} ${isFollowed ? 'bg-transparent text-foreground border-slate-500 before:content-["Siguiendo"] before:text-white before:opacity-100 hover:before:hidden hover:before:opacity-0 hover:after:content-["Dejar_de_seguir"] after:hidden hover:after:block after:opacity-0 hover:after:opacity-100 hover:after:text-red-600 after:font-semibold hover:border-red-600' : 'bg-white text-black'} border-1 font-semibold text-base py-2 px-3`}
       radius='full'
       size='sm'
-      variant={state.isFollowed ? 'bordered' : 'solid'}
-      onPress={() => handleFollowUser({ user_id_follower: idSessionUser, user_id_following: idUserCreatorTweet })}
+      variant={isFollowed ? 'bordered' : 'solid'}
+      onPress={() => handleFollowUser({ user_id_follower: idUserSession, user_id_following: idUserProfile })}
     >
-      {state.isFollowed ? '' : 'Seguir'}
+      {isFollowed ? '' : 'Seguir'}
     </Button>
   )
 }
