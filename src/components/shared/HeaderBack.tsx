@@ -25,10 +25,10 @@ async function HeaderBack ({ id, name, username, children }: HeaderBackProps) {
           <ButtonNavigationBack />
         </div>
         <div className='flex-grow flex flex-col justify-center'>
-          <div>
+          <div className='inline-flex'>
             <span className='text-xl font-bold text-gray-100'>{name}</span>
           </div>
-          <div>
+          <div className='inline-flex'>
             <span className='text-sm font-normal text-zinc-500'>{id ? `${quantity} posts` : `@${username}`}</span>
           </div>
         </div>
