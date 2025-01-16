@@ -1,7 +1,11 @@
 import { Tables } from '@/types/database.types'
 import { getPlaiceholder } from 'plaiceholder'
 
-export const getBase64 = async ({ url }: {url: Tables<'tweets'>['image_url']}) => {
+interface getBase64Props {
+  url: Tables<'tweets'>['image_url']
+}
+
+export const getBase64 = async ({ url }: getBase64Props) => {
   try {
     if (!url) throw new Error('Error. La url de la imagen se debe proporcionar')
     const res = await fetch(url)
