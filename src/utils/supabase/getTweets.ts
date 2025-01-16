@@ -13,7 +13,7 @@ export const getTweets = async () => {
 
     const { data, error } = await tweetsQuery
 
-    if (error) throw new Error('Error. No se pudieron obtener los tweets')
+    if (error) throw new Error('Error. No se pudieron obtener los posts')
 
     const tweets: Tweets = data
 
@@ -71,7 +71,7 @@ export const getUserTweetCount = async ({ id }: { id: Tables<'users'>['id'] }) =
 
     const { data, error } = await tweetsQuery
 
-    if (error) throw new Error('Error. No se pudo obtener la cantidad de Tweets del usuario')
+    if (error) throw new Error('Error. No se pudo obtener la cantidad de posts hechos por el usuario')
 
     const tweets: Tweets = data
 
