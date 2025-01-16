@@ -1,10 +1,11 @@
 import Tweet from '@/components/Home/Tweet'
+import { Tables } from '@/types/database.types'
 import { getTweetsAndRetweets } from '@/utils/supabase/getTweets'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
 
 interface PostsPageProps {
   params: {
-    username: string
+    username: Tables<'users'>['username']
   }
 }
 
