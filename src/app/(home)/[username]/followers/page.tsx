@@ -1,3 +1,4 @@
+import ViewAllFollowers from '@/components/Followers/ViewAllFollowers'
 import HeaderBackProfile from '@/components/Followers/HeaderBackProfile'
 import { Tables } from '@/types/database.types'
 
@@ -11,6 +12,7 @@ export default function FollowersPage ({ params: { username } }:FollowersPagePro
   return (
     <div className='w-full h-full'>
       <HeaderBackProfile username={username} />
+      <ViewAllFollowers username={username} filterColumn='user_id_following' columnRelation='followers_user_id_follower_fkey' />
     </div>
   )
 }
