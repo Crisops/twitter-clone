@@ -16,7 +16,7 @@ export const getComments = async ({ userId, tweetId }: GetInteractionsProps): Pr
       .match({ user_id: userId, tweet_id: tweetId })
     const { data, error } = await userQuery
 
-    if (error) throw new Error(error.message)
+    if (error) throw new Error('Error. Algo fallo al momento de obtener los comentarios del post')
 
     return data
   } catch (error) {
@@ -35,7 +35,7 @@ export const getRetweets = async ({ userId, tweetId }: GetInteractionsProps): Pr
       .match({ user_id: userId, tweet_id: tweetId })
     const { data, error } = await userQuery
 
-    if (error) throw new Error(error.message)
+    if (error) throw new Error('Error. Algo fallo al momento de obtener los retweets del post')
 
     return data
   } catch (error) {
@@ -54,7 +54,7 @@ export const getLikes = async ({ userId, tweetId }: GetInteractionsProps): Promi
       .match({ user_id: userId, tweet_id: tweetId })
     const { data, error } = await userQuery
 
-    if (error) throw new Error(error.message)
+    if (error) throw new Error('Error. Algo fallo al momento de obtener los likes del post')
 
     return data
   } catch (error) {
