@@ -15,7 +15,7 @@ export default async function ViewAllFollowers ({ username, filterColumn, column
   const followers = await getFollowersUserData({ idUser, filterColumn, columnRelation })
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-full'>
       {followers.map(({ user, idFollower, idFollowing }) => (
         <CardFollower
           key={user.id}
