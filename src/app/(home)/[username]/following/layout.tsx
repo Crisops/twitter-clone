@@ -6,8 +6,8 @@ interface UsernameLayoutProps {
 
 export default async function FollowingLayout ({ children }: UsernameLayoutProps) {
   return (
-    <main className='h-full border-r border-zinc-700'>
+    <section className='h-full border-r border-zinc-700'>
       {children}
-    </main>
+    </section>
   )
 }
