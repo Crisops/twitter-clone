@@ -34,7 +34,7 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
               following={creator.following}
               followers={creator.followers}
             >
-              <TweetImageUser avatar_url={creator.avatar_url ?? ''} name={creator.name} username={creator.username} />
+              <TweetImageUser avatar_url={creator.avatar_url} name={creator.name} username={creator.username} />
             </ToolTipProfile>
             <div className='w-full h-full'>
               <TweetHeaderContent
@@ -48,10 +48,8 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
                 created_at={date}
               />
               <section className='w-full h-full'>
-                <TweetContent content={content} image_url={avatar ?? ''} />
-                <div className='pt-2'>
-                  <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={id} />
-                </div>
+                <TweetContent content={content} image_url={avatar} />
+                <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={id} />
               </section>
             </div>
           </div>
