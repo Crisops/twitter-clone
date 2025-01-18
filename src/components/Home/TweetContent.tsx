@@ -12,7 +12,7 @@ export default async function TweetContent ({ content, image_url: url }: TweetCo
   let w: number = 0
   let h: number = 0
 
-  if (url !== '') {
+  if (url) {
     const { base64, width, height } = await getBase64({ url })
     dataUrl = base64
     w = width
