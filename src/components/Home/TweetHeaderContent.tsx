@@ -1,8 +1,8 @@
 import { IconDots } from '@tabler/icons-react'
-import { formatTimeTweet } from '@/utils/formatTime'
 import Link from 'next/link'
 import ToolTipProfile from '../shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
+import TweetCreatedTime from '../shared/TweetCreatedTime'
 
 interface TweetHeaderContentProps {
   id: Tables<'users'>['id']
@@ -12,10 +12,10 @@ interface TweetHeaderContentProps {
   biography: Tables<'users'>['biography']
   followers: Tables<'users'>['followers']
   following: Tables<'users'>['following']
-  created_at: Tables<'tweets'>['created_at']
+  date: Tables<'tweets'>['created_at']
 }
 
-export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, created_at: date }: TweetHeaderContentProps) {
+export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, date }: TweetHeaderContentProps) {
   return (
     <header className='flex items-center justify-between'>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
@@ -39,12 +39,7 @@ export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, user
             </div>
           </div>
         </ToolTipProfile>
-        <div>
-          <span className='text-zinc-500 font-normal'>·</span>
-        </div>
-        <div>
-          <span className='text-zinc-500 font-normal'>{formatTimeTweet(date)}</span>
-        </div>
+        <TweetCreatedTime date={date} />
       </div>
       <div>
         <IconDots size={20} color='#eee' />
