@@ -36,9 +36,7 @@ export default function InteractionTweet (
     deleteData
   }: InteractionsTweetProps
 ) {
-  quantity = quantity ?? 0
-
-  const [value, setValue] = useState<number>(quantity)
+  const [value, setValue] = useState<number>(quantity ?? 0)
   const [status, setStatus] = useState<boolean>(false)
 
   useEffect(() => {
@@ -70,10 +68,13 @@ export default function InteractionTweet (
         />
       </div>
       <div>
-        <NumberFlow
-          className={`text-xs pointer-events-none ${status ? `${textColor}` : 'text-zinc-600'} ${textColorHover} marker:transition-colors duration-300 ease-in-out`}
-          value={value ?? 0}
-        />
+        {
+          quantity?.toString() &&
+            <NumberFlow
+              className={`text-xs pointer-events-none ${status ? `${textColor}` : 'text-zinc-600'} ${textColorHover} marker:transition-colors duration-300 ease-in-out`}
+              value={value ?? 0}
+            />
+        }
       </div>
     </div>
   )
