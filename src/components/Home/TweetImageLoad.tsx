@@ -10,7 +10,7 @@ export default function TweetImageLoad () {
   }
 
   return (
-    <div className='row-start-2 col-start-2 px-2 my-2'>
+    <div className={`row-start-2 col-start-2 px-2 ${initialForm.file ? 'my-2' : ''}`}>
       {initialForm.imageUrlPreview &&
         <div className='relative w-full max-h-[720px] overflow-hidden rounded-3xl'>
           <Image className='w-full h-auto object-cover object-center' src={initialForm.imageUrlPreview} alt='Image load tweet' width={550} height={450} />
