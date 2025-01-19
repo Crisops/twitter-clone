@@ -43,10 +43,10 @@ export async function createTweet ({ user_id: idUser, image_url: imageUrl, conte
   revalidatePath('/home')
 }
 
-export async function insertComment ({ user_id: userId, tweet_id: tweetId, content }: TablesInsert<'comments'>) {
+export async function insertComment ({ user_id: userId, tweet_id: tweetId, content, image_url: imageUrl }: TablesInsert<'comments'>) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from('comments').insert({ user_id: userId, tweet_id: tweetId, content })
+  const { error } = await supabase.from('comments').insert({ user_id: userId, tweet_id: tweetId, content, image_url: imageUrl })
 
   if (error) throw new Error('Error. Failed create comment in the tweet')
 }
