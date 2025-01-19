@@ -1,30 +1,32 @@
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import InteractionTweet from './InteractionTweet'
-import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
 import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
 import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/actions/actions'
-import { IconHeart } from '../Icons'
 import { Tables } from '@/types/database.types'
+import { Children, ReactNode } from 'react'
 
 interface TweetInteractionsProps {
   idTweet: Tables<'tweets'>['id']
   likes: Tables<'tweets'>['likes']
   retuits: Tables<'tweets'>['retuits']
   comments: Tables<'tweets'>['comments']
+  children?: ReactNode[]
 }
 
-export default async function TweetInteractions ({ idTweet, comments, retuits, likes }:TweetInteractionsProps) {
+export default async function TweetInteractions ({ idTweet, comments, retuits, likes, children }:TweetInteractionsProps) {
   const { id } = await getSessionAuth()
 
   const dataRetweets = await getRetweets({ userId: id, tweetId: idTweet })
   const dataLikes = await getLikes({ userId: id, tweetId: idTweet })
 
+  const [IconMessageCircle, IconRepeat, IconHeart, IconBookmark] = Children.toArray(children)
+
   return (
-    <div className='pt-2'>
+    <>
       <div className='flex justify-between'>
         <div className='flex flex-grow justify-between'>
           <InteractionTweet
-            icon={<IconMessageCircle size={20} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />}
+            icon={IconMessageCircle}
             bgColor='group-hover:before:bg-sky-500/10'
             textColor='text-sky-500'
             textColorHover='group-hover:text-sky-500'
@@ -33,7 +35,7 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
             idTweet={idTweet}
           />
           <InteractionTweet
-            icon={<IconRepeat size={20} color='currentColor' className='group-hover:stroke-green-500 transition-colors duration-300 ease-in-out' />}
+            icon={IconRepeat}
             bgColor='group-hover:before:bg-green-500/10'
             textColor='text-green-500'
             textColorHover='group-hover:text-green-500'
@@ -45,7 +47,7 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
             deleteData={deleteRetweet}
           />
           <InteractionTweet
-            icon={<IconHeart className='group-hover:stroke-pink-600 size-5 stroke-2 transition-colors duration-300 ease-in-out' />}
+            icon={IconHeart}
             bgColor='group-hover:before:bg-pink-500/10'
             textColor='text-pink-600'
             textColorHover='group-hover:text-red-500'
@@ -59,7 +61,7 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
         </div>
         <div className='flex w-1/4 justify-end'>
           <InteractionTweet
-            icon={<IconBookmark size={20} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />}
+            icon={IconBookmark}
             bgColor='group-hover:before:bg-sky-500/10'
             textColor='text-sky-500'
             textColorHover='group-hover:text-sky-500'
@@ -68,7 +70,6 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
           />
         </div>
       </div>
-    </div>
-
+    </>
   )
 }
