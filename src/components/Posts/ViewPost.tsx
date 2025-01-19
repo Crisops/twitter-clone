@@ -2,7 +2,7 @@ import { Tables } from '@/types/database.types'
 import { getTweetById } from '@/utils/supabase/getTweets'
 import TweetContent from '../Home/TweetContent'
 import CreateTimePost from './CreateTimePost'
-import Header from './Header'
+import HeaderPost from './HeaderPost'
 import TweetInteractions from '../Home/TweetInteractions'
 import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
 import { IconHeart } from '../Icons'
@@ -22,7 +22,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
       <article className='w-full h-full border-b border-zinc-700'>
         <div className='py-2 px-4'>
           <div>
-            <Header
+            <HeaderPost
               id={creator.id}
               name={creator.name}
               username={creator.username}
