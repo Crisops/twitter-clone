@@ -81,3 +81,24 @@ export const getUserTweetCount = async ({ id }: { id: Tables<'users'>['id'] }) =
     throw error
   }
 }
+
+export const getTweetById = async ({ idPost }: {idPost: Tables<'tweets'>['id']}) => {
+  const supabase = await createClient()
+
+  try {
+    const { data, error } = await supabase
+      .from('tweets')
+      .select(`id, content, image:image_url, likes, retuits, comments, created_at,
+      creator:users!tweets_user_id_fkey (
+        id, name, username, avatar_url, biography, followers, following
+      )`)
+      .eq('id', idPost).single()
+
+    if (error) throw new Error("Error. Failure to get user's post")
+
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
