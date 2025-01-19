@@ -23,3 +23,7 @@ export const formatTimeJoinedUser = (time: Tables<'users'>['created_at']): strin
 
   return `${monthUpperCase} de ${year}`
 }
+
+export const formatTimePost = (time: Tables<'tweets'>['created_at']) => {
+  return format(time, 'h:mm a  D MMM. YYYY', 'es')
+}
