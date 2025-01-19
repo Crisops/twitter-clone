@@ -13,18 +13,21 @@ export type Database = {
         Row: {
           content: string
           created_at: string
+          image_url: string | null
           tweet_id: string
           user_id: string
         }
         Insert: {
           content: string
           created_at?: string
+          image_url?: string | null
           tweet_id: string
           user_id: string
         }
         Update: {
           content?: string
           created_at?: string
+          image_url?: string | null
           tweet_id?: string
           user_id?: string
         }
