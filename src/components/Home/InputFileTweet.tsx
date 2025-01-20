@@ -1,13 +1,12 @@
-import { ChangeEvent, useId } from 'react'
+import { ChangeEvent, RefObject, useId } from 'react'
 import { IconPhoto } from '@tabler/icons-react'
 import { useCreateTweet } from '@/hooks/useStore'
-import { UseFormRegisterReturn } from 'react-hook-form'
 
 interface InputFileTweetProps {
-  registerField: UseFormRegisterReturn
+  refFile: RefObject<HTMLInputElement>
 }
 
-export default function InputFileTweet ({ registerField }:InputFileTweetProps) {
+export default function InputFileTweet ({ refFile }: InputFileTweetProps) {
   const { initialForm, setFormCreateTweet } = useCreateTweet(state => state)
 
   const idFile = useId()
@@ -33,7 +32,8 @@ export default function InputFileTweet ({ registerField }:InputFileTweetProps) {
       </label>
       <input
         id={idFile}
-        {...registerField}
+        ref={refFile}
+        name='file'
         type='file'
         className='hidden'
         onChange={handleFileChange}
