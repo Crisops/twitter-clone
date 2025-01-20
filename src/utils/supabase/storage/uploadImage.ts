@@ -4,9 +4,9 @@ import { createClient } from '../client'
 import { Tables } from '@/types/database.types'
 
 interface UploadImageProps {
-    bucket: 'post-tweets' | 'avatars'
+    bucket: 'post-tweets' | 'avatars' | 'posts-comments'
     file: File
-    folder: Tables<'users'>['id']
+    folder: Tables<'users'>['id'] | (Tables<'tweets'>['id'] & Tables<'users'>['id'])
 }
 
 const getStorage = () => {
