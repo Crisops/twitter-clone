@@ -59,6 +59,5 @@ export type GetFollowersPage = {
 }
 
 export type GetAllFollowersProps = {
-    follower: string[]
     following: string[]
 }
