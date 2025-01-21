@@ -16,12 +16,11 @@ export default async function ViewAllFollowers ({ username, filterColumn, column
 
   return (
     <div className='w-full'>
-      {followers.map(({ user, idFollower, idFollowing }) => (
+      {followers.map(({ user }) => (
         <CardFollower
           key={user.id}
-          idFollower={idFollower}
-          idFollowing={idFollowing}
-          idUser={user.id}
+          idUserVisited={idUser}
+          idUserCard={user.id}
           name={user.name}
           username={user.username}
           src={user.src}
