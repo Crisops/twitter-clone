@@ -18,7 +18,7 @@ export default function ToolTipProfile ({ id, name, username, src, biography, fo
   return (
     <Tooltip
       delay={800}
-      closeDelay={500}
+      closeDelay={200}
       placement='bottom'
       classNames={{ content: 'bg-black p-1 shadow-[0px_0px_10px_#676767]' }}
       content={<CardProfile id={id} name={name} username={username} src={src} biography={biography} following={following} followers={followers} />}
