@@ -24,7 +24,7 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
   return (
     <RedirectWrapperServer slug={`/${creator.username}/status/${id}`}>
       <article className='w-full h-full border-b border-zinc-700'>
-        <div className='py-2 px-4'>
+        <div className='py-2 pl-2 pr-5 lg:px-4'>
           {postType === 'retweet' && <TweetPostType idUserVisited={idUser ?? ''} nameUserVisited={nameUserVisited ?? ''} />}
           <div className='flex gap-x-2'>
             <ToolTipProfile
