@@ -19,26 +19,36 @@ export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, user
   return (
     <header className='flex items-center justify-between' data-no-redirect>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
-        <ToolTipProfile
-          id={idUserCreatorTweet}
-          name={name}
-          username={username}
-          src={src}
-          biography={biography}
-          followers={followers}
-          following={following}
-        >
-          <div className='flex items-center gap-x-1'>
-            <div>
+        <div className='flex items-center gap-x-1'>
+          <div className='max-w-36 sm:max-w-56 lg:max-w-full'>
+            <ToolTipProfile
+              id={idUserCreatorTweet}
+              name={name}
+              username={username}
+              src={src}
+              biography={biography}
+              followers={followers}
+              following={following}
+            >
               <Link href={`/${username}`} className='hover:underline text-white'>
                 <span className='text-current font-medium'>{name}</span>
               </Link>
-            </div>
+            </ToolTipProfile>
+          </div>
+          <ToolTipProfile
+            id={idUserCreatorTweet}
+            name={name}
+            username={username}
+            src={src}
+            biography={biography}
+            followers={followers}
+            following={following}
+          >
             <div>
               <span className='text-zinc-500 font-normal cursor-pointer'>@{username}</span>
             </div>
-          </div>
-        </ToolTipProfile>
+          </ToolTipProfile>
+        </div>
         <TweetCreatedTime date={date} />
       </div>
       <div>
