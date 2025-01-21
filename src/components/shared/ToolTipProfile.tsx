@@ -23,7 +23,7 @@ export default function ToolTipProfile ({ id, name, username, src, biography, fo
       classNames={{ content: 'bg-black p-1 shadow-[0px_0px_10px_#676767]' }}
       content={<CardProfile id={id} name={name} username={username} src={src} biography={biography} following={following} followers={followers} />}
     >
-      <div className='h-max'>
+      <div className='h-max shrink-0 truncate'>
         {children}
       </div>
     </Tooltip>
