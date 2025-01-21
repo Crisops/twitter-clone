@@ -17,7 +17,7 @@ interface TweetHeaderContentProps {
 
 export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, date }: TweetHeaderContentProps) {
   return (
-    <header className='flex items-center justify-between'>
+    <header className='flex items-center justify-between' data-no-redirect>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
         <ToolTipProfile
           id={idUserCreatorTweet}
