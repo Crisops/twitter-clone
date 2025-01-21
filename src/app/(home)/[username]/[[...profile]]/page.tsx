@@ -28,7 +28,6 @@ export default async function ProfilePage ({ params: { username } }:ProfileLayou
         bannerUrl={bannerUrl}
         createdAt={joined}
       />
-      {/* </ErrorBoundary> */}
     </section>
   )
 }
