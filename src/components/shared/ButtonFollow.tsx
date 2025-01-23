@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@nextui-org/react'
+import { Button } from '@heroui/react'
 import { useReducer } from 'react'
 import { deleteFollowUser, insertFollowUser } from '@/actions/actions'
 import { Tables, TablesInsert } from '@/types/database.types'

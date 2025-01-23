@@ -1,4 +1,4 @@
-import { Select, SelectItem } from '@nextui-org/select'
+import { Select, SelectItem } from '@heroui/select'
 import { Birthday } from '@/lib/data-date'
 import { ChangeEvent } from 'react'
 import { useAuth } from '@/hooks/useStore'

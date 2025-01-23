@@ -1,4 +1,4 @@
-import { Avatar, Card, CardBody, CardHeader } from '@nextui-org/react'
+import { Avatar, Card, CardBody, CardHeader } from '@heroui/react'
 import ButtonFollow from '@/components/shared/ButtonFollow'
 import { Tables } from '@/types/database.types'
 import Link from 'next/link'

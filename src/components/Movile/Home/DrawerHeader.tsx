@@ -1,5 +1,5 @@
 import { Tables } from '@/types/database.types'
-import { DrawerHeader as DrawerHeaderClient } from '@nextui-org/react'
+import { DrawerHeader as DrawerHeaderClient } from '@heroui/react'
 import { ReactNode } from 'react'
 
 interface DrawerHeaderContentClientProps {

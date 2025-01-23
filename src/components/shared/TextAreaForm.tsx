@@ -1,6 +1,6 @@
 import { useCreateTweet } from '@/hooks/useStore'
 import { FormCreateTweet } from '@/types/store'
-import { Textarea } from '@nextui-org/react'
+import { Textarea } from '@heroui/react'
 import { ChangeEvent } from 'react'
 import { FieldErrors, UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form'
 

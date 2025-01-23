@@ -1,5 +1,5 @@
 import { Tables } from '@/types/database.types'
-import { Tooltip } from '@nextui-org/react'
+import { Tooltip } from '@heroui/react'
 import { ReactNode } from 'react'
 import CardProfile from './CardProfile'
 

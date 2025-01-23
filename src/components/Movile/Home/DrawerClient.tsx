@@ -1,7 +1,7 @@
 'use client'
 
 import AsideNavigation from '@/components/Home/AsideNavigation'
-import { Drawer, DrawerContent, DrawerBody, DrawerFooter, Button, useDisclosure } from '@nextui-org/react'
+import { Drawer, DrawerContent, DrawerBody, DrawerFooter, Button, useDisclosure } from '@heroui/react'
 import { ReactNode } from 'react'
 
 interface DrawerHeaderClientProps {

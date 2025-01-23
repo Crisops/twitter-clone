@@ -1,6 +1,6 @@
 import { IconTwitter } from '@/components/Icons'
 import DrawerServer from './DrawerServer'
-import { Navbar, NavbarContent, NavbarItem } from '@nextui-org/react'
+import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
 
 function ChooseViewTweetsMoviel () {
   return (
