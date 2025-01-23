@@ -10,9 +10,9 @@ interface StatusPostPageProps {
 
 export default function StatusPostPage ({ params: { idPost } }:StatusPostPageProps) {
   return (
-    <div>
+    <>
       <HeaderBackPost />
       <ViewPost idPost={idPost} />
-    </div>
+    </>
   )
 }
