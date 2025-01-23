@@ -7,6 +7,9 @@ import TweetInteractions from '../Home/TweetInteractions'
 import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
 import { IconHeart } from '../Icons'
 import FormPostServer from './FormPostServer'
+import LoadComments from './LoadComments'
+import { Suspense } from 'react'
+import LoadingSpinner from '@/components/shared/LoadingSpinner'
 
 interface ViewPostProps {
     idPost: Tables<'tweets'>['id']
@@ -19,7 +22,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
 
   return (
     <section>
-      <article className='w-full h-full border-b border-zinc-700'>
+      <div className='w-full h-full border-b border-zinc-700'>
         <div className='py-2 px-4'>
           <div>
             <HeaderPost
@@ -48,7 +51,14 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
             </div>
           </div>
         </div>
-      </article>
+      </div>
+      <div className='max-w-full h-full'>
+        <section className='w-full h-full'>
+          <Suspense fallback={<LoadingSpinner />}>
+            <LoadComments idTweet={idPost} />
+          </Suspense>
+        </section>
+      </div>
     </section>
   )
 }
