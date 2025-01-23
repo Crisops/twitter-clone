@@ -3,8 +3,8 @@ import { getBase64 } from '@/utils/getBase64'
 import Image from 'next/image'
 
 interface TweetContentProps {
-  content: Tables<'tweets'>['content'],
-  image_url: Tables<'tweets'>['image_url']
+  content: Tables<'tweets'>['content'] | Tables<'comments'>['content']
+  image_url: Tables<'tweets'>['image_url'] | Tables<'comments'>['image_url']
   className?: string
 }
 
