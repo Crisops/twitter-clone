@@ -1,6 +1,6 @@
 import { Tables } from '@/types/database.types'
 import { getCommentsTweetById } from '@/utils/supabase/getComments'
-import Comments from './Comments'
+import Comment from './Comment'
 
 interface LoadCommentsProps {
   idTweet: Tables<'tweets'>['id']
@@ -13,7 +13,7 @@ export default async function LoadComments ({ idTweet }:LoadCommentsProps) {
     <>
       {
         comments.map(({ id, content, image_url: imageContent, created_at: dateComment, creator }) => (
-          <Comments
+          <Comment
             key={id}
             id={creator.id}
             name={creator.name}
