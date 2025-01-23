@@ -9,14 +9,14 @@ export default function AsideBarMenu () {
       <div className='h-full px-1'>
         <div className='flex flex-col justify-between h-full'>
           <div className='flex flex-col w-full h-full'>
-            <header className='flex justify-end py-4 pl-4 pr-5 xl:block'>
-              <IconTwitter size='size-[2rem]' />
+            <header className='flex justify-end xl:block p-3'>
+              <IconTwitter size='size-7' />
             </header>
             <div className='h-full'>
-              <div className='min-[500px]:hidden pl-1 h-full'>
+              <div className='min-[500px]:hidden h-full'>
                 <AsideNavigation />
               </div>
-              <div className='hidden min-[500px]:block pl-1 h-full'>
+              <div className='hidden min-[500px]:block h-full'>
                 <AsideNavigationDesktop />
               </div>
             </div>
