@@ -49,6 +49,8 @@ export async function insertComment ({ user_id: userId, tweet_id: tweetId, conte
   const { error } = await supabase.from('comments').insert({ user_id: userId, tweet_id: tweetId, content, image_url: imageUrl })
 
   if (error) throw new Error('Error. Failed create comment in the tweet')
+
+  revalidatePath('/(home)/[username]/status/[idPost]', 'page')
 }
 
 export async function deleteComment ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'comments'>) {
@@ -106,6 +108,6 @@ export async function deleteFollowUser ({ user_id_follower: idUserFollower, user
 
   const { error } = await supabase.from('followers').delete().eq('user_id_follower', idUserFollower).eq('user_id_following', idUserFollowing)
   revalidatePath('/home')
-  revalidatePath('/[username]', 'layout')
+  revalidatePath('/(home)/[username]', 'layout')
   return { error }
 }
