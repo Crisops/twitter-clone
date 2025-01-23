@@ -19,7 +19,7 @@ async function HeaderBack ({ id, name, username, children }: HeaderBackProps) {
   }
 
   return (
-    <div className='hidden min-[500px]:block sticky top-0 w-full h-max px-2 border-b border-zinc-900 z-50 backdrop-blur-md bg-black/60'>
+    <div className={`${children ? 'block' : 'hidden min-[500px]:block'} sticky top-0 w-full h-max px-2 border-b border-zinc-900 z-50 backdrop-blur-md bg-black/60`}>
       <div className='flex items-center'>
         <div className='flex items-center w-16 h-full'>
           <ButtonNavigationBack />
