@@ -12,7 +12,7 @@ interface TweetHeaderContentProps {
   biography: Tables<'users'>['biography']
   followers: Tables<'users'>['followers']
   following: Tables<'users'>['following']
-  date: Tables<'tweets'>['created_at']
+  date: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
 }
 
 export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, date }: TweetHeaderContentProps) {
@@ -20,7 +20,7 @@ export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, user
     <header className='flex items-center justify-between' data-no-redirect>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
         <div className='flex items-center gap-x-1'>
-          <div className='max-w-36 sm:max-w-56 lg:max-w-full'>
+          <div className='max-w-28 sm:max-w-56 lg:max-w-full'>
             <ToolTipProfile
               id={idUserCreatorTweet}
               name={name}
