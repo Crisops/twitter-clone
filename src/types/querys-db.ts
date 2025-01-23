@@ -2,22 +2,22 @@ import { type Tables } from './database.types'
 import { TableRelationships } from './generics'
 
 export type TweetInfo = {
-    id: Tables<'tweets'>['id']
-    content: Tables<'tweets'>['content']
-    image_url: Tables<'tweets'>['image_url']
+    id: Tables<'tweets'>['id'] | Tables<'comments'>['tweet_id']
+    content: Tables<'tweets'>['content'] | Tables<'comments'>['content']
+    image_url: Tables<'tweets'>['image_url'] | Tables<'comments'>['image_url']
     likes: Tables<'tweets'>['likes']
     retuits: Tables<'tweets'>['retuits']
     comments: Tables<'tweets'>['comments']
-    created_at: Tables<'tweets'>['created_at']
+    created_at: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
     creator: {
-        id: Tables<'users'>['id'];
+        id: Tables<'users'>['id']
         name: Tables<'users'>['name'];
         username: Tables<'users'>['username'];
         biography: Tables<'users'>['biography']
         following: Tables<'users'>['following']
         followers: Tables<'users'>['followers']
         avatar_url: Tables<'users'>['avatar_url'];
-    } | null,
+    }
     post_type?: string
 }
 
@@ -61,3 +61,5 @@ export type GetFollowersPage = {
 export type GetAllFollowersProps = {
     following: string[]
 }
+
+export type CommentInfo = Omit<TweetInfo, 'likes' | 'retuits' | 'comments'>
