@@ -7,6 +7,4 @@ export type LinksAsideNavHome = {
     text: string
 }
 
-export type ReducerAction = { type: 'follow' | 'unfollow' };
-
 export type TableRelationships<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Relationships'][number]['foreignKeyName'];
