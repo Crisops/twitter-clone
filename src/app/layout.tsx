@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import NavbarLinks from '@/components/Movile/Home/NavbarLinks'
 
 export const metadata: Metadata = {
-  title: 'X. Twitter Clone / ByCrisops',
+  title: 'Inicio / Twitter Clone X',
   description: 'This proyect is a clone of Twitter, created by Crisops'
 }
 
