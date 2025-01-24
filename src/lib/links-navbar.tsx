@@ -16,3 +16,9 @@ export const linksMovileDrawer: LinksAsideNavHome[] = [
   { href: '/bookmarks', icon: <IconBookmark size='1.75rem' color='white' />, text: 'Guardados' },
   { href: '/logout', icon: <IconDoorExit size='1.75rem' color='white' />, text: 'Cerrar sesión' }
 ]
+
+export const linksMovileHome: Omit<LinksAsideNavHome, 'text'>[] = [
+  { href: '/home', icon: <IconHome /> },
+  { href: '/explore', icon: <IconSearch size='1.75rem' color='white' /> },
+  { href: '/messages', icon: <IconMail size='1.75rem' color='white' /> }
+]
