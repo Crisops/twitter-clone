@@ -1,7 +1,7 @@
 'use client'
 
 import AsideNavigation from '@/components/Home/AsideNavigation'
-import { Drawer, DrawerContent, DrawerBody, DrawerFooter, Button, useDisclosure } from '@heroui/react'
+import { Drawer, DrawerContent, DrawerBody, Button, useDisclosure } from '@heroui/react'
 import { ReactNode } from 'react'
 
 interface DrawerHeaderClientProps {
@@ -32,9 +32,6 @@ function DrawerClient ({ DrawerHeader, children: avatar, LinkProfile }: DrawerHe
             <DrawerBody>
               <AsideNavigation viewMovil LinkProfile={LinkProfile} />
             </DrawerBody>
-            <DrawerFooter>
-              <p>Description</p>
-            </DrawerFooter>
           </>
         </DrawerContent>
       </Drawer>
