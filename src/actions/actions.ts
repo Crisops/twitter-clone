@@ -67,6 +67,9 @@ export async function insertRetweet ({ user_id: userId, tweet_id: tweetId }: Tab
   const { error } = await supabase.from('retuits').insert({ user_id: userId, tweet_id: tweetId })
 
   if (error) throw new Error('Error. Failed to create retweet ')
+
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
 }
 
 export async function deleteRetweet ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'retuits'>) {
@@ -76,7 +79,8 @@ export async function deleteRetweet ({ user_id: userId, tweet_id: tweetId }: Tab
 
   if (error) throw new Error('Error. Failed remove retweet')
 
-  revalidatePath('/(home)/[...profile]/@posts', 'page')
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
 }
 
 export async function insertLikes ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'likes'>) {
@@ -85,6 +89,9 @@ export async function insertLikes ({ user_id: userId, tweet_id: tweetId }: Table
   const { error } = await supabase.from('likes').insert({ user_id: userId, tweet_id: tweetId })
 
   if (error) throw new Error('Error. Could not like the Tweet')
+
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
 }
 
 export async function deleteLikes ({ user_id: userId, tweet_id: tweetId }: TablesInsert<'likes'>) {
@@ -93,13 +100,19 @@ export async function deleteLikes ({ user_id: userId, tweet_id: tweetId }: Table
   const { error } = await supabase.from('likes').delete().eq('user_id', userId).eq('tweet_id', tweetId)
 
   if (error) throw new Error('Error. Failed delete like tweeet')
+
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
 }
 
 export async function insertFollowUser ({ user_id_follower: idUserFollower, user_id_following: idUserFollowing }: TablesInsert<'followers'>) {
   const supabase = await createClient()
 
   const { error } = await supabase.from('followers').insert({ user_id_follower: idUserFollower, user_id_following: idUserFollowing })
+
   revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
+
   return { error }
 }
 
