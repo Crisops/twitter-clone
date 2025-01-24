@@ -24,8 +24,9 @@ function ChooseViewTweetsMoviel () {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent>
-        <NavbarItem>
+        <NavbarItem className='relative'>
           <button className='w-full py-3 text-white text-base font-bold transition-colors duration-200 hover:bg-white/10 '>Para ti</button>
+          <div className='absolute w-1/4 h-1 left-1/2 bottom-0 -translate-x-1/2 rounded-full bg-sky-500' />
         </NavbarItem>
         <NavbarItem>
           <button className='w-full py-3 text-zinc-500 text-base font-medium transition-colors duration-200 hover:bg-white/10'>Siguiendo</button>
