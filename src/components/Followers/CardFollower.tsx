@@ -29,7 +29,7 @@ export default async function CardFollower ({ idUserCard, name, username, src, b
   return (
     <RedirectWrapperServer slug={`/${username}`}>
       <Card className='w-full border-none bg-transparent' shadow='none'>
-        <CardHeader className='justify-between'>
+        <CardHeader className='justify-between px-3 pt-3 pb-0'>
           <div className='flex gap-2'>
             <ToolTipProfile id={idUserCard} name={name} username={username} biography={biography} followers={followers} following={following} src={src}>
               <Avatar
@@ -45,15 +45,15 @@ export default async function CardFollower ({ idUserCard, name, username, src, b
                   <h4 className='text-medium font-semibold leading-none text-gray-100 hover:underline'>{name}</h4>
                 </ToolTipProfile>
                 <ToolTipProfile id={idUserCard} name={name} username={username} biography={biography} followers={followers} following={following} src={src}>
-                  <h5 className='text-small tracking-tight text-zinc-500'>@{username}</h5>
+                  <h5 className='text-medium tracking-tight text-zinc-500'>@{username}</h5>
                 </ToolTipProfile>
               </Link>
             </div>
           </div>
           <ButtonFollow idUserSession={idUserSession} idUserProfile={idUserCard} hiddenButtonFollow={hiddenButtonFollow} validateStateInitialFollow={isFollowed} />
         </CardHeader>
-        <CardBody className='px-3 py-0'>
-          <p className='text-small pl-px text-default-500'>
+        <CardBody className='pt-0 pr-3 pb-2 pl-14'>
+          <p className='text-medium pl-px text-gray-100'>
             {biography}
           </p>
         </CardBody>
