@@ -2,6 +2,7 @@
 
 import { MouseEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
+import { useSearchContext } from '@/hooks/useSearchContext'
 
 interface RedirectWrapperClientProps {
     slug: string
@@ -11,9 +12,15 @@ interface RedirectWrapperClientProps {
 export default function RedirectWrapperClient ({ slug, children }:RedirectWrapperClientProps) {
   const router = useRouter()
 
+  const { handleCardClick } = useSearchContext()
+
   const handleRedirect = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     if ((e.target as HTMLElement).closest('[data-no-redirect]')) {
       return
+    }
+
+    if ((e.target as HTMLElement).closest('[data-search]')) {
+      handleCardClick()
     }
     router.push(slug)
   }
