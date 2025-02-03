@@ -25,7 +25,7 @@ async function HeaderBack ({ id, name, username, children }: HeaderBackProps) {
           <ButtonNavigationBack />
         </div>
         <div className='flex-grow flex flex-col justify-center'>
-          <div className='inline-flex'>
+          <div className='truncate max-w-28 sm:max-w-56 lg:max-w-96'>
             <span className='text-xl font-bold text-gray-100'>{name}</span>
           </div>
           <div className='inline-flex'>
