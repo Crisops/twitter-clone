@@ -15,6 +15,7 @@ export const getUserSearch = async ({ query }: {query: Tables<'users'>['username
       .from('users')
       .select('id, name, username, src:avatar_url')
       .or(`username.ilike.%${query}%,name.ilike.%${query}%`)
+      .limit(10)
     if (error) throw new Error('Error. No se puede realizar la consulta de buscar usuarios')
 
     return data
