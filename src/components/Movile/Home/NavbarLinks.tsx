@@ -4,10 +4,13 @@ import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
 import Link from 'next/link'
 import { linksMovileHome } from '@/lib/links-navbar'
 import { useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function NavbarLinks () {
   const [scroll, setScroll] = useState<number>(0)
   const numberRef = useRef<number>(scroll)
+
+  const pathname = usePathname()
 
   const handleScrollPositionChange = (value: number) => {
     setScroll(value)
@@ -20,8 +23,8 @@ export default function NavbarLinks () {
         <NavbarContent className='flex gap-4 w-full'>
           {
             linksMovileHome.map(({ href, icon }, index) => (
-              <NavbarItem key={index}>
-                <Link href={href}>
+              <NavbarItem key={index} isActive={pathname === href} className='group'>
+                <Link href={href} className='group-data-[active=true]:text-white group-data-[active=true]:first:stroke-1 text-transparent first:stroke-1'>
                   {icon}
                 </Link>
               </NavbarItem>
