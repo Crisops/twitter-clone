@@ -1,10 +1,34 @@
+import { useSearchContext } from '@/hooks/useSearchContext'
 import { Input } from '@heroui/react'
 import { IconSearch } from '@tabler/icons-react'
+import { FocusEvent, forwardRef } from 'react'
 
-function InputSearch () {
+interface InputSearchProps {
+  value: string
+  handleChange: (letter: string) => void
+  handleFocus: () => void
+  handleClearInput: () => void
+}
+
+const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(({ value, handleChange, handleFocus, handleClearInput }, ref) => {
+  const { handleBlur } = useSearchContext()
+  const handleBlurInternal = (e: FocusEvent<HTMLInputElement>) => {
+    const clearButton = e.relatedTarget as HTMLButtonElement
+    if (clearButton) if (clearButton.dataset.slot === 'clear-button') return
+
+    handleBlur()
+  }
+
   return (
     <div className='relative w-full h-full max-h-28'>
       <Input
+        ref={ref}
+        autoComplete='false'
+        onFocus={handleFocus}
+        onBlur={handleBlurInternal}
+        onValueChange={handleChange}
+        onClear={handleClearInput}
+        value={value}
         isClearable
         variant='bordered'
         size='md'
@@ -40,6 +64,8 @@ function InputSearch () {
     </div>
 
   )
-}
+})
+
+InputSearch.displayName = 'InputSearch'
 
 export default InputSearch
