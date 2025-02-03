@@ -22,7 +22,7 @@ export default function MatchingUsers ({ valueInput, searchQuery }: MatchingUser
   }, [searchQuery])
 
   return (
-    <section className={`${valueInput.length === 0 ? 'hidden' : 'block w-full'}`}>
+    <section className={`w-full h-full max-h-[650px] ${valueInput.length === 0 ? 'hidden' : 'block overflow-y-auto'} `}>
       <div className='w-full h-full py-0.5'>
         <div className='flex flex-col w-full'>
           {
