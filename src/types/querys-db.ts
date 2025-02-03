@@ -63,3 +63,10 @@ export type GetAllFollowersProps = {
 }
 
 export type CommentInfo = Omit<TweetInfo, 'likes' | 'retuits' | 'comments'>
+
+export type UsersSearch = {
+    id: Tables<'users'>['id']
+    name: Tables<'users'>['name']
+    username: Tables<'users'>['username']
+    src: Tables<'users'>['avatar_url']
+}
