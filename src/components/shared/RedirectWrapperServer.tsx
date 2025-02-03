@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import RedirectWrapperClient from './RedirectWrapperClient'
+import { SearchProvider } from '@/context/SearchContext'
 
 interface RedirectWrapperServerProps {
     slug: string
@@ -8,9 +9,11 @@ interface RedirectWrapperServerProps {
 
 function RedirectWrapperServer ({ slug, children }: RedirectWrapperServerProps) {
   return (
-    <RedirectWrapperClient slug={slug}>
-      {children}
-    </RedirectWrapperClient>
+    <SearchProvider>
+      <RedirectWrapperClient slug={slug}>
+        {children}
+      </RedirectWrapperClient>
+    </SearchProvider>
   )
 }
 
