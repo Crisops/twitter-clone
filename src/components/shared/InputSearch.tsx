@@ -23,7 +23,8 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(({ value, han
     <div className='relative w-full h-full max-h-28'>
       <Input
         ref={ref}
-        autoComplete='false'
+        autoComplete='off'
+        type='search'
         onFocus={handleFocus}
         onBlur={handleBlurInternal}
         onValueChange={handleChange}
