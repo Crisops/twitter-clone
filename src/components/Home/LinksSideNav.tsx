@@ -21,7 +21,7 @@ export default function LinksSideNav ({ links, viewMovil, LinkProfile }: LinksSi
             <Link href={href} className={`w-full flex  ${viewMovil ? 'justify-start' : 'justify-end xl:justify-start'}`}>
               <div className={` ${viewMovil ? 'w-full group-hover:bg-[#5b70831A]' : 'w-max rounded-full group-hover:bg-white/10'} p-3 transition-colors duration-150`}>
                 <div className='flex items-center justify-start gap-5'>
-                  <div className={`${pathname === href ? 'text-white first:stroke-1 ' : 'text-transparent first:stroke-2'}`}>
+                  <div className={`${pathname === href ? 'text-white first:stroke-1 ' : 'text-transparent first:stroke-1'}`}>
                     {icon}
                   </div>
                   <div className={`${viewMovil ? 'block' : 'hidden xl:block'}`}>
