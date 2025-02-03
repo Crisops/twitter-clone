@@ -5,14 +5,21 @@ import { useRef, useState } from 'react'
 import QueryUsers from './QueryUsers'
 import { useDebouncedCallback } from 'use-debounce'
 import { useSearchContext } from '@/hooks/useSearchContext'
+import { usePathname } from 'next/navigation'
 
-export default function SearchPeople () {
+interface SearchPeopleProps {
+  shouldHidden?: boolean
+}
+
+export default function SearchPeople ({ shouldHidden }:SearchPeopleProps) {
   const [valueInput, setValueInput] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const { open, setOpen } = useSearchContext()
 
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const pathname = usePathname()
 
   const debouncedSearch = useDebouncedCallback((letter: string) => {
     setSearchQuery(letter)
@@ -32,7 +39,7 @@ export default function SearchPeople () {
   }
 
   return (
-    <div className='relative max-w-[370px] w-full ml-8 mt-1' data-search>
+    <div className={`${(shouldHidden && pathname === '/explore') ? 'hidden' : 'block w-full'}`}>
       <InputSearch
         ref={inputRef}
         handleChange={handleChange}
