@@ -7,7 +7,7 @@ interface BiographyProps {
 function Biography ({ biography }: BiographyProps) {
   return (
     <div className='my-2'>
-      <p className='text-white'>{biography}</p>
+      <p className='text-white max-w-96'>{biography}</p>
     </div>
   )
 }
