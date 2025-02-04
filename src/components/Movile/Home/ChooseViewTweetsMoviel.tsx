@@ -1,6 +1,7 @@
 import { IconTwitter } from '@/components/Icons'
 import DrawerServer from './DrawerServer'
 import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
+import { SearchProvider } from '@/context/SearchContext'
 
 function ChooseViewTweetsMoviel () {
   return (
@@ -17,7 +18,9 @@ function ChooseViewTweetsMoviel () {
     >
       <NavbarContent justify='center'>
         <NavbarItem className='basis-0 pl-2'>
-          <DrawerServer />
+          <SearchProvider>
+            <DrawerServer />
+          </SearchProvider>
         </NavbarItem>
         <NavbarItem>
           <IconTwitter size='size-[1.5rem]' />
