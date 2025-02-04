@@ -19,7 +19,7 @@ export default function NavbarLinks () {
 
   return (
     <div className='min-[500px]:hidden fixed w-full left-0 bottom-0'>
-      <Navbar onScrollPositionChange={handleScrollPositionChange} className={`border-t border-zinc-700 transition-opacity duration-150 ease-in-out h-12 ${numberRef.current <= scroll ? 'opacity-25' : 'opacity-100'}`} maxWidth='full' classNames={{ content: 'data-[justify=start]:justify-evenly' }} isBlurred={false}>
+      <Navbar onScrollPositionChange={handleScrollPositionChange} className={`border-t border-zinc-700 transition-opacity duration-150 ease-in-out h-12 ${numberRef.current < scroll ? 'opacity-25' : 'opacity-100'}`} maxWidth='full' classNames={{ content: 'data-[justify=start]:justify-evenly' }} isBlurred={false}>
         <NavbarContent className='flex gap-4 w-full'>
           {
             linksMovileHome.map(({ href, icon }, index) => (
