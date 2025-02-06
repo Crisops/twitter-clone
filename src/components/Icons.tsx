@@ -45,3 +45,9 @@ export const IconHeart = ({ className }: {className: string}) => {
     <svg className={`${className}`} viewBox='0 0 24 24'><path clipRule='evenodd' d='M12 6c-1.8-2.1-4.8-2.74-7.06-.82a5.33 5.33 0 0 0-.8 7.4c1.47 1.89 5.92 5.87 7.38 7.16.17.14.25.21.35.24.08.03.17.03.25 0 .1-.03.18-.1.34-.24 1.46-1.3 5.92-5.27 7.39-7.16a5.3 5.3 0 0 0-.8-7.4C16.75 3.28 13.8 3.9 12 6Z' strokeLinecap='round' strokeLinejoin='round' /></svg>
   )
 }
+
+export const IconFeather = ({ className }: {className: string}) => {
+  return (
+    <svg className={className} viewBox='0 0 24 24' aria-hidden='true'><path d='M23 3c-6.62-.1-10.38 2.42-13.05 6.03C7.29 12.61 6 17.33 6 22h2c0-1 .07-2.01.19-3H12c4.1 0 7.48-3.08 7.94-7.05 2.85-1.8 3.23-5.6 3.06-8.95zm-7 8h-1.5v2H16c.63-.02 1.2-.08 1.72-.19A6 6 0 0 1 12 17H8.55a18.1 18.1 0 0 1 3-6.78A12.44 12.44 0 0 1 21 5.03C20.95 8.08 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z' /></svg>
+  )
+}
