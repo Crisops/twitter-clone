@@ -10,14 +10,17 @@ interface TweetContentProps {
 
 export default async function TweetContent ({ content, image_url: url, className }: TweetContentProps) {
   let dataUrl: string = ''
-  let w: number = 0
-  let h: number = 0
+
+  const NEW_WIDTH_IMAGE = 700
+  const NEW_HEIGHT_IMAGE = 600
+  let WIDTH_IMAGE
+  let HEIGHT_IMAGE
 
   if (url) {
     const { base64, width, height } = await getBase64({ url })
     dataUrl = base64
-    w = width
-    h = height
+    WIDTH_IMAGE = width > 800 ? Math.round((NEW_HEIGHT_IMAGE * width) / height) : width
+    HEIGHT_IMAGE = height > 800 ? Math.round((NEW_WIDTH_IMAGE * height) / width) : height
   }
 
   return (
@@ -31,8 +34,8 @@ export default async function TweetContent ({ content, image_url: url, className
             <Image
               className='rounded-2xl border border-zinc-800'
               src={url}
-              width={w}
-              height={h}
+              width={WIDTH_IMAGE}
+              height={HEIGHT_IMAGE}
               blurDataURL={dataUrl}
               placeholder='blur'
               alt='Descripción de la imagén'
