@@ -1,18 +1,19 @@
-import { useCreateTweet } from '@/hooks/useStore'
-import { FormCreateTweet } from '@/types/store'
-import { Textarea } from '@heroui/react'
 import { ChangeEvent } from 'react'
+import { Textarea } from '@heroui/react'
+import { StoreApi, UseBoundStore } from 'zustand'
 import { FieldErrors, UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form'
+import { FormCreateTweet, StoreCreateTweet } from '@/types/store'
 
 interface TextAreaFormProps {
     registerField: UseFormRegisterReturn
     trigger: UseFormTrigger<FormCreateTweet>
     errors: FieldErrors<FormCreateTweet>
     placeholder: string | undefined
+    useStoreHook: UseBoundStore<StoreApi<StoreCreateTweet>>
 }
 
-export default function TextAreaForm ({ registerField, trigger, errors, placeholder }: TextAreaFormProps) {
-  const { initialForm, setFormCreateTweet } = useCreateTweet(state => state)
+export default function TextAreaForm ({ registerField, trigger, errors, placeholder, useStoreHook }: TextAreaFormProps) {
+  const { initialForm, setFormCreateTweet } = useStoreHook(state => state)
 
   const { onChange, ...rest } = registerField
 

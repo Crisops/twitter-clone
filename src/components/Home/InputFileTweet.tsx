@@ -1,13 +1,15 @@
 import { ChangeEvent, RefObject, useId } from 'react'
 import { IconPhoto } from '@tabler/icons-react'
-import { useCreateTweet } from '@/hooks/useStore'
+import { StoreApi, UseBoundStore } from 'zustand'
+import { StoreCreateTweet } from '@/types/store'
 
 interface InputFileTweetProps {
   refFile: RefObject<HTMLInputElement>
+  useStoreHook: UseBoundStore<StoreApi<StoreCreateTweet>>
 }
 
-export default function InputFileTweet ({ refFile }: InputFileTweetProps) {
-  const { initialForm, setFormCreateTweet } = useCreateTweet(state => state)
+export default function InputFileTweet ({ refFile, useStoreHook }: InputFileTweetProps) {
+  const { initialForm, setFormCreateTweet } = useStoreHook(state => state)
 
   const idFile = useId()
 
