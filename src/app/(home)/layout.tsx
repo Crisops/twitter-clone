@@ -2,7 +2,11 @@ import AsideBarMenu from '@/components/Home/AsideBarMenu'
 import SidebarInformation from '@/components/Home/SidebarInformation'
 import { ReactNode } from 'react'
 
-export default function HomeLayout ({ children }: {children: ReactNode}) {
+interface HomeLayoutProps {
+  children: ReactNode
+}
+
+export default function HomeLayout ({ children }: HomeLayoutProps) {
   return (
     <main>
       <section className='relative w-screen'>
