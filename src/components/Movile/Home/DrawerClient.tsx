@@ -1,24 +1,23 @@
 'use client'
 
-import AsideNavigation from '@/components/Home/AsideNavigation'
 import { useSearchContext } from '@/hooks/useSearchContext'
 import { Drawer, DrawerContent, DrawerBody, Button, useDisclosure } from '@heroui/react'
-import { ReactNode } from 'react'
+import { Children, ReactNode } from 'react'
 
 interface DrawerHeaderClientProps {
-  DrawerHeader: ReactNode
-  LinkProfile: ReactNode
-  children: ReactNode
+  children: ReactNode[]
 }
 
-function DrawerClient ({ DrawerHeader, children: avatar, LinkProfile }: DrawerHeaderClientProps) {
+function DrawerClient ({ children }: DrawerHeaderClientProps) {
+  const [drawerHeader, asideNavigation, avatarUser] = Children.toArray(children)
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const { open } = useSearchContext()
 
   return (
     <>
       <Button isIconOnly variant='bordered' className={`border-none self-start ${open ? 'hidden' : 'inline-flex'}`} onPress={onOpen}>
-        {avatar}
+        {avatarUser}
       </Button>
       <Drawer
         hideCloseButton
@@ -26,13 +25,13 @@ function DrawerClient ({ DrawerHeader, children: avatar, LinkProfile }: DrawerHe
         isOpen={isOpen}
         placement='left'
         onOpenChange={onOpenChange}
-        classNames={{ wrapper: 'w-3/4 [box-shadow:0px_10px_10px_#fff]', base: 'bg-black rounded-none', backdrop: 'bg-[#5b708366]', body: 'px-0' }}
+        classNames={{ wrapper: 'w-3/4', base: 'bg-black rounded-none shadow-[0px_10px_10px_#fff]', backdrop: 'bg-[#5b708366]', body: 'px-0' }}
       >
         <DrawerContent>
           <>
-            {DrawerHeader}
+            {drawerHeader}
             <DrawerBody>
-              <AsideNavigation viewMovil LinkProfile={LinkProfile} />
+              {asideNavigation}
             </DrawerBody>
           </>
         </DrawerContent>
