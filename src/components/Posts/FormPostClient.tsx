@@ -50,11 +50,11 @@ export default function FormPostClient ({ idSession, idTweet, children: avatarIm
         {avatarImage}
       </div>
       <div className='flex-grow'>
-        <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='Postea tu respuesta' />
+        <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='Postea tu respuesta' useStoreHook={useCreateTweet} />
       </div>
-      <TweetImageLoad refFile={inputFileRef} />
+      {initialForm.file && <TweetImageLoad refFile={inputFileRef} useStoreHook={useCreateTweet} />}
       <div className='row-start-3 col-start-2 flex items-center justify-between px-2'>
-        <InputFileTweet refFile={inputFileRef} />
+        <InputFileTweet refFile={inputFileRef} useStoreHook={useCreateTweet} />
         <div>
           <button className={`text-black font-semibold py-2 px-4 rounded-full ${isSubmitting || errors.content ? 'bg-white/40 pointer-events-none' : 'bg-slate-100'}`}>{isSubmitting ? 'Respondiendo...' : 'Responder'}</button>
         </div>
