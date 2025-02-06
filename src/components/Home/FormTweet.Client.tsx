@@ -43,16 +43,16 @@ export default function FormTweetClient ({ idSession, children: avatarImage }: F
   })
 
   return (
-    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='grid grid-cols-[max-content_1fr] grid-rows-[max-content_max_content_60px] gap-x-2'>
+    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='grid grid-cols-[max-content_1fr] grid-rows-[1fr_max-content_60px] gap-x-2 w-full'>
       <div>
         {avatarImage}
       </div>
       <div className='flex-grow'>
-        <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='¡¿Qué está pasando?!' />
+        <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='¡¿Qué está pasando?!' useStoreHook={useCreateTweet} />
       </div>
-      <TweetImageLoad refFile={inputFileRef} />
+      {initialForm.file && <TweetImageLoad refFile={inputFileRef} useStoreHook={useCreateTweet} />}
       <div className='row-start-3 col-start-2 flex items-center justify-between px-2 py-2 border-t border-zinc-800'>
-        <InputFileTweet refFile={inputFileRef} />
+        <InputFileTweet refFile={inputFileRef} useStoreHook={useCreateTweet} />
         <div>
           <button className={`text-black font-semibold py-2 px-4 rounded-full ${isSubmitting || errors.content || !initialForm?.content.length ? 'bg-white/40 pointer-events-none' : 'bg-slate-100'}`}>{isSubmitting ? 'Publicando...' : 'Publicar'}</button>
         </div>
