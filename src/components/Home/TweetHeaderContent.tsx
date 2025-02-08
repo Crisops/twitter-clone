@@ -1,8 +1,8 @@
-import { IconDots } from '@tabler/icons-react'
 import Link from 'next/link'
-import ToolTipProfile from '../shared/ToolTipProfile'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
-import TweetCreatedTime from '../shared/TweetCreatedTime'
+import TweetCreatedTime from '@/components/shared/TweetCreatedTime'
+import PopoverOptionsPost from '@/components/Home/PopoverOptionsPost'
 
 interface TweetHeaderContentProps {
   id: Tables<'users'>['id']
@@ -51,8 +51,8 @@ export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, user
         </div>
         <TweetCreatedTime date={date} />
       </div>
-      <div>
-        <IconDots size={20} color='#eee' />
+      <div data-no-redirect>
+        <PopoverOptionsPost />
       </div>
     </header>
   )
