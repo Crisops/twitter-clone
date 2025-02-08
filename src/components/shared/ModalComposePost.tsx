@@ -18,7 +18,7 @@ export default function ModalComposePost ({ isOpen, placement, size, handleClose
       onClose={handleClose}
       classNames={{ base: ['bg-black min-h-72'], backdrop: ['bg-[#5b708366]'], closeButton: ['left-1 w-fit hover:bg-white/10 transition-colors ease-in duration-150 text-white text-xl'] }}
     >
-      <ModalContent>
+      <ModalContent data-no-redirect>
         <>
           <ModalHeader className='flex flex-col gap-1' />
           <ModalBody className='w-full flex-row py-6 min-[500px]:py-2'>
