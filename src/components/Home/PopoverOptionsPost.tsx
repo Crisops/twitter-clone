@@ -2,7 +2,7 @@
 
 import { Popover, PopoverContent, PopoverTrigger, Button } from '@heroui/react'
 import { IconDots, IconTrash } from '@tabler/icons-react'
-import ModalComposePost from '../shared/ShowModal'
+import ShowModal from '@/components/shared/ShowModal'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 import ButtonOptionPost from './ButtonOptionPost'
@@ -33,7 +33,7 @@ export default function PopoverOptionsPost () {
           <ButtonOptionPost textColor='text-red-600' Icon={IconTrash} handleOptionAction={() => dispatch({ type: 'OPEN_MODAL' })} action='Eliminar' />
         </PopoverContent>
       </Popover>
-      <ModalComposePost
+      <ShowModal
         isOpen={view.component === 'modal'}
         placement='center'
         size={deviceType === 'mobile' || deviceType === 'tablet' ? 'full' : 'sm'}
