@@ -6,6 +6,7 @@ import ModalComposePost from '../shared/ModalComposePost'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 import ButtonOptionPost from './ButtonOptionPost'
+import ConfirmDeletePost from './ConfirmDeletePost'
 
 export default function PopoverOptionsPost () {
   const { view, dispatch } = useReducerOptionsPost()
@@ -35,9 +36,9 @@ export default function PopoverOptionsPost () {
       <ModalComposePost
         isOpen={view.component === 'modal'}
         placement='center'
-        size={deviceType === 'mobile' || deviceType === 'tablet' ? 'full' : 'md'}
+        size={deviceType === 'mobile' || deviceType === 'tablet' ? 'full' : 'sm'}
         handleClose={handleClose}
-        formTweet={<h1>Popover</h1>}
+        formTweet={<ConfirmDeletePost />}
       />
     </>
 
