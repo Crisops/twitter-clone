@@ -9,7 +9,7 @@ interface ModalComposePostProps {
     formTweet: ReactNode
 }
 
-export default function ModalComposePost ({ isOpen, placement, size, handleClose, formTweet }: ModalComposePostProps) {
+export default function ShowModal ({ isOpen, placement, size, handleClose, formTweet }: ModalComposePostProps) {
   return (
     <Modal
       isOpen={isOpen}
