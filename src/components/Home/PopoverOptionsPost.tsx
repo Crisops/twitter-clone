@@ -2,7 +2,7 @@
 
 import { Popover, PopoverContent, PopoverTrigger, Button } from '@heroui/react'
 import { IconDots, IconTrash } from '@tabler/icons-react'
-import ModalComposePost from '../shared/ModalComposePost'
+import ModalComposePost from '../shared/ShowModal'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 import ButtonOptionPost from './ButtonOptionPost'
