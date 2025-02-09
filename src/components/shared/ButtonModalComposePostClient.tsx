@@ -8,7 +8,7 @@ import {
 } from '@heroui/react'
 
 import ButtonOpenModal from '@/components/shared/ButtonOpenModal'
-import ModalComposePost from '@/components/shared/ModalComposePost'
+import ShowModal from '@/components/shared/ShowModal'
 import { useReducerModal } from '@/hooks/useReducerModal'
 
 interface ButtonModalComposePostPropsClient {
@@ -52,8 +52,8 @@ export default function ButtonModalComposePostClient ({ children: formTweet, cla
       </div>
       {
           sizeModal === 'xl'
-            ? <ModalComposePost isOpen={device === 'desktop' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
-            : <ModalComposePost isOpen={device === 'movile' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
+            ? <ShowModal isOpen={device === 'desktop' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
+            : <ShowModal isOpen={device === 'movile' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
         }
     </>
   )
