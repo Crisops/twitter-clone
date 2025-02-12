@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
-import { TablesInsert } from '@/types/database.types'
+import { Tables, TablesInsert } from '@/types/database.types'
 
 export async function signup () {
   const supabase = await createClient()
@@ -41,6 +41,17 @@ export async function createTweet ({ user_id: idUser, image_url: imageUrl, conte
   if (error) throw new Error('Error. Failed create tweet')
 
   revalidatePath('/home')
+}
+
+export async function deleteTweet ({ id: tweetId, user_id: userId }: {id: Tables<'tweets'>['id'], user_id: Tables<'users'>['id']}) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('tweets').delete().eq('id', tweetId).eq('user_id', userId)
+
+  revalidatePath('/(home)/home')
+  revalidatePath('/(home)/[username]', 'layout')
+
+  return { error }
 }
 
 export async function insertComment ({ user_id: userId, tweet_id: tweetId, content, image_url: imageUrl }: TablesInsert<'comments'>) {
