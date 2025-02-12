@@ -1,32 +1,9 @@
-import { useReducer } from 'react'
-
-type ReducerType = {
-    state: {
-      component: 'popover' | 'modal' | ''
-    }
-    action: {
-      type: 'OPEN_POPOVER' | 'OPEN_MODAL' | 'CLOSE'
-    }
-  }
-
-function reducer (state:ReducerType['state'], action: ReducerType['action']): ReducerType['state'] {
-  switch (action.type) {
-    case 'OPEN_POPOVER':
-      return { component: 'popover' }
-    case 'OPEN_MODAL':
-      return { component: 'modal' }
-    case 'CLOSE':
-      return { component: '' }
-    default:
-      return state
-  }
-}
+import { ModalDeletePostContext } from '@/context/ModalDeletePostContext'
+import { useContext } from 'react'
 
 export const useReducerOptionsPost = () => {
-  const [view, dispatch] = useReducer(reducer, { component: '' })
+  const context = useContext(ModalDeletePostContext)
+  if (!context) throw new Error('useReducerOptionsPost debe usarse dentro de un ModalDeletePostProvider')
 
-  return {
-    view,
-    dispatch
-  }
+  return context
 }
