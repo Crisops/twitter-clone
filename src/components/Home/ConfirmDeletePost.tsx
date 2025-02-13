@@ -1,6 +1,23 @@
+import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
+import { Tables } from '@/types/database.types'
 import { Button } from '@heroui/react'
 
-export default function ConfirmDeletePost () {
+interface ConfirmDeletePostProps {
+  tweetId: Tables<'tweets'>['id']
+  userId: Tables<'tweets'>['user_id']
+}
+
+export default function ConfirmDeletePost ({ tweetId, userId }: ConfirmDeletePostProps) {
+  const { handleDeletePost, dispatch } = useReducerOptionsPost()
+
+  const handleOnPress = () => {
+    handleDeletePost({ id: tweetId, user_id: userId })
+  }
+
+  const handleCloseModal = () => {
+    dispatch({ type: 'CLOSE' })
+  }
+
   return (
     <div className='w-full h-full px-7 pb-7'>
       <div className='flex flex-col gap-5'>
@@ -13,8 +30,8 @@ export default function ConfirmDeletePost () {
           </div>
         </div>
         <div className='flex flex-col gap-2 w-full'>
-          <Button radius='full' variant='solid' className='w-full h-11 bg-red-600 text-white font-medium'>Eliminar</Button>
-          <Button radius='full' variant='bordered' className='w-full h-11 bg-transparent text-foreground border-1 border-slate-500 font-medium'>Cancelar</Button>
+          <Button onPress={handleOnPress} radius='full' variant='solid' className='w-full h-11 bg-red-600 text-white font-medium'>Eliminar</Button>
+          <Button onPress={handleCloseModal} radius='full' variant='bordered' className='w-full h-11 bg-transparent text-foreground border-1 border-slate-500 font-medium'>Cancelar</Button>
         </div>
       </div>
     </div>
