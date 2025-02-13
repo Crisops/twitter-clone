@@ -11,11 +11,12 @@ import ButtonOptionPost from './ButtonOptionPost'
 import ConfirmDeletePost from './ConfirmDeletePost'
 
 interface PopoverOptionsPostProps {
+  idUserSession: Tables<'users'>['id']
   userId: Tables<'users'>['id']
   tweetId: Tables<'tweets'>['id']
 }
 
-export default function PopoverOptionsPost ({ userId, tweetId }: PopoverOptionsPostProps) {
+export default function PopoverOptionsPost ({ idUserSession, userId, tweetId }: PopoverOptionsPostProps) {
   const { view, dispatch } = useReducerOptionsPost()
 
   const { deviceType } = useDevice()
@@ -37,7 +38,9 @@ export default function PopoverOptionsPost ({ userId, tweetId }: PopoverOptionsP
           </Button>
         </PopoverTrigger>
         <PopoverContent className='justify-start bg-black [box-shadow:0px_0px_10px_#ffffff80] px-0 py-0 overflow-hidden w-80 min-h-96'>
-          <ButtonOptionPost textColor='text-red-600' Icon={IconTrash} handleOptionAction={() => dispatch({ type: 'OPEN_MODAL' })} action='Eliminar' />
+          {
+            idUserSession === userId && <ButtonOptionPost textColor='text-red-600' Icon={IconTrash} handleOptionAction={() => dispatch({ type: 'OPEN_MODAL' })} action='Eliminar' />
+          }
         </PopoverContent>
       </Popover>
       <ShowModal

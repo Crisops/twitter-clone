@@ -2,8 +2,7 @@ import Link from 'next/link'
 import ToolTipProfile from '@/components/shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
 import TweetCreatedTime from '@/components/shared/TweetCreatedTime'
-import PopoverOptionsPost from '@/components/Home/PopoverOptionsPost'
-import { ModalDeletePostProvider } from '@/context/ModalDeletePostContext'
+import PopoverOptionsPostServer from './PopoverOptionsPostServer'
 
 interface TweetHeaderContentProps {
   userId: Tables<'users'>['id']
@@ -54,9 +53,7 @@ export default function TweetHeaderContent ({ userId: idUserCreatorTweet, name, 
         <TweetCreatedTime date={date} />
       </div>
       <div data-no-redirect>
-        <ModalDeletePostProvider>
-          <PopoverOptionsPost userId={idUserCreatorTweet} tweetId={tweetId} />
-        </ModalDeletePostProvider>
+        <PopoverOptionsPostServer userIdCreatorPost={idUserCreatorTweet} tweetId={tweetId} />
       </div>
     </header>
   )
