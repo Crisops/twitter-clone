@@ -3,9 +3,11 @@ import ToolTipProfile from '@/components/shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
 import TweetCreatedTime from '@/components/shared/TweetCreatedTime'
 import PopoverOptionsPost from '@/components/Home/PopoverOptionsPost'
+import { ModalDeletePostProvider } from '@/context/ModalDeletePostContext'
 
 interface TweetHeaderContentProps {
-  id: Tables<'users'>['id']
+  userId: Tables<'users'>['id']
+  tweetId: Tables<'tweets'>['id']
   name: Tables<'users'>['name']
   username: Tables<'users'>['username']
   src: Tables<'users'>['avatar_url']
@@ -15,7 +17,7 @@ interface TweetHeaderContentProps {
   date: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
 }
 
-export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, username, src, biography, followers, following, date }: TweetHeaderContentProps) {
+export default function TweetHeaderContent ({ userId: idUserCreatorTweet, name, username, src, biography, followers, following, date, tweetId }: TweetHeaderContentProps) {
   return (
     <header className='flex items-center justify-between'>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
@@ -52,7 +54,9 @@ export default function TweetHeaderContent ({ id: idUserCreatorTweet, name, user
         <TweetCreatedTime date={date} />
       </div>
       <div data-no-redirect>
-        <PopoverOptionsPost />
+        <ModalDeletePostProvider>
+          <PopoverOptionsPost userId={idUserCreatorTweet} tweetId={tweetId} />
+        </ModalDeletePostProvider>
       </div>
     </header>
   )
