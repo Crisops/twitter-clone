@@ -47,19 +47,21 @@ export default function FormComposePost ({ children: avatarImage, idSession }:Fo
   })
 
   return (
-    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='grid grid-cols-[max-content_1fr] grid-rows-[1fr_max-content_60px] gap-x-2 w-full'>
-      <div>
-        {avatarImage}
-      </div>
-      <div className='flex-grow'>
-        <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='¡¿Qué está pasando?!' useStoreHook={useCreateComposeTweet} />
-      </div>
-      {initialForm.file && <TweetImageLoad refFile={inputFileRef} useStoreHook={useCreateComposeTweet} />}
-      <div className='row-start-3 col-start-2 flex items-center justify-between px-2 py-2 border-t border-zinc-800'>
-        <InputFileTweet refFile={inputFileRef} useStoreHook={useCreateComposeTweet} />
-        <div>
-          <button className={`text-black font-semibold py-2 px-4 rounded-full ${isSubmitting || errors.content || !initialForm?.content.length ? 'bg-white/40 pointer-events-none' : 'bg-slate-100'}`}>{isSubmitting ? 'Publicando...' : 'Publicar'}</button>
+    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='flex flex-col w-full h-full'>
+      <div className='flex flex-col gap-2 border-b border-zinc-700'>
+        <div className='flex gap-2'>
+          <div>
+            {avatarImage}
+          </div>
+          <div className='flex-grow'>
+            <TextAreaForm registerField={registerField('content')} trigger={trigger} errors={errors} placeholder='¡¿Qué está pasando?!' useStoreHook={useCreateComposeTweet} />
+          </div>
         </div>
+        {initialForm.file && <TweetImageLoad refFile={inputFileRef} useStoreHook={useCreateComposeTweet} />}
+      </div>
+      <div className='flex items-center justify-between px-2 py-2 border-t border-zinc-800'>
+        <InputFileTweet refFile={inputFileRef} useStoreHook={useCreateComposeTweet} />
+        <button className={`text-black font-semibold py-2 px-4 rounded-full ${isSubmitting || errors.content || !initialForm?.content.length ? 'bg-white/40 pointer-events-none' : 'bg-slate-100'}`}>{isSubmitting ? 'Publicando...' : 'Publicar'}</button>
       </div>
     </form>
   )
