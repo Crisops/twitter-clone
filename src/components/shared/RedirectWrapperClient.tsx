@@ -15,7 +15,7 @@ export default function RedirectWrapperClient ({ slug, children }:RedirectWrappe
   const { handleCardClick } = useSearchContext()
 
   const handleRedirect = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    if ((e.target as HTMLElement).closest('[data-no-redirect]')) {
+    if ((e.target as HTMLElement).closest('[data-no-redirect], [data-slot]')) {
       return
     }
 
