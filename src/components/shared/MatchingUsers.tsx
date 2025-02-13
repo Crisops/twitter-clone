@@ -15,7 +15,6 @@ export default function MatchingUsers ({ valueInput, searchQuery }: MatchingUser
     const getUsersSearch = async () => {
       const result = await getUserSearch({ query: searchQuery })
       setMachingUsers(result)
-      console.log(result)
     }
 
     getUsersSearch()
