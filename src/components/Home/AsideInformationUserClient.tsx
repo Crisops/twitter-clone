@@ -12,7 +12,7 @@ type AsideInformationUserProps = {
 
 export default function AsideInformationUserClient ({ name, username, children: imageUser }: AsideInformationUserProps) {
   return (
-    <Popover placement='bottom' showArrow classNames={{ base: 'before:bg-black shadow-lg shadow-white/20 rounded-xl', content: 'bg-black' }}>
+    <Popover placement='bottom' triggerScaleOnOpen={false} showArrow classNames={{ base: 'before:bg-black shadow-lg shadow-white/20 rounded-xl', content: 'bg-black' }}>
       <PopoverTrigger>
         <div className='relative top-0 left-0 py-3 pl-1'>
           <div className='flex w-full'>
@@ -28,8 +28,10 @@ export default function AsideInformationUserClient ({ name, username, children: 
                   </div>
                 </div>
               </div>
-              <div className='hidden xl:block'>
-                <IconDots size={20} color='white' />
+              <div className='hidden xl:block xl:flex-grow'>
+                <div className='w-full justify-center'>
+                  <IconDots size={20} color='white' />
+                </div>
               </div>
             </div>
           </div>
