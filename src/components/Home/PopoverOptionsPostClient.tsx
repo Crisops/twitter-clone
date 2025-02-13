@@ -48,6 +48,7 @@ export default function PopoverOptionsPost ({ idUserSession, userId, tweetId }: 
         placement='center'
         size={deviceType === 'mobile' || deviceType === 'tablet' ? 'full' : 'sm'}
         handleClose={handleClose}
+        hideCloseButton
         formTweet={<ConfirmDeletePost tweetId={tweetId} userId={userId} />}
       />
       <AlertToast radius='sm' color='primary' variant='solid' />

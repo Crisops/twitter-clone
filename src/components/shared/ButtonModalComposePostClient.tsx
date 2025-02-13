@@ -52,8 +52,8 @@ export default function ButtonModalComposePostClient ({ children: formTweet, cla
       </div>
       {
           sizeModal === 'xl'
-            ? <ShowModal isOpen={device === 'desktop' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
-            : <ShowModal isOpen={device === 'movile' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
+            ? <ShowModal hideCloseButton={false} isOpen={device === 'desktop' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
+            : <ShowModal hideCloseButton={false} isOpen={device === 'movile' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
         }
     </>
   )
