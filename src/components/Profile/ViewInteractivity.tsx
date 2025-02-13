@@ -1,9 +1,9 @@
 'use client'
 
-import { Tables } from '@/types/database.types'
-import ButtonInteractivity from '@/components/shared/ButtonInteractivity'
 import { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
+import { Tables } from '@/types/database.types'
+import ButtonInteractivity from '@/components/shared/ButtonInteractivity'
 
 interface ViewInteractivityProps {
   posts: ReactNode

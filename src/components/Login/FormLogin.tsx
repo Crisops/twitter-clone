@@ -1,9 +1,9 @@
 import { FormEvent, useId, useState } from 'react'
 import { useAuth } from '@/hooks/useStore'
-import Link from 'next/link'
-import { InputForm } from '@/components/shared/InputForm'
-import { IconEye, IconEyeOff } from '@tabler/icons-react'
 import { initialFormAuth } from '@/config/fields-form'
+import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { InputForm } from '@/components/shared/InputForm'
+import Link from 'next/link'
 
 export const FormLogin = () => {
   const idEmail = useId()

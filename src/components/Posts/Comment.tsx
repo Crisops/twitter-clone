@@ -1,9 +1,8 @@
-import React from 'react'
-import ToolTipProfile from '../shared/ToolTipProfile'
-import TweetImageUser from '../Home/TweetImageUser'
-import TweetHeaderContent from '../Home/TweetHeaderContent'
 import { Tables } from '@/types/database.types'
-import TweetContent from '../Home/TweetContent'
+import TweetImageUser from '@/components/Home/TweetImageUser'
+import TweetHeaderContent from '@/components/Home/TweetHeaderContent'
+import TweetContent from '@/components/Home/TweetContent'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
 
 interface CommentsProps {
     userId: Tables<'users'>['id']

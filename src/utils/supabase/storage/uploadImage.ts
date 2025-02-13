@@ -1,7 +1,7 @@
-import imageCompression from 'browser-image-compression'
 import { v4 as uuidv4 } from 'uuid'
-import { createClient } from '../client'
 import { Tables } from '@/types/database.types'
+import imageCompression from 'browser-image-compression'
+import { createClient } from '@/utils/supabase/client'
 
 interface UploadImageProps {
     bucket: 'post-tweets' | 'avatars' | 'posts-comments'

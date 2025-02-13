@@ -1,5 +1,5 @@
-import { Modal, ModalBody, ModalContent, ModalHeader, ModalVariantProps } from '@heroui/react'
 import { ReactNode } from 'react'
+import { Modal, ModalBody, ModalContent, ModalHeader, ModalVariantProps } from '@heroui/react'
 
 interface ModalComposePostProps {
     isOpen: boolean

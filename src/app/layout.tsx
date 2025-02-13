@@ -1,7 +1,7 @@
 import './globals.css'
+import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Providers } from './providers'
-import { ReactNode } from 'react'
 import NavbarLinks from '@/components/Movile/Home/NavbarLinks'
 
 export const metadata: Metadata = {

@@ -1,10 +1,9 @@
 import { Tables } from '@/types/database.types'
 import { getSessionAuth } from '@/utils/supabase/getUser'
+import ButtonEditProfile from '@/components/Profile/ButtonEditProfile'
+import ButtonFollowProfile from '@/components/Profile/ButtonFollowProfile'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import ButtonEditProfile from './ButtonEditProfile'
-import ButtonFollowProfile from './ButtonFollowProfile'
 
 interface PictureProfileProps {
   idUserVisited: Tables<'users'>['id']

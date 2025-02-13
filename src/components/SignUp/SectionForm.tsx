@@ -1,5 +1,5 @@
-import FormSignUp from './FormSignUp'
 import { HeaderFormAuth } from '@/components/shared/HeaderFormAuth'
+import FormSignUp from '@/components/SignUp/FormSignUp'
 
 export const SectionForm = () => {
   return (

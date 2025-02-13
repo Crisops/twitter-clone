@@ -1,4 +1,4 @@
-import FormTweetServer from './FormTweetServer'
+import FormTweetServer from '@/components/Home/FormTweetServer'
 
 export default function WriteTweet () {
   return (

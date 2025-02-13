@@ -1,7 +1,7 @@
 import { ButtonVariantProps, ModalVariantProps } from '@heroui/react'
-import ButtonModalComposePostClient from './ButtonModalComposePostClient'
-import FormTweetServer from '@/components/Home/FormTweetServer'
 import { ModalProvider } from '@/context/ModalComposeContext'
+import ButtonModalComposePostClient from '@/components/shared/ButtonModalComposePostClient'
+import FormTweetServer from '@/components/Home/FormTweetServer'
 
 interface ButtonModalComposePostServerProps {
   className: string

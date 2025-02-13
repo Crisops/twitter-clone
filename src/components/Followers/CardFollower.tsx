@@ -1,11 +1,11 @@
-import { Avatar, Card, CardBody, CardHeader } from '@heroui/react'
-import ButtonFollow from '@/components/shared/ButtonFollow'
 import { Tables } from '@/types/database.types'
-import Link from 'next/link'
-import ToolTipProfile from '../shared/ToolTipProfile'
-import RedirectWrapperServer from '../shared/RedirectWrapperServer'
+import { Avatar, Card, CardBody, CardHeader } from '@heroui/react'
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import { getAllFollowers } from '@/utils/supabase/getFollowers'
+import ButtonFollow from '@/components/shared/ButtonFollow'
+import Link from 'next/link'
+import RedirectWrapperServer from '@/components/shared/RedirectWrapperServer'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
 
 interface CardFollowerProps {
   idUserCard: Tables<'users'>['id']

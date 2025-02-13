@@ -1,10 +1,9 @@
 'use client'
 
-import { IconArrowNarrowLeft } from '@tabler/icons-react'
-import React from 'react'
 import { useRouter } from 'next/navigation'
-import { useCreateTweet } from '@/hooks/useStore'
 import { initialCreateTweetForm } from '@/config/fields-form'
+import { useCreateTweet } from '@/hooks/useStore'
+import { IconArrowNarrowLeft } from '@tabler/icons-react'
 
 function ButtonNavigationBack () {
   const { setFormCreateTweet } = useCreateTweet()

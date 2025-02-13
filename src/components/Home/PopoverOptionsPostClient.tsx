@@ -1,14 +1,14 @@
 'use client'
 
 import { Popover, PopoverContent, PopoverTrigger, Button } from '@heroui/react'
-import { useDevice } from '@/hooks/useDevice'
-import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 import { Tables } from '@/types/database.types'
 import { IconDots, IconTrash } from '@tabler/icons-react'
-import ShowModal from '@/components/shared/ShowModal'
+import { useDevice } from '@/hooks/useDevice'
+import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 import AlertToast from '@/components/shared/AlertToast'
-import ButtonOptionPost from './ButtonOptionPost'
-import ConfirmDeletePost from './ConfirmDeletePost'
+import ButtonOptionPost from '@/components/Home/ButtonOptionPost'
+import ConfirmDeletePost from '@/components/Home/ConfirmDeletePost'
+import ShowModal from '@/components/shared/ShowModal'
 
 interface PopoverOptionsPostProps {
   idUserSession: Tables<'users'>['id']

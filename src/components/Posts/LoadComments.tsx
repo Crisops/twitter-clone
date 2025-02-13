@@ -1,6 +1,6 @@
 import { Tables } from '@/types/database.types'
 import { getCommentsTweetById } from '@/utils/supabase/getComments'
-import Comment from './Comment'
+import Comment from '@/components/Posts/Comment'
 
 interface LoadCommentsProps {
   idTweet: Tables<'tweets'>['id']

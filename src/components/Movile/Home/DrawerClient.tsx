@@ -1,8 +1,8 @@
 'use client'
 
-import { useSearchContext } from '@/hooks/useSearchContext'
-import { Drawer, DrawerContent, DrawerBody, Button, useDisclosure } from '@heroui/react'
 import { Children, ReactNode } from 'react'
+import { Drawer, DrawerContent, DrawerBody, Button, useDisclosure } from '@heroui/react'
+import { useSearchContext } from '@/hooks/useSearchContext'
 
 interface DrawerHeaderClientProps {
   children: ReactNode[]

@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Form } from './Form'
-import { DataCredentialsForm } from './DataCredentialsForm'
+import { DataCredentialsForm } from '@/components/SignUp/DataCredentialsForm'
+import { Form } from '@/components/SignUp/Form'
 
 export default function FormSignUp () {
   const [nextData, setNextData] = useState<boolean>(false)

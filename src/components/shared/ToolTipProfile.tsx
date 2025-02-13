@@ -1,7 +1,7 @@
+import { ReactNode } from 'react'
 import { Tables } from '@/types/database.types'
 import { Tooltip } from '@heroui/react'
-import { ReactNode } from 'react'
-import CardProfile from './CardProfile'
+import CardProfile from '@/components/shared/CardProfile'
 
 interface ToolTipProfileProps {
     id: Tables<'users'>['id']

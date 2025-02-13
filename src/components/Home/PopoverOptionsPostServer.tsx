@@ -1,7 +1,7 @@
-import { ModalDeletePostProvider } from '@/context/ModalDeletePostContext'
-import PopoverOptionsPost from './PopoverOptionsPostClient'
-import { Tables } from '@/types/database.types'
 import { getSessionAuth } from '@/utils/supabase/getUser'
+import { Tables } from '@/types/database.types'
+import { ModalDeletePostProvider } from '@/context/ModalDeletePostContext'
+import PopoverOptionsPost from '@/components/Home/PopoverOptionsPostClient'
 
 interface PopoverOptionsPostServerPros {
     userIdCreatorPost: Tables<'users'>['id']

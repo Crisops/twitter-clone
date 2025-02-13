@@ -1,8 +1,7 @@
 import { Tables } from '@/types/database.types'
-
-import Biography from './Biography'
-import MoreAboutMe from './MoreAboutMe'
-import Followers from './Followers'
+import Biography from '@/components/Profile/Biography'
+import Followers from '@/components/Profile/Followers'
+import MoreAboutMe from '@/components/Profile/MoreAboutMe'
 
 interface UserDataProps {
   name: Tables<'users'>['name']

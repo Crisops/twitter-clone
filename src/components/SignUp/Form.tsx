@@ -1,7 +1,7 @@
-import { useAuth } from '@/hooks/useStore'
-import { InputForm } from '@/components/shared/InputForm'
 import { FormEvent, useId, useState } from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { useAuth } from '@/hooks/useStore'
+import { InputForm } from '@/components/shared/InputForm'
 
 export const Form = () => {
   const idUserName = useId()

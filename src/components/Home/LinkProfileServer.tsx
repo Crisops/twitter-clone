@@ -1,5 +1,5 @@
 import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
-import LinkProfileClient from './LinkProfileClient'
+import LinkProfileClient from '@/components/Home/LinkProfileClient'
 
 interface LinkProfileProps {
   viewMovil?: boolean

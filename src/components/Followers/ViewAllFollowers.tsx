@@ -1,8 +1,8 @@
 import { Tables } from '@/types/database.types'
+import { TableRelationships } from '@/types/generics'
 import { getFollowersUserData } from '@/utils/supabase/getFollowers'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
-import CardFollower from './CardFollower'
-import { TableRelationships } from '@/types/generics'
+import CardFollower from '@/components/Followers/CardFollower'
 
 interface ViewAllFollowersProps {
     username: Tables<'users'>['username']

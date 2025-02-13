@@ -1,7 +1,7 @@
 import { QueryData } from '@supabase/supabase-js'
-import { createClient } from './server'
 import { Tables } from '@/types/database.types'
 import { TweetInfo } from '@/types/querys-db'
+import { createClient } from '@/utils/supabase/server'
 
 export const getTweets = async () => {
   try {

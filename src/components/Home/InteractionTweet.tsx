@@ -1,9 +1,9 @@
 'use client'
 
 import { ReactNode, useEffect, useState } from 'react'
-import NumberFlow from '@number-flow/react'
 import { Tables } from '@/types/database.types'
-import ButtonInteraction from './ButtonInteraction'
+import NumberFlow from '@number-flow/react'
+import ButtonInteraction from '@/components/Home/ButtonInteraction'
 
 type DataParametersProps = {
   user_id: Tables<'users'>['id']

@@ -1,6 +1,6 @@
-import ViewInteractivity from '@/components/Profile/ViewInteractivity'
-import { Tables } from '@/types/database.types'
 import { ReactNode } from 'react'
+import { Tables } from '@/types/database.types'
+import ViewInteractivity from '@/components/Profile/ViewInteractivity'
 
 interface UsernameLayoutProps {
   children: ReactNode

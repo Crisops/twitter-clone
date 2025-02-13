@@ -1,9 +1,9 @@
-import { getSessionAuth } from '@/utils/supabase/getUser'
-import InteractionTweet from './InteractionTweet'
-import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
-import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/actions/actions'
-import { Tables } from '@/types/database.types'
 import { Children, ReactNode } from 'react'
+import { Tables } from '@/types/database.types'
+import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/actions/actions'
+import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
+import { getSessionAuth } from '@/utils/supabase/getUser'
+import InteractionTweet from '@/components/Home/InteractionTweet'
 
 interface TweetInteractionsProps {
   idTweet: Tables<'tweets'>['id']

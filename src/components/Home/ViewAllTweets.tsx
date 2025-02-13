@@ -1,5 +1,5 @@
 import { getTweets } from '@/utils/supabase/getTweets'
-import Tweet from './Tweet'
+import Tweet from '@/components/Home/Tweet'
 
 export async function ViewAllTweets () {
   const tweets = await getTweets()

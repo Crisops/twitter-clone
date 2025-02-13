@@ -1,5 +1,5 @@
-import { Tables } from '@/types/database.types'
 import { ReactNode } from 'react'
+import { Tables } from '@/types/database.types'
 
 interface ButtonInteractionProps {
     idTweet: Tables<'tweets'>['id']

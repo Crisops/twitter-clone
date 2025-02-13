@@ -1,7 +1,7 @@
-import { IconTwitter } from '@/components/Icons'
-import DrawerServer from './DrawerServer'
 import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
 import { SearchProvider } from '@/context/SearchContext'
+import { IconTwitter } from '@/components/Icons'
+import DrawerServer from '@/components/Movile/Home/DrawerServer'
 
 function ChooseViewTweetsMoviel () {
   return (

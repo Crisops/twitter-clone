@@ -1,6 +1,6 @@
-import { Tables } from '@/types/database.types'
-import { createClient } from './server'
 import { User } from '@supabase/supabase-js'
+import { Tables } from '@/types/database.types'
+import { createClient } from '@/utils/supabase/server'
 
 export const getSessionAuth = async (): Promise<User> => {
   try {

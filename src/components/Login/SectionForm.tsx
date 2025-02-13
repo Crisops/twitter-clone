@@ -1,5 +1,5 @@
-import { Form } from './Form'
-import { HeaderFormAuth } from '../shared/HeaderFormAuth'
+import { Form } from '@/components/Login/Form'
+import { HeaderFormAuth } from '@/components/shared/HeaderFormAuth'
 
 export const SectionForm = () => {
   return (

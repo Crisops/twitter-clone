@@ -1,5 +1,5 @@
-import { ModalDeletePostContext } from '@/context/ModalDeletePostContext'
 import { useContext } from 'react'
+import { ModalDeletePostContext } from '@/context/ModalDeletePostContext'
 
 export const useReducerOptionsPost = () => {
   const context = useContext(ModalDeletePostContext)

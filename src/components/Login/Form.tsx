@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { DataContainerForm } from './DataContainerForm'
-import { FormLogin } from './FormLogin'
+import { DataContainerForm } from '@/components/Login/DataContainerForm'
+import { FormLogin } from '@/components/Login/FormLogin'
 
 export const Form = () => {
   const [nextData, setNextData] = useState<boolean>(false)

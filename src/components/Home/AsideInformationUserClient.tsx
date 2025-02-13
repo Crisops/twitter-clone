@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 import { IconDots } from '@tabler/icons-react'
-import SignOutUser from './SignOutUser'
 import { Tables } from '@/types/database.types'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
+import SignOutUser from '@/components/Home/SignOutUser'
 
 type AsideInformationUserProps = {
   name: Tables<'users'>['id']

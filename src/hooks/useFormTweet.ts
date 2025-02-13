@@ -1,6 +1,6 @@
-import { validationRulesTweet } from '@/lib/form-tweet'
-import { type FormCreateTweet } from '@/types/store'
 import { useForm } from 'react-hook-form'
+import { type FormCreateTweet } from '@/types/store'
+import { validationRulesTweet } from '@/lib/form-tweet'
 
 export const useFormTweet = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting }, trigger } = useForm<FormCreateTweet>()

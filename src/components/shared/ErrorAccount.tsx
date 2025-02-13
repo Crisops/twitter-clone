@@ -1,7 +1,7 @@
 'use client'
 
-import { comeBackHome } from '@/actions/actions'
 import { Tables } from '@/types/database.types'
+import { comeBackHome } from '@/actions/actions'
 import { IconArrowNarrowLeft } from '@tabler/icons-react'
 
 interface ErrorAccountProps {

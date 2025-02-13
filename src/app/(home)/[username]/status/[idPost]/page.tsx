@@ -1,8 +1,8 @@
-import HeaderBackPost from '@/components/Posts/HeaderBackPost'
-import ViewPost from '@/components/Posts/ViewPost'
+import { Metadata } from 'next'
 import { Tables } from '@/types/database.types'
 import { getTweetById } from '@/utils/supabase/getTweets'
-import { Metadata } from 'next'
+import HeaderBackPost from '@/components/Posts/HeaderBackPost'
+import ViewPost from '@/components/Posts/ViewPost'
 
 interface StatusPostPageProps {
     params: {

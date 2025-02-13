@@ -1,16 +1,9 @@
-import {
-  Avatar,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader
-} from '@heroui/react'
-import Link from 'next/link'
 import { Tables } from '@/types/database.types'
-
-import ButtonFollow from './ButtonFollow'
+import { Avatar, Card, CardBody, CardFooter, CardHeader } from '@heroui/react'
 import { getAllFollowers } from '@/utils/supabase/getFollowers'
 import { getSessionAuth } from '@/utils/supabase/getUser'
+import ButtonFollow from '@/components/shared/ButtonFollow'
+import Link from 'next/link'
 
 interface CardProfileProps {
   id:Tables<'users'>['id']

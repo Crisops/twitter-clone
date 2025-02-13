@@ -1,7 +1,7 @@
 import React from 'react'
-import PictureProfile from './PictureProfile'
 import { Tables } from '@/types/database.types'
-import UserData from './UserData'
+import PictureProfile from '@/components/Profile/PictureProfile'
+import UserData from '@/components/Profile/UserData'
 
 interface InformationProfileProps {
   idUserVisited: Tables<'users'>['id']

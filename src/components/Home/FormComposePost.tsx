@@ -1,16 +1,16 @@
 'use client'
 
-import { useCreateComposeTweet } from '@/hooks/useStore'
-import TextAreaForm from '../shared/TextAreaForm'
-import TweetImageLoad from './TweetImageLoad'
-import { useFormTweet } from '@/hooks/useFormTweet'
 import { ReactNode, useRef } from 'react'
+import { Tables } from '@/types/database.types'
 import { createTweet } from '@/actions/actions'
 import { initialCreateTweetForm } from '@/config/fields-form'
+import { useCreateComposeTweet } from '@/hooks/useStore'
 import { uploadImage } from '@/utils/supabase/storage/uploadImage'
-import InputFileTweet from './InputFileTweet'
-import { Tables } from '@/types/database.types'
+import { useFormTweet } from '@/hooks/useFormTweet'
 import { useReducerModal } from '@/hooks/useReducerModal'
+import InputFileTweet from '@/components/Home/InputFileTweet'
+import TextAreaForm from '@/components/shared/TextAreaForm'
+import TweetImageLoad from '@/components/Home/TweetImageLoad'
 
 interface FormTweetClientProps {
   idSession: Tables<'users'>['id']

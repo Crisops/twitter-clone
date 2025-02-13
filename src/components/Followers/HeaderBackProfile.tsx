@@ -1,7 +1,7 @@
-import { getUserProfileByUsername } from '@/utils/supabase/getUser'
-import HeaderBack from '@/components/shared/HeaderBack'
 import { Tables } from '@/types/database.types'
+import { getUserProfileByUsername } from '@/utils/supabase/getUser'
 import ButtonInteractivity from '@/components/shared/ButtonInteractivity'
+import HeaderBack from '@/components/shared/HeaderBack'
 
 interface HeaderBackProfileProps{
   username: Tables<'users'>['username']

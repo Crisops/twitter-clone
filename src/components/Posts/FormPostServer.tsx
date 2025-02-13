@@ -1,7 +1,7 @@
-import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
-import FormPostClient from './FormPostClient'
-import TweetImageUser from '../Home/TweetImageUser'
 import { Tables } from '@/types/database.types'
+import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
+import FormPostClient from '@/components/Posts/FormPostClient'
+import TweetImageUser from '@/components/Home/TweetImageUser'
 
 interface FormPostServerProps {
   idPost: Tables<'tweets'>['id']

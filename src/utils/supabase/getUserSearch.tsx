@@ -1,6 +1,6 @@
 import { Tables } from '@/types/database.types'
-import { createClient } from './client'
 import { UsersSearch } from '@/types/querys-db'
+import { createClient } from '@/utils/supabase/client'
 
 const getSupabase = () => {
   const supabase = createClient()

@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import ToolTipProfile from '@/components/shared/ToolTipProfile'
 import { Tables } from '@/types/database.types'
+import Link from 'next/link'
+import PopoverOptionsPostServer from '@/components/Home/PopoverOptionsPostServer'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
 import TweetCreatedTime from '@/components/shared/TweetCreatedTime'
-import PopoverOptionsPostServer from './PopoverOptionsPostServer'
 
 interface TweetHeaderContentProps {
   userId: Tables<'users'>['id']

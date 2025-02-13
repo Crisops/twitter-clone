@@ -1,7 +1,7 @@
 import { ChangeEvent, RefObject, useId } from 'react'
 import { IconPhoto } from '@tabler/icons-react'
-import { StoreApi, UseBoundStore } from 'zustand'
 import { StoreCreateTweet } from '@/types/store'
+import { StoreApi, UseBoundStore } from 'zustand'
 
 interface InputFileTweetProps {
   refFile: RefObject<HTMLInputElement>

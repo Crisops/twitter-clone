@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Form from './Form'
+import Form from '@/components/ChooseAccount/Form'
 
 const SectionForm = () => {
   return (

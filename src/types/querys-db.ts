@@ -1,5 +1,5 @@
-import { type Tables } from './database.types'
-import { TableRelationships } from './generics'
+import { type Tables } from '@/types/database.types'
+import { TableRelationships } from '@/types/generics'
 
 export type TweetInfo = {
     id: Tables<'tweets'>['id'] | Tables<'comments'>['tweet_id']

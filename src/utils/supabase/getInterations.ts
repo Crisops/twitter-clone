@@ -1,5 +1,5 @@
 import { Tables } from '@/types/database.types'
-import { createClient } from './server'
+import { createClient } from '@/utils/supabase/server'
 
 interface GetInteractionsProps {
     userId: Tables<'users'>['id']

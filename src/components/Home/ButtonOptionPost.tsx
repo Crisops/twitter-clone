@@ -1,6 +1,6 @@
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react'
-import { Icon, IconProps } from '@tabler/icons-react'
+import { ForwardRefExoticComponent, RefAttributes } from 'react'
 import { Button } from '@heroui/react'
+import { Icon, IconProps } from '@tabler/icons-react'
 
 interface ButtonOptionPostProps {
   textColor: string

@@ -1,6 +1,6 @@
+import { ReactNode } from 'react'
 import { Tables } from '@/types/database.types'
 import { DrawerHeader as DrawerHeaderClient } from '@heroui/react'
-import { ReactNode } from 'react'
 
 interface DrawerHeaderContentClientProps {
     name?: Tables<'users'>['name']

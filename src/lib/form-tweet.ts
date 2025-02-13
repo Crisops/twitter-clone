@@ -1,5 +1,5 @@
-import { type FormCreateTweet } from '@/types/store'
 import { type RegisterOptions } from 'react-hook-form'
+import { type FormCreateTweet } from '@/types/store'
 
 export const validationRulesTweet: Partial<Record<keyof FormCreateTweet, RegisterOptions<FormCreateTweet>>> = {
   content: {

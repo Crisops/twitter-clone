@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getUserSearch } from '@/utils/supabase/getUserSearch'
 import { UsersSearch } from '@/types/querys-db'
-import CardSearch from './CardSearch'
+import { getUserSearch } from '@/utils/supabase/getUserSearch'
+import CardSearch from '@/components/shared/CardSearch'
 
 interface MatchingUsersProps {
    valueInput: string

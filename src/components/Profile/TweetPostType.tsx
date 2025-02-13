@@ -1,6 +1,6 @@
 import { Tables } from '@/types/database.types'
-import { getSessionAuth } from '@/utils/supabase/getUser'
 import { IconRepeat } from '@tabler/icons-react'
+import { getSessionAuth } from '@/utils/supabase/getUser'
 
 interface TweetPostTypeProps {
   idUserVisited: Tables<'users'>['id']

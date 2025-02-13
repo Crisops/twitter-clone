@@ -1,5 +1,5 @@
-import { type FormLogin, type FormSignUp } from '@/types/store'
 import { RegisterOptions } from 'react-hook-form'
+import { type FormLogin, type FormSignUp } from '@/types/store'
 
 export type FormAuth = FormLogin & FormSignUp
 

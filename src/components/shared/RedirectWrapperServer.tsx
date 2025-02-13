@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import RedirectWrapperClient from './RedirectWrapperClient'
 import { SearchProvider } from '@/context/SearchContext'
+import RedirectWrapperClient from '@/components/shared/RedirectWrapperClient'
 
 interface RedirectWrapperServerProps {
     slug: string

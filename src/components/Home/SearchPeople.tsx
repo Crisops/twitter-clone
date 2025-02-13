@@ -1,11 +1,11 @@
 'use client'
 
-import InputSearch from '@/components/shared/InputSearch'
 import { useRef, useState } from 'react'
-import QueryUsers from './QueryUsers'
+import { usePathname } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 import { useSearchContext } from '@/hooks/useSearchContext'
-import { usePathname } from 'next/navigation'
+import InputSearch from '@/components/shared/InputSearch'
+import QueryUsers from '@/components/Home/QueryUsers'
 
 interface SearchPeopleProps {
   shouldHidden?: boolean

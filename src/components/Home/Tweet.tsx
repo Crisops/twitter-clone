@@ -1,14 +1,14 @@
-import TweetImageUser from './TweetImageUser'
-import TweetHeaderContent from './TweetHeaderContent'
-import TweetContent from './TweetContent'
-import TweetInteractions from './TweetInteractions'
+import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
+import { Tables } from '@/types/database.types'
 import { type TweetInfo } from '@/types/querys-db'
+import { IconHeart } from '@/components/Icons'
+import RedirectWrapperServer from '@/components/shared/RedirectWrapperServer'
+import TweetImageUser from '@/components/Home/TweetImageUser'
+import TweetHeaderContent from '@/components/Home/TweetHeaderContent'
+import TweetContent from '@/components/Home/TweetContent'
+import TweetInteractions from '@/components/Home/TweetInteractions'
 import TweetPostType from '@/components/Profile/TweetPostType'
 import ToolTipProfile from '@/components/shared/ToolTipProfile'
-import { Tables } from '@/types/database.types'
-import RedirectWrapperServer from '@/components/shared/RedirectWrapperServer'
-import { IconBookmark, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
-import { IconHeart } from '../Icons'
 
 interface TweetProps {
   idUser?: Tables<'users'>['id']

@@ -1,5 +1,5 @@
 import { SearchProvider } from '@/context/SearchContext'
-import SearchPeople from './SearchPeople'
+import SearchPeople from '@/components/Home/SearchPeople'
 
 export default function SidebarInformation () {
   return (

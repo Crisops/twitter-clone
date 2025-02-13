@@ -1,6 +1,6 @@
+import { SearchProvider } from '@/context/SearchContext'
 import HeaderDesktop from '@/components/Search/Desktop/HeaderDesktop'
 import HeaderMovile from '@/components/Search/Movile/HeaderMovile'
-import { SearchProvider } from '@/context/SearchContext'
 
 function ExplorePage () {
   return (

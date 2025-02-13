@@ -1,7 +1,7 @@
-import { IconTwitter } from '@/components/Icons'
-import SectionForm from '@/components/ChooseAccount/SectionForm'
-import Footer from '@/components/ChooseAccount/Footer'
 import { ReactNode } from 'react'
+import { IconTwitter } from '@/components/Icons'
+import Footer from '@/components/ChooseAccount/Footer'
+import SectionForm from '@/components/ChooseAccount/SectionForm'
 
 export const HomeLayout = ({ children }: {children?: ReactNode}) => {
   return (

@@ -1,8 +1,8 @@
+import { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react'
+import { useWatch } from 'react-hook-form'
 import { useFormAuth } from '@/hooks/useFormAuth'
 import { useAuth } from '@/hooks/useStore'
 import { FormAuth } from '@/lib/form-auth'
-import { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react'
-import { useWatch } from 'react-hook-form'
 
 interface InputFormProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string

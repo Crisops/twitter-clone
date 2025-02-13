@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react'
-import { Textarea } from '@heroui/react'
 import { StoreApi, UseBoundStore } from 'zustand'
-import { FieldErrors, UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form'
 import { FormCreateTweet, StoreCreateTweet } from '@/types/store'
+import { FieldErrors, UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form'
+import { Textarea } from '@heroui/react'
 
 interface TextAreaFormProps {
     registerField: UseFormRegisterReturn

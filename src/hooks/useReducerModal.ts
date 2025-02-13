@@ -1,5 +1,5 @@
-import { ModalContext } from '@/context/ModalComposeContext'
 import { useContext } from 'react'
+import { ModalContext } from '@/context/ModalComposeContext'
 
 export const useReducerModal = () => {
   const context = useContext(ModalContext)

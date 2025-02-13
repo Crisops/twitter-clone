@@ -1,7 +1,7 @@
-import { useSearchContext } from '@/hooks/useSearchContext'
-import { Input } from '@heroui/react'
-import { IconSearch } from '@tabler/icons-react'
 import { FocusEvent, forwardRef } from 'react'
+import { IconSearch } from '@tabler/icons-react'
+import { Input } from '@heroui/react'
+import { useSearchContext } from '@/hooks/useSearchContext'
 
 interface InputSearchProps {
   value: string

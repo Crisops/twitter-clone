@@ -1,10 +1,10 @@
 'use client'
 
-import { IconX } from '@tabler/icons-react'
-import { IconTwitter } from '../Icons'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useStore'
 import { initialFormAuth } from '@/config/fields-form'
+import { IconX } from '@tabler/icons-react'
+import { useAuth } from '@/hooks/useStore'
+import { IconTwitter } from '@/components/Icons'
 
 export const HeaderFormAuth = () => {
   const { setFormAuth } = useAuth(state => state)

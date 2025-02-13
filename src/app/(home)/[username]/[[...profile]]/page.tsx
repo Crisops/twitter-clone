@@ -1,8 +1,8 @@
-import HeaderBack from '@/components/shared/HeaderBack'
-import InformationProfile from '@/components/Profile/InformationProfile'
+import { Metadata } from 'next'
 import { Tables } from '@/types/database.types'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
-import { Metadata } from 'next'
+import InformationProfile from '@/components/Profile/InformationProfile'
+import HeaderBack from '@/components/shared/HeaderBack'
 
 interface ProfilePageProps {
   params: {

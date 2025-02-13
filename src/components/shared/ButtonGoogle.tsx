@@ -1,7 +1,7 @@
 'use client'
 
 import { signup } from '@/actions/actions'
-import { IconGoogle } from '../Icons'
+import { IconGoogle } from '@/components/Icons'
 
 export const ButtonGoogle = ({ textContent }: {textContent: string}) => {
   const handleSignUpGoogleAuth = async () => {

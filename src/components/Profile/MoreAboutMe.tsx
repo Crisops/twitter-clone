@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import { Tables } from '@/types/database.types'
 import { IconCalendarWeek, IconLink, IconMapPin } from '@tabler/icons-react'
 import { formatTimeJoinedUser } from '@/utils/formatTime'
+import Link from 'next/link'
 
 interface MoreAboutMeProps {
   webSite:Tables<'users'>['web_site']

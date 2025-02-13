@@ -1,6 +1,6 @@
-import { Tables } from '@/types/database.types'
-import { createClient } from './server'
 import { GetAllFollowersProps, GetFollowersPage, UsersFollowers } from '@/types/querys-db'
+import { Tables } from '@/types/database.types'
+import { createClient } from '@/utils/supabase/server'
 
 export const getAllFollowers = async ({ idUserSession }: {idUserSession: Tables<'users'>['id']}): Promise<GetAllFollowersProps> => {
   const supabase = await createClient()

@@ -1,7 +1,7 @@
-import { IconTwitter } from '../Icons'
-import AsideInformationUserServer from './AsideInformationUserServer'
-import AsideNavigation from './AsideNavigation'
-import AsideNavigationDesktop from './AsideNavigationDesktop'
+import { IconTwitter } from '@/components/Icons'
+import AsideInformationUserServer from '@/components/Home/AsideInformationUserServer'
+import AsideNavigation from '@/components/Home//AsideNavigation'
+import AsideNavigationDesktop from '@/components/Home/AsideNavigationDesktop'
 
 export default function AsideBarMenu () {
   return (

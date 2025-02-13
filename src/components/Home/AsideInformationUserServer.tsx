@@ -1,6 +1,6 @@
-import AsideInformationUserClient from './AsideInformationUserClient'
 import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
-import TweetImageUser from './TweetImageUser'
+import AsideInformationUserClient from '@/components/Home/AsideInformationUserClient'
+import TweetImageUser from '@/components/Home/TweetImageUser'
 
 export default async function AsideInformationUserServer () {
   const { id } = await getSessionAuth()

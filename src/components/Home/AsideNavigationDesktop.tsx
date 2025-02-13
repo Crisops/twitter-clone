@@ -1,5 +1,5 @@
-import AsideNavigation from './AsideNavigation'
-import LinkProfileServer from './LinkProfileServer'
+import AsideNavigation from '@/components/Home/AsideNavigation'
+import LinkProfileServer from '@/components/Home/LinkProfileServer'
 
 export default function AsideNavigationDesktop () {
   return (

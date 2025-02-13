@@ -1,6 +1,6 @@
+import { Tables } from '@/types/database.types'
 import ViewAllFollowers from '@/components/Followers/ViewAllFollowers'
 import HeaderBackProfile from '@/components/Followers/HeaderBackProfile'
-import { Tables } from '@/types/database.types'
 
 interface FollowersPageProps {
   params: {

@@ -1,6 +1,6 @@
 import { Avatar, Card, CardHeader } from '@heroui/react'
 import { Tables } from '@/types/database.types'
-import RedirectWrapperServer from '../shared/RedirectWrapperServer'
+import RedirectWrapperServer from '@/components/shared/RedirectWrapperServer'
 
 interface CardSearchProps {
   name: Tables<'users'>['name']

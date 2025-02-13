@@ -1,6 +1,6 @@
-import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
-import { Tables } from '@/types/database.types'
 import { Button } from '@heroui/react'
+import { Tables } from '@/types/database.types'
+import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
 
 interface ConfirmDeletePostProps {
   tweetId: Tables<'tweets'>['id']

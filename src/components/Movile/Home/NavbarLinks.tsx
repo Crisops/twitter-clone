@@ -1,10 +1,10 @@
 'use client'
 
-import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
-import Link from 'next/link'
-import { linksMovileHome } from '@/lib/links-navbar'
 import { useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { linksMovileHome } from '@/lib/links-navbar'
+import { Navbar, NavbarContent, NavbarItem } from '@heroui/react'
+import Link from 'next/link'
 
 export default function NavbarLinks () {
   const [scroll, setScroll] = useState<number>(0)

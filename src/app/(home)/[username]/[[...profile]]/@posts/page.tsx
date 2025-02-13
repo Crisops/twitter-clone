@@ -1,7 +1,7 @@
-import Tweet from '@/components/Home/Tweet'
 import { Tables } from '@/types/database.types'
-import { getTweetsAndRetweets } from '@/utils/supabase/getTweets'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
+import { getTweetsAndRetweets } from '@/utils/supabase/getTweets'
+import Tweet from '@/components/Home/Tweet'
 
 interface PostsPageProps {
   params: {

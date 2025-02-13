@@ -1,6 +1,6 @@
-import { IconHome } from '@/components/Icons'
 import { LinksAsideNavHome } from '@/types/generics'
 import { IconBell, IconBookmark, IconDoorExit, IconMailFilled, IconSearch, IconUsers, IconWashDryOff } from '@tabler/icons-react'
+import { IconHome } from '@/components/Icons'
 
 export const linksDesktop: LinksAsideNavHome[] = [
   { href: '/home', icon: <IconHome />, text: 'Inicio' },

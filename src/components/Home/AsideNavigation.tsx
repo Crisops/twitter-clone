@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import LinksSideNav from './LinksSideNav'
 import { linksDesktop, linksMovileDrawer } from '@/lib/links-navbar'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
+import LinksSideNav from '@/components/Home/LinksSideNav'
 
 interface AsideNavigationProps {
   viewMovil?: boolean

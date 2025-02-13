@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import AsideBarMenu from '@/components/Home/AsideBarMenu'
-import SidebarInformation from '@/components/Home/SidebarInformation'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
+import SidebarInformation from '@/components/Home/SidebarInformation'
 
 interface HomeLayoutProps {
   children: ReactNode

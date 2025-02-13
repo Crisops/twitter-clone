@@ -1,7 +1,7 @@
+import { ReactNode } from 'react'
+import { Tables } from '@/types/database.types'
 import { getUserTweetCount } from '@/utils/supabase/getTweets'
 import ButtonNavigationBack from '@/components/shared/ButtonNavigationBack'
-import { Tables } from '@/types/database.types'
-import { ReactNode } from 'react'
 
 interface HeaderBackProps {
   id?: Tables<'users'>['id']

@@ -1,7 +1,7 @@
-import { SelectedBirthday } from './SelectedBirthDay'
+import { useId } from 'react'
 import { months, days, years } from '@/lib/data-date'
 import { InputForm } from '@/components/shared/InputForm'
-import { useId } from 'react'
+import { SelectedBirthday } from '@/components/SignUp/SelectedBirthDay'
 
 interface DataCredentialsFormProps {
     handleNextData: () => void

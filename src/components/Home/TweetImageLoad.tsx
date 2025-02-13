@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import { IconX } from '@tabler/icons-react'
 import { RefObject } from 'react'
 import { StoreApi, UseBoundStore } from 'zustand'
 import { StoreCreateTweet } from '@/types/store'
+import { IconX } from '@tabler/icons-react'
+import Image from 'next/image'
 
 interface TweetImageLoadProps {
   refFile: RefObject<HTMLInputElement>

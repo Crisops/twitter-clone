@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import { type LinksAsideNavHome } from '@/types/generics'
 import { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
+import { type LinksAsideNavHome } from '@/types/generics'
+import Link from 'next/link'
 interface LinksSideNavProps {
   links: LinksAsideNavHome[]
   viewMovil?: boolean

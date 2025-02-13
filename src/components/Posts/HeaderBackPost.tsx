@@ -1,4 +1,4 @@
-import ButtonNavigationBack from '../shared/ButtonNavigationBack'
+import ButtonNavigationBack from '@/components/shared/ButtonNavigationBack'
 
 export default function HeaderBackPost () {
   return (

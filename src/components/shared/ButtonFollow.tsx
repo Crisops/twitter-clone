@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@heroui/react'
 import { startTransition, useOptimistic } from 'react'
-import { deleteFollowUser, insertFollowUser } from '@/actions/actions'
 import { Tables, TablesInsert } from '@/types/database.types'
+import { deleteFollowUser, insertFollowUser } from '@/actions/actions'
+import { Button } from '@heroui/react'
 
 interface ButtonFollowProps {
     idUserSession: Tables<'users'>['id']

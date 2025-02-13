@@ -1,8 +1,8 @@
-import { IconDots } from '@tabler/icons-react'
-import TweetImageUser from '../Home/TweetImageUser'
 import { Tables } from '@/types/database.types'
-import ToolTipProfile from '../shared/ToolTipProfile'
+import { IconDots } from '@tabler/icons-react'
 import Link from 'next/link'
+import ToolTipProfile from '@/components/shared/ToolTipProfile'
+import TweetImageUser from '@/components/Home/TweetImageUser'
 
 interface HeaderProps {
     id: Tables<'users'>['id']

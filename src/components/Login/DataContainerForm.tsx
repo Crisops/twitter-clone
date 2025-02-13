@@ -1,7 +1,7 @@
 import { useId } from 'react'
-import Link from 'next/link'
-import { ButtonGoogle } from '../shared/ButtonGoogle'
+import { ButtonGoogle } from '@/components/shared/ButtonGoogle'
 import { InputForm } from '@/components/shared/InputForm'
+import Link from 'next/link'
 
 interface DataContainerFormProps {
     handleNextConfirmData: () => void

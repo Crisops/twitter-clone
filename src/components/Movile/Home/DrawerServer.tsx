@@ -1,9 +1,9 @@
-import TweetImageUser from '@/components/Home/TweetImageUser'
-import DrawerClient from './DrawerClient'
 import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
-import DrawerHeader from './DrawerHeader'
-import LinkProfileServer from '@/components/Home/LinkProfileServer'
 import AsideNavigation from '@/components/Home/AsideNavigation'
+import DrawerClient from '@/components/Movile/Home/DrawerClient'
+import DrawerHeader from '@/components/Movile/Home/DrawerHeader'
+import LinkProfileServer from '@/components/Home/LinkProfileServer'
+import TweetImageUser from '@/components/Home/TweetImageUser'
 
 async function DrawerServer () {
   const { id } = await getSessionAuth()

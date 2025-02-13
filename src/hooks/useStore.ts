@@ -1,6 +1,6 @@
-import { initialCreateTweetForm, initialFormAuth } from '@/config/fields-form'
-import type { StoreCreateTweet, StoreAuth } from '@/types/store'
 import { create } from 'zustand'
+import type { StoreCreateTweet, StoreAuth } from '@/types/store'
+import { initialCreateTweetForm, initialFormAuth } from '@/config/fields-form'
 
 export const useAuth = create<StoreAuth>()((set) => ({
   initialForm: initialFormAuth,

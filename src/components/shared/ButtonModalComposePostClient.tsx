@@ -1,15 +1,10 @@
 'use client'
 
 import { ReactNode } from 'react'
-import {
-  useDisclosure,
-  ButtonVariantProps,
-  ModalVariantProps
-} from '@heroui/react'
-
+import { useDisclosure, ButtonVariantProps, ModalVariantProps } from '@heroui/react'
+import { useReducerModal } from '@/hooks/useReducerModal'
 import ButtonOpenModal from '@/components/shared/ButtonOpenModal'
 import ShowModal from '@/components/shared/ShowModal'
-import { useReducerModal } from '@/hooks/useReducerModal'
 
 interface ButtonModalComposePostPropsClient {
   variant: ButtonVariantProps['variant']

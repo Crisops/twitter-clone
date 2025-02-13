@@ -1,5 +1,5 @@
-import SearchPeople from '@/components/Home/SearchPeople'
 import DrawerServer from '@/components/Movile/Home/DrawerServer'
+import SearchPeople from '@/components/Home/SearchPeople'
 
 export default function HeaderMovile () {
   return (

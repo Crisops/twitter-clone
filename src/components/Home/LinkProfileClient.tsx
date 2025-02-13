@@ -1,9 +1,9 @@
 'use client'
 
-import { Tables } from '@/types/database.types'
-import { IconUser } from '@tabler/icons-react'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { IconUser } from '@tabler/icons-react'
+import { Tables } from '@/types/database.types'
+import Link from 'next/link'
 
 interface LinkProfileClientProps {
     username: Tables<'users'>['username']

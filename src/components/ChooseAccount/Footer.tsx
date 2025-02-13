@@ -1,8 +1,8 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { linksFooter } from '@/lib/links'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 const Footer = () => {
   const pathname = usePathname()
