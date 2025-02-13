@@ -1,6 +1,6 @@
 import { getSessionAuth, getUserProfile } from '@/utils/supabase/getUser'
 import FormComposePost from '@/components/Home/FormComposePost'
-import FormTweetClient from '@/components/Home/FormTweet.Client'
+import FormTweetClient from '@/components/Home/FormTweetClient'
 import TweetImageUser from '@/components/Home/TweetImageUser'
 
 interface FormTweetServerProps {
