@@ -11,13 +11,13 @@ import InputFileTweet from '@/components/Home/InputFileTweet'
 import TextAreaForm from '@/components/shared/TextAreaForm'
 import TweetImageLoad from '@/components/Home/TweetImageLoad'
 
-interface FormTweetClientProps {
+interface FormPostClientProps {
   idSession: Tables<'users'>['id']
   idTweet: Tables<'tweets'>['id']
   children: ReactNode
 }
 
-export default function FormPostClient ({ idSession, idTweet, children: avatarImage }: FormTweetClientProps) {
+export default function FormPostClient ({ idSession, idTweet, children: avatarImage }: FormPostClientProps) {
   const { initialForm, setFormCreateTweet } = useCreateTweet(state => state)
 
   const { registerField, handleSubmit, trigger, errors, isSubmitting } = useFormTweet()
