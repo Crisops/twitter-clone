@@ -44,7 +44,7 @@ export default async function CardProfile ({ id, name, username, src, biography,
             </Link>
             <div className='flex flex-col items-start justify-center gap-1'>
               <Link href={`/${username}`}>
-                <h4 className='text-large font-semibold leading-none text-gray-100 hover:underline max-w-52 truncate'>{name}</h4>
+                <h4 className='text-large font-semibold leading-none text-gray-100 hover:underline max-w-36 truncate'>{name}</h4>
                 <h5 className='text-small tracking-tight text-zinc-500'>@{username}</h5>
               </Link>
             </div>
