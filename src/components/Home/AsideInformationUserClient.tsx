@@ -29,7 +29,7 @@ export default function AsideInformationUserClient ({ name, username, children: 
                 </div>
               </div>
               <div className='hidden xl:block xl:flex-grow'>
-                <div className='w-full justify-center'>
+                <div className='w-full flex justify-center'>
                   <IconDots size={20} color='white' />
                 </div>
               </div>
