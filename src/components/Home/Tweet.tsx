@@ -40,7 +40,8 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
             </ToolTipProfile>
             <div className='w-full h-full'>
               <TweetHeaderContent
-                id={creator.id}
+                userId={creator.id}
+                tweetId={id}
                 name={creator.name}
                 username={creator.username}
                 src={creator.avatar_url}
