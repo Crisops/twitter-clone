@@ -24,7 +24,12 @@ export default function RootLayout ({
         <Providers>
           {children}
           <div className='fixed bottom-20 right-6 min-[500px]:hidden'>
-            <ButtonModalComposePostServer sizeModal='full' variant='shadow' placement='top-center' className='min-w-14 h-14 bg-sky-500 text-white p-1 shadow-default/50' />
+            <ButtonModalComposePostServer
+              className='min-w-14 h-14 bg-sky-500 text-white p-1 shadow-default/50'
+              sizeModal='full'
+              variant='shadow'
+              placement='top-center'
+            />
           </div>
           <NavbarLinks />
         </Providers>
