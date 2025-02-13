@@ -1,14 +1,21 @@
 'use client'
 
 import { Popover, PopoverContent, PopoverTrigger, Button } from '@heroui/react'
-import { IconDots, IconTrash } from '@tabler/icons-react'
-import ShowModal from '@/components/shared/ShowModal'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
+import { Tables } from '@/types/database.types'
+import { IconDots, IconTrash } from '@tabler/icons-react'
+import ShowModal from '@/components/shared/ShowModal'
+import AlertToast from '@/components/shared/AlertToast'
 import ButtonOptionPost from './ButtonOptionPost'
 import ConfirmDeletePost from './ConfirmDeletePost'
 
-export default function PopoverOptionsPost () {
+interface PopoverOptionsPostProps {
+  userId: Tables<'users'>['id']
+  tweetId: Tables<'tweets'>['id']
+}
+
+export default function PopoverOptionsPost ({ userId, tweetId }: PopoverOptionsPostProps) {
   const { view, dispatch } = useReducerOptionsPost()
 
   const { deviceType } = useDevice()
@@ -38,8 +45,9 @@ export default function PopoverOptionsPost () {
         placement='center'
         size={deviceType === 'mobile' || deviceType === 'tablet' ? 'full' : 'sm'}
         handleClose={handleClose}
-        formTweet={<ConfirmDeletePost />}
+        formTweet={<ConfirmDeletePost tweetId={tweetId} userId={userId} />}
       />
+      <AlertToast radius='sm' color='primary' variant='solid' />
     </>
 
   )
