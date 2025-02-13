@@ -40,7 +40,7 @@ export default function ButtonFollow ({ idUserSession, idUserProfile, hiddenButt
 
   return (
     <Button
-      className={`${hiddenButtonFollow ? 'hidden' : ''} ${optimisticFollowed ? 'bg-transparent text-foreground border-slate-500 before:content-["Siguiendo"] before:text-white before:opacity-100 hover:before:hidden hover:before:opacity-0 hover:after:content-["Dejar_de_seguir"] after:hidden hover:after:block after:opacity-0 hover:after:opacity-100 hover:after:text-red-600 after:font-semibold hover:border-red-600' : 'bg-white text-black'} border-1 font-semibold text-base py-2 px-3`}
+      className={`${hiddenButtonFollow ? 'hidden' : ''} ${optimisticFollowed ? 'bg-transparent text-foreground border-slate-500 before:content-["Siguiendo"] before:text-white before:opacity-100 hover:before:hidden hover:before:opacity-0 hover:after:content-["Dejar_de_seguir"] after:hidden hover:after:block after:opacity-0 hover:after:opacity-100 hover:after:text-red-600 after:font-semibold hover:border-red-600 min-w-28' : 'bg-white text-black'} border-1 font-semibold text-base py-2 px-3`}
       radius='full'
       size='sm'
       variant={optimisticFollowed ? 'bordered' : 'solid'}
