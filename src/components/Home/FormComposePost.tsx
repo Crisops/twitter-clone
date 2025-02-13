@@ -12,12 +12,12 @@ import InputFileTweet from '@/components/Home/InputFileTweet'
 import TextAreaForm from '@/components/shared/TextAreaForm'
 import TweetImageLoad from '@/components/Home/TweetImageLoad'
 
-interface FormTweetClientProps {
+interface FormComposePostProps {
   idSession: Tables<'users'>['id']
   children: ReactNode
 }
 
-export default function FormComposePost ({ children: avatarImage, idSession }:FormTweetClientProps) {
+export default function FormComposePost ({ children: avatarImage, idSession }:FormComposePostProps) {
   const { initialForm, setFormCreateTweet } = useCreateComposeTweet(state => state)
   const { modal, dispatch } = useReducerModal()
 
