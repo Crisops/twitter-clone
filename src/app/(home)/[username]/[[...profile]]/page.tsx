@@ -38,7 +38,7 @@ export default async function ProfilePage ({ params: { username } }:ProfilePageP
   const { id, username: usernameUser, biography, followers, following, location, web_site: webSite, avatar_url: avatarUrl, banner_url: bannerUrl, name, created_at: joined } = await getUserProfileByUsername({ username })
 
   return (
-    <section className=''>
+    <section>
       <HeaderBack name={name} id={id} />
       <InformationProfile
         idUserVisited={id}
