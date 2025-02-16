@@ -47,7 +47,7 @@ export default function FormComposePost ({ children: avatarImage, idSession }:Fo
   })
 
   return (
-    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='flex flex-col w-full h-full'>
+    <form onSubmit={handleOnSubmit} encType='multipart/form-data' className='flex flex-col w-full h-full px-6'>
       <div className='flex flex-col gap-2 border-b border-zinc-700'>
         <div className='flex gap-2'>
           <div>

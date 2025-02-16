@@ -18,7 +18,7 @@ export default function ShowModal ({ isOpen, placement, size, handleClose, hideC
       hideCloseButton={hideCloseButton}
       size={size}
       onClose={handleClose}
-      classNames={{ base: ['bg-black min-h-72'], backdrop: ['bg-[#5b708366]'], closeButton: ['left-1 w-fit hover:bg-white/10 transition-colors ease-in duration-150 text-white text-xl'] }}
+      classNames={{ base: ['bg-black min-h-72'], backdrop: ['bg-[#5b708366]'], body: ['px-0'], closeButton: ['left-1 w-fit hover:bg-white/10 transition-colors ease-in duration-150 text-white text-xl'] }}
     >
       <ModalContent>
         <>
