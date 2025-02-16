@@ -1,10 +1,36 @@
-import Link from 'next/link'
+'use client'
+
+import { useState } from 'react'
+import { Button } from '@heroui/react'
+import FormEditProfile from '@/components/Profile/FormEditProfile'
+import ShowModal from '@/components/shared/ShowModal'
 
 function ButtonEditProfile () {
+  const [open, setOpen] = useState<boolean>(false)
+
+  const handleOpenModal = () => {
+    setOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setOpen(false)
+  }
+
   return (
-    <button className='bg-transparent border border-slate-500 rounded-full py-1 px-4 transition-colors duration-200 ease-in-out hover:bg-white/10'>
-      <Link href='settings/profile' className='text-white font-semibold text-base'>Editar perfil</Link>
-    </button>
+    <>
+      <Button onPress={handleOpenModal} variant='bordered' size='md' radius='full' className='bg-transparent  hover:bg-white/10 border-slate-500 text-medium'>
+        Editar Perfil
+      </Button>
+      <ShowModal
+        isOpen={open}
+        size='xl'
+        hideCloseButton={false}
+        placement='center'
+        handleClose={handleCloseModal}
+        formTweet={<FormEditProfile />}
+      />
+    </>
+
   )
 }
 
