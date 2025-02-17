@@ -1,7 +1,7 @@
 import { Tables } from '@/types/database.types'
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import { getAllFollowers } from '@/utils/supabase/getFollowers'
-import ButtonEditProfile from '@/components/Profile/ButtonEditProfile'
+import ButtonEditProfileServer from '@/components/Profile/ButtonEditProfileServer'
 import ButtonFollow from '@/components/shared/ButtonFollow'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -43,7 +43,7 @@ async function PictureProfile ({ idUserVisited, username, avatarUrl, bannerUrl }
         </div>
         <div className='absolute top-20 right-4 h-full'>
           {verifyIdUserProfile
-            ? <ButtonEditProfile />
+            ? <ButtonEditProfileServer />
             : <ButtonFollow idUserSession={idUserSession} idUserProfile={idUserVisited} validateStateInitialFollow={validateStateInitialFollow} hiddenButtonFollow={false} />}
         </div>
       </div>
