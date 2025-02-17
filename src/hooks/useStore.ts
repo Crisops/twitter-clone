@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import type { StoreCreateTweet, StoreAuth } from '@/types/store'
-import { initialCreateTweetForm, initialFormAuth } from '@/config/fields-form'
+import type { StoreCreateTweet, StoreAuth, StoreEditProfile } from '@/types/store'
+import { initialCreateTweetForm, initialFormAuth, initialFormEditProfile } from '@/config/fields-form'
 
 export const useAuth = create<StoreAuth>()((set) => ({
   initialForm: initialFormAuth,
@@ -15,4 +15,9 @@ export const useCreateTweet = create<StoreCreateTweet>((set) => ({
 export const useCreateComposeTweet = create<StoreCreateTweet>((set) => ({
   initialForm: initialCreateTweetForm,
   setFormCreateTweet: (initialForm) => set(() => ({ initialForm }))
+}))
+
+export const useEditProfile = create<StoreEditProfile>((set) => ({
+  initialForm: initialFormEditProfile,
+  setFormEditProfile: (initialForm) => set(() => ({ initialForm }))
 }))
