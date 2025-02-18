@@ -14,8 +14,6 @@ export default function InputEdit ({ label, defaultValue, registerName }: InputE
   const { registerField, trigger, errors } = useFormEditProfile()
   const { name, ref, onChange, ...rest } = registerField(registerName)
 
-  const valueInput = initialForm[registerName] === '' ? defaultValue : initialForm[registerName]
-
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     handleOnChangeData(e)
     onChange(e)
@@ -31,7 +29,7 @@ export default function InputEdit ({ label, defaultValue, registerName }: InputE
         variant='bordered'
         label={label}
         defaultValue={defaultValue}
-        value={valueInput ?? ''}
+        value={initialForm[registerName] ?? ''}
         isInvalid={!!errors[registerName]}
         errorMessage={errors[registerName]?.message}
         classNames={{
