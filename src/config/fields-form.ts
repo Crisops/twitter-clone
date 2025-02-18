@@ -31,9 +31,9 @@ export const initialCreateTweetForm: FormCreateTweet = {
 
 export const initialFormEditProfile: FormEditProfile = {
   name: '',
-  avatar: '',
-  bannerUrl: '',
+  avatar_url: '',
+  banner_url: '',
   biography: '',
   location: '',
-  webSite: ''
+  web_site: ''
 }

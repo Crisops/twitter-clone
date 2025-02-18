@@ -10,7 +10,7 @@ export default async function ButtonEditProfileServer () {
   return (
     <ModalEditProfileProvider>
       <ButtonEditProfileClient>
-        <FormEditProfile name={name} avatar={avatarUrl} bannerUrl={bannerUrl} biography={biography} location={location} webSite={webSite} />
+        <FormEditProfile idUserSession={id} name={name} avatar_url={avatarUrl} banner_url={bannerUrl} biography={biography} location={location} web_site={webSite} />
       </ButtonEditProfileClient>
     </ModalEditProfileProvider>
   )

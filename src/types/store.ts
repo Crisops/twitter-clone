@@ -28,11 +28,11 @@ export type FormCreateTweet = {
 
 export type FormEditProfile = {
     name: Tables<'users'>['name']
-    bannerUrl: Tables<'users'>['banner_url']
-    avatar: Tables<'users'>['avatar_url']
+    banner_url: Tables<'users'>['banner_url']
+    avatar_url: Tables<'users'>['avatar_url']
     biography: Tables<'users'>['biography']
     location: Tables<'users'>['location']
-    webSite: Tables<'users'>['web_site']
+    web_site: Tables<'users'>['web_site']
 }
 
 export type StoreAuth = {
