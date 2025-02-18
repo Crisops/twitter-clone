@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
-import { Tables, TablesInsert } from '@/types/database.types'
+import { Tables, TablesInsert, TablesUpdate } from '@/types/database.types'
 
 export async function signup () {
   const supabase = await createClient()
@@ -31,6 +31,14 @@ export async function signup () {
 
 export async function comeBackHome () {
   redirect('/home')
+}
+
+export async function updateProfile (idUserSession: Tables<'users'>['id'], data: TablesUpdate<'users'>) {
+  const supabase = await createClient()
+  const { error } = await supabase.from('users').update(data).eq('id', idUserSession)
+
+  revalidatePath('/(home)/[username]/[[...profile]]', 'page')
+  return { error }
 }
 
 export async function createTweet ({ user_id: idUser, image_url: imageUrl, content }: TablesInsert<'tweets'>) {
