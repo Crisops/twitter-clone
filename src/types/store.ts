@@ -26,13 +26,18 @@ export type FormCreateTweet = {
     user_id: string
 }
 
-export type FormEditProfile = {
+export type FormEditProfileUser = {
     name: Tables<'users'>['name']
     banner_url: Tables<'users'>['banner_url']
     avatar_url: Tables<'users'>['avatar_url']
     biography: Tables<'users'>['biography']
     location: Tables<'users'>['location']
     web_site: Tables<'users'>['web_site']
+}
+
+export type FormEditProfileFiles = {
+    avatar_url: File | null
+    banner_url: File | null
 }
 
 export type StoreAuth = {
@@ -45,7 +50,7 @@ export type StoreCreateTweet = {
     setFormCreateTweet: (tweet: FormCreateTweet) => void
 }
 
-export type StoreEditProfile = {
-    initialForm: FormEditProfile
-    setFormEditProfile: (formEdit: FormEditProfile) => void
+export type StoreEditProfileFiles = {
+    initialForm: FormEditProfileFiles
+    setFormEditProfileFiles: (files: Partial<FormEditProfileFiles> | ((prev: FormEditProfileFiles) => Partial<FormEditProfileFiles>)) => void
 }
