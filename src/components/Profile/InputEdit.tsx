@@ -1,35 +1,33 @@
 import { ChangeEvent } from 'react'
-import { EditableProfileFields, useFormEditProfile } from '@/hooks/useFormEditProfile'
-import { useEditProfileContext } from '@/hooks/useEditProfileContext'
+import { FieldErrors, UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form'
+import { FormEditProfileUser } from '@/types/store'
 import { Input } from '@heroui/input'
 
 interface InputEditProfileProps {
     label: string
-    defaultValue: string
-    registerName: keyof EditableProfileFields
+    registerName: keyof FormEditProfileUser
+    handleOnChange: (e: ChangeEvent<HTMLInputElement>) => void
+    errors: FieldErrors<FormEditProfileUser>
+    registerField: (name: keyof FormEditProfileUser) => UseFormRegisterReturn<keyof FormEditProfileUser>
+    trigger: UseFormTrigger<FormEditProfileUser>
 }
 
-export default function InputEdit ({ label, defaultValue, registerName }: InputEditProfileProps) {
-  const { initialForm, handleOnChangeData } = useEditProfileContext()
-  const { registerField, trigger, errors } = useFormEditProfile()
-  const { name, ref, onChange, ...rest } = registerField(registerName)
+export default function InputEdit ({ label, registerName, trigger, registerField, errors, handleOnChange }: InputEditProfileProps) {
+  const { onChange, ...rest } = registerField(registerName)
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    handleOnChangeData(e)
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e)
-    trigger(name)
+    trigger(registerName)
+    handleOnChange(e)
   }
+
   return (
     <>
       <Input
-        ref={ref}
-        name={name}
-        onChange={handleOnChange}
+        onChange={handleChangeInput}
         radius='sm'
         variant='bordered'
         label={label}
-        defaultValue={defaultValue}
-        value={initialForm[registerName] ?? ''}
         isInvalid={!!errors[registerName]}
         errorMessage={errors[registerName]?.message}
         classNames={{
