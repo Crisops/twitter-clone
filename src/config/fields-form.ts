@@ -1,4 +1,4 @@
-import type { FormCreateTweet, FormEditProfile, FormLogin, FormSignUp } from '@/types/store'
+import type { FormCreateTweet, FormEditProfileFiles, FormEditProfileUser, FormLogin, FormSignUp } from '@/types/store'
 
 export const initialLoginForm: FormLogin = {
   email: '',
@@ -29,11 +29,16 @@ export const initialCreateTweetForm: FormCreateTweet = {
   user_id: ''
 }
 
-export const initialFormEditProfile: FormEditProfile = {
+export const initialFormEditProfile: FormEditProfileUser = {
   name: '',
   avatar_url: '',
   banner_url: '',
   biography: '',
   location: '',
   web_site: ''
+}
+
+export const initialFormEditProfileFiles: FormEditProfileFiles = {
+  avatar_url: null,
+  banner_url: null
 }
