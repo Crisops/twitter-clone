@@ -1,9 +1,7 @@
 'use client'
 
-import React, { ChangeEvent, createContext, ReactNode, useEffect, useReducer, useState } from 'react'
-import equal from 'fast-deep-equal'
-import { FormEditProfile } from '@/types/store'
-import { useEditProfile } from '@/hooks/useStore'
+import React, { createContext, ReactNode, useReducer, useRef, useCallback, useState } from 'react'
+import { FormEditProfileUser } from '@/types/store'
 import { initialFormEditProfile } from '@/config/fields-form'
 
 type ReducerEditProfile = {
@@ -16,17 +14,16 @@ type ReducerEditProfile = {
     }
 }
 
-type ModalEditContextProps = {
+type ModalEditProfileContextProps = {
     isEqualData: boolean
-    initialForm: FormEditProfile
-    oldDataProfile: FormEditProfile
     openModal: ReducerEditProfile['state']
+    oldDataProfile: React.MutableRefObject<FormEditProfileUser>
+    checkEqualData: (isEqual: boolean) => void
     dispatch: React.Dispatch<ReducerEditProfile['action']>
-    updateOldData: (data: FormEditProfile) => void
-    handleOnChangeData: (e: ChangeEvent<HTMLInputElement>) => void
+    updateOldData: (data: FormEditProfileUser) => void
 }
 
-export const ModalEditProfileContext = createContext<ModalEditContextProps | null>(null)
+export const ModalEditProfileContext = createContext<ModalEditProfileContextProps | null>(null)
 
 function reducerEditProfile (state: ReducerEditProfile['state'], action:ReducerEditProfile['action']): ReducerEditProfile['state'] {
   switch (action.type) {
@@ -44,30 +41,20 @@ function reducerEditProfile (state: ReducerEditProfile['state'], action:ReducerE
 }
 
 export default function ModalEditProfileProvider ({ children }: {children: ReactNode | ReactNode[]}) {
-  const [isEqualData, setIsEqualData] = useState<boolean>(false)
-  const { initialForm, setFormEditProfile } = useEditProfile(store => store)
-  const [oldDataProfile, setOldData] = useState<FormEditProfile>(initialFormEditProfile)
   const [openModal, dispatch] = useReducer(reducerEditProfile, { modal: '', open: false })
+  const oldDataProfile = useRef<FormEditProfileUser>(initialFormEditProfile)
+  const [isEqualData, setIsEqualData] = useState<boolean>(true)
 
-  useEffect(() => {
-    setIsEqualData(equal(oldDataProfile, initialForm))
-  }, [initialForm, oldDataProfile, isEqualData])
+  const updateOldData = useCallback((data: FormEditProfileUser) => {
+    oldDataProfile.current = data
+  }, [])
 
-  const updateOldData = (data: FormEditProfile) => {
-    const transForm = { ...data }
-    for (const key in transForm) if (transForm[key as keyof FormEditProfile] === null) transForm[key as keyof FormEditProfile] = ''
-    setOldData(transForm)
-    setFormEditProfile(transForm)
-    setIsEqualData(equal(data, initialForm))
-  }
-
-  const handleOnChangeData = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormEditProfile({ ...initialForm, [name]: value })
+  const checkEqualData = (isEqual: boolean) => {
+    setIsEqualData(isEqual)
   }
 
   return (
-    <ModalEditProfileContext.Provider value={{ isEqualData, initialForm, oldDataProfile, openModal, dispatch, updateOldData, handleOnChangeData }}>
+    <ModalEditProfileContext.Provider value={{ isEqualData, oldDataProfile, openModal, dispatch, updateOldData, checkEqualData }}>
       {children}
     </ModalEditProfileContext.Provider>
   )
