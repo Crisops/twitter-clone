@@ -1,10 +1,13 @@
+import { initialFormEditProfile } from '@/config/fields-form'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
 import { Button } from '@heroui/button'
 
 export default function ValidateChangesEditProfile () {
-  const { dispatch } = useEditProfileContext()
+  const { dispatch, checkEqualData, oldDataProfile } = useEditProfileContext()
 
   const handleDiscardChanges = () => {
+    checkEqualData(true)
+    oldDataProfile.current = initialFormEditProfile
     dispatch({ type: 'CLOSE_MODAL' })
   }
 
