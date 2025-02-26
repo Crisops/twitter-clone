@@ -1,10 +1,16 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
-import { Tables } from '@/types/database.types'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { useDebouncedCallback } from 'use-debounce'
+import equal from 'fast-deep-equal'
 import { Button } from '@heroui/react'
-import { updateProfile } from '@/actions/actions'
+import { Tables } from '@/types/database.types'
+import { FormEditProfileUser } from '@/types/store'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
+import { useFormEditProfile } from '@/hooks/useFormEditProfile'
+import { useEditProfile } from '@/hooks/useStore'
+import { updateProfile } from '@/actions/actions'
+import { uploadImagesEditProfile } from '@/utils/upload-images-edit-profile'
 import InputEdit from '@/components/Profile/InputEdit'
 import TextAreaBiography from '@/components/Profile/TextAreaBiography'
 import WrapperImagesEditProfile from '@/components/Profile/WrapperImagesEditProfile'
@@ -20,37 +26,59 @@ interface FormEditProfileProps {
 }
 
 export default function FormEditProfile ({ idUserSession, name, avatar_url: avatar, banner_url: bannerUrl, biography, location, web_site: webSite }: FormEditProfileProps) {
-  const { initialForm, isEqualData, dispatch, updateOldData } = useEditProfileContext()
-  const [messageError, setMessageError] = useState<string | null>(null)
+  const initialFormUser: FormEditProfileUser = { name, avatar_url: avatar, banner_url: bannerUrl, biography, location, web_site: webSite }
+  const { updateOldData, checkEqualData, oldDataProfile, dispatch } = useEditProfileContext()
+  const { registerField, handleSubmit, trigger, getValues, setValue, errors } = useFormEditProfile(initialFormUser)
+  const { initialForm, setFormEditProfileFiles } = useEditProfile(state => state)
+  const [errorSubmit, setErrorSubmit] = useState<string | null>(null)
 
   useEffect(() => {
-    updateOldData({ name, avatar_url: avatar, banner_url: bannerUrl, biography, location, web_site: webSite })
+    updateOldData(getValues())
   }, [])
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (isEqualData) {
-      dispatch({ type: 'CLOSE_MODAL' })
-    }
+  const handleUpdateFormDebounce = useDebouncedCallback(() => {
+    const isEqualForm = equal(oldDataProfile.current, getValues())
+    checkEqualData(isEqualForm)
+  }, 1000)
 
-    const { error } = await updateProfile(idUserSession, initialForm)
-    if (error) setMessageError('Algo fallo al momento de actualizar tu perfíl. Intentalo de nuevo')
-    dispatch({ type: 'CLOSE_MODAL' })
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target
+    if (files?.length && files?.length > 0) {
+      const [file] = files
+      const imagePreview = URL.createObjectURL(file)
+      setValue(name as keyof FormEditProfileUser, imagePreview, { shouldValidate: true })
+      setFormEditProfileFiles(prev => ({ ...prev, [name]: file }))
+    }
+    handleUpdateFormDebounce()
   }
+
+  const handleOnSubmit = handleSubmit(async data => {
+    const { avatar_url: avatar, banner_url: banner } = initialForm
+    try {
+      const imagesUpload = await uploadImagesEditProfile([avatar, banner], idUserSession)
+      const uploadData = { ...data, ...imagesUpload }
+      const { error } = await updateProfile(idUserSession, uploadData)
+      if (error) throw new Error('No se pudo actualizar el perfil. Inténtalo de nuevo.')
+      dispatch({ type: 'CLOSE_MODAL' })
+    } catch (error) {
+      console.log(error)
+      setErrorSubmit((error as Error).message)
+    }
+  })
 
   return (
     <div className='w-full h-full'>
-      <form onSubmit={onSubmit}>
-        <WrapperImagesEditProfile bannerUrl={bannerUrl} avatar={avatar} />
+      <form onSubmit={handleOnSubmit}>
+        <WrapperImagesEditProfile avatar={getValues().avatar_url} banner={getValues().banner_url} handleOnChange={handleOnChange} />
         <div className='flex flex-col gap-6 px-4 py-4'>
-          <InputEdit registerName='name' label='Nombre' defaultValue={name} />
-          <TextAreaBiography biography={biography} />
-          <InputEdit registerName='location' label='Ubicación' defaultValue={location ?? ''} />
-          <InputEdit registerName='web_site' label='Sitio Web' defaultValue={webSite ?? ''} />
+          <InputEdit registerName='name' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} label='Nombre' />
+          <TextAreaBiography registerName='biography' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} />
+          <InputEdit registerName='location' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} label='Ubicación' />
+          <InputEdit registerName='web_site' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} label='Sitio Web' />
           <Button type='submit' variant='solid' radius='sm' size='lg' className='bg-white text-black font-semibold'>
             Guardar
           </Button>
-          {messageError && <p className='text-tiny font-bold text-red-600 text-center'>{messageError}</p>}
+          {errorSubmit && <p className='text-tiny font-bold text-red-600 text-center'>{errorSubmit}</p>}
         </div>
       </form>
     </div>
