@@ -38,8 +38,7 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
   }, [])
 
   const handleUpdateFormDebounce = useDebouncedCallback(() => {
-    const isEqualForm = equal(oldDataProfile.current, getValues())
-    checkEqualData(isEqualForm)
+    checkEqualData(equal(oldDataProfile.current, getValues()))
   }, 1000)
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
