@@ -10,7 +10,8 @@ import { useEditProfileContext } from '@/hooks/useEditProfileContext'
 import { useFormEditProfile } from '@/hooks/useFormEditProfile'
 import { useEditProfile } from '@/hooks/useStore'
 import { updateProfile } from '@/actions/actions'
-import { uploadImagesEditProfile } from '@/utils/upload-images-edit-profile'
+import { uploadImageEditProfile } from '@/utils/upload-images-edit-profile'
+import { initialFormEditProfileFiles } from '@/config/fields-form'
 import InputEdit from '@/components/Profile/InputEdit'
 import TextAreaBiography from '@/components/Profile/TextAreaBiography'
 import WrapperImagesEditProfile from '@/components/Profile/WrapperImagesEditProfile'
@@ -45,6 +46,10 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
     const { name, files } = e.target
     if (files?.length && files?.length > 0) {
       const [file] = files
+      const previousUrl = getValues()[name as keyof FormEditProfileUser] as string
+      if (previousUrl) {
+        URL.revokeObjectURL(previousUrl)
+      }
       const imagePreview = URL.createObjectURL(file)
       setValue(name as keyof FormEditProfileUser, imagePreview, { shouldValidate: true })
       setFormEditProfileFiles(prev => ({ ...prev, [name]: file }))
@@ -54,11 +59,16 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
 
   const handleOnSubmit = handleSubmit(async data => {
     const { avatar_url: avatar, banner_url: banner } = initialForm
+    const { avatar_url: defaultAvatar, banner_url: defaultBanner, ...rest } = data
     try {
-      const imagesUpload = await uploadImagesEditProfile([avatar, banner], idUserSession)
-      const uploadData = { ...data, ...imagesUpload }
+      const uploadData: FormEditProfileUser = {
+        avatar_url: (avatar) ? await uploadImageEditProfile(avatar, idUserSession, 'avatars') : defaultAvatar,
+        banner_url: (banner) ? await uploadImageEditProfile(banner, idUserSession, 'banners') : defaultBanner,
+        ...rest
+      }
       const { error } = await updateProfile(idUserSession, uploadData)
       if (error) throw new Error('No se pudo actualizar el perfil. Inténtalo de nuevo.')
+      setFormEditProfileFiles(initialFormEditProfileFiles)
       dispatch({ type: 'CLOSE_MODAL' })
     } catch (error) {
       console.log(error)
