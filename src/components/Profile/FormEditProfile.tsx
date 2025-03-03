@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import equal from 'fast-deep-equal'
-import { Button } from '@heroui/react'
+import { addToast, Button } from '@heroui/react'
 import { Tables } from '@/types/database.types'
 import { FormEditProfileUser } from '@/types/store'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
@@ -28,7 +28,7 @@ interface FormEditProfileProps {
 
 export default function FormEditProfile ({ idUserSession, name, avatar_url: avatar, banner_url: bannerUrl, biography, location, web_site: webSite }: FormEditProfileProps) {
   const initialFormUser: FormEditProfileUser = { name, avatar_url: avatar, banner_url: bannerUrl, biography, location, web_site: webSite }
-  const { updateOldData, checkEqualData, oldDataProfile, dispatch } = useEditProfileContext()
+  const { isEqualData, updateOldData, checkEqualData, oldDataProfile, dispatch } = useEditProfileContext()
   const { registerField, handleSubmit, trigger, getValues, setValue, errors } = useFormEditProfile(initialFormUser)
   const { initialForm, setFormEditProfileFiles } = useEditProfile(state => state)
   const [errorSubmit, setErrorSubmit] = useState<string | null>(null)
@@ -58,6 +58,7 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
 
   const handleOnSubmit = handleSubmit(async data => {
     const { avatar_url: avatar, banner_url: banner } = initialForm
+    if (isEqualData || (!avatar && !banner)) return dispatch({ type: 'CLOSE_MODAL' })
     const { avatar_url: defaultAvatar, banner_url: defaultBanner, ...rest } = data
     try {
       const uploadData: FormEditProfileUser = {
@@ -69,6 +70,7 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
       if (error) throw new Error('No se pudo actualizar el perfil. Inténtalo de nuevo.')
       setFormEditProfileFiles(initialFormEditProfileFiles)
       dispatch({ type: 'CLOSE_MODAL' })
+      checkEqualData(true)
     } catch (error) {
       console.log(error)
       setErrorSubmit((error as Error).message)
@@ -84,7 +86,22 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
           <TextAreaBiography registerName='biography' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} />
           <InputEdit registerName='location' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} label='Ubicación' />
           <InputEdit registerName='web_site' errors={errors} trigger={trigger} handleOnChange={handleOnChange} registerField={registerField} label='Sitio Web' />
-          <Button type='submit' variant='solid' radius='sm' size='lg' className='bg-white text-black font-semibold'>
+          <Button
+            type='submit'
+            variant='solid'
+            radius='sm'
+            size='lg'
+            className='bg-white text-black font-semibold'
+            onPress={() => addToast({
+              hideCloseButton: true,
+              classNames: {
+                base: ['bg-sky-500'],
+                title: 'text-white'
+              },
+              title: '¡Tu perfíl se esta actualizado!',
+              promise: handleOnSubmit()
+            })}
+          >
             Guardar
           </Button>
           {errorSubmit && <p className='text-tiny font-bold text-red-600 text-center'>{errorSubmit}</p>}
