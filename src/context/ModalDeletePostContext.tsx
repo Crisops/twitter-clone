@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, ReactNode, useReducer, useState, useTransition } from 'react'
+import React, { createContext, ReactNode, useReducer } from 'react'
 import { Tables } from '@/types/database.types'
 import { deleteTweet } from '@/actions/actions'
 
@@ -14,11 +14,9 @@ type ReducerType = {
 }
 
 type ModalContextType = {
-    message: string | null
     view: ReducerType['state']
     dispatch: React.Dispatch<ReducerType['action']>
-    handleDeletePost: ({ id, user_id }: {id: Tables<'tweets'>['id'], user_id: Tables<'users'>['id']}) => void
-    isPending: boolean
+    handleDeletePost: ({ id, user_id }: {id: Tables<'tweets'>['id'], user_id: Tables<'users'>['id']}) => Promise<void>
 }
 
 export const ModalDeletePostContext = createContext<ModalContextType | null>(null)
@@ -38,25 +36,20 @@ function reducer (state:ReducerType['state'], action: ReducerType['action']): Re
 
 export const ModalDeletePostProvider = ({ children }: {children: ReactNode | ReactNode[]}) => {
   const [view, dispatch] = useReducer(reducer, { component: '' })
-  const [isPending, startTransition] = useTransition()
-  const [message, setMessageError] = useState<string | null>(null)
 
-  const handleDeletePost = ({ id: tweetId, user_id: userId }: {id: Tables<'tweets'>['id'], user_id: Tables<'users'>['id']}): void => {
+  const handleDeletePost = async ({ id: tweetId, user_id: userId }: {id: Tables<'tweets'>['id'], user_id: Tables<'users'>['id']}): Promise<void> => {
     dispatch({ type: 'CLOSE' })
-    startTransition(async () => {
-      try {
-        const { error } = await deleteTweet({ id: tweetId, user_id: userId })
-        if (error) throw new Error('Error. Algo falló al eliminar tu post')
-        setMessageError('Se eliminó tu post')
-      } catch (error: Error | unknown) {
-        const message = error instanceof Error ? error.message : 'Error desconocido'
-        setMessageError(message)
-      }
-    })
+    try {
+      const { error } = await deleteTweet({ id: tweetId, user_id: userId })
+      if (error) throw new Error('Error. Algo falló al eliminar tu post')
+    } catch (error: Error | unknown) {
+      const message = error instanceof Error ? error.message : 'Error desconocido'
+      console.log(message)
+    }
   }
 
   return (
-    <ModalDeletePostContext.Provider value={{ message, view, isPending, dispatch, handleDeletePost }}>
+    <ModalDeletePostContext.Provider value={{ view, dispatch, handleDeletePost }}>
       {children}
     </ModalDeletePostContext.Provider>
   )
