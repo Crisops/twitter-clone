@@ -5,7 +5,6 @@ import { Tables } from '@/types/database.types'
 import { IconDots, IconTrash } from '@tabler/icons-react'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
-import AlertToast from '@/components/shared/AlertToast'
 import ButtonOptionPost from '@/components/Home/ButtonOptionPost'
 import ConfirmDeletePost from '@/components/Home/ConfirmDeletePost'
 import ShowModal from '@/components/shared/ShowModal'
@@ -51,7 +50,6 @@ export default function PopoverOptionsPost ({ idUserSession, userId, tweetId }: 
         hideCloseButton
         formTweet={<ConfirmDeletePost tweetId={tweetId} userId={userId} />}
       />
-      <AlertToast radius='sm' color='primary' variant='solid' />
     </>
 
   )
