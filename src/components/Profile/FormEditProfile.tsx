@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import equal from 'fast-deep-equal'
-import { addToast, Button } from '@heroui/react'
+import { Button } from '@heroui/react'
 import { Tables } from '@/types/database.types'
 import { FormEditProfileUser } from '@/types/store'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
@@ -11,6 +11,7 @@ import { useFormEditProfile } from '@/hooks/useFormEditProfile'
 import { useEditProfile } from '@/hooks/useStore'
 import { updateProfile } from '@/actions/actions'
 import { uploadImageEditProfile } from '@/utils/upload-images-edit-profile'
+import { addToast } from '@/lib/toast'
 import { initialFormEditProfileFiles } from '@/config/fields-form'
 import InputEdit from '@/components/Profile/InputEdit'
 import TextAreaBiography from '@/components/Profile/TextAreaBiography'
@@ -93,13 +94,9 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
             size='lg'
             className='bg-white text-black font-semibold'
             onPress={() => addToast({
-              hideCloseButton: true,
-              classNames: {
-                base: ['bg-sky-500'],
-                title: 'text-white'
-              },
-              title: '¡Tu perfíl se esta actualizado!',
-              promise: handleOnSubmit()
+              message: '¡Tu perfíl se esta actualizado!',
+              promise: handleOnSubmit(),
+              timeout: 3000
             })}
           >
             Guardar
