@@ -1,6 +1,7 @@
 import { Button } from '@heroui/react'
 import { Tables } from '@/types/database.types'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
+import { addToast } from '@/lib/toast'
 
 interface ConfirmDeletePostProps {
   tweetId: Tables<'tweets'>['id']
@@ -11,7 +12,12 @@ export default function ConfirmDeletePost ({ tweetId, userId }: ConfirmDeletePos
   const { handleDeletePost, dispatch } = useReducerOptionsPost()
 
   const handleOnPress = () => {
-    handleDeletePost({ id: tweetId, user_id: userId })
+    addToast(
+      {
+        message: '¡Eliminando post!',
+        promise: handleDeletePost({ id: tweetId, user_id: userId }),
+        timeout: 3000
+      })
   }
 
   const handleCloseModal = () => {
