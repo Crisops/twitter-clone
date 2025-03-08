@@ -14,9 +14,10 @@ interface TweetHeaderContentProps {
   followers: Tables<'users'>['followers']
   following: Tables<'users'>['following']
   date: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
+  disableOptions?: boolean
 }
 
-export default function TweetHeaderContent ({ userId: idUserCreatorTweet, name, username, src, biography, followers, following, date, tweetId }: TweetHeaderContentProps) {
+export default function TweetHeaderContent ({ userId: idUserCreatorTweet, name, username, src, biography, followers, following, date, tweetId, disableOptions }: TweetHeaderContentProps) {
   return (
     <header className='flex items-center justify-between'>
       <div className='flex gap-x-1 items-center [&>div>span]:text-base'>
@@ -52,9 +53,12 @@ export default function TweetHeaderContent ({ userId: idUserCreatorTweet, name, 
         </div>
         <TweetCreatedTime date={date} />
       </div>
-      <div data-no-redirect>
-        <PopoverOptionsPostServer userIdCreatorPost={idUserCreatorTweet} tweetId={tweetId} />
-      </div>
+      {
+        !disableOptions &&
+          <div data-no-redirect>
+            <PopoverOptionsPostServer userIdCreatorPost={idUserCreatorTweet} tweetId={tweetId} />
+          </div>
+      }
     </header>
   )
 }
