@@ -1,6 +1,16 @@
 import { type Tables } from '@/types/database.types'
 import { TableRelationships } from '@/types/generics'
 
+export type CreatorTweet = {
+    id: Tables<'users'>['id']
+    name: Tables<'users'>['name'];
+    username: Tables<'users'>['username'];
+    biography: Tables<'users'>['biography']
+    following: Tables<'users'>['following']
+    followers: Tables<'users'>['followers']
+    avatar_url: Tables<'users'>['avatar_url'];
+}
+
 export type TweetInfo = {
     id: Tables<'tweets'>['id'] | Tables<'comments'>['tweet_id']
     content: Tables<'tweets'>['content'] | Tables<'comments'>['content']
@@ -9,15 +19,7 @@ export type TweetInfo = {
     retuits: Tables<'tweets'>['retuits']
     comments: Tables<'tweets'>['comments']
     created_at: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
-    creator: {
-        id: Tables<'users'>['id']
-        name: Tables<'users'>['name'];
-        username: Tables<'users'>['username'];
-        biography: Tables<'users'>['biography']
-        following: Tables<'users'>['following']
-        followers: Tables<'users'>['followers']
-        avatar_url: Tables<'users'>['avatar_url'];
-    }
+    creator: CreatorTweet
     post_type?: string
 }
 
