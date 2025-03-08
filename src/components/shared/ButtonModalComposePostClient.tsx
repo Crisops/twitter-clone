@@ -17,14 +17,10 @@ interface ButtonModalComposePostPropsClient {
 export default function ButtonModalComposePostClient ({ children, className, variant, sizeModal, placement }: ButtonModalComposePostPropsClient) {
   const { modal, dispatch } = useReducerModal()
 
-  const { device, open } = modal
+  const { open } = modal
 
-  const handleOpenModalDesktop = (): void => {
-    dispatch({ type: 'OPEN_DESKTOP' })
-  }
-
-  const handleOpenModalMovil = (): void => {
-    dispatch({ type: 'OPEN_MOVILE' })
+  const handleOpenModal = (): void => {
+    dispatch({ type: 'OPEN_MODAL' })
   }
 
   const handleClose = (): void => {
@@ -34,11 +30,11 @@ export default function ButtonModalComposePostClient ({ children, className, var
   return (
     <>
       <div className='flex justify-end xl:justify-start'>
-        <ButtonOpenModal className={className} variant={variant} handleOpenModal={device === 'desktop' ? handleOpenModalDesktop : handleOpenModalMovil} />
+        <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModal} />
       </div>
       <ShowModal
         hideCloseButton={false}
-        isOpen={(device === 'desktop' || device === 'movile') && open}
+        isOpen={open}
         placement={placement}
         size={sizeModal}
         content={children}
