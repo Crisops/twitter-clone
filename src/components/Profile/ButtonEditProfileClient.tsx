@@ -38,19 +38,19 @@ function ButtonEditProfileClient ({ children: formEditProfile }: ButtonEditProfi
       </Button>
       <ShowModal
         isOpen={(openModal.modal === 'edit_profile' && openModal.open) || openModal.modal === 'validate_changes'}
-        size={deviceType !== 'mobile' ? 'xl' : 'full'}
+        size={deviceType === 'mobile' ? 'full' : 'xl'}
         hideCloseButton={false}
         placement='center'
         handleClose={handleCloseModalEdit}
-        formTweet={formEditProfile}
+        content={formEditProfile}
       />
       <ShowModal
         isOpen={openModal.modal === 'validate_changes' && openModal.open}
-        size={deviceType !== 'mobile' ? 'xs' : 'full'}
+        size={deviceType === 'mobile' ? 'full' : 'xs'}
         hideCloseButton={false}
         placement='center'
         handleClose={handleCloseModalValidateChange}
-        formTweet={<ValidateChangesEditProfile />}
+        content={<ValidateChangesEditProfile />}
       />
     </>
 
