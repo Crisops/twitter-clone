@@ -88,7 +88,7 @@ export default function FormPostClient ({ className, idSession, idTweet, creator
       </div>
       <div className='flex w-full justify-end'>
         <div className='w-11/12'>
-          <div className='flex items-center justify-between px-2 py-2'>
+          <div className='flex items-center justify-between px-2 py-1'>
             <InputFileTweet registerName='file' register={registerField} handleOnChange={handleOnChange} />
             <Button
               type='submit'
