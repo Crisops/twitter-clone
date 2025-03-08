@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Tables } from '@/types/database.types'
 import { getTweetById } from '@/utils/supabase/getTweets'
+import { ModalProvider } from '@/context/ModalComposeContext'
 import HeaderBackPost from '@/components/Posts/HeaderBackPost'
 import ViewPost from '@/components/Posts/ViewPost'
 
@@ -38,7 +39,9 @@ export default function StatusPostPage ({ params: { idPost } }:StatusPostPagePro
   return (
     <>
       <HeaderBackPost />
-      <ViewPost idPost={idPost} />
+      <ModalProvider>
+        <ViewPost idPost={idPost} />
+      </ModalProvider>
     </>
   )
 }
