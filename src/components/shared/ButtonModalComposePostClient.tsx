@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useDisclosure, ButtonVariantProps, ModalVariantProps } from '@heroui/react'
+import { ButtonVariantProps, ModalVariantProps } from '@heroui/react'
 import { useReducerModal } from '@/hooks/useReducerModal'
 import ButtonOpenModal from '@/components/shared/ButtonOpenModal'
 import ShowModal from '@/components/shared/ShowModal'
@@ -14,42 +14,36 @@ interface ButtonModalComposePostPropsClient {
   placement: ModalVariantProps['placement']
 }
 
-export default function ButtonModalComposePostClient ({ children: formTweet, className, variant, sizeModal, placement }: ButtonModalComposePostPropsClient) {
-  const { onOpen, onClose } = useDisclosure()
-
+export default function ButtonModalComposePostClient ({ children, className, variant, sizeModal, placement }: ButtonModalComposePostPropsClient) {
   const { modal, dispatch } = useReducerModal()
 
   const { device, open } = modal
 
-  const handleOpenModalDesktop = () => {
-    onOpen()
+  const handleOpenModalDesktop = (): void => {
     dispatch({ type: 'OPEN_DESKTOP' })
   }
 
-  const handleOpenModalMovil = () => {
-    onOpen()
+  const handleOpenModalMovil = (): void => {
     dispatch({ type: 'OPEN_MOVILE' })
   }
 
-  const handleClose = () => {
-    onClose()
+  const handleClose = (): void => {
     dispatch({ type: 'CLOSE_MODAL' })
   }
 
   return (
     <>
       <div className='flex justify-end xl:justify-start'>
-        {
-          sizeModal === 'xl'
-            ? <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModalDesktop} />
-            : <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModalMovil} />
-        }
+        <ButtonOpenModal className={className} variant={variant} handleOpenModal={device === 'desktop' ? handleOpenModalDesktop : handleOpenModalMovil} />
       </div>
-      {
-          sizeModal === 'xl'
-            ? <ShowModal hideCloseButton={false} isOpen={device === 'desktop' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
-            : <ShowModal hideCloseButton={false} isOpen={device === 'movile' && open} placement={placement} size={sizeModal} formTweet={formTweet} handleClose={handleClose} />
-        }
+      <ShowModal
+        hideCloseButton={false}
+        isOpen={(device === 'desktop' || device === 'movile') && open}
+        placement={placement}
+        size={sizeModal}
+        content={children}
+        handleClose={handleClose}
+      />
     </>
   )
 }
