@@ -46,7 +46,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
                     <IconBookmark size={24} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                   </TweetInteractions>
                 </div>
-                <FormPostServer idPost={idPost} className='hidden min-[500px]:flex flex-col w-full h-full px-4 pt-4' />
+                <FormPostServer className='hidden min-[500px]:flex flex-col w-full h-full px-4 pt-4' idPost={idPost} />
               </section>
             </div>
           </div>
