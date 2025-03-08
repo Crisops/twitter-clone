@@ -22,7 +22,7 @@ export type FormSignUp = {
 export type FormCreateTweet = {
     content: string
     imageUrlPreview: string | null
-    file: File | null
+    file: FileList | null
     user_id: string
 }
 
