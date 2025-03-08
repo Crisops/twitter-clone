@@ -13,7 +13,7 @@ export default async function FormPostServer ({ idPost, className }: FormPostSer
   const { id } = await getSessionAuth()
   const { name, username, avatar_url: avatar } = await getUserProfile({ id })
   return (
-    <FormPostClient idSession={id} idTweet={idPost} className={className}>
+    <FormPostClient idSession={id} idTweet={idPost} className={className} replyingUser={username}>
       <TweetImageUser avatar_url={avatar} name={name} username={username} />
     </FormPostClient>
   )

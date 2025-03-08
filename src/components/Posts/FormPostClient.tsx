@@ -16,10 +16,11 @@ interface FormPostClientProps {
   className: HTMLProps<HTMLElement>['className']
   idSession: Tables<'users'>['id']
   idTweet: Tables<'tweets'>['id']
+  replyingUser: Tables<'users'>['username']
   children: ReactNode
 }
 
-export default function FormPostClient ({ className, idSession, idTweet, children: avatarImage }: FormPostClientProps) {
+export default function FormPostClient ({ className, idSession, idTweet, replyingUser, children: avatarImage }: FormPostClientProps) {
   const { modal, dispatch } = useReducerModal()
 
   const { registerField, handleSubmit, trigger, errors, isSubmitting, getValues, setValue, reset } = useFormTweet({ idSession })
@@ -66,6 +67,9 @@ export default function FormPostClient ({ className, idSession, idTweet, childre
   return (
     <form key={formKey} onSubmit={handleOnSubmit} encType='multipart/form-data' className={className}>
       <div className='flex flex-col gap-2'>
+        <div className='ml-12'>
+          <p className='text-zinc-500 pointer-events-none'>Respondiendo a <span className='text-sky-600'>@{replyingUser}</span></p>
+        </div>
         <div className='relative flex gap-2 before:absolute before:right-0 before:bottom-0 before:w-11/12 before:h-px before:bg-zinc-800'>
           <div>
             {avatarImage}
