@@ -6,11 +6,11 @@ interface ModalComposePostProps {
     placement: ModalVariantProps['placement']
     size: ModalVariantProps['size']
     handleClose: () => void
-    formTweet: ReactNode
+    content: ReactNode
     hideCloseButton: boolean
 }
 
-export default function ShowModal ({ isOpen, placement, size, handleClose, hideCloseButton, formTweet }: ModalComposePostProps) {
+export default function ShowModal ({ isOpen, placement, size, handleClose, hideCloseButton, content }: ModalComposePostProps) {
   return (
     <Modal
       isOpen={isOpen}
@@ -24,7 +24,7 @@ export default function ShowModal ({ isOpen, placement, size, handleClose, hideC
         <>
           <ModalHeader className='flex flex-col gap-1' />
           <ModalBody className='w-full flex-row py-6 min-[500px]:py-2'>
-            {formTweet}
+            {content}
           </ModalBody>
         </>
       </ModalContent>
