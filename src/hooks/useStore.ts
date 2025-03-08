@@ -12,11 +12,6 @@ export const useCreateTweet = create<StoreCreateTweet>((set) => ({
   setFormCreateTweet: (initialForm) => set(() => ({ initialForm }))
 }))
 
-export const useCreateComposeTweet = create<StoreCreateTweet>((set) => ({
-  initialForm: initialCreateTweetForm,
-  setFormCreateTweet: (initialForm) => set(() => ({ initialForm }))
-}))
-
 export const useEditProfile = create<StoreEditProfileFiles>((set) => ({
   initialForm: initialFormEditProfileFiles,
   setFormEditProfileFiles: (update) =>
