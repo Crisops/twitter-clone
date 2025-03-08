@@ -38,7 +38,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
               <section className='w-full h-full'>
                 <TweetContent content={content} image_url={image} className='text-gray-100 text-xl' />
                 <CreateTimePost date={date} />
-                <div className='border-y-1 border-zinc-800 py-2 my-2'>
+                <div className='border-t min-[500px]:border-b border-zinc-800 pt-2 mt-2 min-[500px]:pb-2 min-[500px]:mb-2'>
                   <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={idPost}>
                     <IconMessageCircle size={24} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                     <IconRepeat size={24} color='currentColor' className='group-hover:stroke-green-500 transition-colors duration-300 ease-in-out' />
@@ -46,7 +46,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
                     <IconBookmark size={24} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                   </TweetInteractions>
                 </div>
-                <FormPostServer idPost={idPost} />
+                <FormPostServer idPost={idPost} className='hidden min-[500px]:flex flex-col w-full h-full px-4 pt-4' />
               </section>
             </div>
           </div>
