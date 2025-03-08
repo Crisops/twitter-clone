@@ -1,14 +1,17 @@
 'use client'
 
 import { ChangeEvent, HTMLProps, ReactNode, useState } from 'react'
-import { Button } from '@heroui/button'
+import { CreatorTweet } from '@/types/querys-db'
 import { Tables } from '@/types/database.types'
+import { Button } from '@heroui/button'
 import { useReducerModal } from '@/hooks/useReducerModal'
 import { useFormTweet } from '@/hooks/useFormTweet'
 import { insertComment } from '@/actions/actions'
 import { uploadImage } from '@/utils/supabase/storage/uploadImage'
 import { initialCreateTweetForm } from '@/config/fields-form'
 import InputFileTweet from '@/components/Home/InputFileTweet'
+import ReplyingUserDesktop from '@/components/Posts/ReplyingUserDesktop'
+import ReplyingUserMovile from '@/components/Posts/ReplyingUserMovile'
 import TextAreaForm from '@/components/shared/TextAreaForm'
 import TweetImageLoad from '@/components/Home/TweetImageLoad'
 
@@ -16,11 +19,13 @@ interface FormPostClientProps {
   className: HTMLProps<HTMLElement>['className']
   idSession: Tables<'users'>['id']
   idTweet: Tables<'tweets'>['id']
-  replyingUser: Tables<'users'>['username']
+  creatorTweet: CreatorTweet | null
+  contentTweet: Tables<'tweets'>['content']
+  dateTweet: Tables<'tweets'>['created_at']
   children: ReactNode
 }
 
-export default function FormPostClient ({ className, idSession, idTweet, replyingUser, children: avatarImage }: FormPostClientProps) {
+export default function FormPostClient ({ className, idSession, idTweet, creatorTweet, contentTweet, dateTweet, children: avatarImage }: FormPostClientProps) {
   const { modal, dispatch } = useReducerModal()
 
   const { registerField, handleSubmit, trigger, errors, isSubmitting, getValues, setValue, reset } = useFormTweet({ idSession })
@@ -66,10 +71,11 @@ export default function FormPostClient ({ className, idSession, idTweet, replyin
 
   return (
     <form key={formKey} onSubmit={handleOnSubmit} encType='multipart/form-data' className={className}>
-      <div className='flex flex-col gap-2'>
-        <div className='ml-12'>
-          <p className='text-zinc-500 pointer-events-none'>Respondiendo a <span className='text-sky-600'>@{replyingUser}</span></p>
-        </div>
+      <div className='relative flex flex-col gap-2'>
+        {modal.open && creatorTweet && <ReplyingUserMovile name={creatorTweet.name} username={creatorTweet.username} avatar={creatorTweet.avatar_url} content={contentTweet} date={dateTweet} />}
+        {
+          idSession !== creatorTweet?.id && <ReplyingUserDesktop openModal={modal.open} username={creatorTweet?.username} />
+        }
         <div className='relative flex gap-2 before:absolute before:right-0 before:bottom-0 before:w-11/12 before:h-px before:bg-zinc-800'>
           <div>
             {avatarImage}
