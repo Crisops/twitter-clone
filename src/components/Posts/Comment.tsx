@@ -45,6 +45,7 @@ export default function Comment ({ userId, tweetId, name, username, avatarUrl, b
               following={following}
               followers={followers}
               date={date}
+              disableOptions
             />
             <section className='w-full h-full'>
               <TweetContent content={content} image_url={imageContent} />
