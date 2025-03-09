@@ -13,7 +13,7 @@ async function DrawerServer () {
     <DrawerClient>
       <DrawerHeader avatar={<TweetImageUser avatar_url={avatar ?? ''} name={name} username={username} />} name={name} username={username} />
       <AsideNavigation viewMovil LinkProfile={<LinkProfileServer viewMovil />} />
-      <TweetImageUser avatar_url={avatar ?? ''} name={name} username={username} />
+      <TweetImageUser size='sm' avatar_url={avatar ?? ''} name={name} username={username} />
     </DrawerClient>
   )
 }
