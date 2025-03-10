@@ -39,7 +39,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
                 <TweetContent content={content} image_url={image} className='text-gray-100 text-xl' />
                 <CreateTimePost date={date} />
                 <div className='border-t min-[500px]:border-b border-zinc-800 pt-2 mt-2 min-[500px]:pb-2 min-[500px]:mb-2'>
-                  <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={idPost}>
+                  <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={idPost} interactionComment='comment-post'>
                     <IconMessageCircle size={24} className='group-hover/effect:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                     <IconRepeat size={24} color='currentColor' className='group-hover/effect:stroke-green-500 transition-colors duration-300 ease-in-out' />
                     <IconHeart className='group-hover/effect:stroke-pink-600 stroke-current size-7 stroke-2 transition-colors duration-300 ease-in-out' />
