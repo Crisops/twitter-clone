@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { HTMLProps, ReactNode } from 'react'
 import { ButtonVariantProps, ModalVariantProps } from '@heroui/react'
 import { useReducerModal } from '@/hooks/useReducerModal'
 import ButtonOpenModal from '@/components/shared/ButtonOpenModal'
@@ -8,13 +8,14 @@ import ShowModal from '@/components/shared/ShowModal'
 
 interface ButtonModalComposePostPropsClient {
   variant: ButtonVariantProps['variant']
-  className: string
+  className: HTMLProps<HTMLElement>['className']
   children: ReactNode
   sizeModal: ModalVariantProps['size']
   placement: ModalVariantProps['placement']
+  content?: ReactNode
 }
 
-export default function ButtonModalComposePostClient ({ children, className, variant, sizeModal, placement }: ButtonModalComposePostPropsClient) {
+export default function ButtonModalComposePostClient ({ children, className, variant, sizeModal, placement, content }: ButtonModalComposePostPropsClient) {
   const { modal, dispatch } = useReducerModal()
 
   const { open } = modal
@@ -30,7 +31,9 @@ export default function ButtonModalComposePostClient ({ children, className, var
   return (
     <>
       <div className='flex justify-end xl:justify-start'>
-        <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModal} />
+        <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModal}>
+          {content}
+        </ButtonOpenModal>
       </div>
       <ShowModal
         hideCloseButton={false}
