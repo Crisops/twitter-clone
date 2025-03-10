@@ -4,6 +4,7 @@ import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/action
 import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import ButtonInteraction from '@/components/Home/ButtonInteraction'
+import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
 
 interface TweetInteractionsProps {
   idTweet: Tables<'tweets'>['id']
@@ -11,9 +12,10 @@ interface TweetInteractionsProps {
   retuits: Tables<'tweets'>['retuits']
   comments: Tables<'tweets'>['comments']
   children?: ReactNode[]
+  loadingForm: 'create-post' | 'comment-post'
 }
 
-export default async function TweetInteractions ({ idTweet, comments, retuits, likes, children }:TweetInteractionsProps) {
+export default async function TweetInteractions ({ idTweet, comments, retuits, likes, children, loadingForm }:TweetInteractionsProps) {
   const { id } = await getSessionAuth()
 
   const dataRetweets = await getRetweets({ userId: id, tweetId: idTweet })
@@ -24,14 +26,20 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
   return (
     <div className='flex justify-between' data-no-redirect>
       <div className='flex flex-grow justify-between'>
-        <ButtonInteraction
-          icon={IconMessageCircle}
-          className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-sky-500/10 group-hover/effect:before:rounded-full group-hover/effect:before:-translate-x-0'
-          textColor='text-sky-500'
-          quantity={comments}
-          idUser={id}
-          idTweet={idTweet}
-        />
+        <ButtonModalComposePostServer
+          className='bg-transparent w-fit px-0 min-w-fit overflow-visible gap-x-1 group/effect text-zinc-600'
+          placement='top'
+          sizeModal='xl'
+          idPost={idTweet}
+          loadingForm={loadingForm}
+        >
+          <>
+            <span className='relative text-current group-hover/effect:before:absolute group-hover/effect:before:-inset-2 group-hover/effect:before:bg-sky-500/10 group-hover/effect:before:rounded-full'>
+              {IconMessageCircle}
+            </span>
+            <span className='text-small transition-colors duration-300 ease-in-out text-zinc-600 group-hover/effect:text-sky-500'>{comments}</span>
+          </>
+        </ButtonModalComposePostServer>
         <ButtonInteraction
           icon={IconRepeat}
           className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-green-500/10 group-hover/effect:before:rounded-full'
