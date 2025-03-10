@@ -70,10 +70,17 @@ function ButtonInteraction ({ idUser, idTweet, quantity, icon, className, textCo
 
   return (
     <div className={`flex items-center gap-x-1 group/effect ${optimistic.isActive ? textColor : 'text-zinc-600'}`}>
-      <Button onPress={handleSendData} className={`bg-transparent px-0 min-w-fit overflow-visible ${className} ${optimistic.isActive ? 'text-current first:fill-current first:stroke-current' : 'text-current first:fill-none first:stroke-current'}`}>
+      <Button
+        onPress={handleSendData}
+        className={`bg-transparent px-0 min-w-fit overflow-visible ${className} ${optimistic.isActive ? 'text-current first:fill-current first:stroke-current' : 'text-current first:fill-none first:stroke-current'}`}
+      >
         {icon}
       </Button>
-      {quantity !== undefined && <NumberFlow className={`text-small transition-colors duration-300 ease-in-out ${optimistic.isActive ? 'text-current' : 'text-zinc-600'} ${groupHoverClass} `} value={optimistic.count} />}
+      {quantity !== undefined &&
+        <NumberFlow
+          className={`text-small transition-colors duration-300 ease-in-out ${optimistic.isActive ? 'text-current' : 'text-zinc-600'} ${groupHoverClass} `}
+          value={optimistic.count}
+        />}
     </div>
   )
 }
