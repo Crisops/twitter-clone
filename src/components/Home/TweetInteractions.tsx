@@ -12,10 +12,10 @@ interface TweetInteractionsProps {
   retuits: Tables<'tweets'>['retuits']
   comments: Tables<'tweets'>['comments']
   children?: ReactNode[]
-  loadingForm: 'create-post' | 'comment-post'
+  interactionComment: 'create-post' | 'comment-post'
 }
 
-export default async function TweetInteractions ({ idTweet, comments, retuits, likes, children, loadingForm }:TweetInteractionsProps) {
+export default async function TweetInteractions ({ idTweet, comments, retuits, likes, children, interactionComment }:TweetInteractionsProps) {
   const { id } = await getSessionAuth()
 
   const dataRetweets = await getRetweets({ userId: id, tweetId: idTweet })
@@ -31,7 +31,7 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
           placement='top'
           sizeModal='xl'
           idPost={idTweet}
-          loadingForm={loadingForm}
+          loadingForm={interactionComment}
         >
           <>
             <span className='relative text-current group-hover/effect:before:absolute group-hover/effect:before:-inset-2 group-hover/effect:before:bg-sky-500/10 group-hover/effect:before:rounded-full'>
