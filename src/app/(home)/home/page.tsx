@@ -1,3 +1,4 @@
+import { IconFeather } from '@/components/Icons'
 import SectionTwittsMain from '@/components/Home/SectionTwittsMain'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
 
@@ -12,7 +13,9 @@ export default function HomePage () {
           variant='shadow'
           placement='top-center'
           loadingForm='create-post'
-        />
+        >
+          <IconFeather className='fill-current size-6' />
+        </ButtonModalComposePostServer>
       </div>
     </>
   )

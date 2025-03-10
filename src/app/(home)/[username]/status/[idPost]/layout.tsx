@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
+import { IconMessageCircle } from '@tabler/icons-react'
 import { Tables } from '@/types/database.types'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
-
 interface UsernameLayoutProps {
   children: ReactNode
   params: {
@@ -21,7 +21,9 @@ export default async function StatusLayout ({ children, params: { idPost } }: Us
           placement='top-center'
           loadingForm='comment-post'
           idPost={idPost}
-        />
+        >
+          <IconMessageCircle />
+        </ButtonModalComposePostServer>
       </div>
     </section>
   )
