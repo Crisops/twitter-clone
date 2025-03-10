@@ -3,7 +3,7 @@ import { Tables } from '@/types/database.types'
 import { insertRetweet, deleteRetweet, insertLikes, deleteLikes } from '@/actions/actions'
 import { getLikes, getRetweets } from '@/utils/supabase/getInterations'
 import { getSessionAuth } from '@/utils/supabase/getUser'
-import InteractionTweet from '@/components/Home/InteractionTweet'
+import ButtonInteraction from '@/components/Home/ButtonInteraction'
 
 interface TweetInteractionsProps {
   idTweet: Tables<'tweets'>['id']
@@ -24,20 +24,18 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
   return (
     <div className='flex justify-between' data-no-redirect>
       <div className='flex flex-grow justify-between'>
-        <InteractionTweet
+        <ButtonInteraction
           icon={IconMessageCircle}
-          bgColor='group-hover:before:bg-sky-500/10'
+          className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-sky-500/10 group-hover/effect:before:rounded-full group-hover/effect:before:-translate-x-0'
           textColor='text-sky-500'
-          textColorHover='group-hover:text-sky-500'
           quantity={comments}
           idUser={id}
           idTweet={idTweet}
         />
-        <InteractionTweet
+        <ButtonInteraction
           icon={IconRepeat}
-          bgColor='group-hover:before:bg-green-500/10'
+          className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-green-500/10 group-hover/effect:before:rounded-full'
           textColor='text-green-500'
-          textColorHover='group-hover:text-green-500'
           quantity={retuits}
           idUser={id}
           idTweet={idTweet}
@@ -45,11 +43,10 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
           insertData={insertRetweet}
           deleteData={deleteRetweet}
         />
-        <InteractionTweet
+        <ButtonInteraction
           icon={IconHeart}
-          bgColor='group-hover:before:bg-pink-500/10'
+          className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-pink-500/10 group-hover/effect:before:rounded-full'
           textColor='text-pink-600'
-          textColorHover='group-hover:text-red-500'
           quantity={likes}
           idUser={id}
           idTweet={idTweet}
@@ -59,11 +56,10 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
         />
       </div>
       <div className='flex w-1/4 justify-end'>
-        <InteractionTweet
+        <ButtonInteraction
+          className='group-hover/effect:before:absolute group-hover/effect:before:w-9 group-hover/effect:before:h-9 group-hover/effect:before:bg-sky-500/10 group-hover/effect:before:rounded-full'
           icon={IconBookmark}
-          bgColor='group-hover:before:bg-sky-500/10'
           textColor='text-sky-500'
-          textColorHover='group-hover:text-sky-500'
           idUser={id}
           idTweet={idTweet}
         />
