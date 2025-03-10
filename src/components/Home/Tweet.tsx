@@ -53,10 +53,10 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
               <section className='w-full h-full'>
                 <TweetContent content={content} image_url={avatar} />
                 <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={id}>
-                  <IconMessageCircle size={20} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />
-                  <IconRepeat size={20} color='currentColor' className='group-hover:stroke-green-500 transition-colors duration-300 ease-in-out' />
-                  <IconHeart className='group-hover:stroke-pink-600 size-5 stroke-2 transition-colors duration-300 ease-in-out' />
-                  <IconBookmark size={20} className='group-hover:stroke-sky-500 transition-colors duration-300 ease-in-out' />
+                  <IconMessageCircle size={20} className='group-hover/effect:stroke-sky-500 transition-colors duration-300 ease-in-out' />
+                  <IconRepeat size={20} color='currentColor' className='group-hover/effect:stroke-green-500 transition-colors duration-300 ease-in-out' />
+                  <IconHeart className='group-hover/effect:stroke-pink-600 stroke-current size-5 stroke-2 transition-colors duration-300 ease-in-out' />
+                  <IconBookmark size={20} className='group-hover/effect:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                 </TweetInteractions>
               </section>
             </div>
