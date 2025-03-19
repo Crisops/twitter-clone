@@ -11,7 +11,7 @@ interface UsernameLayoutProps {
 
 export default function ProfileLayout ({ children, posts, media, params: { username } }: UsernameLayoutProps) {
   return (
-    <div className='h-full border-r border-zinc-700'>
+    <div className='h-full border-x border-zinc-700'>
       {children}
       <ViewInteractivity posts={posts} media={media} username={username} />
     </div>
