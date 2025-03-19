@@ -6,70 +6,70 @@ interface LinkFooterLogin {
 export const linksFooter: LinkFooterLogin[] = [
   {
     title: 'Información',
-    href: 'https://about.x.com/es'
+    href: '#'
   },
   {
     title: 'Descarga la app de X',
-    href: 'https://help.x.com/using-x/download-the-x-app'
+    href: '#'
   },
   {
     title: 'Centro de Ayuda',
-    href: 'https://help.x.com/es'
+    href: '#'
   },
   {
     title: 'Condiciones de Servicio',
-    href: 'https://x.com/es/tos'
+    href: '3'
   },
   {
     title: 'Política de Privacidad',
-    href: 'https://x.com/privacy'
+    href: '#'
   },
   {
     title: 'Política de cookies',
-    href: 'https://support.x.com/articles/20170514'
+    href: '#'
   },
   {
     title: 'Accesibilidad',
-    href: 'https://help.x.com/resources/accessibility'
+    href: '#'
   },
   {
     title: 'Información de anuncios',
-    href: 'https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo'
+    href: '#'
   },
   {
     title: 'Blog',
-    href: 'https://blog.x.com/'
+    href: '#'
   },
   {
     title: 'Empleos',
-    href: 'https://careers.x.com/'
+    href: '#'
   },
   {
     title: 'Recursos para marcas',
-    href: 'https://about.x.com/press/brand-assets'
+    href: '#'
   },
   {
     title: 'Publicidad',
-    href: 'https://ads.x.com/?ref=gl-tw-tw-twitter-advertise'
+    href: '#'
   },
   {
     title: 'Marketing',
-    href: 'https://marketing.x.com/'
+    href: '#'
   },
   {
     title: 'X para empresas',
-    href: 'https://business.x.com/?ref=web-twc-ao-gbl-twitterforbusiness&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=twitterforbusiness'
+    href: '#'
   },
   {
     title: 'Desarrolladores',
-    href: 'https://developer.x.com/en'
+    href: '#'
   },
   {
     title: 'Guía',
-    href: 'https://x.com/i/directory/profiles'
+    href: '#'
   },
   {
     title: 'Configuración',
-    href: 'https://x.com/settings'
+    href: '#'
   }
 ]
