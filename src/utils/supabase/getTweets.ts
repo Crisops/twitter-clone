@@ -7,17 +7,13 @@ export const getTweets = async () => {
   try {
     const supabase = await createClient()
 
-    const tweetsQuery = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (id, name, username, avatar_url, biography, following, followers)').order('created_at', { ascending: false })
+    const tweets = supabase.from('tweets').select('*, creator:users!tweets_user_id_fkey (id, name, username, avatar_url, biography, following, followers)').returns<TweetInfo[]>().order('created_at', { ascending: false })
 
-    type Tweets = QueryData<typeof tweetsQuery>
-
-    const { data, error } = await tweetsQuery
+    const { data, error } = await tweets
 
     if (error) throw new Error('Error. No se pudieron obtener los posts')
 
-    const tweets: Tweets = data
-
-    return tweets
+    return data
   } catch (error) {
     console.log(error)
     throw error
