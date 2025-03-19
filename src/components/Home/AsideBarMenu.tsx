@@ -5,7 +5,7 @@ import AsideNavigationDesktop from '@/components/Home/AsideNavigationDesktop'
 
 export default function AsideBarMenu () {
   return (
-    <aside className='hidden min-[500px]:block sticky top-0 h-screen border-r border-zinc-700'>
+    <aside className='hidden min-[500px]:block sticky top-0 h-screen'>
       <div className='h-full px-1'>
         <div className='flex flex-col justify-between h-full'>
           <div className='flex flex-col w-full h-full'>
