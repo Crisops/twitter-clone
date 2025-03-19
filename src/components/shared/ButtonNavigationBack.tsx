@@ -3,9 +3,9 @@
 import { useRouter } from 'next/navigation'
 import { initialCreateTweetForm } from '@/config/fields-form'
 import { useCreateTweet } from '@/hooks/useStore'
-import { IconArrowNarrowLeft } from '@tabler/icons-react'
+import { Button, ButtonProps } from '@heroui/button'
 
-function ButtonNavigationBack () {
+function ButtonNavigationBack ({ children, isIconOnly, startContent, className, radius }: ButtonProps) {
   const { setFormCreateTweet } = useCreateTweet()
   const router = useRouter()
 
@@ -15,7 +15,15 @@ function ButtonNavigationBack () {
   }
 
   return (
-    <button onClick={handleBackNavigation} className='p-1.5 rounded-full transition-colors ease-in-out duration-200 hover:bg-white/10'><IconArrowNarrowLeft /></button>
+    <Button
+      className={className}
+      onPress={handleBackNavigation}
+      isIconOnly={isIconOnly}
+      startContent={startContent}
+      radius={radius}
+    >
+      {children}
+    </Button>
   )
 }
 
