@@ -9,9 +9,10 @@ interface TweetContentProps {
   content: Tables<'tweets'>['content'] | Tables<'comments'>['content']
   image_url: Tables<'tweets'>['image_url'] | Tables<'comments'>['image_url']
   className?: string
+  previewImage: 'main-tweets' | 'post-tweet'
 }
 
-export default async function TweetContent ({ idPost, username, content, image_url: url, className }: TweetContentProps) {
+export default async function TweetContent ({ idPost, username, content, image_url: url, className, previewImage }: TweetContentProps) {
   let dataUrl: string = ''
 
   const NEW_WIDTH_IMAGE = 700
@@ -33,7 +34,7 @@ export default async function TweetContent ({ idPost, username, content, image_u
       </div>
       <div className='w-full h-full'>
         <div className='flex' data-no-redirect>
-          {url && idPost &&
+          {url && previewImage === 'main-tweets' &&
             <Link href={`/${username}/status/${idPost}`}>
               <Image
                 className='rounded-2xl border border-zinc-800'
@@ -45,7 +46,7 @@ export default async function TweetContent ({ idPost, username, content, image_u
                 alt='Descripción de la imagén'
               />
             </Link>}
-          {url &&
+          {url && previewImage === 'post-tweet' &&
             <Image
               className='rounded-2xl border border-zinc-800'
               src={url}

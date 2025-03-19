@@ -35,7 +35,7 @@ export default async function ViewPost ({ idPost }: ViewPostProps) {
           />
           <div className='w-full h-full mt-2'>
             <section className='w-full h-full'>
-              <TweetContent content={content} image_url={image} className='text-gray-100 text-xl' />
+              <TweetContent content={content} image_url={image} className='text-gray-100 text-xl' previewImage='post-tweet' />
               <CreateTimePost date={date} />
               <div className='border-t min-[500px]:border-b border-zinc-800 pt-2 mt-2 min-[500px]:pb-2 min-[500px]:mb-2'>
                 <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={idPost} interactionComment='comment-post'>
