@@ -11,7 +11,7 @@ interface UsernameLayoutProps {
 
 export default async function StatusLayout ({ children, params: { idPost } }: UsernameLayoutProps) {
   return (
-    <section className='h-full border-r border-zinc-700'>
+    <section className='h-full border-x border-zinc-700'>
       {children}
       <div className='fixed bottom-20 right-6 min-[500px]:hidden'>
         <ButtonModalComposePostServer
