@@ -51,7 +51,7 @@ export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetPr
                 date={date}
               />
               <section className='w-full h-full'>
-                <TweetContent content={content} image_url={avatar} />
+                <TweetContent idPost={tweet.id} username={creator.username} content={content} image_url={avatar} />
                 <TweetInteractions comments={comments} retuits={retuits} likes={likes} idTweet={id} interactionComment='create-post'>
                   <IconMessageCircle size={20} className='group-hover/effect:stroke-sky-500 transition-colors duration-300 ease-in-out' />
                   <IconRepeat size={20} color='currentColor' className='group-hover/effect:stroke-green-500 transition-colors duration-300 ease-in-out' />
