@@ -58,6 +58,7 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
   }
 
   const handleOnSubmit = handleSubmit(async data => {
+    addToast({ message: '¡Tu perfíl se esta actualizado!' })
     const { avatar_url: avatar, banner_url: banner } = initialForm
     if (isEqualData || (!avatar && !banner)) return dispatch({ type: 'CLOSE_MODAL' })
     const { avatar_url: defaultAvatar, banner_url: defaultBanner, ...rest } = data
@@ -69,11 +70,13 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
       }
       const { error } = await updateProfile(idUserSession, uploadData)
       if (error) throw new Error('No se pudo actualizar el perfil. Inténtalo de nuevo.')
+      addToast({ message: 'Tu perfíl se ha actualizado' })
       setFormEditProfileFiles(initialFormEditProfileFiles)
       dispatch({ type: 'CLOSE_MODAL' })
       checkEqualData(true)
     } catch (error) {
       console.log(error)
+      addToast({ message: 'Algo fallo al momento de actualizar tu perfíl.', timeout: 3000 })
       setErrorSubmit((error as Error).message)
     }
   })
@@ -93,11 +96,6 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
             radius='sm'
             size='lg'
             className='bg-white text-black font-semibold'
-            onPress={() => addToast({
-              message: '¡Tu perfíl se esta actualizado!',
-              promise: handleOnSubmit(),
-              timeout: 3000
-            })}
           >
             Guardar
           </Button>

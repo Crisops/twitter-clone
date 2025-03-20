@@ -7,6 +7,7 @@ import { createTweet } from '@/actions/actions'
 import { useFormTweet } from '@/hooks/useFormTweet'
 import { useReducerModal } from '@/hooks/useReducerModal'
 import { uploadImage } from '@/utils/supabase/storage/uploadImage'
+import { addToast } from '@/lib/toast'
 import { initialCreateTweetForm } from '@/config/fields-form'
 import InputFileTweet from '@/components/Home/InputFileTweet'
 import TextAreaForm from '@/components/shared/TextAreaForm'
@@ -43,6 +44,7 @@ export default function FormComposePost ({ className, children: avatarImage, idS
   }
 
   const handleOnSubmit = handleSubmit(async (data) => {
+    addToast({ message: 'Publicando post' })
     const { file, content, user_id: userId } = data
     try {
       if (file && file.length > 0) {
@@ -56,7 +58,9 @@ export default function FormComposePost ({ className, children: avatarImage, idS
       if (modal.open) dispatch({ type: 'CLOSE_MODAL' })
       reset({ ...initialCreateTweetForm, user_id: idSession })
       setFormKey(Date.now())
+      addToast({ message: 'Post publicado' })
     } catch (error) {
+      addToast({ message: 'Error. algo fallo al publicar tu post', timeout: 3000 })
       console.error(error)
       throw error
     }

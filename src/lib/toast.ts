@@ -4,7 +4,7 @@ export function addToast ({ promise, message, timeout }: {promise?: Promise<void
   toast({
     hideCloseButton: true,
     classNames: {
-      base: ['bg-sky-500'],
+      base: ['bg-sky-500 border-none'],
       title: 'text-white'
     },
     title: message,

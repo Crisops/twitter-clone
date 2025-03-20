@@ -18,7 +18,7 @@ export const linksFooter: LinkFooterLogin[] = [
   },
   {
     title: 'Condiciones de Servicio',
-    href: '3'
+    href: '#'
   },
   {
     title: 'Política de Privacidad',
