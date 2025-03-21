@@ -3,7 +3,7 @@
 import { HTMLProps, ReactNode, startTransition, useOptimistic } from 'react'
 import NumberFlow from '@number-flow/react'
 import { Tables } from '@/types/database.types'
-import { Button } from '@heroui/react'
+import Button from '@/components/shared/Button'
 
 type DataParametersProps = {
   user_id: Tables<'users'>['id']

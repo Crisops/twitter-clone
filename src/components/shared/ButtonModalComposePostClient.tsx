@@ -4,7 +4,7 @@ import { HTMLProps, ReactNode } from 'react'
 import { ButtonVariantProps, ModalVariantProps } from '@heroui/react'
 import { useReducerModal } from '@/hooks/useReducerModal'
 import ShowModal from '@/components/shared/ShowModal'
-import Button from './Button'
+import Button from '@/components/shared/Button'
 
 interface ButtonModalComposePostPropsClient {
   variant: ButtonVariantProps['variant']

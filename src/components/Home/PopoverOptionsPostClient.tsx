@@ -1,11 +1,11 @@
 'use client'
 
-import { Popover, PopoverContent, PopoverTrigger, Button } from '@heroui/react'
+import { Popover, PopoverContent, PopoverTrigger } from '@heroui/popover'
 import { Tables } from '@/types/database.types'
 import { IconDots, IconTrash } from '@tabler/icons-react'
 import { useDevice } from '@/hooks/useDevice'
 import { useReducerOptionsPost } from '@/hooks/useReducerOptionsPost'
-import ButtonOptionPost from '@/components/Home/ButtonOptionPost'
+import Button from '@/components/shared/Button'
 import ConfirmDeletePost from '@/components/Home/ConfirmDeletePost'
 import ShowModal from '@/components/shared/ShowModal'
 
@@ -38,7 +38,15 @@ export default function PopoverOptionsPost ({ idUserSession, userId, tweetId }: 
         </PopoverTrigger>
         <PopoverContent className='justify-start bg-black [box-shadow:0px_0px_10px_#ffffff80] px-0 py-0 overflow-hidden w-80 min-h-96'>
           {
-            idUserSession === userId && <ButtonOptionPost textColor='text-red-600' Icon={IconTrash} handleOptionAction={() => dispatch({ type: 'OPEN_MODAL' })} action='Eliminar' />
+            idUserSession === userId &&
+              <Button
+                className='w-full justify-start rounded-none data-[hover=true]:bg-default-50/30 font-medium text-red-600'
+                variant='light'
+                onPress={() => dispatch({ type: 'OPEN_MODAL' })}
+                startContent={<IconTrash size={20} color='currentColor' />}
+              >
+                Eliminar
+              </Button>
           }
         </PopoverContent>
       </Popover>

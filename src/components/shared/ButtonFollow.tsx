@@ -3,7 +3,7 @@
 import { startTransition, useOptimistic } from 'react'
 import { Tables, TablesInsert } from '@/types/database.types'
 import { deleteFollowUser, insertFollowUser } from '@/actions/actions'
-import { Button } from '@heroui/react'
+import Button from '@/components/shared/Button'
 
 interface ButtonFollowProps {
     idUserSession: Tables<'users'>['id']
