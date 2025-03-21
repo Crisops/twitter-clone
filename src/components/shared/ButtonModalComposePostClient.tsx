@@ -3,8 +3,8 @@
 import { HTMLProps, ReactNode } from 'react'
 import { ButtonVariantProps, ModalVariantProps } from '@heroui/react'
 import { useReducerModal } from '@/hooks/useReducerModal'
-import ButtonOpenModal from '@/components/shared/ButtonOpenModal'
 import ShowModal from '@/components/shared/ShowModal'
+import Button from './Button'
 
 interface ButtonModalComposePostPropsClient {
   variant: ButtonVariantProps['variant']
@@ -31,9 +31,9 @@ export default function ButtonModalComposePostClient ({ children, className, var
   return (
     <>
       <div className='flex justify-end xl:justify-start'>
-        <ButtonOpenModal className={className} variant={variant} handleOpenModal={handleOpenModal}>
+        <Button disableAnimation className={className} variant={variant} radius='full' size='lg' onPress={handleOpenModal}>
           {content}
-        </ButtonOpenModal>
+        </Button>
       </div>
       <ShowModal
         hideCloseButton={false}
