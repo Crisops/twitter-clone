@@ -1,9 +1,14 @@
+import { forwardRef } from 'react'
 import { Button as ButtonHero, ButtonProps } from '@heroui/button'
 
-export default function Button ({ children, ...rest }: ButtonProps) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, ...rest }, ref) => {
   return (
-    <ButtonHero {...rest}>
+    <ButtonHero ref={ref} {...rest}>
       {children}
     </ButtonHero>
   )
-}
+})
+
+Button.displayName = 'Button'
+
+export default Button
