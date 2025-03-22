@@ -13,7 +13,7 @@ export default function ProfileLayout ({ children, posts, media, params: { usern
   return (
     <div className='h-full border-x border-zinc-700'>
       {children}
-      <ViewInteractivity posts={posts} media={media} username={username} />
+      <ViewInteractivity posts={posts} media={media} username={username} href={[`/${username}`, `/${username}/media`]} action={['Posts', 'Multimedia']} />
     </div>
   )
 }
