@@ -10,22 +10,14 @@ interface FollowersProps {
 function Followers ({ username, followers, following }: FollowersProps) {
   return (
     <div className='flex items-center gap-5'>
-      <div>
-        <Link className='hover:underline' href={`/${username}/following`}>
-          <div className='flex justify-center items-center gap-1'>
-            <span className='text-white font-bold text-base'>{following}</span>
-            <span className='text-zinc-500 text-base'>Siguiendo</span>
-          </div>
-        </Link>
-      </div>
-      <div>
-        <Link className='hover:underline' href={`/${username}/followers`}>
-          <div className='flex justify-center items-center gap-1'>
-            <span className='text-white font-bold text-base'>{followers}</span>
-            <span className='text-zinc-500 text-base'>Seguidores</span>
-          </div>
-        </Link>
-      </div>
+      <Link className='hover:underline space-x-1' href={`/${username}/following`}>
+        <span className='text-white font-bold text-base'>{following}</span>
+        <span className='text-zinc-500 text-base'>Siguiendo</span>
+      </Link>
+      <Link className='hover:underline space-x-1' href={`/${username}/followers`}>
+        <span className='text-white font-bold text-base'>{followers}</span>
+        <span className='text-zinc-500 text-base'>Seguidores</span>
+      </Link>
     </div>
   )
 }

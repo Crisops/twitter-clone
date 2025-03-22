@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { Button } from '@heroui/button'
+import Button from '@/components/shared/Button'
 import { useDevice } from '@/hooks/useDevice'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
 import ShowModal from '@/components/shared/ShowModal'
@@ -33,7 +33,7 @@ function ButtonEditProfileClient ({ children: formEditProfile }: ButtonEditProfi
 
   return (
     <>
-      <Button onPress={handleOpenModal} variant='bordered' size='md' radius='full' className='bg-transparent  hover:bg-white/10 border-slate-500 text-medium'>
+      <Button onPress={handleOpenModal} variant='bordered' size='md' radius='full' className='bg-transparent hover:bg-white/10 border-slate-500 text-medium'>
         Editar Perfil
       </Button>
       <ShowModal

@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation'
 import { initialCreateTweetForm } from '@/config/fields-form'
 import { useCreateTweet } from '@/hooks/useStore'
-import { Button, ButtonProps } from '@heroui/button'
+import { ButtonProps } from '@heroui/button'
+import Button from '@/components/shared/Button'
 
 function ButtonNavigationBack ({ children, isIconOnly, startContent, className, radius }: ButtonProps) {
   const { setFormCreateTweet } = useCreateTweet()
