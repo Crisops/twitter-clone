@@ -3,7 +3,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import equal from 'fast-deep-equal'
-import { Button } from '@heroui/react'
 import { Tables } from '@/types/database.types'
 import { FormEditProfileUser } from '@/types/store'
 import { useEditProfileContext } from '@/hooks/useEditProfileContext'
@@ -13,6 +12,7 @@ import { updateProfile } from '@/actions/actions'
 import { uploadImageEditProfile } from '@/utils/upload-images-edit-profile'
 import { addToast } from '@/lib/toast'
 import { initialFormEditProfileFiles } from '@/config/fields-form'
+import Button from '@/components/shared/Button'
 import InputEdit from '@/components/Profile/InputEdit'
 import TextAreaBiography from '@/components/Profile/TextAreaBiography'
 import WrapperImagesEditProfile from '@/components/Profile/WrapperImagesEditProfile'
@@ -58,9 +58,9 @@ export default function FormEditProfile ({ idUserSession, name, avatar_url: avat
   }
 
   const handleOnSubmit = handleSubmit(async data => {
-    addToast({ message: '¡Tu perfíl se esta actualizado!' })
     const { avatar_url: avatar, banner_url: banner } = initialForm
-    if (isEqualData || (!avatar && !banner)) return dispatch({ type: 'CLOSE_MODAL' })
+    if (isEqualData && (!avatar && !banner)) return dispatch({ type: 'CLOSE_MODAL' })
+    addToast({ message: '¡Tu perfíl se esta actualizado!' })
     const { avatar_url: defaultAvatar, banner_url: defaultBanner, ...rest } = data
     try {
       const uploadData: FormEditProfileUser = {
