@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Form from '@/components/ChooseAccount/Form'
+import Button from '@/components/shared/Button'
 
 const SectionForm = () => {
   return (
@@ -15,20 +16,16 @@ const SectionForm = () => {
             <div className='text-white text-xs'>O</div>
             <div className='w-full h-px bg-zinc-700' />
           </div>
-          <div>
-            <Link href='/signup' className='bg-sky-500 block p-2 text-white text-sm font-medium rounded-full text-center transition-colors duration-200 ease-in-out hover:bg-sky-600'>Crear Cuenta</Link>
-          </div>
-          <div className='mt-2'>
+          <Button as={Link} href='/signup' className='bg-sky-500 text-white text-small font-medium w-full h-9' radius='full' variant='solid'>
+            Crear Cuenta
+          </Button>
+          <div className='mt-2 mb-12'>
             <p className='text-zinc-500 text-xs'>Al registrarte, aceptas los <a href='#' className='text-sky-500 hover:underline'>Términos de servicio</a> y la <a href='#' className='text-sky-500 hover:underline'>Política de privacidad</a>, incluida la política de <a href='#' className='text-sky-500 hover:underline'>Uso de Cookies.</a>
             </p>
           </div>
-          <div className='mt-12'>
+          <div className='space-y-6'>
             <span className='text-white font-medium text-lg'>¿Ya tienes una cuenta?</span>
-            <div className='mt-6'>
-              <div className='border border-zinc-500 rounded-full p-2 transition-colors ease-in-out duration-200 hover:bg-sky-800/20'>
-                <Link href='/login' className='text-sky-500 block text-center font-bold text-sm'>Iniciar sesión</Link>
-              </div>
-            </div>
+            <Button as={Link} href='/login' className='border border-zinc-500 w-full data-[hover=true]:bg-sky-800/20 font-bold text-sky-500' variant='light' radius='full'>Iniciar sesión</Button>
           </div>
         </div>
       </div>
