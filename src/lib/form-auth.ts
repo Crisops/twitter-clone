@@ -42,14 +42,14 @@ export const validationRules: Record<keyof FormAuth, RegisterOptions<FormAuth>> 
     }
   },
   password: {
-    required: 'La contraseña debe tener entre 4 y 60 caracteres.',
+    required: 'La contraseña debe tener entre 6 y 60 caracteres.',
     minLength: {
-      value: 4,
-      message: 'La contraseña debe tener entre 4 y 60 caracteres.'
+      value: 6,
+      message: 'La contraseña debe tener entre 6 y 60 caracteres.'
     },
     maxLength: {
       value: 60,
-      message: 'La contraseña debe tener entre 4 y 60 caracteres.'
+      message: 'La contraseña debe tener entre 6 y 60 caracteres.'
     }
   },
   birthday: {}
