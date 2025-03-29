@@ -1,13 +1,15 @@
-import { IconEye, IconEyeOff } from '@tabler/icons-react'
-import Link from 'next/link'
-import Input from '@/components/shared/Input'
-import { useFormAuth } from '@/hooks/useFormAuth'
-import { type FormLogin as FormLoginType } from '@/types/store'
 import { ChangeEvent, useState } from 'react'
-import Button from '../shared/Button'
+import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { type FormLogin as FormLoginType } from '@/types/store'
+import { useAuth } from '@/hooks/useStore'
+import { useFormAuth } from '@/hooks/useFormAuth'
+import Button from '@/components/shared/Button'
+import Input from '@/components/shared/Input'
+import Link from 'next/link'
 
 export const FormLogin = () => {
-  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLoginType>()
+  const { initialForm } = useAuth(state => state)
+  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLoginType>({ initialForm })
   const [viewPassword, setViewPassword] = useState<boolean>(false)
 
   const { onChange, ...rest } = registerField('password')

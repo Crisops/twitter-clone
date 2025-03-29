@@ -2,6 +2,7 @@
 
 import { ChangeEvent } from 'react'
 import { FormLogin } from '@/types/store'
+import { useAuth } from '@/hooks/useStore'
 import { useFormAuth } from '@/hooks/useFormAuth'
 import Button from '@/components/shared/Button'
 import { ButtonGoogle } from '@/components/shared/ButtonGoogle'
@@ -13,7 +14,8 @@ interface DataContainerFormProps {
 }
 
 export const DataContainerForm = ({ handleNextConfirmData }: DataContainerFormProps) => {
-  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLogin>()
+  const { initialForm } = useAuth(state => state)
+  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLogin>({ initialForm })
 
   const { onChange, ...rest } = registerField('email')
 
