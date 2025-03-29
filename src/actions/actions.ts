@@ -4,28 +4,57 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 import { Tables, TablesInsert, TablesUpdate } from '@/types/database.types'
+import { AuthError } from '@supabase/supabase-js'
+import { SignUpProps, SignUpProvider } from '@/types/generics'
 
-export async function signup () {
+export async function signup ({ provider, data }: SignUpProps) {
   const supabase = await createClient()
+  let dataSignUp: SignUpProvider = { url: null, provider }
+  let errorSignUp: AuthError | null = null
 
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: 'http://localhost:3000/auth/callback',
-      queryParams: {
-        access_type: 'offline',
-        prompt: 'consent'
+  if (provider !== 'email') {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: 'http://localhost:3000/auth/callback',
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent'
+        }
       }
-    }
-  })
+    })
+    dataSignUp = data
+    errorSignUp = error
+  }
 
-  if (error) {
+  if (provider === 'email' && data) {
+    const { fullName, username, email, password } = data
+    console.log(data)
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: 'http://localhost:3000/home',
+        data: {
+          name: fullName,
+          username,
+          email,
+          avatar_url: 'https://stogyupktdyxbgmlhyaf.supabase.co/storage/v1/object/public/avatars//not%20user.jpeg',
+          provider
+        }
+      }
+    })
+    errorSignUp = error
+  }
+
+  if (errorSignUp) {
     redirect('/error')
   }
 
-  if (data.url) {
+  if (dataSignUp.url) {
     revalidatePath('/')
-    redirect(data.url)
+    redirect(dataSignUp.url)
   }
 }
 
