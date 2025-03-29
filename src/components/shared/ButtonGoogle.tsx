@@ -6,7 +6,7 @@ import { IconGoogle } from '@/components/Icons'
 
 export const ButtonGoogle = () => {
   const handleSignUpGoogleAuth = async () => {
-    await signup()
+    await signup({ provider: 'google' })
   }
 
   return (
