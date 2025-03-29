@@ -3,28 +3,7 @@ import { type FormLogin, type FormSignUp } from '@/types/store'
 
 export type FormAuth = FormLogin & FormSignUp
 
-export const validationRulesLogin: Record<keyof FormLogin, RegisterOptions<FormLogin>> = {
-  email: {
-    required: 'El correo es requerido',
-    pattern: {
-      value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-      message: 'Ingresa un email valido'
-    }
-  },
-  password: {
-    required: 'La contraseña debe tener entre 4 y 60 caracteres.',
-    minLength: {
-      value: 4,
-      message: 'La contraseña debe tener entre 4 y 60 caracteres.'
-    },
-    maxLength: {
-      value: 60,
-      message: 'La contraseña debe tener entre 4 y 60 caracteres.'
-    }
-  }
-}
-
-export const validationRulesSignUp: Record<keyof FormSignUp, RegisterOptions<FormSignUp>> = {
+export const validationRules: Record<keyof FormAuth, RegisterOptions<FormAuth>> = {
   fullName: {
     required: '¿Cómo te llamas?',
     minLength: {
@@ -74,9 +53,4 @@ export const validationRulesSignUp: Record<keyof FormSignUp, RegisterOptions<For
     }
   },
   birthday: {}
-}
-
-export const validationRules: Record<keyof FormAuth, RegisterOptions<FormAuth>> = {
-  ...validationRulesLogin,
-  ...validationRulesSignUp
 }
