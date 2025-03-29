@@ -1,10 +1,12 @@
-import { type Mode, useForm } from 'react-hook-form'
-import { FormAuth, validationRules } from '@/lib/form-auth'
+import { Path, useForm } from 'react-hook-form'
+import { validationRules } from '@/lib/form-auth'
 
-export const useFormAuth = (mode?: Mode) => {
-  const { register, handleSubmit, control, trigger, formState: { errors } } = useForm<FormAuth>({ mode })
+export const useFormAuth = <T extends Partial<Record<keyof typeof validationRules, any>>>() => {
+  const { register, handleSubmit, trigger, formState: { errors } } = useForm<T>()
 
-  const registerField = (name: keyof FormAuth) => register(name, validationRules[name])
-
-  return { registerField, handleSubmit, trigger, control, errors }
+  const registerField = (name: Path<T>) => {
+    const rules = validationRules as Partial<Record<Path<T>, any>>
+    return register(name, rules[name])
+  }
+  return { registerField, handleSubmit, trigger, errors }
 }
