@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
 import { type FormLogin as FormLoginType } from '@/types/store'
+import { login } from '@/actions/actions'
 import { useAuth } from '@/hooks/useStore'
 import { useFormAuth } from '@/hooks/useFormAuth'
 import Button from '@/components/shared/Button'
@@ -9,7 +10,7 @@ import Link from 'next/link'
 
 export const FormLogin = () => {
   const { initialForm } = useAuth(state => state)
-  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLoginType>({ initialForm })
+  const { registerField, errors, trigger, handleSubmit, setError } = useFormAuth<FormLoginType>({ initialForm })
   const [viewPassword, setViewPassword] = useState<boolean>(false)
 
   const { onChange, ...rest } = registerField('password')
@@ -23,9 +24,13 @@ export const FormLogin = () => {
     trigger('password')
   }
 
-  const handleOnSubmit = handleSubmit(data => {
-    console.log('Formulario enviado')
-    console.log(data)
+  const handleOnSubmit = handleSubmit(async (data) => {
+    const { email, password } = data
+    try {
+      await login({ email, password })
+    } catch (error) {
+      setError('password', { type: 'value', message: 'Credenciales de inicio de sesión no válidas' })
+    }
   })
 
   return (
@@ -39,7 +44,7 @@ export const FormLogin = () => {
             isReadOnly
             classNames={{ inputWrapper: ['bg-[#202327]/50 ring-1 ring-[#202327] data-[hover=true]:bg-[#202327]/50'], label: ['text-zinc-500'] }} radius='none'
             label='Correo electrónico'
-            defaultValue='crialeperez1835@gmail.com'
+            defaultValue={initialForm.email}
             {...registerField('email')}
           />
           <Input
