@@ -2,8 +2,10 @@
 
 import { ChangeEvent } from 'react'
 import { FormLogin } from '@/types/store'
+import { isEmailOrUsernameTaken } from '@/actions/actions'
 import { useAuth } from '@/hooks/useStore'
 import { useFormAuth } from '@/hooks/useFormAuth'
+import { initialLoginForm } from '@/config/fields-form'
 import Button from '@/components/shared/Button'
 import { ButtonGoogle } from '@/components/shared/ButtonGoogle'
 import Input from '@/components/shared/Input'
@@ -14,8 +16,8 @@ interface DataContainerFormProps {
 }
 
 export const DataContainerForm = ({ handleNextConfirmData }: DataContainerFormProps) => {
-  const { initialForm } = useAuth(state => state)
-  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormLogin>({ initialForm })
+  const { setFormAuth } = useAuth(state => state)
+  const { registerField, errors, trigger, handleSubmit, setError } = useFormAuth<FormLogin>({ initialForm: initialLoginForm })
 
   const { onChange, ...rest } = registerField('email')
 
@@ -24,8 +26,22 @@ export const DataContainerForm = ({ handleNextConfirmData }: DataContainerFormPr
     trigger('email')
   }
 
-  const handleOnSubmit = handleSubmit(data => {
-    console.log(data)
+  const handleOnSubmit = handleSubmit(async (data) => {
+    const { email } = data
+    try {
+      const { exists, hash_password: password, error } = await isEmailOrUsernameTaken({ email })
+      if (error) throw new Error('Error. Al parecer no te has registrado')
+      if (exists && password) {
+        setFormAuth(data)
+        handleNextConfirmData()
+      } else {
+        setError('email', { type: 'Invalid', message: 'Este email ya se encuentra en uso' })
+      }
+    } catch (error) {
+      const message = (error as Error).message || 'Algo fallo. Intentelo nuevamente'
+      setError('email', { type: 'Invalid', message })
+      console.log(error)
+    }
   })
 
   return (

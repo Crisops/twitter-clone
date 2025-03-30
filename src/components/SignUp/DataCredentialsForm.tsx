@@ -1,8 +1,10 @@
 import { ChangeEvent } from 'react'
 import { FormSignUp } from '@/types/store'
+import { isEmailOrUsernameTaken } from '@/actions/actions'
 import { useAuth } from '@/hooks/useStore'
 import { useFormAuth } from '@/hooks/useFormAuth'
 import { months, days, years } from '@/lib/data-date'
+import { initialSignUpForm } from '@/config/fields-form'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import { SelectedBirthday } from '@/components/SignUp/SelectedBirthDay'
@@ -12,8 +14,8 @@ interface DataCredentialsFormProps {
 }
 
 export const DataCredentialsForm = ({ handleNextData }: DataCredentialsFormProps) => {
-  const { initialForm, setFormAuth } = useAuth(state => state)
-  const { registerField, trigger, errors, handleSubmit } = useFormAuth<FormSignUp>({ initialForm })
+  const { setFormAuth } = useAuth(state => state)
+  const { registerField, trigger, errors, handleSubmit, setError } = useFormAuth<FormSignUp>({ initialForm: initialSignUpForm })
 
   const { onChange: onChangeFullName, ...restFullName } = registerField('fullName')
   const { onChange: onChangeEmail, ...restEmail } = registerField('email')
@@ -24,10 +26,17 @@ export const DataCredentialsForm = ({ handleNextData }: DataCredentialsFormProps
     trigger(e.target.name as keyof FormSignUp)
   }
 
-  const handleOnSubmit = handleSubmit(data => {
-    console.log(data)
-    setFormAuth(data)
-    handleNextData()
+  const handleOnSubmit = handleSubmit(async (data) => {
+    try {
+      const { emailExists } = await isEmailOrUsernameTaken({ email: data.email })
+      if (emailExists) throw new Error('El correo electrónico ingresado ya está registrado. Intente iniciar sesión o use otro correo.')
+      setFormAuth(data)
+      handleNextData()
+    } catch (error) {
+      const message = (error as Error).message || 'Error'
+      setError('email', { type: 'validate', message })
+      console.error(error)
+    }
   })
 
   return (
