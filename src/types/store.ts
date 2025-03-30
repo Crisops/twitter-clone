@@ -41,8 +41,8 @@ export type FormEditProfileFiles = {
 }
 
 export type StoreAuth = {
-    initialForm: FormLogin & FormSignUp
-    setFormAuth: (form: FormLogin & FormSignUp) => void
+    initialForm: FormLogin | FormSignUp
+    setFormAuth: (form: FormLogin | FormSignUp) => void
 }
 
 export type StoreCreateTweet = {
