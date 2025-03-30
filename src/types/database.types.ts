@@ -250,10 +250,10 @@ export type Database = {
           followers: number | null
           following: number | null
           gender_id: number | null
+          hash_password: boolean | null
           id: string
           location: string | null
           name: string
-          password: string | null
           phone: number | null
           username: string
           web_site: string | null
@@ -268,10 +268,10 @@ export type Database = {
           followers?: number | null
           following?: number | null
           gender_id?: number | null
+          hash_password?: boolean | null
           id: string
           location?: string | null
           name?: string
-          password?: string | null
           phone?: number | null
           username?: string
           web_site?: string | null
@@ -286,10 +286,10 @@ export type Database = {
           followers?: number | null
           following?: number | null
           gender_id?: number | null
+          hash_password?: boolean | null
           id?: string
           location?: string | null
           name?: string
-          password?: string | null
           phone?: number | null
           username?: string
           web_site?: string | null
