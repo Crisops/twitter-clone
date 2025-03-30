@@ -17,7 +17,7 @@ export const initialSignUpForm: FormSignUp = {
   }
 }
 
-export const initialFormAuth: FormLogin & FormSignUp = {
+export const initialFormAuth: FormLogin | FormSignUp = {
   ...initialLoginForm,
   ...initialSignUpForm
 }
