@@ -6,11 +6,11 @@ interface useFormAuthProps<T> {
 }
 
 export const useFormAuth = <T extends Partial<Record<keyof typeof validationRules, any>>>({ initialForm }: useFormAuthProps<T>) => {
-  const { register, handleSubmit, trigger, formState: { errors } } = useForm<T>({ defaultValues: initialForm })
+  const { register, handleSubmit, trigger, setError, formState: { errors } } = useForm<T>({ defaultValues: initialForm })
 
   const registerField = (name: Path<T>) => {
     const rules = validationRules as Partial<Record<Path<T>, any>>
     return register(name, rules[name])
   }
-  return { registerField, handleSubmit, trigger, errors }
+  return { registerField, handleSubmit, trigger, setError, errors }
 }
