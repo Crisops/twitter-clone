@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 import { FormSignUp } from '@/types/store'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
-import { signup } from '@/actions/actions'
+import { isEmailOrUsernameTaken, signup } from '@/actions/actions'
 import { useAuth } from '@/hooks/useStore'
 import { useFormAuth } from '@/hooks/useFormAuth'
 import { FormAuth } from '@/lib/form-auth'
@@ -10,15 +10,13 @@ import Button from '@/components/shared/Button'
 
 export const Form = () => {
   const { initialForm } = useAuth(state => state)
-  const { registerField, errors, trigger, handleSubmit } = useFormAuth<FormSignUp>({ initialForm })
+  const { registerField, errors, trigger, handleSubmit, setError } = useFormAuth<FormSignUp>({ initialForm })
   const [viewPassword, setViewPassword] = useState<boolean>(false)
 
   const { onChange: onChangeUsername, ...restUsername } = registerField('username')
   const { onChange: onChangePassword, ...restPassword } = registerField('password')
 
-  const handleViewPassword = () => {
-    setViewPassword(prev => !prev)
-  }
+  const handleViewPassword = () => setViewPassword(prev => !prev)
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChangePassword(e)
@@ -27,8 +25,15 @@ export const Form = () => {
   }
 
   const handleOnSubmit = handleSubmit(async (data) => {
-    console.log(data)
-    await signup({ provider: 'email', data })
+    try {
+      const { usernameExists } = await isEmailOrUsernameTaken({ email: data.email, username: data.username })
+      if (usernameExists) throw new Error(`El nombre de usuario "${data.username}" ya está en uso.`)
+      await signup({ provider: 'email', data })
+    } catch (error) {
+      const message = (error as Error).message || 'Error'
+      setError('username', { type: 'validate', message })
+      console.error(error)
+    }
   })
 
   return (
