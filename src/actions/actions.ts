@@ -7,6 +7,18 @@ import { Tables, TablesInsert, TablesUpdate } from '@/types/database.types'
 import { AuthError } from '@supabase/supabase-js'
 import { SignUpProps, SignUpProvider } from '@/types/generics'
 
+export async function login ({ email, password }: {email: Tables<'users'>['email'], password: string}) {
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  })
+
+  if (error) throw new Error('Error. Algo fallo al momento de querer iniciar sesión')
+
+  if (data.user) redirect('/home')
+}
+
 export async function signup ({ provider, data }: SignUpProps) {
   const supabase = await createClient()
   let dataSignUp: SignUpProvider = { url: null, provider }
@@ -29,7 +41,6 @@ export async function signup ({ provider, data }: SignUpProps) {
 
   if (provider === 'email' && data) {
     const { fullName, username, email, password } = data
-    console.log(data)
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -60,6 +71,20 @@ export async function signup ({ provider, data }: SignUpProps) {
 
 export async function comeBackHome () {
   redirect('/home')
+}
+
+export async function isEmailOrUsernameTaken ({ email, username }: { email: Tables<'users'>['email'], username?: Tables<'users'>['username'] }) {
+  const supabase = await createClient()
+
+  const { data, error } = await supabase.from('users').select('email, username, hash_password').or(`username.eq.${username},email.eq.${email}`).single()
+
+  return {
+    exists: !!data, // Devuelve `true` si el usuario ya existe
+    emailExists: data?.email === email,
+    hash_password: data?.hash_password,
+    usernameExists: data?.username === username,
+    error
+  }
 }
 
 export async function updateProfile (idUserSession: Tables<'users'>['id'], data: TablesUpdate<'users'>) {
