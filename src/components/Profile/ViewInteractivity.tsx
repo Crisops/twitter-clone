@@ -20,12 +20,12 @@ function ViewInteractivity ({ username, posts, media, action, href }: ViewIntera
     <>
       <div className='w-full border-b border-zinc-700'>
         <div className='flex [&>div]:flex-grow [&>div]:flex [&>div]:justify-center [&>div]:items-center'>
-          <div className='relative'>
-            <Link className='w-full h-full py-3 text-center' href={href[0]}>{action[0]}</Link>
+          <div className={`relative ${pathname !== href[0] ? 'transition-colors duration-200 ease-in-out hover:bg-white/10' : ''}`}>
+            <Link className={`w-full h-full py-3 text-center ${pathname === href[0] ? 'font-bold' : ''}`} href={href[0]}>{action[0]}</Link>
             <div className={`absolute w-3/4 h-1 left-1/2 bottom-0 -translate-x-1/2 rounded-full ${pathname === href[0] ? 'bg-sky-500' : ''}`} />
           </div>
-          <div className='relative transition-colors duration-200 ease-in-out hover:bg-white/10'>
-            <Link className='w-full h-full py-3 text-center' href={href[1]}>{action[1]}</Link>
+          <div className={`relative ${pathname !== href[1] ? 'transition-colors duration-200 ease-in-out hover:bg-white/10' : ''}`}>
+            <Link className={`w-full h-full py-3 text-center ${pathname === href[1] ? 'font-bold' : ''}`} href={href[1]}>{action[1]}</Link>
             <div className={`absolute w-3/4 h-1 left-1/2 bottom-0 -translate-x-1/2 rounded-full ${pathname === href[1] ? 'bg-sky-500' : ''}`} />
           </div>
         </div>
