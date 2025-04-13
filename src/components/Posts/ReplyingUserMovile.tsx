@@ -20,11 +20,9 @@ function ReplyingUserMovile ({ name, username, avatar, content, date }: Replying
         </div>
         <div>
           <header className='w-full'>
-            <div className='flex items-center gap-x-1'>
-              <div className='flex gap-x-1 items-center'>
-                <h4 className='text-white font-medium text-large'>{name}</h4>
-                <h5 className='text-zinc-500 font-normal'>@{username}</h5>
-              </div>
+            <div className='flex gap-x-1 items-center'>
+              <h4 className='text-white font-medium text-large max-w-36 truncate'>{name}</h4>
+              <h5 className='text-zinc-500 font-normal'>@{username}</h5>
               <TweetCreatedTime date={date} />
             </div>
           </header>
