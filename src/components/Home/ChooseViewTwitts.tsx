@@ -21,7 +21,7 @@ export default function ChooseViewTwitts () {
           <div className='absolute w-1/4 h-1 left-1/2 bottom-0 -translate-x-1/2 rounded-full bg-sky-500' />
         </NavbarItem>
         <NavbarItem className='transition-colors duration-200 hover:bg-white/10'>
-          <Button disableAnimation className='w-full h-full bg-transparent text-white font-bold text-medium'>
+          <Button disableAnimation className='w-full h-full bg-transparent text-zinc-500 font-bold text-medium'>
             Siguiendo
           </Button>
         </NavbarItem>
