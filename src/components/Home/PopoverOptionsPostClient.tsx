@@ -31,7 +31,7 @@ export default function PopoverOptionsPost ({ idUserSession, userId, tweetId }: 
   return (
     <>
       <Popover isOpen={view.component === 'popover'} onOpenChange={handleOpenPopover} placement='left-start' offset={-25}>
-        <PopoverTrigger>
+        <PopoverTrigger className='z-0'>
           <Button isIconOnly className='relative flex flew-grow items-center gap-x-1 cursor-pointer bg-transparent text-zinc-500 min-w-9 w-9 h-9 rounded-full data-[hover=true]:bg-sky-500/10 data-[hover=true]:text-sky-500'>
             <IconDots size={20} color='currentColor' />
           </Button>
