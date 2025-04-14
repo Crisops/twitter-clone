@@ -2,9 +2,11 @@ import { ReactNode } from 'react'
 import { IconFeather, IconTwitter } from '@/components/Icons'
 import { linksDesktop, linksMovileDrawer } from '@/lib/links-navbar'
 import AsideInformationUserServer from '@/components/Home/AsideInformationUserServer'
+import Button from '@/components/shared/Button'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
-import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar'
+import Link from 'next/link'
 import LinksSideNav from '@/components/Home/LinksSideNav'
+import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar'
 
 interface AsideNavigationProps {
   viewMovil?: boolean
@@ -15,10 +17,12 @@ export default function AsideNavigation ({ viewMovil, LinkProfile }: AsideNaviga
   const preLoadLinks = viewMovil ? linksMovileDrawer : linksDesktop
 
   return (
-    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: ['flex flex-col h-full items-end xl:items-start'] }}>
+    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: ['flex flex-col h-full items-end xl:items-start gap-2'] }}>
       <NavbarContent justify='start'>
-        <NavbarItem className='p-3 transition-colors duration-150 hover:bg-white/10 rounded-full'>
-          <IconTwitter size='size-7' />
+        <NavbarItem className='p-3'>
+          <Button as={Link} href='/home' disableAnimation className='bg-transparent p-0 min-w-fit data-[hover=true]:opacity-100'>
+            <IconTwitter size='size-7' />
+          </Button>
         </NavbarItem>
         {preLoadLinks.map(({ href, icon, text }, index) => (
           <NavbarItem key={index} className='transition-colors duration-150 hover:bg-white/10 rounded-full'>
