@@ -15,22 +15,23 @@ export default function AsideNavigation ({ viewMovil, LinkProfile }: AsideNaviga
   const preLoadLinks = viewMovil ? linksMovileDrawer : linksDesktop
 
   return (
-    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: ['flex flex-col h-full items-start'] }}>
+    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: ['flex flex-col h-full items-end xl:items-start'] }}>
       <NavbarContent justify='start'>
-        <NavbarItem className='p-3'>
+        <NavbarItem className='p-3 transition-colors duration-150 hover:bg-white/10 rounded-full'>
           <IconTwitter size='size-7' />
         </NavbarItem>
         {preLoadLinks.map(({ href, icon, text }, index) => (
-          <NavbarItem key={index}>
+          <NavbarItem key={index} className='transition-colors duration-150 hover:bg-white/10 rounded-full'>
             <LinksSideNav viewMovil={viewMovil} href={href} icon={icon} text={text} />
           </NavbarItem>
         ))}
+        {LinkProfile}
         <NavbarItem className='w-full'>
           <ButtonModalComposePostServer
             variant='solid'
             sizeModal='xl'
             placement='top'
-            className='w-full bg-white text-black py-2 px-3 font-semibold text-medium xl:w-4/5'
+            className='min-w-fit xl:w-full bg-white text-black py-2 px-3 font-semibold text-medium'
             loadingForm='create-post'
           >
             <span className='block xl:hidden'><IconFeather className='fill-current size-6' /></span>
