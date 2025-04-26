@@ -62,3 +62,21 @@ export const getLikes = async ({ userId, tweetId }: GetInteractionsProps): Promi
     throw error
   }
 }
+
+export const getBookmarks = async ({ userId, tweetId }: GetInteractionsProps): Promise<Tables<'favorites'>[]> => {
+  const supabase = await createClient()
+
+  try {
+    const { data, error } = await supabase
+      .from('favorites')
+      .select()
+      .match({ user_id: userId, tweet_id: tweetId })
+
+    if (error) throw new Error('Error. Algo fallo al momento de obtener los favoritos del post')
+
+    return data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
