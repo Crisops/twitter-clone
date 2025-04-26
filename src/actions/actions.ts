@@ -197,3 +197,25 @@ export async function deleteFollowUser ({ user_id_follower: idUserFollower, user
   revalidatePath('/(home)/[username]', 'layout')
   return { error }
 }
+
+export async function insertBookmark ({ user_id: idUser, tweet_id: idTweet }: TablesInsert<'favorites'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('favorites').insert({ user_id: idUser, tweet_id: idTweet })
+
+  if (error) throw new Error('Error. Failed to create bookmark')
+
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
+}
+
+export async function deleteBookmark ({ user_id: idUser, tweet_id: idTweet }: TablesInsert<'favorites'>) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.from('favorites').delete().eq('user_id', idUser).eq('tweet_id', idTweet)
+
+  if (error) throw new Error('Error. Failed to delete bookmark')
+
+  revalidatePath('/home')
+  revalidatePath('/(home)/[username]', 'layout')
+}
