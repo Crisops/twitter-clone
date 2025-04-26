@@ -72,6 +72,7 @@ function ButtonInteraction ({ idUser, idTweet, quantity, icon, className, textCo
     <div className={`flex items-center gap-x-1 group/effect ${optimistic.isActive ? textColor : 'text-zinc-600'}`}>
       <Button
         onPress={handleSendData}
+        isIconOnly
         className={`bg-transparent px-0 min-w-fit overflow-visible ${className} ${optimistic.isActive ? 'text-current first:fill-current first:stroke-current' : 'text-current first:fill-none first:stroke-current'}`}
       >
         {icon}
