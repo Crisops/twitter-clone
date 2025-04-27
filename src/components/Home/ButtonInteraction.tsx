@@ -21,7 +21,7 @@ interface ButtonInteractionProps {
     idUser: Tables<'users'>['id']
     idTweet: Tables<'tweets'>['id']
     icon: ReactNode
-    data?: Tables<'retuits'>[] | Tables<'likes'>[]
+    data?: Tables<'retuits'>[] | Tables<'likes'>[] | Tables<'favorites'>[]
     insertData?: ({ user_id, tweet_id }: DataParametersProps) => Promise<void>
     deleteData?: ({ user_id, tweet_id }: DataParametersProps) => Promise<void>
     quantity?: Tables<'tweets'>['comments'] | Tables<'tweets'>['retuits'] | Tables<'tweets'>['likes']
@@ -72,7 +72,6 @@ function ButtonInteraction ({ idUser, idTweet, quantity, icon, className, textCo
     <div className={`flex items-center gap-x-1 group/effect ${optimistic.isActive ? textColor : 'text-zinc-600'}`}>
       <Button
         onPress={handleSendData}
-        isIconOnly
         className={`bg-transparent px-0 min-w-fit overflow-visible ${className} ${optimistic.isActive ? 'text-current first:fill-current first:stroke-current' : 'text-current first:fill-none first:stroke-current'}`}
       >
         {icon}
