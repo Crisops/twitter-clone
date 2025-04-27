@@ -2,7 +2,7 @@ import { Navbar, NavbarContent, NavbarItem } from '@heroui/navbar'
 import { IconArrowNarrowLeft } from '@tabler/icons-react'
 import ButtonNavigationBack from '@/components/shared/ButtonNavigationBack'
 
-export default function HeaderBackPost () {
+export default function HeaderBackPost ({ title }: {title: string}) {
   return (
     <Navbar
       classNames={
@@ -19,7 +19,7 @@ export default function HeaderBackPost () {
             startContent={<IconArrowNarrowLeft size={30} className='p-1 group-hover:bg-white/10 group-hover:rounded-full' />}
             isIconOnly={false}
           >
-            <span className='text-xl font-bold text-gray-100 pb-1'>Post</span>
+            <span className='text-xl font-bold text-gray-100 pb-1'>{title}</span>
           </ButtonNavigationBack>
         </NavbarItem>
       </NavbarContent>
