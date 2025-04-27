@@ -17,9 +17,8 @@ interface TweetProps {
 }
 
 export default async function Tweet ({ tweet, idUser, nameUserVisited }: TweetProps) {
+  if (tweet?.creator === null || tweet === null) return
   const { id, content, image_url: avatar, likes, retuits, comments, created_at: date, creator, post_type: postType } = tweet
-
-  if (creator === null) return
 
   return (
     <RedirectWrapperServer slug={`/${creator.username}/status/${id}`}>
