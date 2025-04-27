@@ -6,7 +6,7 @@ export default function ChooseViewTwitts () {
     <Navbar
       classNames={
         {
-          wrapper: 'px-0 gap-0 flex-col h-14 xl:border-l xl:border-zinc-700',
+          wrapper: 'px-0 gap-0 flex-col h-14',
           base: 'hidden min-[500px]:flex',
           content: 'w-full gap-0',
           item: 'flex-grow h-full'
