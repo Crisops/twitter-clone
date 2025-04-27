@@ -9,7 +9,7 @@ export type CreatorTweet = {
     following: Tables<'users'>['following']
     followers: Tables<'users'>['followers']
     avatar_url: Tables<'users'>['avatar_url'];
-}
+} | null
 
 export type TweetInfo = {
     id: Tables<'tweets'>['id'] | Tables<'comments'>['tweet_id']
@@ -21,7 +21,7 @@ export type TweetInfo = {
     created_at: Tables<'tweets'>['created_at'] | Tables<'comments'>['created_at']
     creator: CreatorTweet
     post_type?: string
-}
+} | null
 
 export type TweetPostAndRetweet = {
     action_user_id: Tables<'users'>['id'],
@@ -71,4 +71,8 @@ export type UsersSearch = {
     name: Tables<'users'>['name']
     username: Tables<'users'>['username']
     src: Tables<'users'>['avatar_url']
+}
+
+export type BookMarksUserTweet = {
+    tweet: TweetInfo
 }
