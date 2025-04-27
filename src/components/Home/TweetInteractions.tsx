@@ -1,7 +1,7 @@
 import { Children, ReactNode } from 'react'
 import { Tables } from '@/types/database.types'
 import { insertRetweet, deleteRetweet, insertLikes, deleteLikes, insertBookmark, deleteBookmark } from '@/actions/actions'
-import { getBookmarks, getLikes, getRetweets } from '@/utils/supabase/getInterations'
+import { getBookmarksInteractions, getLikes, getRetweets } from '@/utils/supabase/getInterations'
 import { getSessionAuth } from '@/utils/supabase/getUser'
 import ButtonInteraction from '@/components/Home/ButtonInteraction'
 import ButtonModalComposePostServer from '@/components/shared/ButtonModalComposePostServer'
@@ -20,7 +20,7 @@ export default async function TweetInteractions ({ idTweet, comments, retuits, l
 
   const dataRetweets = await getRetweets({ userId: id, tweetId: idTweet })
   const dataLikes = await getLikes({ userId: id, tweetId: idTweet })
-  const dataBookmark = await getBookmarks({ userId: id, tweetId: idTweet })
+  const dataBookmark = await getBookmarksInteractions({ userId: id, tweetId: idTweet })
 
   const [IconMessageCircle, IconRepeat, IconHeart, IconBookmark] = Children.toArray(children)
 
