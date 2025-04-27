@@ -218,4 +218,5 @@ export async function deleteBookmark ({ user_id: idUser, tweet_id: idTweet }: Ta
 
   revalidatePath('/home')
   revalidatePath('/(home)/[username]', 'layout')
+  revalidatePath('/(home)/bookmarks', 'page')
 }
