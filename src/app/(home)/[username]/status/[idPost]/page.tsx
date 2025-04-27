@@ -38,7 +38,7 @@ export async function generateMetadata ({ params: { idPost } }: StatusPostPagePr
 export default function StatusPostPage ({ params: { idPost } }:StatusPostPageProps) {
   return (
     <>
-      <HeaderBackPost />
+      <HeaderBackPost title='Post' />
       <ModalProvider>
         <ViewPost idPost={idPost} />
       </ModalProvider>
