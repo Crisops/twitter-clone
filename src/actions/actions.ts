@@ -40,7 +40,7 @@ export async function signup ({ provider, data }: SignUpProps) {
   }
 
   if (provider === 'email' && data) {
-    const { fullName, username, email, password } = data
+    const { fullName, username, email, password, birthday } = data
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -51,6 +51,7 @@ export async function signup ({ provider, data }: SignUpProps) {
           name: fullName,
           username,
           email,
+          birthday: new Date(`${birthday.year}-${birthday.month}-${birthday.day}`),
           avatar_url: 'https://stogyupktdyxbgmlhyaf.supabase.co/storage/v1/object/public/avatars//not%20user.jpeg',
           provider
         }
