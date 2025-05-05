@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@formkit/tempo": "0.1.2",
-    "@heroui/react": "2.7.4",
+    "@heroui/react": "2.7.8",
     "@number-flow/react": "0.5.1",
     "@plaiceholder/next": "3.0.0",
     "@supabase/ssr": "^0.5.2",
