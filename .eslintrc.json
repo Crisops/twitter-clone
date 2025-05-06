@@ -2,7 +2,7 @@
   "extends": ["next/core-web-vitals", "next/typescript", "./node_modules/standard/eslintrc.json"],
   "rules": {
     // No marcar variables no usadas como error (solo warning o ignóralo)
-    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
 
     // Permitir `any` temporalmente
     "@typescript-eslint/no-explicit-any": "off",
