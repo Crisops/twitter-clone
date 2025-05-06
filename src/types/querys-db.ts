@@ -64,7 +64,9 @@ export type GetAllFollowersProps = {
     following: string[]
 }
 
-export type CommentInfo = Omit<TweetInfo, 'likes' | 'retuits' | 'comments'>
+type NonNullableTweetInfo = Exclude<TweetInfo, null>
+
+export type CommentInfo = Omit<NonNullableTweetInfo, 'likes' | 'retuits' | 'comments'>
 
 export type UsersSearch = {
     id: Tables<'users'>['id']

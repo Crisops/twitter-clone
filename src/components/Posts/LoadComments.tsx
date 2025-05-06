@@ -12,20 +12,20 @@ export default async function LoadComments ({ idTweet }:LoadCommentsProps) {
   return (
     <>
       {
-        comments.map(({ id, content, image_url: imageContent, created_at: dateComment, creator }) => (
+        comments.map(comment => (
           <Comment
-            key={id}
-            userId={creator.id}
-            tweetId={id}
-            name={creator.name}
-            username={creator.username}
-            avatarUrl={creator.avatar_url}
-            biography={creator.biography}
-            followers={creator.followers}
-            following={creator.following}
-            content={content}
-            imageContent={imageContent}
-            date={dateComment}
+            key={comment.id}
+            userId={comment.creator?.id ?? ''}
+            tweetId={comment.id}
+            name={comment.creator?.name ?? ''}
+            username={comment.creator?.username ?? ''}
+            avatarUrl={comment.creator?.avatar_url ?? ''}
+            biography={comment.creator?.biography ?? ''}
+            followers={comment.creator?.followers ?? 0}
+            following={comment.creator?.following ?? 0}
+            content={comment.content}
+            imageContent={comment.image_url ?? ''}
+            date={comment.created_at}
           />
         ))
       }
