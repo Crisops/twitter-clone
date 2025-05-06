@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/server'
 import { Tables, TablesInsert, TablesUpdate } from '@/types/database.types'
 import { AuthError } from '@supabase/supabase-js'
 import { SignUpProps, SignUpProvider } from '@/types/generics'
+import { EnvConfig } from '@/config/env.config'
 
 export async function login ({ email, password }: {email: Tables<'users'>['email'], password: string}) {
   const supabase = await createClient()
@@ -20,6 +21,8 @@ export async function login ({ email, password }: {email: Tables<'users'>['email
 }
 
 export async function signup ({ provider, data }: SignUpProps) {
+  const SITE_URL = EnvConfig().NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+
   const supabase = await createClient()
   let dataSignUp: SignUpProvider = { url: null, provider }
   let errorSignUp: AuthError | null = null
@@ -28,7 +31,7 @@ export async function signup ({ provider, data }: SignUpProps) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: 'http://localhost:3000/auth/callback',
+        redirectTo: `${SITE_URL}/auth/callback`,
         queryParams: {
           access_type: 'offline',
           prompt: 'consent'
@@ -46,7 +49,7 @@ export async function signup ({ provider, data }: SignUpProps) {
       email,
       password,
       options: {
-        emailRedirectTo: 'http://localhost:3000/home',
+        emailRedirectTo: `${SITE_URL}/home`,
         data: {
           name: fullName,
           username,

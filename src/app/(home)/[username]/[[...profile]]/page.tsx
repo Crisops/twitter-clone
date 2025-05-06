@@ -3,6 +3,7 @@ import { Tables } from '@/types/database.types'
 import { getUserProfileByUsername } from '@/utils/supabase/getUser'
 import InformationProfile from '@/components/Profile/InformationProfile'
 import HeaderBack from '@/components/shared/HeaderBack'
+import { EnvConfig } from '@/config/env.config'
 
 interface ProfilePageProps {
   params: {
@@ -13,14 +14,16 @@ interface ProfilePageProps {
 export async function generateMetadata ({ params: { username } }: ProfilePageProps): Promise<Metadata> {
   const { name, username: alias, biography, avatar_url: avatar } = await getUserProfileByUsername({ username })
 
+  const SITE_URL = EnvConfig().NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+
   return {
     title: `${name} (@${alias}) / Twitter Clone`,
     description: `${biography} - Twitter clone elaborado con Next Js`,
     openGraph: {
       type: 'profile',
       title: `${name} (@${alias}) / Twitter Clone`,
-      description: `http://localhost:3000/${alias}`,
-      url: `http://localhost:3000/${alias}`,
+      description: `${SITE_URL}/${alias}`,
+      url: `${SITE_URL}/${alias}`,
       siteName: 'Twitter Clone',
       images: [
         {
