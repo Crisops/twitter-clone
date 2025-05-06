@@ -68,6 +68,7 @@ export async function signup ({ provider, data }: SignUpProps) {
     revalidatePath('/')
     redirect(dataSignUp.url)
   }
+  return { errorSignUp }
 }
 
 export async function comeBackHome () {
