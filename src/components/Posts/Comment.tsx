@@ -48,7 +48,7 @@ export default function Comment ({ userId, tweetId, name, username, avatarUrl, b
               disableOptions
             />
             <section className='w-full h-full'>
-              <TweetContent content={content} image_url={imageContent} />
+              <TweetContent content={content} image_url={imageContent} previewImage='post-tweet' />
             </section>
           </div>
         </div>
