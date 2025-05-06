@@ -15,18 +15,15 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps> {
     this.state = { hasError: false, error: '' }
   }
 
-  static getDerivedStateFromError (error) {
+  static getDerivedStateFromError (error: Error): { hasError: boolean; error: string } {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true, error }
+    return { hasError: true, error: error.message }
   }
 
-  componentDidCatch (error, info) {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    // console.log(error, info.componentStack)
+  componentDidCatch (error: Error, info: { componentStack: string }) {
+    // Log the error and component stack for debugging purposes
+    console.error('ErrorBoundary caught an error:', error)
+    console.error('Component stack:', info.componentStack)
   }
 
   render () {

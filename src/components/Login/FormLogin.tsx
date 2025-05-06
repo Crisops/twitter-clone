@@ -30,6 +30,7 @@ export const FormLogin = () => {
       await login({ email, password })
     } catch (error) {
       setError('password', { type: 'value', message: 'Credenciales de inicio de sesión no válidas' })
+      console.log(error)
     }
   })
 

@@ -13,6 +13,7 @@ export const SearchContext = createContext<SearchContextProps | undefined>(undef
 
 export const SearchProvider = ({ children }: {children: ReactNode | ReactNode[]}) => {
   const [open, setOpen] = useState<boolean>(false)
+  // eslint-disable-next-line no-undef
   const blurTimeout = useRef<NodeJS.Timeout | null>(null)
 
   const handleCardClick = () => {
