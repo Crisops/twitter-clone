@@ -5,7 +5,7 @@ export async function ViewAllTweets () {
   const tweets = await getTweets()
   return (
     <section>
-      {tweets.map((tweet) => <Tweet key={tweet.id} tweet={{ ...tweet }} />)}
+      {tweets.map((tweet) => <Tweet key={tweet?.id} tweet={tweet} />)}
     </section>
   )
 }
