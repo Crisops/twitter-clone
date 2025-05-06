@@ -10,7 +10,7 @@ import Button from '@/components/shared/Button'
 
 export const Form = () => {
   const { initialForm } = useAuth(state => state)
-  const { registerField, errors, trigger, handleSubmit, setError } = useFormAuth<FormSignUp>({ initialForm })
+  const { registerField, errors, trigger, handleSubmit, setError, isSubmitting, isSubmitted } = useFormAuth<FormSignUp>({ initialForm })
   const [viewPassword, setViewPassword] = useState<boolean>(false)
 
   const { onChange: onChangeUsername, ...restUsername } = registerField('username')
@@ -28,7 +28,8 @@ export const Form = () => {
     try {
       const { usernameExists } = await isEmailOrUsernameTaken({ email: data.email, username: data.username })
       if (usernameExists) throw new Error(`El nombre de usuario "${data.username}" ya está en uso.`)
-      await signup({ provider: 'email', data })
+      const { errorSignUp } = await signup({ provider: 'email', data })
+      if (errorSignUp) throw new Error('Error. Failed create user')
     } catch (error) {
       const message = (error as Error).message || 'Error'
       setError('username', { type: 'validate', message })
@@ -61,6 +62,7 @@ export const Form = () => {
           <Input
             type={viewPassword ? 'text' : 'password'}
             onChange={handleOnChange}
+            autoComplete='current-password'
             endContent={
               <Button onPress={handleViewPassword} className='w-fit h-auto bg-transparent data-[pressed=true]:scale-100' isIconOnly>
                 {viewPassword ? <IconEyeOff color='white' size={25} /> : <IconEye color='white' size={25} />}
@@ -72,7 +74,10 @@ export const Form = () => {
             label='Contraseña'
             {...restPassword}
           />
-          <Button type='submit' className='bg-white text-black font-medium w-full text-medium h-12' variant='solid' radius='full'>Crear cuenta</Button>
+          <div className={`${isSubmitted ? 'flex' : 'hidden'} w-full justify-start items-center`}>
+            <p className='text-sky-500'>Revisa tu correo electrónico, te hemos enviado un link de registro.</p>
+          </div>
+          <Button type='submit' className='bg-white text-black font-medium w-full text-medium h-12 disabled:bg-white/45 disabled:pointer-events-none' variant='solid' radius='full' isDisabled={isSubmitted} isLoading={isSubmitting}>{isSubmitting ? 'Cargando' : 'Crear cuenta'}</Button>
         </form>
       </div>
     </div>
