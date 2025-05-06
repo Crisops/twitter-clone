@@ -15,7 +15,7 @@ export default async function PostsPage ({ params: { username } }:PostsPageProps
 
   return (
     <section>
-      {tweets.map((tweet) => <Tweet idUser={id} nameUserVisited={name} key={tweet.id} tweet={{ ...tweet }} />)}
+      {tweets.map((tweet) => <Tweet idUser={id} nameUserVisited={name} key={tweet?.id} tweet={tweet} />)}
     </section>
   )
 }
