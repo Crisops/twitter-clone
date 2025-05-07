@@ -12,6 +12,7 @@ import Button from '@/components/shared/Button'
 import InputFileTweet from '@/components/Home/InputFileTweet'
 import TextAreaForm from '@/components/shared/TextAreaForm'
 import TweetImageLoad from '@/components/Home/TweetImageLoad'
+import { EnvConfig } from '@/config/env.config'
 
 interface FormComposePostProps {
   idSession: Tables<'users'>['id']
@@ -22,6 +23,10 @@ interface FormComposePostProps {
 export default function FormComposePost ({ className, children: avatarImage, idSession }:FormComposePostProps) {
   const { modal, dispatch } = useReducerModal()
   const [formKey, setFormKey] = useState(Date.now())
+
+  const SITE_URL = EnvConfig().NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+
+  console.log(SITE_URL)
 
   const { registerField, handleSubmit, errors, trigger, isSubmitting, getValues, setValue, reset } = useFormTweet({ idSession })
 

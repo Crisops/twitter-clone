@@ -16,9 +16,6 @@ export default function RootLayout ({
 }>) {
   return (
     <html lang='en' className='dark'>
-      <head>
-        <script src='https://unpkg.com/react-scan/dist/auto.global.js' async />
-      </head>
       <body className='min-h-screen'>
         <Providers>
           {children}
