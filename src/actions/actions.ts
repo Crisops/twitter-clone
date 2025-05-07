@@ -23,8 +23,6 @@ export async function login ({ email, password }: {email: Tables<'users'>['email
 export async function signup ({ provider, data }: SignUpProps) {
   const SITE_URL = EnvConfig().NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
-  console.log('🔍 SITE_URL:', SITE_URL)
-
   const supabase = await createClient()
   let dataSignUp: SignUpProvider = { url: null, provider }
   let errorSignUp: AuthError | null = null
