@@ -6,9 +6,11 @@ interface DrawerHeaderContentClientProps {
     name?: Tables<'users'>['name']
     username?: Tables<'users'>['username']
     avatar?: ReactNode
+    followers: number
+    following: number
 }
 
-function DrawerHeader ({ avatar, name, username }: DrawerHeaderContentClientProps) {
+function DrawerHeader ({ avatar, name, username, followers, following }: DrawerHeaderContentClientProps) {
   return (
     <DrawerHeaderClient className='flex flex-col gap-1 px-3'>
       {avatar}
@@ -18,11 +20,11 @@ function DrawerHeader ({ avatar, name, username }: DrawerHeaderContentClientProp
       </div>
       <div className='flex justify-start items-center gap-6 [&>div]:flex [&>div]:gap-1 [&>div>span]:text-sm'>
         <div>
-          <span className='text-white font-medium'>2</span>
+          <span className='text-white font-medium'>{following}</span>
           <span className='text-zinc-500 font-normal'>Siguiendo</span>
         </div>
         <div>
-          <span className='text-white font-medium'>0</span>
+          <span className='text-white font-medium'>{followers}</span>
           <span className='text-zinc-500 font-normal'>Seguidores</span>
         </div>
       </div>
