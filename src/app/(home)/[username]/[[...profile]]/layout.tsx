@@ -13,7 +13,7 @@ interface UsernameLayoutProps {
 
 export default function ProfileLayout ({ children, posts, media, params: { username } }: UsernameLayoutProps) {
   return (
-    <div className='h-full border-x border-zinc-700'>
+    <div className='h-full min-[500px]:border-x min-[500px]:border-zinc-700'>
       <ErrorBoundary fallback={<ErrorAccount username={username} />}>
         {children}
         <ViewInteractivity posts={posts} media={media} username={username} href={[`/${username}`, `/${username}/media`]} action={['Posts', 'Multimedia']} />
