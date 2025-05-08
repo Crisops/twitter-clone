@@ -28,7 +28,7 @@ export default function NavbarLinks () {
           {
             linksMovileHome.map(({ href, icon }, index) => (
               <NavbarItem key={index} isActive={pathname === href} className='group'>
-                <Link href={href} className='group-data-[active=true]:text-white group-data-[active=true]:first:stroke-1 text-transparent first:stroke-1'>
+                <Link href={href} className='group-data-[active=true]:text-white group-data-[active=true]:first:stroke-1 text-transparent first:stroke-2'>
                   {icon}
                 </Link>
               </NavbarItem>
