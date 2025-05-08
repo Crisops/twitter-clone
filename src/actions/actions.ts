@@ -20,6 +20,12 @@ export async function login ({ email, password }: {email: Tables<'users'>['email
   if (data.user) redirect('/home')
 }
 
+export async function signOut () {
+  const supabase = await createClient()
+  await supabase.auth.signOut()
+  redirect('/')
+}
+
 export async function signup ({ provider, data }: SignUpProps) {
   const SITE_URL = EnvConfig().NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
