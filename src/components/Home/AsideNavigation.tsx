@@ -17,32 +17,34 @@ export default function AsideNavigation ({ viewMovil, LinkProfile }: AsideNaviga
   const preLoadLinks = viewMovil ? linksMovileDrawer : linksDesktop
 
   return (
-    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: ['flex flex-col h-full items-end xl:items-start gap-2'] }}>
+    <Navbar classNames={{ base: ['items-start [&>header]:px-3 [&>header]:h-full h-screen'], content: [`flex flex-col h-full ${viewMovil ? 'items-start' : 'items-end xl:items-start'} gap-2`] }}>
       <NavbarContent justify='start'>
-        <NavbarItem className='p-3'>
-          <Button as={Link} href='/home' disableAnimation className='bg-transparent p-0 min-w-fit data-[hover=true]:opacity-100'>
+        <NavbarItem className={`${viewMovil ? 'hidden' : 'inline-flex'}`}>
+          <Button as={Link} href='/home' disableAnimation className='bg-transparent min-w-fit h-12 data-[hover=true]:opacity-100'>
             <IconTwitter size='size-7' />
           </Button>
         </NavbarItem>
         {preLoadLinks.map(({ href, icon, text }, index) => (
-          <NavbarItem key={index} className='transition-colors duration-150 hover:bg-white/10 rounded-full'>
+          <NavbarItem key={index} className={`transition-colors duration-150 w-full ${viewMovil ? 'hover:bg-[#5b70831A]' : 'rounded-full hover:bg-white/10'}`}>
             <LinksSideNav viewMovil={viewMovil} href={href} icon={icon} text={text} />
           </NavbarItem>
         ))}
-        {LinkProfile}
+        <NavbarItem className={`transition-colors duration-150 w-full ${viewMovil ? 'hover:bg-[#5b70831A]' : 'rounded-full hover:bg-white/10'}`}>
+          {LinkProfile}
+        </NavbarItem>
         <NavbarItem className='w-full'>
           <ButtonModalComposePostServer
             variant='solid'
             sizeModal='xl'
             placement='top'
-            className='min-w-fit xl:w-full bg-white text-black py-2 px-3 font-semibold text-medium'
+            className={`${viewMovil ? 'hidden' : 'inline-flex mt-2'} min-w-fit xl:w-full bg-white text-black py-2 px-3 font-semibold text-medium`}
             loadingForm='create-post'
           >
             <span className='block xl:hidden'><IconFeather className='fill-current size-6' /></span>
             <span className='hidden xl:block text-current'>Postear</span>
           </ButtonModalComposePostServer>
         </NavbarItem>
-        <NavbarItem className='grow flex w-full h-full items-end'>
+        <NavbarItem className={`grow flex w-full h-full items-end ${viewMovil ? 'hidden' : 'inline-flex'}`}>
           <AsideInformationUserServer />
         </NavbarItem>
       </NavbarContent>
