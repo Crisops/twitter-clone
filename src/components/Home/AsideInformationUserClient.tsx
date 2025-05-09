@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { IconDots } from '@tabler/icons-react'
 import { Tables } from '@/types/database.types'
@@ -12,7 +14,12 @@ type AsideInformationUserProps = {
 
 export default function AsideInformationUserClient ({ name, username, children: imageUser }: AsideInformationUserProps) {
   return (
-    <Popover placement='top' triggerScaleOnOpen={false} showArrow classNames={{ base: 'before:bg-black shadow-lg shadow-white/20 rounded-xl', content: 'bg-black' }}>
+    <Popover
+      placement='top'
+      triggerScaleOnOpen={false}
+      showArrow
+      classNames={{ base: 'before:bg-black shadow-lg shadow-white/20 rounded-xl', content: 'bg-black' }}
+    >
       <PopoverTrigger>
         <div className='flex w-full items-center justify-end mb-2 xl:justify-between rounded-full xl:cursor-pointer xl:transition-colors xl:duration-150 xl:hover:bg-white/10'>
           <div className='flex items-center pl-2 py-2 pr-1 transition-colors duration-150 hover:bg-white/10 xl:hover:bg-transparent rounded-full hover:cursor-pointer '>
