@@ -1,5 +1,3 @@
-'use client'
-
 import { ReactNode } from 'react'
 import { IconDots } from '@tabler/icons-react'
 import { Tables } from '@/types/database.types'
